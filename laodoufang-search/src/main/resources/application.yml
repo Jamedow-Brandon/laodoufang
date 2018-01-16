@@ -1,13 +1,10 @@
 spring:
-  data:
-    elasticsearch:
-      # 集群名
-      cluster-name: docker-elasticsearch
-      # 连接节点,注意在集群中通信都是9300端口，否则会报错无法连接上！多个节点逗号分隔
-      cluster-nodes: 106.14.210.31:9300
-      repositories:
-        # 仓库中数据存储
-        enabled:
+#  data:
+#    elasticsearch:
+#      # 集群名
+#      cluster-name: docker-elasticsearch
+#      # 连接节点,注意在集群中通信都是9300端口，否则会报错无法连接上！多个节点逗号分隔
+#      cluster-nodes: 106.14.210.31:9300
   datasource:
     # 数据库连接地址
     url: jdbc:mysql://106.14.210.31:3306/laodoufang?useUnicode=true&characterEncoding=utf-8
