@@ -4,10 +4,6 @@ logging:
     com.ajavac: debug
   file: spring.log
 ftp:
-  port: 21
-  passive-ports:
-  max-login: 100
-  max-threads: 100
-  username: jamedow
+  host: 106.14.210.31
+  user: jamedow
   password: Zhangliang@520
-  home-dir: laodoufang/

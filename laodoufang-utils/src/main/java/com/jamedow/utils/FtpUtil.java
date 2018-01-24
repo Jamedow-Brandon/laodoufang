@@ -127,11 +127,6 @@ public class FtpUtil {
                 logger.error("file not exists :" + localFile.toString());
                 return false;
             }
-            //会自动替换旧文件
-//            String strFilePath = romotUpLoadePath + localFile.getName();
-//            if(checkRemoteFileExists(strFilePath)){
-//                deleteRemoteFile(strFilePath);
-//            }
             ftpCreateDirectoryTree(remotUpLoadePath);
             this.ftpClient.changeWorkingDirectory(remotUpLoadePath);// 改变工作路径
             inStream = new BufferedInputStream(new FileInputStream(localFile));
