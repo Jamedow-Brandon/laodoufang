@@ -20,10 +20,6 @@ public class LaodoufangSearchApplicationTests {
 
     private MockMvc mvc;
 
-    @Test
-    public void contextLoads() {
-    }
-
     //初始化执行
     @Before
     public void setUp() throws Exception {

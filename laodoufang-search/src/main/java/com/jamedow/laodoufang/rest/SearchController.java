@@ -31,4 +31,10 @@ public class SearchController {
                          @RequestParam String source) {
         return searchService.insertRecipeToEs(index, type, source);
     }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public Object delete(@RequestParam String index, @RequestParam String type,
+                         @RequestParam String searchDocumentId) {
+        return searchService.delete(index, type, searchDocumentId);
+    }
 }

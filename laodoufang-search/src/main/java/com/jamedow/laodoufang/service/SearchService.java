@@ -90,4 +90,8 @@ public class SearchService {
         }
         return searchDocumentId;
     }
+
+    public int delete(String index, String type, String searchDocumentId) {
+        return EsClient.deleteDocumentById(index, type, searchDocumentId).status().getStatus();
+    }
 }
