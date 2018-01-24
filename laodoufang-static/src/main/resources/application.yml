@@ -6,8 +6,8 @@ logging:
 ftp:
   port: 21
   passive-ports:
-  max-login: 0
-  max-threads: 0
+  max-login: 100
+  max-threads: 100
   username: jamedow
   password: Zhangliang@520
   home-dir: laodoufang/

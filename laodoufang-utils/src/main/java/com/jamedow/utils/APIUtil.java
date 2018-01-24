@@ -13,7 +13,7 @@ import java.util.*;
  * <p>
  * Created by Administrator on 2018/1/15.
  */
-public class APIUtils {
+public class APIUtil {
 
     /**
      * 获取私钥key
@@ -36,7 +36,7 @@ public class APIUtils {
             url = URLDecoder.decode(url, "UTF-8");
         }
         // url参数排序
-        String sortUrl = APIUtils.sort(url);
+        String sortUrl = APIUtil.sort(url);
         // 拼接秘钥
         sortUrl += "&key=" + PRIVATE_KEY;
         // MD5加密
@@ -49,7 +49,7 @@ public class APIUtils {
         // url参数键值对
         String resultUrl = "";
         List<String> strArray = new ArrayList<>();
-        Map<String, String> mapRequest = APIUtils.URLRequest(url);
+        Map<String, String> mapRequest = APIUtil.URLRequest(url);
         for (String strRequestKey : mapRequest.keySet()) {
             //传送的sign参数不参与签名
             if (!strRequestKey.equals("sign")) {
@@ -109,7 +109,7 @@ public class APIUtils {
     public static void main(String[] args) throws Exception {
         // 请求url
         String str = "city=nj&ad=123&sort=555&qq&banke=10&pid=1&welf=sss&sign=xxxxx888TTTTTT";
-        String url = APIUtils.sort(str);
+        String url = APIUtil.sort(str);
         String sign = "test";
         // 兼顾两种编码方式的hash值
         String encryptUrlDecoded = encrypt(url, true);
