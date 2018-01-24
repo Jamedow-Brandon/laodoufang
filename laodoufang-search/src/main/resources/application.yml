@@ -1,7 +1,13 @@
+##服务启动时，使用随机端口
+server:
+  port: 3333
+
 eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
+    serviceUrl:
+          defaultZone: http://127.0.0.1:1111/eureka/
 
 spring:
 #  data:
@@ -15,6 +21,19 @@ spring:
     url: jdbc:mysql://106.14.210.31:3306/laodoufang?useUnicode=true&characterEncoding=utf-8
     username: jamedow
     password: Zhangliang@520
+  redis:
+    #cluster:
+      #nodes:
+        #- 127.0.0.1:6379
+    database: 0
+    host: 106.14.210.31
+    port: 6379
+    timeout: 5000
+    pool:
+      max-idle: 10
+      min-idle: 0
+      max-active: 8
+      max-wait: 1000
 
 mybatis:
     typeAliasesPackage: com.jamedow.laodoufang
