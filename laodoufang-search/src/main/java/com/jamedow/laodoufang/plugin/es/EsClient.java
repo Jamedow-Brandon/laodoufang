@@ -156,20 +156,21 @@ public class EsClient {
      * @param indexName  索引
      * @param type       类型
      * @param documentId
-     * @param builder    文档对象
+     * @param source    文档对象
      */
-    public static String createDocument(String indexName, String type, String documentId, XContentBuilder builder) {
+    public static String createDocument(String indexName, String type, String documentId, String source) {
         if (StringUtils.isBlank(documentId)) {
-            IndexResponse indexResponse = client.prepareIndex(indexName, type).setSource(builder).execute().actionGet();
+            IndexResponse indexResponse = client.prepareIndex(indexName, type).setSource(source).execute().actionGet();
+            logger.debug("create document [{}] status [{}]", indexResponse.getId(), indexResponse.status());
             return indexResponse.getId();
         }
         GetResponse response = client.prepareGet(indexName, type, documentId).get();
         if (!response.isExists()) {
-            IndexResponse indexResponse = client.prepareIndex(indexName, type).setSource(builder).execute().actionGet();
+            IndexResponse indexResponse = client.prepareIndex(indexName, type).setSource(source).execute().actionGet();
             logger.debug("create document [{}] status [{}]", indexResponse.getId(), indexResponse.status());
             return indexResponse.getId();
         } else {
-            updateDocument(indexName, type, documentId, builder);
+            updateDocument(indexName, type, documentId, source);
             return documentId;
         }
     }
@@ -190,11 +191,11 @@ public class EsClient {
      *
      * @param indexName 索引
      * @param type      类型
-     * @param builder   文档对象
+     * @param source   文档对象
      */
-    public static void updateDocument(String indexName, String type, String id, XContentBuilder builder) {
+    public static void updateDocument(String indexName, String type, String id, String source) {
         UpdateRequest updateRequest = new UpdateRequest(indexName, type, id);
-        updateRequest.doc(builder);
+        updateRequest.doc(source);
         try {
             client.update(updateRequest).get();
             logger.debug("update document [{}]", id);

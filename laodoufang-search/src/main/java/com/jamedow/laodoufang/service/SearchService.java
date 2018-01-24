@@ -1,12 +1,11 @@
 package com.jamedow.laodoufang.service;
 
-import com.jamedow.laodoufang.entity.Recipe;
 import com.jamedow.laodoufang.plugin.es.EsClient;
+import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.lucene.search.function.FieldValueFactorFunction;
 import org.elasticsearch.common.lucene.search.function.FiltersFunctionScoreQuery;
-import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder;
@@ -15,8 +14,12 @@ import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import static org.elasticsearch.index.query.QueryBuilders.termQuery;
 
 /**
@@ -24,14 +27,19 @@ import static org.elasticsearch.index.query.QueryBuilders.termQuery;
  * <p>
  * Created by Administrator on 2018/1/16.
  */
+@Service
 public class SearchService {
     private Logger logger = LoggerFactory.getLogger(EsClient.class);
 
-    public SearchHit[] search(String content, String tags, String isOfficial, int from, int pageSize) {
-        SearchResponse searchResponse = EsClient.search("laodoufang", "recipe",
+    public List<Map<String, Object>> search(String index, String type, String content, String tags, String isOfficial, int from, int pageSize) {
+        SearchResponse searchResponse = EsClient.search(index, type,
                 buildSearchQuery(content, tags, isOfficial), from, pageSize);
-
-        return searchResponse.getHits().getHits();
+        List<Map<String, Object>> list = new ArrayList<>();
+        for (SearchHit hit : searchResponse.getHits().getHits()) {
+            Map<String, Object> source = hit.getSourceAsMap();
+            list.add(source);
+        }
+        return list;
     }
 
     private FunctionScoreQueryBuilder buildSearchQuery(String content, String tags, String isOfficial) {
@@ -52,30 +60,33 @@ public class SearchService {
         return query;
     }
 
-    public String insertRecipeToEs(Recipe recipe) {
+    public String insertRecipeToEs(String index, String type, String source) {
         String searchDocumentId = null;
         try {
-            XContentBuilder builder = jsonBuilder()
-                    .startObject()
-                    .field("id", recipe.getId())
-                    .field("name", recipe.getName())
-                    .field("intro", recipe.getIntro())
-                    .field("createTime", recipe.getCreateTime())
-                    .field("linkUrl", recipe.getLinkUrl())
-                    .field("imgUrl", recipe.getImgUrl())
-                    .field("tags", recipe.getTags())
-                    .field("voteUp", recipe.getVoteUp())
-                    .field("voteDown", recipe.getVoteDown())
-                    .field("isOfficial", recipe.getIsOfficial())
-                    .field("userId", recipe.getUserId())
-                    .field("trafficVolume", recipe.getTrafficVolume())
-                    .field("ingredient", recipe.getIngredient())
-                    .field("burdening", recipe.getBurdening())
-                    .endObject();
+//            XContentBuilder builder = jsonBuilder()
+//                    .startObject()
+//                    .field("id", recipe.getId())
+//                    .field("name", recipe.getName())
+//                    .field("intro", recipe.getIntro())
+//                    .field("createTime", recipe.getCreateTime())
+//                    .field("linkUrl", recipe.getLinkUrl())
+//                    .field("imgUrl", recipe.getImgUrl())
+//                    .field("tags", recipe.getTags())
+//                    .field("voteUp", recipe.getVoteUp())
+//                    .field("voteDown", recipe.getVoteDown())
+//                    .field("isOfficial", recipe.getIsOfficial())
+//                    .field("userId", recipe.getUserId())
+//                    .field("trafficVolume", recipe.getTrafficVolume())
+//                    .field("ingredient", recipe.getIngredient())
+//                    .field("burdening", recipe.getBurdening())
+//                    .endObject();
 
-            searchDocumentId = EsClient.createDocument("laodoufang", "recipe", recipe.getSearchDocumentId(), builder);
+            JSONObject sourceObject = JSONObject.fromObject(source);
+            searchDocumentId = sourceObject.getString("searchDocumentId");
+
+            searchDocumentId = EsClient.createDocument(index, type, searchDocumentId, source);
         } catch (Exception e) {
-            logger.error("新建食谱文档失败{}", recipe.getId(), e.getMessage(), e);
+            logger.error("新建文档失败{}", source, e.getMessage(), e);
         }
         return searchDocumentId;
     }
