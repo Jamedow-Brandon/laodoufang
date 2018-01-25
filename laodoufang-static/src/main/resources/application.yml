@@ -13,7 +13,7 @@ spring:
   datasource:
     # 数据库连接地址
     url: jdbc:mysql://106.14.210.31:3306/laodoufang?useUnicode=true&characterEncoding=utf-8
-    username: jamedow
+    username: root
     password: Zhangliang@520
   http:
     multipart:

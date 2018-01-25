@@ -11,15 +11,11 @@ public class BaseAttachment {
 
     private String name;
 
-    private Integer attachmentTypeId;
-
     private String suffix;
 
     private long size;
 
     private String remotePath;
-
-    private Integer remoteServerUrliid;
 
     private String remark;
 
@@ -63,14 +59,6 @@ public class BaseAttachment {
         this.name = name;
     }
 
-    public Integer getAttachmentTypeId() {
-        return attachmentTypeId;
-    }
-
-    public void setAttachmentTypeId(Integer attachmentTypeId) {
-        this.attachmentTypeId = attachmentTypeId;
-    }
-
     public String getSuffix() {
         return suffix;
     }
@@ -93,14 +81,6 @@ public class BaseAttachment {
 
     public void setRemotePath(String remotePath) {
         this.remotePath = remotePath;
-    }
-
-    public Integer getRemoteServerUrliid() {
-        return remoteServerUrliid;
-    }
-
-    public void setRemoteServerUrliid(Integer remoteServerUrliid) {
-        this.remoteServerUrliid = remoteServerUrliid;
     }
 
     public String getRemark() {
