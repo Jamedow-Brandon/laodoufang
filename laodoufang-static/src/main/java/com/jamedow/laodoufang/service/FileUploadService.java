@@ -4,23 +4,23 @@ import com.aliyun.oss.ClientConfiguration;
 import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.OSSException;
-import com.aliyun.oss.model.*;
+import com.aliyun.oss.model.CompleteMultipartUploadResult;
+import com.aliyun.oss.model.UploadFileRequest;
+import com.aliyun.oss.model.UploadFileResult;
+import com.jamedow.laodoufang.entity.BaseAttachment;
+import com.jamedow.laodoufang.mapper.BaseAttachmentMapper;
 import com.jamedow.utils.UUIDHexGenerator;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * Description
@@ -35,22 +35,27 @@ public class FileUploadService {
     private String endpoint;
     private String accessKeyId;
     private String accessKeySecret;
-
-    private OSSClient client;
-
     private String bucketName;
     private String key;
     private String localFilePath;
     private String imgServer;
 
-    private ExecutorService executorService = Executors.newFixedThreadPool(5);
-    private List<PartETag> partETags = Collections.synchronizedList(new ArrayList<PartETag>());
+    private OSSClient client;
 
+    @Autowired
+    private BaseAttachmentMapper attachmentMapper;
 
-    public String uploadFile(MultipartFile uploadFile, String storgeId) {
-        String contentType = uploadFile.getContentType();
+    @Transactional(rollbackFor = Exception.class)
+    public String uploadFile(MultipartFile uploadFile) {
         String fileName = uploadFile.getOriginalFilename();
-        setKey(storgeId);
+        String suffix = fileName.substring(fileName.lastIndexOf("."));  // 获取文件后缀
+        String contentType = uploadFile.getContentType();  // 获取文件类型
+        long size = uploadFile.getSize();  // 获取文件大小
+        String resourceId = UUIDHexGenerator.getUUIDHex();  //生成阿里云资源ID
+        String remotePath = imgServer + File.separator + resourceId;
+        //设置阿里云资源key
+        setKey(String.valueOf(resourceId));
+
         logger.debug("fileName[{}],contentType[{}]", fileName, contentType);
         /*
          * Constructs a client instance with your account for accessing OSS
@@ -60,7 +65,7 @@ public class FileUploadService {
         client = new OSSClient(endpoint, accessKeyId, accessKeySecret, conf);
 
         try {
-            File file = multipartToFile(uploadFile);
+            File file = multipartToFile(uploadFile, suffix);
 
             UploadFileRequest uploadFileRequest = new UploadFileRequest(bucketName, key);
             // 待上传的本地文件
@@ -94,50 +99,26 @@ public class FileUploadService {
         } finally {
             client.shutdown();
         }
-        return imgServer + File.separator + storgeId;
+
+        //保存附件信息
+        BaseAttachment attachment = new BaseAttachment();
+        attachment.setName(fileName);
+        attachment.setResourceType(contentType);
+        attachment.setSuffix(suffix);
+        attachment.setSize(size);
+        attachment.setResourceId(resourceId);
+        attachment.setRemotePath(remotePath);
+        attachmentMapper.insertSelective(attachment);
+
+        logger.info("upload image [{}] success", fileName);
+        return remotePath;
     }
 
-    private String claimUploadId() {
-        InitiateMultipartUploadRequest request = new InitiateMultipartUploadRequest(bucketName, key);
-        InitiateMultipartUploadResult result = client.initiateMultipartUpload(request);
-        return result.getUploadId();
-    }
-
-    private void completeMultipartUpload(String uploadId) {
-        // Make part numbers in ascending order
-        Collections.sort(partETags, new Comparator<PartETag>() {
-
-            @Override
-            public int compare(PartETag p1, PartETag p2) {
-                return p1.getPartNumber() - p2.getPartNumber();
-            }
-        });
-
-        logger.debug("Completing to upload multiparts\n");
-        CompleteMultipartUploadRequest completeMultipartUploadRequest =
-                new CompleteMultipartUploadRequest(bucketName, key, uploadId, partETags);
-        client.completeMultipartUpload(completeMultipartUploadRequest);
-    }
-
-    private void listAllParts(String uploadId) {
-        logger.debug("Listing all parts......");
-        ListPartsRequest listPartsRequest = new ListPartsRequest(bucketName, key, uploadId);
-        PartListing partListing = client.listParts(listPartsRequest);
-
-        int partCount = partListing.getParts().size();
-        for (int i = 0; i < partCount; i++) {
-            PartSummary partSummary = partListing.getParts().get(i);
-            logger.debug("\tPart#" + partSummary.getPartNumber() + ", ETag=" + partSummary.getETag());
-        }
-    }
-
-    public File multipartToFile(MultipartFile uploadFile) throws IOException {
-        String fileName = uploadFile.getOriginalFilename();
-        // 获取文件后缀
-        String prefix = fileName.substring(fileName.lastIndexOf("."));
+    private File multipartToFile(MultipartFile uploadFile, String prefix) throws IOException {
         final File excelFile = File.createTempFile(UUIDHexGenerator.getUUIDHex(), prefix);
         FileUtils.copyInputStreamToFile(uploadFile.getInputStream(), excelFile);
         return excelFile;
+
     }
 
     public String getEndpoint() {
