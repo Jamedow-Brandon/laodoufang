@@ -15,8 +15,21 @@ spring:
     url: jdbc:mysql://106.14.210.31:3306/laodoufang?useUnicode=true&characterEncoding=utf-8
     username: jamedow
     password: Zhangliang@520
+  http:
+    multipart:
+      max-file-size: 100Mb
+      max-request-size: 100Mb
 
 mybatis:
     typeAliasesPackage: com.jamedow.laodoufang
     mapperLocations: classpath:/mapper/*.xml
     configLocation: classpath:/mybatis-config.xml
+
+oss:
+  endpoint: oss-cn-shanghai.aliyuncs.com
+  accessKeyId: LTAIuJEQSWXcQgOZ
+  accessKeySecret: hscS01ryn5Ykk57NmXyfEBVMif0gFr
+  bucketName: laodoufang
+  key:
+  localFilePath: laodoufang
+  imgServer: laodoufang.oss-cn-shanghai.aliyuncs.com
