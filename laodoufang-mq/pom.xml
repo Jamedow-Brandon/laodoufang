@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>MQ</name>
+	<name>laodoufang-mq</name>
 	<description>MQ for Laodoufang</description>
 
 	<parent>
