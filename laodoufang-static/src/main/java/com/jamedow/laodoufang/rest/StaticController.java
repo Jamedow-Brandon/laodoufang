@@ -28,7 +28,7 @@ public class StaticController {
     public String upload(MultipartHttpServletRequest request) {
         List<MultipartFile> files = request.getFiles("file");
         for (MultipartFile file : files) {
-            fileUploadService.uploadFile(file);
+            fileUploadService.uploadFile(file, "12321");
         }
         return null;
     }
