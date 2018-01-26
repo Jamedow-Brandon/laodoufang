@@ -1,4 +1,4 @@
-package com.jamedow.laodoufang.web;
+package com.jamedow.laodoufang.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

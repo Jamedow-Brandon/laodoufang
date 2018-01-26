@@ -6,10 +6,9 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -20,7 +19,7 @@ import java.util.List;
  * <p>
  * Created by Administrator on 2018/1/25.
  */
-@Controller
+@RestController
 @RequestMapping("/static")
 public class StaticController {
     private Logger logger = LoggerFactory.getLogger(getClass());
@@ -28,7 +27,6 @@ public class StaticController {
     private FileUploadService fileUploadService;
 
     @PostMapping(value = "upload", produces = "application/json;charset=utf-8")
-    @ResponseBody
     public Object upload(MultipartHttpServletRequest request) {
         List<MultipartFile> files = request.getFiles("file");
         JSONArray results = new JSONArray();
