@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @EnableAutoConfiguration
-@RequestMapping("play")
-public class PlayController {
+@RequestMapping("game")
+public class GameController {
     Logger logger = LoggerFactory.getLogger(getClass());
 
     @RequestMapping(value = "/just-jump", method = RequestMethod.GET)
     public String play() {
-        return "/play/just-jump";
+        return "/game/just-jump";
     }
 }
