@@ -1,5 +1,6 @@
 package com.jamedow.laodoufang.rest;
 
+import com.jamedow.laodoufang.entity.BaseAttachment;
 import com.jamedow.laodoufang.service.FileUploadService;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,9 +33,9 @@ public class StaticController {
         JSONArray results = new JSONArray();
         for (MultipartFile file : files) {
             JSONObject result = new JSONObject();
-            String remotePath = fileUploadService.uploadFile(file);
+            BaseAttachment baseAttachment = fileUploadService.uploadFile(file);
             result.put("fileName", file.getOriginalFilename());
-            result.put("remotePath", remotePath);
+            result.put("remotePath", baseAttachment);
             results.put(result);
         }
         return results.toString();

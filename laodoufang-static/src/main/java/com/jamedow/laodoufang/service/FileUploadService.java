@@ -46,7 +46,7 @@ public class FileUploadService {
     private BaseAttachmentMapper attachmentMapper;
 
     @Transactional(rollbackFor = Exception.class)
-    public String uploadFile(MultipartFile uploadFile) {
+    public BaseAttachment uploadFile(MultipartFile uploadFile) {
         String fileName = uploadFile.getOriginalFilename();
         String suffix = fileName.substring(fileName.lastIndexOf("."));  // 获取文件后缀
         String contentType = uploadFile.getContentType();  // 获取文件类型
@@ -111,7 +111,7 @@ public class FileUploadService {
         attachmentMapper.insertSelective(attachment);
 
         logger.info("upload image [{}] success", fileName);
-        return remotePath;
+        return attachment;
     }
 
     private File multipartToFile(MultipartFile uploadFile, String prefix) throws IOException {
