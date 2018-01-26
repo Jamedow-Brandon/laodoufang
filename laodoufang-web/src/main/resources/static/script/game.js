@@ -10,9 +10,9 @@ var Game = function () {
         cubeHeight: 2, // 跳台高度
         cubeDeep: 4, // 跳台深度
         jumperColor: 0x232323,
-        jumperWidth: 1, // jumper宽度
+        jumperWidth: 0.5, // jumper宽度
         jumperHeight: 2, // jumper高度
-        jumperDeep: 1 // jumper深度
+        jumperDeep: 0.5 // jumper深度
     };
     // 游戏状态
     this.score = 0;
@@ -34,8 +34,9 @@ var Game = function () {
     };
     this.jumperStat = {
         ready: false, // 鼠标按完没有
-        xSpeed: 0, // xSpeed根据鼠标按的时间进行赋值
-        ySpeed: 0  // ySpeed根据鼠标按的时间进行赋值
+        xSpeed: 0, // xSpeed根据鼠标按的时间进行赋值 水平方向蓄力值
+        ySpeed: 0,  // ySpeed根据鼠标按的时间进行赋值 垂直方向蓄力值
+        isCharge: 0
     };
     this.falledStat = {
         location: -1, // jumper所在的位置
@@ -147,30 +148,35 @@ Game.prototype = {
      **/
     _handleMousedown: function () {
         var self = this;
-        if (!self.jumperStat.ready && self.jumper.scale.y > 0.02) {
-            self.jumper.scale.y -= 0.01;
-            self.jumperStat.xSpeed += 0.004;
-            self.jumperStat.ySpeed += 0.008;
-            self._render(self.scene, self.camera);
-            requestAnimationFrame(function () {
-                self._handleMousedown();
-            })
+        if (self.jumperStat.ready) {
+            return null;
         }
+        self.jumperStat.isCharge += 0.01;
+        self.jumper.scale.y = 1 - Math.log(0.8 * self.jumperStat.isCharge + 1);
+        self.jumperStat.xSpeed = Math.log(0.75 * self.jumperStat.isCharge + 1);
+        self.jumperStat.ySpeed = 0.25;
+        self._render(self.scene, self.camera);
+        requestAnimationFrame(function () {
+            self._handleMousedown();
+        });
     },
     // 鼠标松开或触摸结束绑定的函数
     _handleMouseup: function () {
         var self = this;
         // 标记鼠标已经松开
         self.jumperStat.ready = true;
+        self.jumperStat.isCharge = 0;
         // 判断jumper是在方块水平面之上，是的话说明需要继续运动
+        console.log(self.jumper.position.y)
+
         if (self.jumper.position.y >= 1) {
             // jumper根据下一个方块的位置来确定水平运动方向;
             // 沿x轴运动时,z轴位置和方块相同;沿z轴运动时,x轴位置和方块相同
             if (self.cubeStat.nextDir === 'left') {
                 self.jumper.position.x -= self.jumperStat.xSpeed;
-                self.jumper.position.z = this.cubes[this.cubes.length - 1 - 1].position.z;
+                self.jumper.position.z -= (self.jumper.position.z - this.cubes[this.cubes.length - 1].position.z) * self.jumperStat.xSpeed;
             } else {
-                self.jumper.position.x = this.cubes[this.cubes.length - 1 - 1].position.x;
+                self.jumper.position.x = (self.jumper.position.x - this.cubes[this.cubes.length - 1].position.x) * self.jumperStat.xSpeed;
                 self.jumper.position.z -= self.jumperStat.xSpeed;
             }
             // jumper在垂直方向上运动
@@ -344,7 +350,6 @@ Game.prototype = {
             } else {
                 result = 0;
             }
-            console.log(result)
             this.falledStat.location = result;
         }
     },
