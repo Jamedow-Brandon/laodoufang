@@ -1,7 +1,7 @@
 $(function () {
     $.ajax({
-        url: "/user/getShareUrl",
-        method: "post",
+        url: "/wechat/config-wx-js",
+        method: "GET",
         data: {},
         success: function (data) {
             wx.config({
@@ -17,11 +17,14 @@ $(function () {
     });
 
     wx.ready(function () {
-        // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+        // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，
+        // 所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。
+        // 对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
     });
 
     wx.error(function (res) {
-        // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+        // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，
+        // 也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
     });
 
     wx.checkJsApi({
@@ -33,33 +36,40 @@ $(function () {
     });
 
 });
-
-wx.hideAllNonBaseMenuItem();
-
-wx.onMenuShareAppMessage({
-    title: data.title, // 分享标题
-    desc: data.desc, // 分享描述
-    link: data.link, // 分享链接
-    imgUrl: data.imgUrl, // 分享图标
-    success: function () {
-        // 用户确认分享后执行的回调函数
-        alert("分享成功");
+var wechat = {
+    onMenuShareAppMessage: function (_title, _desc, _link, _imgUrl, _successCallback, _cancelCallback) {
+        wx.onMenuShareAppMessage({
+            title: _title, // 分享标题
+            desc: _desc, // 分享描述
+            link: _link, // 分享链接
+            imgUrl: _imgUrl, // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                _successCallback;
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+                _cancelCallback;
+            }
+        });
     },
-    cancel: function () {
-        // 用户取消分享后执行的回调函数
-    }
-});
-
-wx.onMenuShareWechat({
-    title: data.title, // 分享标题
-    desc: data.desc, // 分享描述
-    link: data.link, // 分享链接
-    imgUrl: data.imgUrl, // 分享图标
-    success: function () {
-        // 用户确认分享后执行的回调函数
-        alert("分享成功");
+    onMenuShareWechat: function (_title, _desc, _link, _imgUrl, _successCallback, _cancelCallback) {
+        wx.onMenuShareWechat({
+            title: _title, // 分享标题
+            desc: _desc, // 分享描述
+            link: _link, // 分享链接
+            imgUrl: _imgUrl, // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                _successCallback;
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+                _cancelCallback;
+            }
+        });
     },
-    cancel: function () {
-        // 用户取消分享后执行的回调函数
+    hideAllNonBaseMenuItem: function () {
+        wx.hideAllNonBaseMenuItem();
     }
-});
+}

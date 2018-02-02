@@ -29,7 +29,7 @@ public class WeChatController {
     @Autowired
     private RemoteCallService remoteCallService;
 
-    @RequestMapping(value = "/config-wx-js", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/config-wx-js", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
     public String getShareUrl(String requestUrl) {
 //        String requestUrl = request.getScheme() //当前链接使用的协议
