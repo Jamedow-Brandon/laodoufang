@@ -1,0 +1,23 @@
+logging:
+  level:
+    root: info
+    com.jamedow.laodoufang: debug
+#  file: spring.log
+##服务启动时，使用随机端口
+server:
+  port: 6666
+
+spring:
+  application:
+    name: laodoufang-wechat
+  datasource:
+    # 数据库连接地址
+    url: jdbc:mysql://106.14.210.31:3306/laodoufang?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: Zhangliang@520
+
+mybatis:
+    typeAliasesPackage: com.jamedow.laodoufang
+    mapperLocations: classpath:/mapper/*.xml
+    configLocation: classpath:/mybatis-config.xml
+
