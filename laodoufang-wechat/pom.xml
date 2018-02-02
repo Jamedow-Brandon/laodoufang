@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>wechat</name>
+    <name>laodoufang-wechat</name>
     <description>wechat project for laodoufang</description>
 
     <parent>
@@ -47,6 +47,19 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <!--jamedow dependencies-->
+        <dependency>
+            <groupId>com.jamedow.laodoufang</groupId>
+            <artifactId>laodoufang-utils</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jamedow.laodoufang</groupId>
+            <artifactId>laodoufang-beans</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

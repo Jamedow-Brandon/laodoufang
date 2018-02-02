@@ -15,9 +15,27 @@ spring:
     url: jdbc:mysql://106.14.210.31:3306/laodoufang?useUnicode=true&characterEncoding=utf-8
     username: root
     password: Zhangliang@520
+  redis:
+    #cluster:
+      #nodes:
+        #- 127.0.0.1:6379
+    database: 0
+    host: 106.14.210.31
+    port: 6379
+    timeout: 5000
+    pool:
+      max-idle: 10
+      min-idle: 0
+      max-active: 8
+      max-wait: 1000
 
 mybatis:
     typeAliasesPackage: com.jamedow.laodoufang
     mapperLocations: classpath:/mapper/*.xml
     configLocation: classpath:/mybatis-config.xml
 
+hgs:
+  hgsUrl: "http://172.17.1.79:8195/house365-hgs-web/rest/interface?"
+  domain: "hgstest.house365.com"
+  prefix: "http://hgstest.house365.com"
+  urlPrefix: "http://202.102.83.171:8195"
