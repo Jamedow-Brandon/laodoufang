@@ -17,8 +17,8 @@ spring:
     password: Zhangliang@520
   http:
     multipart:
-      max-file-size: 100Mb
-      max-request-size: 100Mb
+      max-file-size: 20Mb
+      max-request-size: 20Mb
       enabled: true
       resolve-lazily: false
       location: upload/userfiles
