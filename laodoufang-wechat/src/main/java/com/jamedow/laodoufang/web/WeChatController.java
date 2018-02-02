@@ -1,4 +1,4 @@
-package com.jamedow.laodoufang;
+package com.jamedow.laodoufang.web;
 
 import com.jamedow.laodoufang.common.WXBizMsgCrypt;
 import com.jamedow.laodoufang.config.WeChatProperties;
@@ -18,7 +18,6 @@ import java.security.MessageDigest;
  * Created by Administrator on 2018/2/2.
  */
 @RestController
-@RequestMapping("wechat")
 public class WeChatController {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -36,7 +35,7 @@ public class WeChatController {
                 weChatProperties.getEncodingAESKey(),
                 weChatProperties.getAppId());
 
-        String sEchoStr = null; //需要返回的明文
+        String sEchoStr = "fdsafdsafdfda"; //需要返回的明文
         try {
             sEchoStr = wxBizMsgCrypt.VerifyURL(sVerifyMsgSig, sVerifyTimeStamp, sVerifyNonce, sVerifyEchoStr);
             System.out.println("verifyUrl echostr: " + sEchoStr);
