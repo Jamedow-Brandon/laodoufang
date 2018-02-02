@@ -16,7 +16,7 @@ public class WeChatProperties {
 
     private String encodingAESKey;
 
-    private String corpId;
+    private String appId;
 
     private String secret;
 
@@ -36,12 +36,12 @@ public class WeChatProperties {
         this.encodingAESKey = encodingAESKey;
     }
 
-    public String getCorpId() {
-        return corpId;
+    public String getAppId() {
+        return appId;
     }
 
-    public void setCorpId(String corpId) {
-        this.corpId = corpId;
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 
     public String getSecret() {

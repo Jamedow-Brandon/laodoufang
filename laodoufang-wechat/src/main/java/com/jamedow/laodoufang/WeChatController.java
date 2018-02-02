@@ -1,5 +1,6 @@
 package com.jamedow.laodoufang;
 
+import com.jamedow.laodoufang.common.WXBizMsgCrypt;
 import com.jamedow.laodoufang.config.WeChatProperties;
 import com.jamedow.laodoufang.service.RemoteCallService;
 import com.jamedow.utils.AesException;
@@ -7,10 +8,7 @@ import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.MessageDigest;
 
@@ -29,6 +27,27 @@ public class WeChatController {
     @Autowired
     private RemoteCallService remoteCallService;
 
+    @RequestMapping(value = "checkWeChatCallback", method = RequestMethod.GET)
+    public String checkWeChatCallback(@RequestParam(value = "msg_signature") String sVerifyMsgSig,
+                                      @RequestParam(value = "timestamp") String sVerifyTimeStamp,
+                                      @RequestParam(value = "nonce") String sVerifyNonce,
+                                      @RequestParam(value = "echostr") String sVerifyEchoStr) throws Exception {
+        WXBizMsgCrypt wxBizMsgCrypt = new WXBizMsgCrypt(weChatProperties.getToken(),
+                weChatProperties.getEncodingAESKey(),
+                weChatProperties.getAppId());
+
+        String sEchoStr = null; //需要返回的明文
+        try {
+            sEchoStr = wxBizMsgCrypt.VerifyURL(sVerifyMsgSig, sVerifyTimeStamp, sVerifyNonce, sVerifyEchoStr);
+            System.out.println("verifyUrl echostr: " + sEchoStr);
+            // 验证URL成功，将sEchoStr返回
+        } catch (Exception e) {
+            //验证URL失败，错误原因请查看异常
+            logger.error(e.getMessage(), e);
+        }
+        return sEchoStr;
+    }
+
     @RequestMapping(value = "/config-wx-js", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
     public String getShareUrl(String requestUrl) {
@@ -41,14 +60,14 @@ public class WeChatController {
         JSONObject result = new JSONObject();
         try {
             //获取jsapi ticket
-            String jsapiTicket = remoteCallService.getJsapiTicket(weChatProperties.getCorpId(),
+            String jsapiTicket = remoteCallService.getJsapiTicket(weChatProperties.getAppId(),
                     weChatProperties.getSecret());
             String nonceStr = "Wm3WZYTPz0wzccnW";
             String timestamp = String.valueOf(System.currentTimeMillis()).substring(0, 10);
             //获取分享 jsapi签名
             String signature = this.getSHA1(jsapiTicket, nonceStr, String.valueOf(timestamp), requestUrl);
 
-            result.put("appId", weChatProperties.getCorpId());
+            result.put("appId", weChatProperties.getAppId());
             result.put("nonceStr", nonceStr);
             result.put("timestamp", timestamp);
             result.put("signature", signature);
