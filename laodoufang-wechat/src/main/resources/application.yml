@@ -1,6 +1,6 @@
 logging:
   level:
-    root: info
+    root: warn
     com.jamedow.laodoufang: debug
 #  file: spring.log
 ##服务启动时，使用随机端口

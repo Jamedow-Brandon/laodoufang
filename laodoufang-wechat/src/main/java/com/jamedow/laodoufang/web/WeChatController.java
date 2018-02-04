@@ -27,10 +27,11 @@ public class WeChatController {
     private RemoteCallService remoteCallService;
 
     @RequestMapping(value = "checkWeChatCallback", method = RequestMethod.GET)
-    public String checkWeChatCallback(@RequestParam(value = "msg_signature") String sVerifyMsgSig,
+    public String checkWeChatCallback(@RequestParam(value = "signature") String sVerifyMsgSig,
                                       @RequestParam(value = "timestamp") String sVerifyTimeStamp,
                                       @RequestParam(value = "nonce") String sVerifyNonce,
                                       @RequestParam(value = "echostr") String sVerifyEchoStr) throws Exception {
+        logger.info("signature:[{}]timestamp:[{}]nonce[{}]echostr：[{}]");
         WXBizMsgCrypt wxBizMsgCrypt = new WXBizMsgCrypt(weChatProperties.getToken(),
                 weChatProperties.getEncodingAESKey(),
                 weChatProperties.getAppId());
