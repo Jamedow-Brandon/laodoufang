@@ -1,17 +1,14 @@
 package com.jamedow.laodoufang.web;
 
+import com.jamedow.laodoufang.common.SHA1;
 import com.jamedow.laodoufang.common.WXBizMsgCrypt;
 import com.jamedow.laodoufang.config.WeChatProperties;
 import com.jamedow.laodoufang.service.RemoteCallService;
-import com.jamedow.utils.AesException;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.security.MessageDigest;
-
 /**
  * Description
  * <p>
@@ -36,7 +33,7 @@ public class WeChatController {
                 weChatProperties.getEncodingAESKey(),
                 weChatProperties.getAppId());
 
-        String sEchoStr = "fdsafdsafdfda"; //需要返回的明文
+        String sEchoStr = "hahahahahahaha"; //需要返回的明文
         try {
             sEchoStr = wxBizMsgCrypt.VerifyURL(sVerifyMsgSig, sVerifyTimeStamp, sVerifyNonce, sVerifyEchoStr);
             System.out.println("verifyUrl echostr: " + sEchoStr);
@@ -64,8 +61,17 @@ public class WeChatController {
                     weChatProperties.getSecret());
             String nonceStr = "Wm3WZYTPz0wzccnW";
             String timestamp = String.valueOf(System.currentTimeMillis()).substring(0, 10);
+
+            StringBuffer sb = new StringBuffer();
+
+            sb.append("jsapi_ticket=" + jsapiTicket);
+            sb.append("&noncestr=" + nonceStr);
+            sb.append("&timestamp=" + timestamp);
+            sb.append("&url=" + requestUrl);
+
+            String str = sb.toString();
             //获取分享 jsapi签名
-            String signature = this.getSHA1(jsapiTicket, nonceStr, String.valueOf(timestamp), requestUrl);
+            String signature = SHA1.getSHA1(str);
 
             result.put("appId", weChatProperties.getAppId());
             result.put("nonceStr", nonceStr);
@@ -77,44 +83,4 @@ public class WeChatController {
         return result.toString();
     }
 
-    /**
-     * 用SHA1算法生成安全签名
-     *
-     * @param jsapiTicket 票据
-     * @param nonceStr    随机字符串
-     * @param timestamp   时间戳
-     * @param url         密文
-     * @return 安全签名
-     * @throws AesException
-     */
-    public String getSHA1(String jsapiTicket, String nonceStr, String timestamp, String url) throws AesException {
-        try {
-            StringBuffer sb = new StringBuffer();
-
-            sb.append("jsapi_ticket=" + jsapiTicket);
-            sb.append("&noncestr=" + nonceStr);
-            sb.append("&timestamp=" + timestamp);
-            sb.append("&url=" + url);
-
-            String str = sb.toString();
-            // SHA1签名生成
-            MessageDigest md = MessageDigest.getInstance("SHA-1");
-            md.update(str.getBytes());
-            byte[] digest = md.digest();
-
-            StringBuffer hexstr = new StringBuffer();
-            String shaHex = "";
-            for (int i = 0; i < digest.length; i++) {
-                shaHex = Integer.toHexString(digest[i] & 0xFF);
-                if (shaHex.length() < 2) {
-                    hexstr.append(0);
-                }
-                hexstr.append(shaHex);
-            }
-            return hexstr.toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new AesException(AesException.ComputeSignatureError);
-        }
-    }
 }
