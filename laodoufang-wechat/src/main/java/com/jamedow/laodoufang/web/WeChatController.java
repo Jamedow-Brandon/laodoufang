@@ -31,7 +31,7 @@ public class WeChatController {
                                       @RequestParam(value = "timestamp") String sVerifyTimeStamp,
                                       @RequestParam(value = "nonce") String sVerifyNonce,
                                       @RequestParam(value = "echostr") String sVerifyEchoStr) throws Exception {
-        logger.info("signature:[{}]timestamp:[{}]nonce[{}]echostr：[{}]");
+        logger.info("signature:[{}]timestamp:[{}]nonce[{}]echostr：[{}]", sVerifyMsgSig, sVerifyTimeStamp, sVerifyNonce, sVerifyEchoStr);
         WXBizMsgCrypt wxBizMsgCrypt = new WXBizMsgCrypt(weChatProperties.getToken(),
                 weChatProperties.getEncodingAESKey(),
                 weChatProperties.getAppId());
