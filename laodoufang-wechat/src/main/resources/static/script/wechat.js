@@ -24,13 +24,13 @@ var wechat = {
      * @param _errorCallback config信息验证失败会执行error方法，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，
      *                       也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
      */
-    init: function (_requestUrl, _jsApiList, _successCallback, _errorCallback) {
+    init: function (_successCallback, _errorCallback) {
         $.ajax({
             url: "/wechat/config-wx-js",
             method: "GET",
-            data: {requestUrl: _requestUrl || ''},
+            data: {requestUrl: wechat.requestUrl},
             success: function (data) {
-                wechat.config(true, data.appId, data.timestamp, data.nonceStr, data.signature, _jsApiList, _successCallback, _errorCallback);
+                wechat.config(true, data.appId, data.timestamp, data.nonceStr, data.signature, wechat.jsApiList, _successCallback, _errorCallback);
             }
         });
     },
