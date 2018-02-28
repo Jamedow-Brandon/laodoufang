@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>calculator</title>
+    <meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="/static/img/favicon.ico">
+    <link href="/static/lib/bootstrap-3.3.7/dist/css/bootstrap.css"/>
+</head>
+<body>
+<div class="calculator">
+    <form>
+        <div class="form-group">
+            <label for="count">数量：</label>
+            <input type="number" id="count" class="form-control"/>
+        </div>
+        <br/>
+        <button type="button" class="btn btn-default" onclick="calculate()">计算</button>
+        <hr/>
+        <div class="form-group">
+            <label for="amount-B">投资成本：</label>
+            <input type="text" id="amount-B" class="form-control" disabled/>
+            <input type="text" id="amount-C" class="form-control" disabled/>
+        </div>
+        <div class="form-group">
+            <label for="five-earnings-D">前五年收益：</label>
+            <input type="text" id="five-earnings-D" class="form-control" disabled/>
+            <input type="text" id="five-earnings-E" class="form-control" disabled/>
+        </div>
+        <div class="form-group">
+            <label for="twenty-earnings-F">二十五年收益：</label>
+            <input type="text" id="twenty-earnings-F" class="form-control" disabled/>
+            <input type="text" id="twenty-earnings-G" class="form-control" disabled/>
+        </div>
+    </form>
+</div>
+<script src="/static/lib/jquery/jquery-3.3.1.js"></script>
+<script>
+    function calculate() {
+        var count = $("#count").val();
+        var _B = parseInt(count) * 270 * 7;
+        var _C = parseInt(count) * 270 * 7.5;
+        $("#amount-B").val(_B);
+        $("#amount-C").val(_C);
+        var _J = parseFloat(_C) + parseFloat(_C) * 0.0522 * 5;
+        var _H = parseInt(count) * 365 * 0.85 * 20 * 0.88;
+        var _D = parseInt(count) * 365 * 0.95 * 1.08;
+        var _E = parseFloat(_D) - 107.144 * parseFloat(_C) * 60 / 10000;
+        var _F = parseFloat(_D) + parseFloat(_H);
+        var _G = parseFloat(_D) + parseFloat(_H) - parseFloat(_J * 2);
+        $("#five-earnings-D").val(_D);
+        $("#five-earnings-E").val(_E);
+        $("#twenty-earnings-F").val(_F);
+        $("#twenty-earnings-G").val(_G);
+
+        console.log(_B);
+        console.log(_C);
+        console.log(_D);
+        console.log(_E);
+        console.log(_F);
+        console.log(_G);
+        console.log(_J);
+        console.log(_H);
+    }
+</script>
+</body>
+</html>
