@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * URL请求参数获取及排序功能
  *
- * @author jiangzhou
- * @version [版本号, 2015年10月30日]
+ * @author jamedow
+ * @version [版本号, 2018年03月01日]
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */
