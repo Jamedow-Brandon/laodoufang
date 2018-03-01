@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class TestController {
     Logger logger = LoggerFactory.getLogger(getClass());
 
-    @RequestMapping(value = "/three", method = RequestMethod.GET)
+    @RequestMapping(value = "three", method = RequestMethod.GET)
     public String play() {
-        return "/test/three";
+        return "test/three";
     }
 }

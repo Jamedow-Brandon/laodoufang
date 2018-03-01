@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class GameController {
     Logger logger = LoggerFactory.getLogger(getClass());
 
-    @RequestMapping(value = "/just-jump", method = RequestMethod.GET)
+    @RequestMapping(value = "just-jump", method = RequestMethod.GET)
     public String play() {
-        return "/game/just-jump";
+        return "game/just-jump";
     }
 }

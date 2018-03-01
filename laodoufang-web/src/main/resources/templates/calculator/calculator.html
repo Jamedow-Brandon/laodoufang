@@ -37,14 +37,14 @@
 <script src="/static/lib/jquery/jquery-3.3.1.js"></script>
 <script>
     function calculate() {
-        var count = $("#count").val();
-        var _B = parseInt(count) * 270 * 7;
-        var _C = parseInt(count) * 270 * 7.5;
+        var _A = $("#count").val();
+        var _B = parseInt(_A) * 270 * 7;
+        var _C = parseInt(_A) * 270 * 7.5;
         $("#amount-B").val(_B);
         $("#amount-C").val(_C);
-        var _J = parseFloat(_C) + parseFloat(_C) * 0.0522 * 5;
-        var _H = parseInt(count) * 365 * 0.85 * 20 * 0.88;
-        var _D = parseInt(count) * 365 * 0.95 * 1.08;
+        var _J = 107.144*_C*0.006;
+        var _H = parseInt(_A) * 365 * 0.85 * 20 * 0.88;
+        var _D = parseInt(_A) * 365 * 0.95 * 5;
         var _E = parseFloat(_D) - 107.144 * parseFloat(_C) * 60 / 10000;
         var _F = parseFloat(_D) + parseFloat(_H);
         var _G = parseFloat(_D) + parseFloat(_H) - parseFloat(_J * 2);

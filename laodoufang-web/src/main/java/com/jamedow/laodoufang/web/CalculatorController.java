@@ -20,6 +20,6 @@ public class CalculatorController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String play() {
-        return "/calculator/calculator";
+        return "calculator/calculator";
     }
 }
