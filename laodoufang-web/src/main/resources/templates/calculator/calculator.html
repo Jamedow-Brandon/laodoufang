@@ -18,6 +18,10 @@
         <button type="button" class="btn btn-default" onclick="calculate()">计算</button>
         <hr/>
         <div class="form-group">
+            <label for="generated-energy-I">每年发电量：</label>
+            <input type="text" id="generated-energy-I" class="form-control" disabled/>
+        </div>
+        <div class="form-group">
             <label for="amount-B">投资成本：</label>
             <input type="text" id="amount-B" class="form-control" disabled/>
             <input type="text" id="amount-C" class="form-control" disabled/>
@@ -48,19 +52,12 @@
         var _E = parseFloat(_D) - 107.144 * parseFloat(_C) * 60 / 10000;
         var _F = parseFloat(_D) + parseFloat(_H);
         var _G = parseFloat(_D) + parseFloat(_H) - parseFloat(_J * 2);
+        var _I = parseInt(_A) * 365 * 0.95;
         $("#five-earnings-D").val(_D);
         $("#five-earnings-E").val(_E);
         $("#twenty-earnings-F").val(_F);
         $("#twenty-earnings-G").val(_G);
-
-        console.log(_B);
-        console.log(_C);
-        console.log(_D);
-        console.log(_E);
-        console.log(_F);
-        console.log(_G);
-        console.log(_J);
-        console.log(_H);
+        $("#generated-energy-I").val(_I);
     }
 </script>
 </body>
