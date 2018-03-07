@@ -22,18 +22,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Edgware.SR1</spring-cloud.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-ribbon</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -57,13 +48,19 @@
         <!--jamedow dependencies-->
         <dependency>
             <groupId>com.jamedow.laodoufang</groupId>
+            <artifactId>laodoufang-beans</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jamedow.laodoufang</groupId>
             <artifactId>laodoufang-utils</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.jamedow.laodoufang</groupId>
-            <artifactId>laodoufang-beans</artifactId>
+            <artifactId>laodoufang-plugin</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
