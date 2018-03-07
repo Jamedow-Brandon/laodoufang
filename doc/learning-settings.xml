@@ -142,11 +142,10 @@ under the License.
         </mirror>
 
         <mirror>
-            <!--This sends everything else to /public -->
-            <id>nexus-aliyun</id>
-            <mirrorOf>*</mirrorOf>
-            <name>Nexus aliyun</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <mirrorOf>central</mirrorOf>
         </mirror>
 
         <mirror>
@@ -177,6 +176,18 @@ under the License.
                     </releases>
                     <snapshots>
                         <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+
+                <repository>
+                    <id>alimaven</id>
+                    <name>aliyun maven</name>
+                    <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
                     </snapshots>
                 </repository>
             </repositories>
