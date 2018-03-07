@@ -17,11 +17,11 @@ import java.util.Properties;
  */
 
 public class MailService {
-    private final Logger logger = LoggerFactory.getLogger(getClass());
+    private final static Logger logger = LoggerFactory.getLogger(MailService.class);
 
-    private final String CHARSET = "UTF-8";
+    private final static String CHARSET = "UTF-8";
 
-    public void sendMail(Mail mail) {
+    public static void sendMail(Mail mail) {
         try {
             // 1. 创建一封邮件
             // 用于连接邮件服务器的参数配置（发送邮件时才需要用到）
