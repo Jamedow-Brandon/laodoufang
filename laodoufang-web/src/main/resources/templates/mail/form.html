@@ -17,38 +17,6 @@
         <input type="number" id="count" class="form-control"/>
     </div>
     <br/>
-    <button type="button" class="btn btn-default" onclick="calculate()">计算</button>
-    <hr/>
-    <div class="form-group">
-        <label for="generated-energy-I">每年发电量：</label>
-        <div class="input-group">
-            <input type="text" id="generated-energy-I" class="form-control" disabled/>
-            <div class="input-group-addon">度</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="amount-B">投资成本：</label>
-        <div class="input-group">
-            <div class="input-group-addon">现金 ￥</div>
-            <input type="text" id="amount-B" class="form-control" disabled/>
-        </div>
-        <div class="input-group">
-            <div class="input-group-addon">贷款 ￥</div>
-            <input type="text" id="amount-C" class="form-control" disabled/>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="five-earnings-D">前五年收益：</label>
-        <div class="input-group">
-            <div class="input-group-addon">现金 ￥</div>
-            <input type="text" id="five-earnings-D" class="form-control" disabled/>
-        </div>
-
-        <div class="input-group">
-            <div class="input-group-addon">贷款 ￥</div>
-            <input type="text" id="five-earnings-E" class="form-control" disabled/>
-        </div>
-    </div>
     <div class="form-group">
         <label for="twenty-earnings-F">二十五年收益：</label>
         <div class="input-group">
@@ -61,6 +29,8 @@
             <input type="text" id="twenty-earnings-G" class="form-control" disabled/>
         </div>
     </div>
+    <hr/>
+    <button type="button" class="btn btn-default" onclick="sendMail()">发送</button>
 </form>
 <script src="/static/lib/jquery/jquery-3.3.1.js"></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
@@ -68,24 +38,19 @@
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 <script>
-    function calculate() {
-        var _A = $("#count").val();
-        var _B = parseInt(_A) * 270 * 7;
-        var _C = parseInt(_A) * 270 * 7.5;
-        $("#amount-B").val(_B);
-        $("#amount-C").val(_C);
-        var _J = 107.144 * _C * 0.006;
-        var _H = parseInt(_A) * 365 * 0.85 * 20 * 0.88;
-        var _D = parseInt(_A) * 365 * 0.95 * 5;
-        var _E = parseFloat(_D) - 107.144 * parseFloat(_C) * 60 / 10000;
-        var _F = parseFloat(_D) + parseFloat(_H);
-        var _G = parseFloat(_D) + parseFloat(_H) - parseFloat(_J * 2);
-        var _I = parseInt(_A) * 365 * 0.95;
-        $("#five-earnings-D").val(_D.toFixed(2));
-        $("#five-earnings-E").val(_E.toFixed(2));
-        $("#twenty-earnings-F").val(_F.toFixed(2));
-        $("#twenty-earnings-G").val(_G.toFixed(2));
-        $("#generated-energy-I").val(_I.toFixed(2));
+    function sendMail() {
+        $.ajax({
+            url: "/mail/send",
+            type: "post",
+            data: {
+                receiver: "652972575@qq.com",
+                name: "Aurora",
+                message: "测试邮件<hr/>"
+            },
+            success: function (data) {
+                alert("发送成功！");
+            }
+        });
     }
 </script>
 </body>

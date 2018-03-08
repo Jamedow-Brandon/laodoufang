@@ -25,11 +25,11 @@ public class MailSendController {
         return "mail/form";
     }
 
-    @RequestMapping(value = "send", method = RequestMethod.GET)
+    @RequestMapping(value = "send", method = RequestMethod.POST)
     @ResponseBody
-    public String send(String sender, String name, String message) {
-        Mail mail = new Mail.Builder("http://mail.qq.com", "652972575@qq.com", "Zhangliang@520")
-                .sender(sender).name(name).message(message).build();
+    public String send(String receiver, String name, String message) {
+        Mail mail = new Mail.Builder("smtp.qq.com", "1472541865@qq.com", "tnnfmpbgsjckbade")
+                .sender("1472541865@qq.com").receiver(receiver).name(name).message(message).build();
         MailService.sendMail(mail);
         return "success";
     }

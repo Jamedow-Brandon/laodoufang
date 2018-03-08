@@ -33,6 +33,11 @@ public class MailService {
             // 需要请求认证
             props.setProperty("mail.smtp.auth", "true");
 
+            props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+            props.setProperty("mail.smtp.port", "465");
+            props.setProperty("mail.smtp.socketFactory.port", "465");
+
+
             // 根据参数配置，创建会话对象（为了发送邮件准备的）
             Session session = Session.getInstance(props);
             // 创建邮件对象
@@ -71,7 +76,7 @@ public class MailService {
 
             // 4. 根据 Session 获取邮件传输对象
             Transport transport = session.getTransport();
-            transport.connect(mail.getSender(), mail.getPassword());
+            transport.connect(mail.getUsername(), mail.getPassword());
 
             // 6. 发送邮件, 发到所有的收件地址, message.getAllRecipients() 获取到的是在创建邮件对象时添加的所有收件人, 抄送人, 密送人
             transport.sendMessage(message, message.getAllRecipients());
