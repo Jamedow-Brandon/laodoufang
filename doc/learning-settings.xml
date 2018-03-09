@@ -52,7 +52,6 @@ under the License.
      | Default: ~/.m2/repository
     <localRepository>/path/to/local/repo</localRepository>
     -->
-    <!-- <localRepository>E:/repository</localRepository> -->
     <!-- interactiveMode
      | This will determine whether maven prompts you when it needs input. If set to false,
      | maven will use a sensible default value, perhaps based on some other setting, for
@@ -69,6 +68,8 @@ under the License.
      | Default: false
     <offline>false</offline>
     -->
+    <offline>false</offline>
+
 
     <!-- pluginGroups
      | This is a list of additional group identifiers that will be searched when resolving plugins by their prefix, i.e.
@@ -134,37 +135,25 @@ under the License.
      |-->
     <mirrors>
         <mirror>
-            <!--This sends everything else to /public -->
-            <id>nexus</id>
-            <mirrorOf>*</mirrorOf>
-            <name>Nexus laodoufang</name>
-            <url>http://114.215.41.113:8081/nexus/content/groups/public/</url>
-        </mirror>
-
-        <mirror>
             <id>alimaven</id>
             <name>aliyun maven</name>
             <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
             <mirrorOf>central</mirrorOf>
         </mirror>
 
+        <!--Takari公司，http://takari.io,也即Maven创始人Jason van Zyl创建的公司，最近宣布在
+       |Google Cloud Storage上建立了Maven镜像仓库，开放给全球所有的开发者使用。
+       |主流的依赖管理工具如Maven、Apache Ivy、Gradle等都可以使用此中央仓库。-->
         <mirror>
-            <id>releases</id>
-            <mirrorOf>*</mirrorOf>
-            <name>release</name>
-            <url>http://114.215.41.113:8081/nexus/content/repositories/releases/</url>
-        </mirror>
-        <mirror>
-            <id>snapshots</id>
-            <mirrorOf>*</mirrorOf>
-            <name>snapshot</name>
-            <url>http://114.215.41.113:8081/nexus/content/repositories/snapshots/</url>
+            <id>google-maven-central</id>
+            <name>Google Maven Central</name>
+            <url>https://maven-central.storage.googleapis.com</url>
+            <mirrorOf>central</mirrorOf>
         </mirror>
     </mirrors>
 
     <profiles>
         <profile>
-            <id>nexus</id>
             <!--指定仓库-->
             <repositories>
                 <repository>
@@ -186,6 +175,15 @@ under the License.
                     <releases>
                         <enabled>true</enabled>
                     </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+
+                <repository>
+                    <id>spring-milestones</id>
+                    <name>Spring Milestones</name>
+                    <url>https://repo.spring.io/milestone</url>
                     <snapshots>
                         <enabled>false</enabled>
                     </snapshots>
@@ -215,7 +213,4 @@ under the License.
       <activeProfile>anotherAlwaysActiveProfile</activeProfile>
     </activeProfiles>
     -->
-    <activeProfiles>
-        <activeProfile>nexus</activeProfile>
-    </activeProfiles>
 </settings>

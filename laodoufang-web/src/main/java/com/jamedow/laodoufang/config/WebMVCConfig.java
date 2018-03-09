@@ -31,6 +31,9 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+/**
+ * @author Administrator
+ */
 @Configuration
 public class WebMVCConfig extends WebMvcConfigurerAdapter {
 
