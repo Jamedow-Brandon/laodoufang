@@ -36,6 +36,12 @@ spring:
       min-idle: 0
       max-active: 8
       max-wait: 1000
+  data:
+      elasticsearch:
+        repositories:
+          enabled: true
+        cluster-name: elasticsearch
+        cluster-nodes: 106.14.210.31:9300
 
 mybatis:
     typeAliasesPackage: com.jamedow.laodoufang
