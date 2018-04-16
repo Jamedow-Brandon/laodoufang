@@ -1,5 +1,4 @@
-<html>
-
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -35,11 +34,13 @@
         <div class="formR fl">
             <form action="" method="post">
                 <p>采购产品*</p>
-                <select id="skuId">
-                    <option value="HUAYAO-DPPD">HUAYAO-DPPD</option>
-                    <option value="HUAYAO-DTPD">HUAYAO-DTPD</option>
-                    <option value="HUAYAO-粘合剂RA">HUAYAO-粘合剂RA</option>
-                    <option value="HUAYAO-粘合剂RA-65">HUAYAO-粘合剂RA-65</option>
+                <select id="productId">
+                    <option th:each="product : ${products}" th:if="${product.id != productId}" th:value="${product.id}"
+                            th:text="${product.name}">HUAYAO-DPPD
+                    </option>
+                    <option th:each="product : ${products}" th:if="${product.id == productId}" th:value="${product.id}"
+                            th:text="${product.name}" th:selected="selected">HUAYAO-DPPD
+                    </option>
                 </select>
                 <p style="margin-top: 30px;">采购数量* （单位:t）</p>
                 <input type="text" id="demand" value="" placeholder="请输入采购数量"/>
@@ -138,7 +139,7 @@
             url: "/mail/send",
             type: "post",
             data: {
-                skuId: $("#skuId").val(),
+                productId: $("#productId").val(),
                 demand: $("#demand").val(),
                 requirementDescription: $("#requirementDescription").val(),
                 companyName: $("#companyName").val(),

@@ -1,5 +1,7 @@
-<html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -27,11 +29,11 @@
 </div>
 <div class="mainInfo">
     <div class="mainInfoBar"></div>
-    <div class="mainInfoBar__list">
-        <div class="mainInfoBar__item on onStart">HUAYAO-DPPD</div>
-        <div class="mainInfoBar__item">HUAYAO-DTPD</div>
-        <div class="mainInfoBar__item">HUAYAO-粘合剂RA</div>
-        <div class="mainInfoBar__item">HUAYAO-粘合剂RA-65</div>
+    <div class="mainInfoBar__list" id="productSelect">
+        <div class="mainInfoBar__item on onStart" id="product_1">HUAYAO-DPPD</div>
+        <div class="mainInfoBar__item" id="product_2">HUAYAO-DTPD</div>
+        <div class="mainInfoBar__item" id="product_3">HUAYAO-粘合剂RA</div>
+        <div class="mainInfoBar__item" id="product_4">HUAYAO-粘合剂RA-65</div>
     </div>
     <div>
         <div class="mainInfo__content clearfix">
@@ -67,7 +69,7 @@
                 <p style="width: 720px;">对所有常用的橡胶进行动态应力处理，防止热和弯曲开裂。在CR中也显示出了对臭氧的优良抗性，由于其具有开放的性质，有限的用量约为0.3 phr。</p>
                 <p style="width: 720px;margin-top: 40px;">
                     25kg牛皮纸袋内衬薄膜，存放在阴凉通风处。它的保质期为12个月。如果通过复验，达到标准，该产品可在指定日期后仍然使用。</p>
-                <a href="enquirel.html">
+                <a href="/huayao/enquirel?productId=1">
                     <div class="enquire__btn">咨询</div>
                 </a>
             </div>
@@ -107,7 +109,7 @@
                 <p style="width: 720px;">3.DTPD对硫化没有影响。它适用于卡车轮胎，现成的道路轮胎，斜交轮胎和被用在严峻环境的径向线网层轮胎。</p>
                 <p style="width: 720px;">4.DTPD还可以修复由于防老剂4010 NA和4020使轮胎变成红色的不足。</p>
                 <p style="width: 720px;margin-top: 40px;">25kg复合纸袋内衬薄膜，运输过程中防止高温，太阳烤焦和雨淋浇湿</p>
-                <a href="enquirel.html">
+                <a href="/huayao/enquirel?productId=2">
                     <div class="enquire__btn">咨询</div>
                 </a>
             </div>
@@ -142,7 +144,7 @@
                 <p style="width: 720px;margin-top: 40px;">25kg塑料袋，外用编织袋，本品不燃不爆、不腐蚀、无毒，按一般化工原料贮运。贮存于通风、阴凉仓库内。</p>
                 <p style="width: 720px;">贮存期一年。</p>
 
-                <a href="enquirel.html">
+                <a href="/huayao/enquirel?productId=3">
                     <div class="enquire__btn">咨询</div>
                 </a>
             </div>
@@ -171,7 +173,7 @@
                 <p style="width: 720px;margin-top: 40px;">本品用塑料袋包装，外用编织袋，每袋25kg。本品不燃不爆、不腐蚀、无毒。按一般化工原料贮存，贮存于通风、阴凉库房内。</p>
                 <p style="width: 720px;">贮存期一年。</p>
 
-                <a href="enquirel.html">
+                <a href="/huayao/enquirel?productId=4">
                     <div class="enquire__btn">咨询</div>
                 </a>
             </div>
@@ -201,13 +203,14 @@
         <span>  独立的生产，交货及时，质量保证，产品多样化，广为流行，独特而实用。顾客至上，诚信为本，是不可改变的创业初衷和理念</span>
     </div>
 </div>
+<input type="hidden" id="productId" th:value="${productId}"/>
 <div class="toTop"></div>
 <script src="/static/huayao/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript">
     (function () {
-        var $toTop = $('.toTop')
-        var $mainInfoBar__item = $('.mainInfoBar__item')
-        var $mainInfo__content = $('.mainInfo__content')
+        var $toTop = $('.toTop');
+        var $mainInfoBar__item = $('.mainInfoBar__item');
+        var $mainInfo__content = $('.mainInfo__content');
         $mainInfoBar__item.on('click', function () {
             if ($(this).hasClass('on')) return
             else {
@@ -215,17 +218,24 @@
                 $mainInfo__content.eq(index).show().siblings().hide()
                 switch (index) {
                     case 0:
-                        $(this).addClass('onStart').siblings().removeClass('on onEnd onStart onMid')
+                        $(this).addClass('onStart').siblings().removeClass('on onEnd onStart onMid');
                         break;
                     case 3:
-                        $(this).addClass('onEnd').siblings().removeClass('on onEnd onStart onMid')
+                        $(this).addClass('onEnd').siblings().removeClass('on onEnd onStart onMid');
                         break;
                     default:
-                        $(this).addClass('onMid').siblings().removeClass('on onEnd onStart onMid')
+                        $(this).addClass('onMid').siblings().removeClass('on onEnd onStart onMid');
                         break;
                 }
             }
-        })
+        });
+
+        var productId = $("#productId").val();
+
+        if (productId != "") {
+            $("#product_" + productId).trigger("click");
+        }
+
 
         $(window).on("scroll", function () {
             if ($(this).scrollTop() >= 500) {
