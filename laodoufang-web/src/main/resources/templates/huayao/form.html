@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>邮件发送</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!--<link rel="shortcut icon" href="/static/img/favicon.ico">-->
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<form class="form-inline">
+    <div class="form-group">
+        <label for="count">数量：</label>
+        <input type="number" id="count" class="form-control"/>
+    </div>
+    <br/>
+    <div class="form-group">
+        <label for="twenty-earnings-F">二十五年收益：</label>
+        <div class="input-group">
+            <div class="input-group-addon">现金 ￥</div>
+            <input type="text" id="twenty-earnings-F" class="form-control" disabled/>
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-addon">贷款 ￥</div>
+            <input type="text" id="twenty-earnings-G" class="form-control" disabled/>
+        </div>
+    </div>
+    <hr/>
+    <button type="button" class="btn btn-default" onclick="sendMail()">发送</button>
+</form>
+<script src="/static/lib/jquery/jquery-3.3.1.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script>
+    function sendMail() {
+        $.ajax({
+            url: "/mail/send",
+            type: "post",
+            data: {
+                receiver: "652972575@qq.com",
+                name: "Aurora",
+                message: "测试邮件<hr/>"
+            },
+            success: function (data) {
+                alert("发送成功！");
+            }
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.jamedow.laodoufang.web;
+package com.jamedow.laodoufang.web.huayao;
 
 import com.jamedow.laodoufang.entity.Mail;
 import com.jamedow.laodoufang.mail.MailService;
@@ -16,16 +16,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @EnableAutoConfiguration
-@RequestMapping("mail")
-public class MailSendController {
+@RequestMapping("huayao")
+public class HuaYaoController {
     Logger logger = LoggerFactory.getLogger(getClass());
 
-    @RequestMapping(value = "form", method = RequestMethod.GET)
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String index() {
+        return "huayao/index";
+    }
+
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
+    public String detail() {
+        return "huayao/detail";
+    }
+
+    @RequestMapping(value = "/enquirel", method = RequestMethod.GET)
+    public String enquirel() {
+        return "huayao/enquirel";
+    }
+
+    @RequestMapping(value = "/mailform", method = RequestMethod.GET)
     public String mail() {
         return "mail/form";
     }
 
-    @RequestMapping(value = "send", method = RequestMethod.POST)
+    @RequestMapping(value = "/mailsend", method = RequestMethod.POST)
     @ResponseBody
     public String send(String receiver, String name, String message) {
         Mail mail = new Mail.Builder("smtp.qq.com", "1472541865@qq.com", "tnnfmpbgsjckbade")

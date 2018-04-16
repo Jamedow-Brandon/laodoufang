@@ -1,0 +1,161 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/static/huayao/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/huayao/css/index.css"/>
+</head>
+
+<body>
+<div class="contain">
+    <div class="headBar">
+        <img class="bigLogo" src="/static/huayao/images/huayao-logo-big.png"/>
+        <div class="languageSwitch fr">
+            <span class="on">中文</span>
+            <span style="margin: 0 12px;">|</span>
+            <span>English</span>
+        </div>
+    </div>
+</div>
+<div class="backBar contain">
+    <a href="index.html">
+        <div class="backBarBtn fr">HOME</div>
+    </a>
+</div>
+<div class="mainInfo">
+    <div class="mainInfoBar"></div>
+    <div class="formList">
+        <div class="formL fl">
+            <p>我们的服务团队将协助您获取更丰富的资源与服务。</p>
+            <p style="margin-top: 370px;text-align: right;">联系方式</p>
+        </div>
+        <div class="formR fl">
+            <form action="" method="post">
+                <p>采购产品*</p>
+                <select id="skuId">
+                    <option value="HUAYAO-DPPD">HUAYAO-DPPD</option>
+                    <option value="HUAYAO-DTPD">HUAYAO-DTPD</option>
+                    <option value="HUAYAO-粘合剂RA">HUAYAO-粘合剂RA</option>
+                    <option value="HUAYAO-粘合剂RA-65">HUAYAO-粘合剂RA-65</option>
+                </select>
+                <p style="margin-top: 30px;">采购数量* （单位:t）</p>
+                <input type="text" id="demand" value="" placeholder="请输入采购数量"/>
+                <p style="margin-top: 40px;">需求描述</p>
+                <textarea id="requirementDescription" rows="" cols="" placeholder="请帮助我们了解您的需求"></textarea>
+
+                <div style="margin-top: 10px;" class="clearfix">
+                    <div class="fl" style="margin-right: 100px;">
+                        <p style="margin-top: 30px;">公司／单位名称</p>
+                        <input type="text" id="companyName" value="" placeholder="请输入企业名称"/>
+                    </div>
+                    <div class="fl">
+                        <p style="margin-top: 30px;">联系邮箱* </p>
+                        <input type="text" id="receiver" value="" placeholder=""/>
+                    </div>
+                </div>
+
+                <div style="margin-top: 10px;" class="clearfix">
+                    <div class="fl" style="margin-right: 100px;">
+                        <p style="margin-top: 30px;">国家／地区* </p>
+                        <select id="district">
+                            <option value="">请选择国家或地区</option>
+                        </select>
+                    </div>
+                    <div class="fl">
+                        <p style="margin-top: 30px;">联系电话* </p>
+                        <input type="text" id="phone" value="" placeholder=""/>
+                    </div>
+                </div>
+
+                <div style="margin-top: 10px;" class="clearfix">
+                    <div class="fl" style="margin-right: 100px;">
+                        <p style="margin-top: 30px;">省* </p>
+                        <select id="province">
+                            <option value="">请选择省份</option>
+                        </select>
+                    </div>
+                    <div class="fl">
+                        <p style="margin-top: 30px;">区域* </p>
+                        <select id="region">
+                            <option value="">请选择区域</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+            <div class="enquire__btn" style="margin-top: 70px;">发送邮箱</div>
+        </div>
+    </div>
+</div>
+<div style="background: #515151">
+    <div class="footerUp contain">
+        <img src="/static/huayao/images/huayao-logo.png" class="footerLogo fl"/>
+        <div class="footerUp__info fl" style="margin-right: 154px;">
+            <p><span>工作时间联系方式</span>+86 0510 88767887</p>
+            <p><span>传真</span>+86 0510 88762603</p>
+            <p><span>邮箱 </span>liye@hydppd.com</p>
+        </div>
+        <div class="footerUp__info fl">
+            <div class="fl" style="margin-right: 14px;"><span>地址   </span></div>
+            <div class="fl">
+                <p>Donggang Town, </p>
+                <p>Xishan District, Wuxi, </p>
+                <p>Jiangsu Province</p>
+            </div>
+        </div>
+    </div>
+    <div class="footerDown contain">
+        <span style="color: #23aae5;margin-right: 36px;">我们的服务</span>
+        <span style="color: #9B9EA0;margin-right: 12px;">我们的产品优势</span>
+        <span>  独立的生产，交货及时，质量保证，产品多样化，广为流行，独特而实用。顾客至上，诚信为本，是不可改变的创业初衷和理念</span>
+    </div>
+</div>
+<div class="toTop"></div>
+<script src="/static/huayao/js/jquery-1.11.1.min.js"></script>
+
+<script type="text/javascript">
+    (function () {
+        var $toTop = $('.toTop')
+
+        $(window).on("scroll", function () {
+            if ($(this).scrollTop() >= 500) {
+                $toTop.fadeIn();
+            } else {
+                $toTop.fadeOut();
+            }
+        })
+
+        $toTop.on('click', function () {
+            $(window).scrollTop(0)
+        })
+    })();
+
+
+    function sendMail() {
+        $.ajax({
+            url: "/mail/send",
+            type: "post",
+            data: {
+                skuId: $("#skuId").val(),
+                demand: $("#demand").val(),
+                requirementDescription: $("#requirementDescription").val(),
+                companyName: $("#companyName").val(),
+                district: $("#district").val(),
+                phone: $("#phone").val(),
+                province: $("#province").val(),
+                region: $("#region").val(),
+                receiver: "652972575@qq.com",
+                name: "Aurora",
+                message: "测试邮件<hr/>"
+            },
+            success: function (data) {
+                alert("发送成功！");
+            }
+        });
+    }
+</script>
+</body>
+
+</html>
