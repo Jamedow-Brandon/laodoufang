@@ -6,6 +6,7 @@ import com.jamedow.laodoufang.entity.ProductExample;
 import com.jamedow.laodoufang.mail.MailService;
 import com.jamedow.laodoufang.mapper.ProductMapper;
 import com.jamedow.laodoufang.mapper.SysAreaMapper;
+import org.apache.xerces.dom.DeepNodeListImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.w3c.dom.Document;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -26,7 +31,7 @@ import java.util.List;
 @EnableAutoConfiguration
 @RequestMapping("huayao")
 public class HuaYaoController {
-    Logger logger = LoggerFactory.getLogger(getClass());
+    static Logger logger = LoggerFactory.getLogger(HuaYaoController.class);
 
     @Autowired
     private ProductMapper productMapper;
@@ -86,6 +91,23 @@ public class HuaYaoController {
     }
 
     public static void main(String[] args) {
+        long lasting = System.currentTimeMillis();
 
+        try {
+            File f = new File("/Users/brandon/IdeaProjects/laodoufang/laodoufang-web/src/main/resources/LocList.xml");
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document doc = builder.parse(f);
+            DeepNodeListImpl nl = (DeepNodeListImpl) doc.getElementsByTagName("CountryRegion");
+            for (int i = 0; i < nl.getLength(); i++) {
+                logger.info(nl.item(1).getNodeName());
+
+
+                System.out.print("车牌号码:" + doc.getElementsByTagName("NO").item(i).getFirstChild().getNodeValue());
+                System.out.println("车主地址:" + doc.getElementsByTagName("ADDR").item(i).getFirstChild().getNodeValue());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
