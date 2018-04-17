@@ -5,6 +5,7 @@ import com.jamedow.laodoufang.entity.Product;
 import com.jamedow.laodoufang.entity.ProductExample;
 import com.jamedow.laodoufang.mail.MailService;
 import com.jamedow.laodoufang.mapper.ProductMapper;
+import com.jamedow.laodoufang.mapper.SysAreaMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,8 @@ public class HuaYaoController {
 
     @Autowired
     private ProductMapper productMapper;
+    @Autowired
+    private SysAreaMapper sysAreaMapper;
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index() {
@@ -80,5 +83,9 @@ public class HuaYaoController {
                 .sender("1472541865@qq.com").receiver("563150601@qq.com").name(companyName).message(messageBuilder.toString()).build();
         MailService.sendMail(mail);
         return "success";
+    }
+
+    public static void main(String[] args) {
+
     }
 }
