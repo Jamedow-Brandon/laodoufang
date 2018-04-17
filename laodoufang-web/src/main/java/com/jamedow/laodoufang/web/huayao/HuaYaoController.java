@@ -1,12 +1,10 @@
 package com.jamedow.laodoufang.web.huayao;
 
-import com.jamedow.laodoufang.entity.Mail;
-import com.jamedow.laodoufang.entity.Product;
-import com.jamedow.laodoufang.entity.ProductExample;
-import com.jamedow.laodoufang.entity.SysArea;
+import com.jamedow.laodoufang.entity.*;
 import com.jamedow.laodoufang.mail.MailService;
 import com.jamedow.laodoufang.mapper.ProductMapper;
 import com.jamedow.laodoufang.mapper.SysAreaMapper;
+import net.sf.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +24,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -95,23 +94,92 @@ public class HuaYaoController {
         return "success";
     }
 
+    @RequestMapping(value = "/sys/area/getChildrenByParentId", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String getChildrenByParentId(String parentId) {
+        SysAreaExample example = new SysAreaExample();
+        example.createCriteria().andParentIdEqualTo(parentId);
+        List<SysArea> children = sysAreaMapper.selectByExample(example);
+        return JSONArray.fromObject(children).toString();
+    }
+
     @RequestMapping(value = "/import/area/txt", method = RequestMethod.GET)
     @ResponseBody
     public void importTxt() {
         try {
             /* 读入TXT文件 */
-            String pathname = "C:\\workspace\\laodoufang\\laodoufang-web\\src\\main\\resources\\area.txt"; // 绝对路径或相对路径都可以，这里是绝对路径，写入文件时演示相对路径
+            String pathname = "/Users/brandon/IdeaProjects/laodoufang/laodoufang-web/src/main/resources/area.txt"; // 绝对路径或相对路径都可以，这里是绝对路径，写入文件时演示相对路径
             File filename = new File(pathname); // 要读取以上路径的input。txt文件
             InputStreamReader reader = new InputStreamReader(
                     new FileInputStream(filename)); // 建立一个输入流对象reader
             BufferedReader br = new BufferedReader(reader); // 建立一个对象，它把文件内容转成计算机能读懂的语言
             String line = "";
             line = br.readLine();
+
+            SysArea country = new SysArea();
+            country.setCode("000000");
+            country.setName("中华人民共和国");
+            country.setId("0000000");
+            country.setParentId("");
+            country.setParentIds("");
+            country.setSort(1L);
+            country.setCreateBy("system");
+            country.setCreateDate(new Date());
+            country.setUpdateBy("system");
+            country.setUpdateDate(new Date());
+            country.setDelFlag("0");
+            sysAreaMapper.insert(country);
+
             while (line != null) {
                 line = br.readLine(); // 一次读入一行数据
                 String code = line.substring(0, 6);
                 line = line.substring(line.indexOf("\t") + 1, line.length());
                 String name = line.substring(0, line.indexOf("\t"));
+
+                if (code.indexOf("0000") > 0) {
+                    SysArea province = new SysArea();
+                    province.setId(code);
+                    province.setCode(code);
+                    province.setName(name);
+                    province.setParentId("000000");
+                    province.setParentIds("");
+                    province.setSort(1L);
+                    province.setCreateBy("system");
+                    province.setCreateDate(new Date());
+                    province.setUpdateBy("system");
+                    province.setUpdateDate(new Date());
+                    province.setDelFlag("0");
+                    sysAreaMapper.insert(province);
+                } else if (code.indexOf("00") > 0) {
+                    SysArea city = new SysArea();
+                    city.setId(code);
+                    city.setCode(code);
+                    city.setName(name);
+                    city.setParentId(code.substring(0, 2) + "0000");
+                    city.setParentIds("");
+                    city.setSort(1L);
+                    city.setCreateBy("system");
+                    city.setCreateDate(new Date());
+                    city.setUpdateBy("system");
+                    city.setUpdateDate(new Date());
+                    city.setDelFlag("0");
+                    sysAreaMapper.insert(city);
+                } else {
+                    SysArea region = new SysArea();
+                    region.setId(code);
+                    region.setCode(code);
+                    region.setName(name);
+                    region.setParentId(code.substring(0, 4) + "00");
+                    region.setParentIds("");
+                    region.setSort(1L);
+                    region.setCreateBy("system");
+                    region.setCreateDate(new Date());
+                    region.setUpdateBy("system");
+                    region.setUpdateDate(new Date());
+                    region.setDelFlag("0");
+                    sysAreaMapper.insert(region);
+                }
+
 
 
             }

@@ -61,8 +61,9 @@
                 <div style="margin-top: 10px;" class="clearfix">
                     <div class="fl" style="margin-right: 100px;">
                         <p style="margin-top: 30px;">国家／地区* </p>
-                        <select id="district">
+                        <select id="district" onchange="chooseArea(this.id,this.value);">
                             <option value="">请选择国家或地区</option>
+                            <option value="000000">中华人民共和国</option>
                         </select>
                     </div>
                     <div class="fl">
@@ -74,7 +75,7 @@
                 <div style="margin-top: 10px;" class="clearfix">
                     <div class="fl" style="margin-right: 100px;">
                         <p style="margin-top: 30px;">省* </p>
-                        <select id="province">
+                        <select id="province" onchange="chooseArea(this.id,this.value);">
                             <option value="">请选择省份</option>
                         </select>
                     </div>
@@ -151,6 +152,32 @@
             },
             success: function (data) {
                 alert("发送成功！");
+            }
+        });
+    }
+
+    function chooseArea(_id, _value) {
+        var needLoad;
+        $.ajax({
+            url: "/huayao/sys/area/getChildrenByParentId",
+            type: "get",
+            data: {
+                parentId: _value
+            },
+            success: function (areas) {
+                var options = "";
+                if (_id == "district") {
+                    needLoad = "province";
+                    options += "<option>请选择省份</option>";
+                } else if (_id == "province") {
+                    needLoad = "region";
+                    options += "<option>请选择区域</option>";
+                }
+                $.each(areas, function (index, area) {
+                    options += "<option value='" + area.code + "'>" + area.name + "</option>"
+                });
+                console.log(options)
+                $("#" + needLoad).html(options);
             }
         });
     }

@@ -112,10 +112,7 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.jamedow.laodoufang.entity.SysArea">
-        <selectKey resultType="_long" keyProperty="id" order="AFTER">
-            select @@IDENTITY as id
-        </selectKey>
-    insert into sys_area (id, parent_id, parent_ids, 
+    insert into sys_area (id, parent_id, parent_ids,
       name, sort, code, type, 
       create_by, create_date, update_by, 
       update_date, remarks, del_flag
@@ -127,9 +124,6 @@
       )
   </insert>
     <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.SysArea">
-        <selectKey resultType="_long" keyProperty="id" order="AFTER">
-            select @@IDENTITY as id
-        </selectKey>
         insert into sys_area
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
