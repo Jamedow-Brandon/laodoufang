@@ -56,28 +56,28 @@ public class HuaYaoController {
         return view;
     }
 
-    @RequestMapping(value = "/mailform", method = RequestMethod.GET)
+    @RequestMapping(value = "/mail/form", method = RequestMethod.GET)
     public String mail() {
         return "mail/form";
     }
 
-    @RequestMapping(value = "/mailsend", method = RequestMethod.POST)
+    @RequestMapping(value = "/mail/send", method = RequestMethod.POST)
     @ResponseBody
     public String send(Integer productId, Integer demand, String requirementDescription, String companyName,
                        String district, String phone, String province, String region, String receiver) {
 
         StringBuilder messageBuilder = new StringBuilder();
-        messageBuilder.append("productId:").append(productId);
-        messageBuilder.append("demand:").append(demand);
-        messageBuilder.append("requirementDescription:").append(requirementDescription);
-        messageBuilder.append("companyName:").append(companyName);
-        messageBuilder.append("district:").append(district);
-        messageBuilder.append("phone:").append(phone);
-        messageBuilder.append("province:").append(province);
-        messageBuilder.append("region:").append(region);
+        messageBuilder.append("productId:").append(productId).append("\n");
+        messageBuilder.append("demand:").append(demand).append("\n");
+        messageBuilder.append("requirementDescription:").append(requirementDescription).append("\n");
+        messageBuilder.append("companyName:").append(companyName).append("\n");
+        messageBuilder.append("district:").append(district).append("\n");
+        messageBuilder.append("phone:").append(phone).append("\n");
+        messageBuilder.append("province:").append(province).append("\n");
+        messageBuilder.append("region:").append(region).append("\n");
         messageBuilder.append("receiver:").append(receiver);
         Mail mail = new Mail.Builder("smtp.qq.com", "1472541865@qq.com", "tnnfmpbgsjckbade")
-                .sender("1472541865@qq.com").receiver(receiver).name(companyName).message(messageBuilder.toString()).build();
+                .sender("1472541865@qq.com").receiver("563150601@qq.com").name(companyName).message(messageBuilder.toString()).build();
         MailService.sendMail(mail);
         return "success";
     }

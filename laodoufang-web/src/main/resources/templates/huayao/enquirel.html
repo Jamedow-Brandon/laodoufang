@@ -20,7 +20,7 @@
     </div>
 </div>
 <div class="backBar contain">
-    <a href="index.html">
+    <a href="/huayao/index">
         <div class="backBarBtn fr">HOME</div>
     </a>
 </div>
@@ -42,7 +42,7 @@
                             th:text="${product.name}" th:selected="selected">HUAYAO-DPPD
                     </option>
                 </select>
-                <p style="margin-top: 30px;">采购数量* （单位:t）</p>
+                <p style="margin-top: 30px;">采购数量* （单位:kg）</p>
                 <input type="text" id="demand" value="" placeholder="请输入采购数量"/>
                 <p style="margin-top: 40px;">需求描述</p>
                 <textarea id="requirementDescription" rows="" cols="" placeholder="请帮助我们了解您的需求"></textarea>
@@ -86,7 +86,7 @@
                     </div>
                 </div>
             </form>
-            <div class="enquire__btn" style="margin-top: 70px;">发送邮箱</div>
+            <div class="enquire__btn" style="margin-top: 70px;" onclick="sendMail();">发送邮箱</div>
         </div>
     </div>
 </div>
@@ -136,7 +136,7 @@
 
     function sendMail() {
         $.ajax({
-            url: "/mail/send",
+            url: "/huayao/mail/send",
             type: "post",
             data: {
                 productId: $("#productId").val(),
@@ -147,9 +147,7 @@
                 phone: $("#phone").val(),
                 province: $("#province").val(),
                 region: $("#region").val(),
-                receiver: "652972575@qq.com",
-                name: "Aurora",
-                message: "测试邮件<hr/>"
+                receiver: $("#receiver").val()
             },
             success: function (data) {
                 alert("发送成功！");
