@@ -75,21 +75,21 @@ public class HuaYaoController {
 
     @RequestMapping(value = "/mail/send", method = RequestMethod.POST)
     @ResponseBody
-    public String send(Integer productId, Integer demand, String requirementDescription, String companyName,
+    public String send(String productId, Integer demand, String requirementDescription, String companyName,
                        String district, String phone, String province, String region, String receiver) {
 
         StringBuilder messageBuilder = new StringBuilder();
-        messageBuilder.append("productId:").append(productId).append("\n");
-        messageBuilder.append("demand:").append(demand).append("\n");
-        messageBuilder.append("requirementDescription:").append(requirementDescription).append("\n");
-        messageBuilder.append("companyName:").append(companyName).append("\n");
-        messageBuilder.append("district:").append(district).append("\n");
-        messageBuilder.append("phone:").append(phone).append("\n");
-        messageBuilder.append("province:").append(province).append("\n");
-        messageBuilder.append("region:").append(region).append("\n");
-        messageBuilder.append("receiver:").append(receiver);
+        messageBuilder.append("采购产品[").append(productId).append("]");
+        messageBuilder.append("采购数量（单位:kg）[").append(demand).append("]");
+        messageBuilder.append("需求描述[").append(requirementDescription).append("]");
+        messageBuilder.append("公司／单位名称[").append(companyName).append("]");
+        messageBuilder.append("联系邮箱[").append(receiver).append("]");
+        messageBuilder.append("联系电话[").append(phone).append("]");
+        messageBuilder.append("国家／地区[").append(district).append("]");
+        messageBuilder.append("省[").append(province).append("]");
+        messageBuilder.append("区域[").append(region).append("]");
         Mail mail = new Mail.Builder("smtp.qq.com", "1472541865@qq.com", "tnnfmpbgsjckbade")
-                .sender("1472541865@qq.com").receiver("563150601@qq.com").name(companyName).message(messageBuilder.toString()).build();
+                .sender("1472541865@qq.com").receiver("563150601@qq.com").name(companyName).subject(productId + "采购需求，采购方[" + companyName + "]").message(messageBuilder.toString()).build();
         MailService.sendMail(mail);
         return "success";
     }

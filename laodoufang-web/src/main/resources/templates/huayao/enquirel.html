@@ -35,10 +35,12 @@
             <form action="" method="post">
                 <p>采购产品*</p>
                 <select id="productId">
-                    <option th:each="product : ${products}" th:if="${product.id != productId}" th:value="${product.id}"
+                    <option th:each="product : ${products}" th:if="${product.id != productId}"
+                            th:value="${product.name}"
                             th:text="${product.name}">HUAYAO-DPPD
                     </option>
-                    <option th:each="product : ${products}" th:if="${product.id == productId}" th:value="${product.id}"
+                    <option th:each="product : ${products}" th:if="${product.id == productId}"
+                            th:value="${product.name}"
                             th:text="${product.name}" th:selected="selected">HUAYAO-DPPD
                     </option>
                 </select>
@@ -169,6 +171,7 @@
                 if (_id == "district") {
                     needLoad = "province";
                     options += "<option>请选择省份</option>";
+                    $("#region").html("<option>请选择区域</option>");
                 } else if (_id == "province") {
                     needLoad = "region";
                     options += "<option>请选择区域</option>";
