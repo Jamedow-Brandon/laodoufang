@@ -20,7 +20,7 @@
     </div>
 </div>
 <div class="backBar contain">
-    <a href="/huayao/index">
+    <a href="/">
         <div class="backBarBtn fr">HOME</div>
     </a>
 </div>
@@ -139,7 +139,7 @@
 
     function sendMail() {
         $.ajax({
-            url: "/huayao/mail/send",
+            url: "/mail/send",
             type: "post",
             data: {
                 productId: $("#productId").val(),
@@ -150,6 +150,7 @@
                 phone: $("#phone").val(),
                 province: $("#province").val(),
                 region: $("#region").val(),
+                betterAddress: $("#betterAddress").val() || "",
                 receiver: $("#receiver").val()
             },
             success: function (data) {
@@ -161,7 +162,7 @@
     function chooseArea(_id, _value) {
         var needLoad;
         $.ajax({
-            url: "/huayao/sys/area/getChildrenByParentId",
+            url: "/sys/area/getChildrenByParentId",
             type: "get",
             data: {
                 parentId: _value

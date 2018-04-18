@@ -4,6 +4,7 @@ import com.jamedow.laodoufang.entity.*;
 import com.jamedow.laodoufang.mail.MailService;
 import com.jamedow.laodoufang.mapper.ProductMapper;
 import com.jamedow.laodoufang.mapper.SysAreaMapper;
+import com.jamedow.laodoufang.mapper.SysDictMapper;
 import net.sf.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +34,7 @@ import java.util.List;
  */
 @Controller
 @EnableAutoConfiguration
-@RequestMapping("huayao")
+@RequestMapping("/")
 public class HuaYaoController {
     static Logger logger = LoggerFactory.getLogger(HuaYaoController.class);
 
@@ -41,8 +42,11 @@ public class HuaYaoController {
     private ProductMapper productMapper;
     @Autowired
     private SysAreaMapper sysAreaMapper;
+    private final String COMPANY_MAIL = "company_mail";
+    @Autowired
+    private SysDictMapper sysDictMapper;
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String index() {
         return "huayao/index";
     }
@@ -76,20 +80,49 @@ public class HuaYaoController {
     @RequestMapping(value = "/mail/send", method = RequestMethod.POST)
     @ResponseBody
     public String send(String productId, Integer demand, String requirementDescription, String companyName,
-                       String district, String phone, String province, String region, String receiver) {
+                       String district, String phone, String province, String region, String betterAddress, String receiver) {
+
+        //获取公司邮箱
+        String companyMail = "";
+        SysDictExample dictExample = new SysDictExample();
+        dictExample.createCriteria().andTypeEqualTo(COMPANY_MAIL);
+        List<SysDict> dicts = sysDictMapper.selectByExample(dictExample);
+        if (dicts != null && dicts.size() != 0) {
+            companyMail = dicts.get(0).getValue();
+        }
+
+        //获取国家省市名称 拼接详细地址
+        StringBuilder address = new StringBuilder();
+        SysAreaExample areaExample = new SysAreaExample();
+        areaExample.createCriteria().andCodeEqualTo(district);
+        List<SysArea> districts = sysAreaMapper.selectByExample(areaExample);
+        if (districts != null && districts.size() != 0) {
+            address.append(districts.get(0).getName()).append(" ");
+        }
+        areaExample.clear();
+        areaExample.createCriteria().andCodeEqualTo(province);
+        List<SysArea> provinces = sysAreaMapper.selectByExample(areaExample);
+        if (provinces != null && provinces.size() != 0) {
+            address.append(provinces.get(0).getName()).append(" ");
+        }
+        areaExample.clear();
+        areaExample.createCriteria().andCodeEqualTo(region);
+        List<SysArea> regions = sysAreaMapper.selectByExample(areaExample);
+        if (regions != null && regions.size() != 0) {
+            address.append(regions.get(0).getName()).append(" ");
+        }
+        address.append(betterAddress);
 
         StringBuilder messageBuilder = new StringBuilder();
-        messageBuilder.append("采购产品[").append(productId).append("]");
-        messageBuilder.append("采购数量（单位:kg）[").append(demand).append("]");
-        messageBuilder.append("需求描述[").append(requirementDescription).append("]");
-        messageBuilder.append("公司／单位名称[").append(companyName).append("]");
-        messageBuilder.append("联系邮箱[").append(receiver).append("]");
-        messageBuilder.append("联系电话[").append(phone).append("]");
-        messageBuilder.append("国家／地区[").append(district).append("]");
-        messageBuilder.append("省[").append(province).append("]");
-        messageBuilder.append("区域[").append(region).append("]");
+        messageBuilder.append("<div>").append("采购产品[").append(productId).append("]").append("</div>");
+        messageBuilder.append("<div>").append("采购数量（单位:kg）[").append(demand).append("]").append("</div>");
+        messageBuilder.append("<div>").append("需求描述[").append(requirementDescription).append("]").append("</div>");
+        messageBuilder.append("<div>").append("公司／单位名称[").append(companyName).append("]").append("</div>");
+        messageBuilder.append("<div>").append("联系邮箱[").append(receiver).append("]").append("</div>");
+        messageBuilder.append("<div>").append("联系电话[").append(phone).append("]").append("</div>");
+        messageBuilder.append("<div>").append("联系地址[").append(address.toString()).append("]").append("</div>");
         Mail mail = new Mail.Builder("smtp.qq.com", "1472541865@qq.com", "tnnfmpbgsjckbade")
-                .sender("1472541865@qq.com").receiver("563150601@qq.com").name(companyName).subject(productId + "采购需求，采购方[" + companyName + "]").message(messageBuilder.toString()).build();
+                .sender("1472541865@qq.com").receiver(companyMail).name(companyName).subject(productId + "采购需求，采购方[" + companyName + "]").message(messageBuilder.toString()).build();
         MailService.sendMail(mail);
         return "success";
     }
@@ -179,7 +212,6 @@ public class HuaYaoController {
                     region.setDelFlag("0");
                     sysAreaMapper.insert(region);
                 }
-
 
 
             }
