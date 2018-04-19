@@ -114,15 +114,15 @@ public class HuaYaoController {
         address.append(betterAddress);
 
         StringBuilder messageBuilder = new StringBuilder();
-        messageBuilder.append("<div>").append("采购产品[").append(productId).append("]").append("</div>");
-        messageBuilder.append("<div>").append("采购数量（单位:kg）[").append(demand).append("]").append("</div>");
-        messageBuilder.append("<div>").append("需求描述[").append(requirementDescription).append("]").append("</div>");
-        messageBuilder.append("<div>").append("公司／单位名称[").append(companyName).append("]").append("</div>");
-        messageBuilder.append("<div>").append("联系邮箱[").append(receiver).append("]").append("</div>");
-        messageBuilder.append("<div>").append("联系电话[").append(phone).append("]").append("</div>");
-        messageBuilder.append("<div>").append("联系地址[").append(address.toString()).append("]").append("</div>");
+        messageBuilder.append("<div>").append("采购产品：").append(productId).append("</div>");
+        messageBuilder.append("<div>").append("采购数量（单位:kg）：").append(demand == null ? 0 : demand).append("</div>");
+        messageBuilder.append("<div>").append("需求描述：").append(requirementDescription).append("</div>");
+        messageBuilder.append("<div>").append("公司／单位名称：").append(companyName).append("</div>");
+        messageBuilder.append("<div>").append("联系邮箱：").append(receiver).append("</div>");
+        messageBuilder.append("<div>").append("联系电话：").append(phone).append("</div>");
+        messageBuilder.append("<div>").append("联系地址：").append(address.toString()).append("</div>");
         Mail mail = new Mail.Builder("smtp.qq.com", "1472541865@qq.com", "tnnfmpbgsjckbade")
-                .sender("1472541865@qq.com").receiver(companyMail).name(companyName).subject(productId + "采购需求，采购方[" + companyName + "]").message(messageBuilder.toString()).build();
+                .sender("1472541865@qq.com").receiver(companyMail).name(companyName).subject(productId + "采购需求，采购方：" + companyName).message(messageBuilder.toString()).build();
         MailService.sendMail(mail);
         return "success";
     }
