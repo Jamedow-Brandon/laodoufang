@@ -66,6 +66,7 @@
                         <select id="district" onchange="chooseArea(this.id,this.value);">
                             <option value="">请选择国家或地区</option>
                             <option value="000000">中华人民共和国</option>
+                            <option value="999999">外国</option>
                         </select>
                     </div>
                     <div class="fl">
@@ -75,17 +76,25 @@
                 </div>
 
                 <div style="margin-top: 10px;" class="clearfix">
-                    <div class="fl" style="margin-right: 100px;">
-                        <p style="margin-top: 30px;">省* </p>
-                        <select id="province" onchange="chooseArea(this.id,this.value);">
-                            <option value="">请选择省份</option>
-                        </select>
+                    <div id="regionSelect">
+                        <div class="fl" style="margin-right: 100px;">
+                            <p style="margin-top: 30px;">省* </p>
+                            <select id="province" onchange="chooseArea(this.id,this.value);">
+                                <option value="">请选择省份</option>
+                            </select>
+                        </div>
+                        <div class="fl">
+                            <p style="margin-top: 30px;">区域* </p>
+                            <select id="region">
+                                <option value="">请选择区域</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="fl">
-                        <p style="margin-top: 30px;">区域* </p>
-                        <select id="region">
-                            <option value="">请选择区域</option>
-                        </select>
+                    <div id="addressInput">
+                        <div class="fl">
+                            <p style="margin-top: 30px;">联系地址* </p>
+                            <input type="text" id="betterAddress" value="" placeholder=""/>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -160,6 +169,13 @@
     }
 
     function chooseArea(_id, _value) {
+        if (_id == "district" && _value == "999999") {
+            $("#regionSelect").hide();
+            $("#addressInput").show();
+        } else {
+            $("#regionSelect").show();
+            $("#addressInput").hide();
+        }
         var needLoad;
         $.ajax({
             url: "/sys/area/getChildrenByParentId",
