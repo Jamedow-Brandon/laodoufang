@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jump</title>
+    <meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no">
+</head>
+<body>
+</body>
+<script src="/static/script/three.min.js"></script>
+<script>
+    //    var cubes = [];
+    var x = 0, y = 0, z = 0;
+    //创建场景
+    var scene = new THREE.Scene();
+
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(1100, 900);
+    renderer.setClearColor(0x000000);
+    document.getElementsByTagName('body')[0].appendChild(renderer.domElement);
+
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 1, 1000);
+    camera.position.set(2, 5, 50);
+
+    scene.add(camera);
+
+    //    var material = new THREE.MeshBasicMaterial({color: 0xffff00});
+    //    var  geometry = new THREE.CylinderGeometry(5, 5, 20, 32);
+    //    var mesh = new THREE.Mesh(geometry, material);
+    //    mesh.position.x = 1;
+    //    mesh.position.y = 1;
+    //    mesh.position.z = 1;
+    //    scene.add(mesh);
+    //    renderer.render(scene, camera);
+
+    window.addEventListener("click", function () {
+        var mesh = _createMesh();
+
+        mesh.position.x = x;
+        mesh.position.y = y;
+        mesh.position.z = z;
+
+        scene.add(mesh);
+
+        _changeCamera(x, y, 50);
+    });
+
+    function _createMesh() {
+        x += 1;
+        y += 1;
+        z += 1;
+        var material = new THREE.MeshBasicMaterial({color: 0xffff00});
+        var geometry;
+        var type = _randomNum(0, 3);
+        switch (type) {
+            case 1:
+                geometry = new THREE.CylinderGeometry(5, 5, 20, 32);
+                break;
+            case 2:
+                geometry = new THREE.BoxGeometry(5, 5, 5);
+                break;
+            case 3:
+                geometry = new THREE.CylinderGeometry(5, 5, 20, 32);
+                break;
+        }
+
+        return new THREE.Mesh(geometry, material);
+    }
+
+    function _changeCamera(_x, _y, _z) {
+        camera.position.set(_x, _y, _z);
+        renderer.render(scene, camera);
+    }
+
+    //生成从minNum到maxNum的随机数
+    function _randomNum(minNum, maxNum) {
+        switch (arguments.length) {
+            case 1:
+                return parseInt(Math.random() * minNum + 1, 10);
+                break;
+            case 2:
+                return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+                break;
+            default:
+                return 0;
+                break;
+        }
+    }
+</script>
+</html>

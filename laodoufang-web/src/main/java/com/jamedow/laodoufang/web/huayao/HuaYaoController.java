@@ -56,7 +56,9 @@ public class HuaYaoController {
         ModelAndView view = new ModelAndView();
         view.setViewName("huayao/detail");
 
-        view.addObject("productId", productId);
+        Product product = productMapper.selectByPrimaryKey(productId);
+
+        view.addObject("product", product);
         return view;
     }
 

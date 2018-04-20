@@ -6,7 +6,7 @@
     <meta name="renderer" content="webkit">
     <title></title>
     <meta name="keywords" th:content="${product.seoKeywords}">
-    <meta name=”description” th:content="${product.description}"/>
+    <!--<meta name=”description” th:content="${product.description}"/>-->
     <link rel="stylesheet" type="text/css" href="/static/huayao/css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="/static/huayao/css/index.css"/>
 </head>
@@ -203,7 +203,7 @@
         <span>  独立的生产，交货及时，质量保证，产品多样化，广为流行，独特而实用。顾客至上，诚信为本，是不可改变的创业初衷和理念</span>
     </div>
 </div>
-<input type="hidden" id="productId" th:value="${productId}"/>
+<input type="hidden" id="productId" th:value="${product.id}"/>
 <div class="toTop"></div>
 <script src="/static/huayao/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript">
