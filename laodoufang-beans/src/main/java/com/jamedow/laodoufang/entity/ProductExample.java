@@ -14,20 +14,20 @@ public class ProductExample {
         oredCriteria = new ArrayList<Criteria>();
     }
 
-    public String getOrderByClause() {
-        return orderByClause;
-    }
-
     public void setOrderByClause(String orderByClause) {
         this.orderByClause = orderByClause;
     }
 
-    public boolean isDistinct() {
-        return distinct;
+    public String getOrderByClause() {
+        return orderByClause;
     }
 
     public void setDistinct(boolean distinct) {
         this.distinct = distinct;
+    }
+
+    public boolean isDistinct() {
+        return distinct;
     }
 
     public List<Criteria> getOredCriteria() {
@@ -233,6 +233,76 @@ public class ProductExample {
             addCriterion("name not between", value1, value2, "name");
             return (Criteria) this;
         }
+
+        public Criteria andSeoKeywordsIsNull() {
+            addCriterion("seo_keywords is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeoKeywordsIsNotNull() {
+            addCriterion("seo_keywords is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeoKeywordsEqualTo(String value) {
+            addCriterion("seo_keywords =", value, "seoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeoKeywordsNotEqualTo(String value) {
+            addCriterion("seo_keywords <>", value, "seoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeoKeywordsGreaterThan(String value) {
+            addCriterion("seo_keywords >", value, "seoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeoKeywordsGreaterThanOrEqualTo(String value) {
+            addCriterion("seo_keywords >=", value, "seoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeoKeywordsLessThan(String value) {
+            addCriterion("seo_keywords <", value, "seoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeoKeywordsLessThanOrEqualTo(String value) {
+            addCriterion("seo_keywords <=", value, "seoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeoKeywordsLike(String value) {
+            addCriterion("seo_keywords like", value, "seoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeoKeywordsNotLike(String value) {
+            addCriterion("seo_keywords not like", value, "seoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeoKeywordsIn(List<String> values) {
+            addCriterion("seo_keywords in", values, "seoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeoKeywordsNotIn(List<String> values) {
+            addCriterion("seo_keywords not in", values, "seoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeoKeywordsBetween(String value1, String value2) {
+            addCriterion("seo_keywords between", value1, value2, "seoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeoKeywordsNotBetween(String value1, String value2) {
+            addCriterion("seo_keywords not between", value1, value2, "seoKeywords");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
@@ -258,6 +328,38 @@ public class ProductExample {
         private boolean listValue;
 
         private String typeHandler;
+
+        public String getCondition() {
+            return condition;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+
+        public Object getSecondValue() {
+            return secondValue;
+        }
+
+        public boolean isNoValue() {
+            return noValue;
+        }
+
+        public boolean isSingleValue() {
+            return singleValue;
+        }
+
+        public boolean isBetweenValue() {
+            return betweenValue;
+        }
+
+        public boolean isListValue() {
+            return listValue;
+        }
+
+        public String getTypeHandler() {
+            return typeHandler;
+        }
 
         protected Criterion(String condition) {
             super();
@@ -293,38 +395,6 @@ public class ProductExample {
 
         protected Criterion(String condition, Object value, Object secondValue) {
             this(condition, value, secondValue, null);
-        }
-
-        public String getCondition() {
-            return condition;
-        }
-
-        public Object getValue() {
-            return value;
-        }
-
-        public Object getSecondValue() {
-            return secondValue;
-        }
-
-        public boolean isNoValue() {
-            return noValue;
-        }
-
-        public boolean isSingleValue() {
-            return singleValue;
-        }
-
-        public boolean isBetweenValue() {
-            return betweenValue;
-        }
-
-        public boolean isListValue() {
-            return listValue;
-        }
-
-        public String getTypeHandler() {
-            return typeHandler;
         }
     }
 }

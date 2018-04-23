@@ -15,9 +15,9 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://106.14.210.31:3306/laodoufang?useUnicode=true&amp;characterEncoding=utf-8"
-                        userId="root"
-                        password="Zhangliang@520"/>
+                        connectionURL="jdbc:mysql://106.14.210.31:3306/huayao?useUnicode=true&amp;characterEncoding=utf-8"
+                        userId="huayao"
+                        password="Huayao@520"/>
 
         <!-- 生成实体类地址 -->
         <javaModelGenerator targetPackage="com.jamedow.laodoufang.entity"
@@ -43,7 +43,7 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>-->
 
-        <table tableName="sys_dict" domainObjectName="SysDict"
+        <table tableName="huayao_product" domainObjectName="Product"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">

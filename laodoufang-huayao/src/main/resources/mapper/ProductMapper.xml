@@ -4,6 +4,7 @@
     <resultMap id="BaseResultMap" type="com.jamedow.laodoufang.entity.Product">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="seo_keywords" jdbcType="VARCHAR" property="seoKeywords"/>
     </resultMap>
     <sql id="Example_Where_Clause">
         <where>
@@ -66,7 +67,7 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, name
+    id, name, seo_keywords
   </sql>
     <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.ProductExample" resultMap="BaseResultMap">
         select
@@ -100,8 +101,10 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.jamedow.laodoufang.entity.Product">
-    insert into huayao_product (id, name)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
+    insert into huayao_product (id, name, seo_keywords
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{seoKeywords,jdbcType=VARCHAR}
+      )
   </insert>
     <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.Product">
         insert into huayao_product
@@ -112,6 +115,9 @@
             <if test="name != null">
                 name,
             </if>
+            <if test="seoKeywords != null">
+                seo_keywords,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -119,6 +125,9 @@
             </if>
             <if test="name != null">
                 #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="seoKeywords != null">
+                #{seoKeywords,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
@@ -138,6 +147,9 @@
             <if test="record.name != null">
                 name = #{record.name,jdbcType=VARCHAR},
             </if>
+            <if test="record.seoKeywords != null">
+                seo_keywords = #{record.seoKeywords,jdbcType=VARCHAR},
+            </if>
         </set>
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
@@ -146,7 +158,8 @@
     <update id="updateByExample" parameterType="map">
         update huayao_product
         set id = #{record.id,jdbcType=INTEGER},
-        name = #{record.name,jdbcType=VARCHAR}
+        name = #{record.name,jdbcType=VARCHAR},
+        seo_keywords = #{record.seoKeywords,jdbcType=VARCHAR}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
@@ -157,12 +170,16 @@
             <if test="name != null">
                 name = #{name,jdbcType=VARCHAR},
             </if>
+            <if test="seoKeywords != null">
+                seo_keywords = #{seoKeywords,jdbcType=VARCHAR},
+            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.Product">
     update huayao_product
-    set name = #{name,jdbcType=VARCHAR}
+    set name = #{name,jdbcType=VARCHAR},
+      seo_keywords = #{seoKeywords,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
