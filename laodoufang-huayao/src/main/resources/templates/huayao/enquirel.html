@@ -59,7 +59,7 @@
                 <div style="margin-top: 10px;" class="clearfix">
                     <div class="fl" style="margin-right: 100px;">
                         <p style="margin-top: 30px;">国家／地区* </p>
-                        <select id="district" onchange="chooseArea(this.id,this.value);">
+                        <select id="region" onchange="chooseArea(this.id,this.value);">
                             <option value="">请选择国家或地区</option>
                             <option value="000000">中华人民共和国</option>
                             <option value="999999">外国</option>
@@ -81,7 +81,7 @@
                         </div>
                         <div class="fl">
                             <p style="margin-top: 30px;">区域* </p>
-                            <select id="region">
+                            <select id="district">
                                 <option value="">请选择区域</option>
                             </select>
                         </div>
@@ -151,10 +151,10 @@
                 demand: $("#demand").val(),
                 requirementDescription: $("#requirementDescription").val(),
                 companyName: $("#companyName").val(),
-                district: $("#district").val(),
                 phone: $("#phone").val(),
-                province: $("#province").val(),
                 region: $("#region").val(),
+                province: $("#province").val(),
+                district: $("#district").val(),
                 betterAddress: $("#betterAddress").val() || "",
                 receiver: $("#receiver").val()
             },
@@ -165,7 +165,7 @@
     }
 
     function chooseArea(_id, _value) {
-        if (_id == "district" && _value == "999999") {
+        if (_id == "region" && _value == "999999") {
             $("#regionSelect").hide();
             $("#addressInput").show();
         } else {
@@ -181,18 +181,17 @@
             },
             success: function (areas) {
                 var options = "";
-                if (_id == "district") {
+                if (_id == "region") {
                     needLoad = "province";
                     options += "<option>请选择省份</option>";
-                    $("#region").html("<option>请选择区域</option>");
+                    $("#district").html("<option>请选择区域</option>");
                 } else if (_id == "province") {
-                    needLoad = "region";
+                    needLoad = "district";
                     options += "<option>请选择区域</option>";
                 }
                 $.each(areas, function (index, area) {
                     options += "<option value='" + area.code + "'>" + area.name + "</option>"
                 });
-                console.log(options)
                 $("#" + needLoad).html(options);
             }
         });

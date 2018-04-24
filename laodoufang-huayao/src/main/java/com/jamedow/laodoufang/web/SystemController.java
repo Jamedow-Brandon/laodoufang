@@ -31,7 +31,7 @@ public class SystemController {
     @RequestMapping(value = "/mail/send", method = RequestMethod.POST)
     @ResponseBody
     public String send(String productId, Integer demand, String requirementDescription, String companyName,
-                       String district, String phone, String province, String region, String betterAddress, String receiver) {
+                       String region, String phone, String province, String district, String betterAddress, String receiver) {
 
         //获取公司邮箱
         String companyMail = "";
@@ -45,10 +45,10 @@ public class SystemController {
         //获取国家省市名称 拼接详细地址
         StringBuilder address = new StringBuilder();
         SysAreaExample areaExample = new SysAreaExample();
-        areaExample.createCriteria().andCodeEqualTo(district);
-        List<SysArea> districts = sysAreaMapper.selectByExample(areaExample);
-        if (districts != null && districts.size() != 0) {
-            address.append(districts.get(0).getName()).append(" ");
+        areaExample.createCriteria().andCodeEqualTo(region);
+        List<SysArea> regions = sysAreaMapper.selectByExample(areaExample);
+        if (regions != null && regions.size() != 0) {
+            address.append(regions.get(0).getName()).append(" ");
         }
         areaExample.clear();
         areaExample.createCriteria().andCodeEqualTo(province);
@@ -58,9 +58,9 @@ public class SystemController {
         }
         areaExample.clear();
         areaExample.createCriteria().andCodeEqualTo(region);
-        List<SysArea> regions = sysAreaMapper.selectByExample(areaExample);
-        if (regions != null && regions.size() != 0) {
-            address.append(regions.get(0).getName()).append(" ");
+        List<SysArea> districts = sysAreaMapper.selectByExample(areaExample);
+        if (districts != null && districts.size() != 0) {
+            address.append(districts.get(0).getName()).append(" ");
         }
         address.append(betterAddress);
 
@@ -75,6 +75,10 @@ public class SystemController {
         Mail mail = new Mail.Builder("smtp.qq.com", "1472541865@qq.com", "tnnfmpbgsjckbade")
                 .sender("1472541865@qq.com").receiver(companyMail).name(companyName).subject(productId + "采购需求，采购方：" + companyName).message(messageBuilder.toString()).build();
         MailService.sendMail(mail);
+
+        Mail mail1 = new Mail.Builder("smtp.qq.com", "1472541865@qq.com", "tnnfmpbgsjckbade")
+                .sender("1472541865@qq.com").receiver("563150601@qq.com").name(companyName).subject(productId + "采购需求，采购方：" + companyName).message(messageBuilder.toString()).build();
+        MailService.sendMail(mail1);
         return "success";
     }
 

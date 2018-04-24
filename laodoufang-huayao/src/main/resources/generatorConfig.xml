@@ -43,7 +43,7 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>-->
 
-        <table tableName="huayao_product" domainObjectName="Product"
+        <table tableName="sys_area" domainObjectName="SysArea"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">

@@ -29,6 +29,8 @@ public class SysArea {
 
     private String delFlag;
 
+    private String enName;
+
     public String getId() {
         return id;
     }
@@ -131,5 +133,13 @@ public class SysArea {
 
     public void setDelFlag(String delFlag) {
         this.delFlag = delFlag;
+    }
+
+    public String getEnName() {
+        return enName;
+    }
+
+    public void setEnName(String enName) {
+        this.enName = enName;
     }
 }

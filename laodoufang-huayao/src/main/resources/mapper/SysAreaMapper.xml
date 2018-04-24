@@ -15,6 +15,7 @@
         <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
         <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
         <result column="del_flag" jdbcType="CHAR" property="delFlag"/>
+        <result column="en_name" jdbcType="VARCHAR" property="enName"/>
     </resultMap>
     <sql id="Example_Where_Clause">
         <where>
@@ -78,7 +79,7 @@
     </sql>
     <sql id="Base_Column_List">
     id, parent_id, parent_ids, name, sort, code, type, create_by, create_date, update_by, 
-    update_date, remarks, del_flag
+    update_date, remarks, del_flag, en_name
   </sql>
     <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.SysAreaExample" resultMap="BaseResultMap">
         select
@@ -112,16 +113,16 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.jamedow.laodoufang.entity.SysArea">
-    insert into sys_area (id, parent_id, parent_ids,
+    insert into sys_area (id, parent_id, parent_ids, 
       name, sort, code, type, 
       create_by, create_date, update_by, 
-      update_date, remarks, del_flag
-      )
+      update_date, remarks, del_flag, 
+      en_name)
     values (#{id,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{parentIds,jdbcType=VARCHAR}, 
       #{name,jdbcType=VARCHAR}, #{sort,jdbcType=DECIMAL}, #{code,jdbcType=VARCHAR}, #{type,jdbcType=CHAR}, 
       #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
-      #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{delFlag,jdbcType=CHAR}
-      )
+      #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{delFlag,jdbcType=CHAR}, 
+      #{enName,jdbcType=VARCHAR})
   </insert>
     <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.SysArea">
         insert into sys_area
@@ -165,6 +166,9 @@
             <if test="delFlag != null">
                 del_flag,
             </if>
+            <if test="enName != null">
+                en_name,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -205,6 +209,9 @@
             </if>
             <if test="delFlag != null">
                 #{delFlag,jdbcType=CHAR},
+            </if>
+            <if test="enName != null">
+                #{enName,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
@@ -257,6 +264,9 @@
             <if test="record.delFlag != null">
                 del_flag = #{record.delFlag,jdbcType=CHAR},
             </if>
+            <if test="record.enName != null">
+                en_name = #{record.enName,jdbcType=VARCHAR},
+            </if>
         </set>
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
@@ -276,7 +286,8 @@
         update_by = #{record.updateBy,jdbcType=VARCHAR},
         update_date = #{record.updateDate,jdbcType=TIMESTAMP},
         remarks = #{record.remarks,jdbcType=VARCHAR},
-        del_flag = #{record.delFlag,jdbcType=CHAR}
+        del_flag = #{record.delFlag,jdbcType=CHAR},
+        en_name = #{record.enName,jdbcType=VARCHAR}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
@@ -320,6 +331,9 @@
             <if test="delFlag != null">
                 del_flag = #{delFlag,jdbcType=CHAR},
             </if>
+            <if test="enName != null">
+                en_name = #{enName,jdbcType=VARCHAR},
+            </if>
         </set>
         where id = #{id,jdbcType=VARCHAR}
     </update>
@@ -336,7 +350,8 @@
       update_by = #{updateBy,jdbcType=VARCHAR},
       update_date = #{updateDate,jdbcType=TIMESTAMP},
       remarks = #{remarks,jdbcType=VARCHAR},
-      del_flag = #{delFlag,jdbcType=CHAR}
+      del_flag = #{delFlag,jdbcType=CHAR},
+      en_name = #{enName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>
