@@ -103,7 +103,7 @@
 
 .timeLine__item {
     position: absolute;
-    line-height: 30px;
+    line-height: 26px;
 }
 
 .timeLine__item.item1 {
@@ -119,7 +119,7 @@
 }
 
 .timeLine__item.item2 {
-    top: -176px;
+    top: -236px;
     left: 483px;
 }
 
@@ -144,7 +144,7 @@
 }
 
 .timeLine__item.item4 {
-    top: -145px;
+    top: -160px;
     left: 983px;
 }
 
@@ -237,7 +237,6 @@
     position: relative;
     overflow: hidden;
     width: 1446px;
-    height: 1490px;
     margin: 0 auto;
     background: url(../images/detailBG.png) no-repeat;
 }
@@ -320,6 +319,7 @@
 .enquire__btn {
     cursor: pointer;
     margin-top: 140px;
+    margin-bottom: 100px;
     width: 316px;
     height: 58px;
     border: 1px solid #23aae5;
@@ -390,4 +390,4 @@
     margin-right: 14px;
 }
 
-/*# sourceMappingURL=index.css.map */
+/*# sourceMappingURL=index_en.css.map */

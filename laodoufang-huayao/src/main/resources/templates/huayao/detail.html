@@ -16,14 +16,14 @@
     <div class="headBar">
         <img class="bigLogo" src="/static/huayao/images/huayao-logo-big.png"/>
         <div class="languageSwitch fr">
-            <span class="on">中文</span>
+            <span class="lang on" lang="">中文</span>
             <span style="margin: 0 12px;">|</span>
-            <span>English</span>
+            <span class="lang" lang="en">English</span>
         </div>
     </div>
 </div>
 <div class="backBar contain">
-    <a href="/">
+    <a th:href="${'/?lang='+lang}">
         <div class="backBarBtn fr">HOME</div>
     </a>
 </div>
@@ -203,9 +203,11 @@
         <span>  独立的生产，交货及时，质量保证，产品多样化，广为流行，独特而实用。顾客至上，诚信为本，是不可改变的创业初衷和理念</span>
     </div>
 </div>
+
 <input type="hidden" id="productId" th:value="${product.id}"/>
 <div class="toTop"></div>
 <script src="/static/huayao/js/jquery-1.11.1.min.js"></script>
+<script src="/static/script/application.js"></script>
 <script type="text/javascript">
     (function () {
         var $toTop = $('.toTop');
@@ -243,12 +245,18 @@
             } else {
                 $toTop.fadeOut();
             }
-        })
+        });
 
         $toTop.on('click', function () {
             $(window).scrollTop(0)
-        })
-    })()
+        });
+
+        $(".languageSwitch .lang").on("click", function () {
+            var lang = $(this).attr("lang");
+            var currentUrl = window.location.pathname + window.location.search;
+            window.location.href = replaceUrlParams(currentUrl, {lang: lang});
+        });
+    })();
 </script>
 </body>
 

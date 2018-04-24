@@ -1,0 +1,281 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/static/huayao/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/huayao/css/index_en.css"/>
+</head>
+
+<body>
+<div class="contain">
+    <div class="headBar">
+        <img class="bigLogo" src="/static/huayao/images/huayao-logo-big.png"/>
+        <div class="languageSwitch fr">
+            <span class="lang" lang="">中文</span>
+            <span style="margin: 0 12px;">|</span>
+            <span class="lang on" lang="en">English</span>
+        </div>
+    </div>
+</div>
+<div class="backBar contain">
+    <a th:href="${'/?lang='+lang}">
+        <div class="backBarBtn fr">HOME</div>
+    </a>
+</div>
+<div class="mainInfo">
+    <div class="mainInfoBar"></div>
+    <div class="mainInfoBar__list" id="productSelect">
+        <div class="mainInfoBar__item on onStart" id="product_1">HUAYAO-DPPD</div>
+        <div class="mainInfoBar__item" id="product_2">HUAYAO-DTPD</div>
+        <div class="mainInfoBar__item" id="product_3">HUAYAO-Adhesive RA</div>
+        <div class="mainInfoBar__item" id="product_4">HUAYAO-Adhesive RA65</div>
+    </div>
+    <div>
+        <div class="mainInfo__content clearfix">
+            <div class="fl">
+                <div class="showBar__item" style="width: 516px;">
+                    <div>
+                        <img class="showBar__pic" src="/static/huayao/images/1.png" style="margin-top: 0;"/>
+                    </div>
+                    <p>HUAYAO</p>
+                    <div class="split"></div>
+                    <p>DPPD</p>
+                    <p class="detailTxt detailTxt1">N,N'-diphenyl-p-phenylenediamine</p>
+                    <p class="detailTxt">CAS No:74-31-7</p>
+                    <div>
+                        <img class="showBar__pic2" src="/static/huayao/images/f1.png"/>
+                    </div>
+                </div>
+            </div>
+            <div class="fr mainInfo__contentR">
+                <p><span>crude product</span></p>
+                <p>Appearance:Gray to light brown powder</p>
+                <p>Melting Point:≥135℃</p>
+                <p>Purity:≥80%</p>
+                <p>Ash:≤0.40</p>
+                <p>Heating Loss:≤0.40</p>
+                <p style="margin-top: 40px;"><span>refined product</span></p>
+                <p>Appearance:Gray to light brown powder</p>
+                <p>Melting Point:≥135℃</p>
+                <p>Purity:≥98%</p>
+                <p>Ash:≤0.40</p>
+                <p>Heating Loss:≤0.40</p>
+                <p style="margin-top: 40px;"><span>Usage</span></p>
+                <p style="width: 720px;">DPPD is a strong antioxidant properties of amine antioxidants, like general
+                    amine antioxidants, it has strong protective performance to heat, oxygen, light aging factors, in
+                    addition it also has obvious protective effect on ozone and harmful metals such as copper, manganese
+                    cause of ageing.</p>
+                <p style="width: 720px;">DPPD has a good protective effect on environmental heat, oxygen, light, ozone
+                    and other factors in the product, and it has obvious effect in chloroprene rubber.
+                    DPPD is used in rubber products, its flexural performance and crack resistance are improved
+                    remarkably.</p>
+                <p style="width: 720px;margin-top: 40px;">DPPD is widely used in various kinds of industrial rubber
+                    products, especially suitable for all kinds of automobile tires, motorcycle tires, moped, tire tread
+                    compound, it is often used in all kinds of belt, transmission belt, conveyor belt, etc., as well as
+                    a variety of rubber pad and wire and cable. It is also used for daily necessities such as soles.</p>
+                <p style="width: 720px;">25kg per bag, packaged in paper bag lined with plastic bag , it should be
+                    stored in a cool and ventilated place. Its shelf life is 12 months. After the specified date, if the
+                    product reinspection is still up to standard, it can continue to be used.</p>
+                <a th:href="${'/enquirel?productId=1&lang='+lang}">
+                    <div class="enquire__btn">Inquiry</div>
+                </a>
+            </div>
+        </div>
+        <div class="mainInfo__content clearfix" style="display: none;">
+            <div class="fl">
+                <div class="showBar__item" style="width: 516px;">
+                    <div>
+                        <img class="showBar__pic" src="/static/huayao/images/2.png" style="margin-top: 0;"/>
+                    </div>
+                    <p>HUAYAO</p>
+                    <div class="split"></div>
+                    <p>DTPD</p>
+                    <p class="detailTxt detailTxt1">N,N’-Ditoly-p-phenylenediamine mixed</p>
+                    <p class="detailTxt">CAS No:68953-84-4</p>
+                    <div>
+                        <img class="showBar__pic2" src="/static/huayao/images/f2.png"/>
+                    </div>
+                </div>
+            </div>
+            <div class="fr mainInfo__contentR">
+                <p><span>item standard</span></p>
+                <p>Appearance:brownish grey grain</p>
+                <p>Fineness%:≥100</p>
+                <p>Melting Point（DSC）℃:93-101</p>
+                <p>(B3)N,N’-Diphenyl-para-phenylenediamine %:16-24</p>
+                <p>(B4)N,N’-Di-O-Tolyl-para-phenylenediamine %:15-23</p>
+                <p>(B5)N-Phenyl-N’-O-Tolyl-paraphenylenediamine %:40-48</p>
+                <p>Total B3+B4+B5%:≥80</p>
+                <p>Diphenylamine%:≤6</p>
+                <p>Iron ppm:≤750</p>
+
+                <p style="margin-top: 40px;"><span>Usage</span></p>
+                <p style="width: 720px;">Antioxidant DTPD (3100), which can be classified in p-phenylene antioxidant
+                    groups, is an excellent antiozonant to neoprene rubber. It is widely used in the tire industry and
+                    rubber products.</p>
+                <p style="width: 720px;">1.DTPD can resist ozone. Its capacity of anti - flex cracking effect and ozone
+                    layer protection is similar to antioxidant 4010 NA and 4020.</p>
+                <p style="width: 720px;">2.DTPD, particularly mixed with 4020 or 4010 NA, can extend the service life of
+                    tires effectively. Antioxidant 4020 and 4010 NA provide the short-term protection, while DTPD
+                    provides long-term protection.</p>
+                <p style="width: 720px;">3.DTPD has no influence on vulcanization. It applies to truck tire,
+                    off-the-road tire, diagonal tire and radial ply tirewhich is used in hard circumstance. </p>
+                <p style="width: 720px;">4.DTPD can also repair the deficiency that tires turn red due to antioxidant
+                    4010 NA or 4020.</p>
+                <p style="width: 720px;margin-top: 40px;">25kg per bag,packaged in composite paper bag lined with film,
+                    prevent high temperature, sun-scorched and rain drenched during transportation. </p>
+                <a th:href="${'/enquirel?productId=2&lang='+lang}">
+                    <div class="enquire__btn">Inquiry</div>
+                </a>
+            </div>
+        </div>
+        <div class="mainInfo__content clearfix" style="display: none;">
+            <div class="fl">
+                <div class="showBar__item" style="width: 516px;">
+                    <div>
+                        <img class="showBar__pic" src="/static/huayao/images/3.png" style="margin-top: 0;"/>
+                    </div>
+                    <p>HUAYAO</p>
+                    <div class="split"></div>
+                    <p>Adhesive RA</p>
+                </div>
+            </div>
+            <div class="fr mainInfo__contentR">
+                <p><span>Adhesive RA</span></p>
+                <p style="width: 720px;">Adhesive RA is the direct adhesive of resorcinol-formaldehyde-silica adhesion
+                    system. It is a highly effective methyl donor when used together with formaldehyde receptors
+                    RS/RH/RE. It is suitable for the adhesion of various kinds of rubber and various skeleton
+                    materials.</p>
+
+                <p style="margin-top: 40px;"><span>item standard</span></p>
+                <p>Ash(850±25℃) :30-38%.</p>
+                <p>Heating Loss (105±2℃, 2h): ≤ 4.5%.</p>
+                <p>moisture(azeotropic method): ≤4.5%</p>
+                <p>screenings (325’, wet method): ≤ 0.3%</p>
+                <p>Free methanal content: ≤ 0.1%</p>
+
+                <p style="margin-top: 40px;"><span>Usage</span></p>
+                <p style="width: 720px;">White powder, accurate measurement, convenient storage, good dispersion.</p>
+                <p style="width: 720px;">This product is added during rubber mixing, and can obtain good adhesion effect
+                    through vulcanization.</p>
+                <p style="width: 720px;">This product has wide applicability and is suitable for the adhesion of various
+                    kinds of rubber and various skeleton materials.</p>
+                <p style="width: 720px;">3-4 dosage in general, increase or decrease the dosage according to the
+                    adhesion requirement.</p>
+                <p style="width: 720px;margin-top: 40px;">25kg per bag, wrap in plastic bags with woven bags outside,
+                    this product is not combustible, non-corrosive, non-toxic. It should be stored according to general
+                    chemical raw material, in a ventilated, cool warehouse.</p>
+                <p style="width: 720px;">The storage period is one year.</p>
+
+                <a th:href="${'/enquirel?productId=3&lang='+lang}">
+                    <div class="enquire__btn">Inquiry</div>
+                </a>
+            </div>
+        </div>
+        <div class="mainInfo__content clearfix" style="display: none;">
+            <div class="fl">
+                <div class="showBar__item" style="width: 516px;">
+                    <div>
+                        <img class="showBar__pic" src="/static/huayao/images/4.png" style="margin-top: 0;"/>
+                    </div>
+                    <p>HUAYAO</p>
+                    <div class="split"></div>
+                    <p>Adhesive RA65</p>
+                </div>
+            </div>
+            <div class="fr mainInfo__contentR">
+                <p><span>item standard</span></p>
+                <p>Appearance:White powder, with formaldehyde odor.</p>
+                <p>Ash(850℃) :29-35%</p>
+                <p>moisture(azeotropic method):≤4.5%</p>
+                <p>screenings(325’, wet method):≤ 0.3%</p>
+
+                <p style="margin-top: 40px;"><span>Usage</span></p>
+                <p style="width: 720px;">White powder, accurate measurement, convenient storage, good dispersibility.
+                    This product is added during rubber mixing, can obtain good adhesion effect through
+                    vulcanization.</p>
+                <p style="width: 720px;">This product has wide applicability and is suitable for the adhesion of various
+                    kinds of rubber and various skeleton materials, mainly used for the adhesion of rubber and steel
+                    cord.</p>
+                <p style="width: 720px;margin-top: 40px;">3-7 dosage in general, increase or decrease the dosage
+                    according to the adhesion requirement. 25kg per bag, wrap in plastic bags with woven bags outside,
+                    this product is not combustible, non-corrosive, non-toxic. It should be stored according to general
+                    chemical raw material, in a ventilated, cool warehouse.</p>
+                <p style="width: 720px;">The storage period is one year.</p>
+
+                <a th:href="${'/enquirel?productId=4&lang='+lang}">
+                    <div class="enquire__btn">Inquiry</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="background: #515151">
+    <div class="footerUp contain">
+        <img src="/static/huayao/images/huayao-logo.png" class="footerLogo fl"/>
+        <div class="footerUp__info fl" style="margin-right: 154px;">
+            <p><span class="footerUp__infoT">Contact</span>+86-0510-88767887</p>
+            <p><span class="footerUp__infoT"> Fax</span>+86-0510-88767887</p>
+            <p><span class="footerUp__infoT">Email </span>liye@hydppd.com</p>
+        </div>
+        <div class="footerUp__info fl">
+            <div class="fl" style="margin-right: 14px;"><span>Address</span></div>
+            <div class="fl">
+                <p>Donggang Town, </p>
+                <p>Xishan District, Wuxi, </p>
+                <p>Jiangsu Province</p>
+            </div>
+        </div>
+    </div>
+    <div class="footerDown contain">
+        <span>Our service team will assist you in obtaining more resources and services.</span>
+    </div>
+</div>
+
+<input type="hidden" id="productId" th:value="${product.id}"/>
+<div class="toTop"></div>
+<script src="/static/huayao/js/jquery-1.11.1.min.js"></script>
+<script src="/static/script/application.js"></script>
+<script type="text/javascript">
+    (function () {
+        var $toTop = $('.toTop')
+        var $mainInfoBar__item = $('.mainInfoBar__item')
+        var $mainInfo__content = $('.mainInfo__content')
+        $mainInfoBar__item.on('click', function () {
+            if ($(this).hasClass('on')) return
+            else {
+                var index = $(this).index()
+                $mainInfo__content.eq(index).show().siblings().hide()
+                switch (index) {
+                    case 0:
+                        $(this).addClass('onStart').siblings().removeClass('on onEnd onStart onMid')
+                        break;
+                    case 3:
+                        $(this).addClass('onEnd').siblings().removeClass('on onEnd onStart onMid')
+                        break;
+                    default:
+                        $(this).addClass('onMid').siblings().removeClass('on onEnd onStart onMid')
+                        break;
+                }
+            }
+        });
+
+        $(window).on("scroll", function () {
+            if ($(this).scrollTop() >= 500) {
+                $toTop.fadeIn();
+            } else {
+                $toTop.fadeOut();
+            }
+        });
+
+        $toTop.on('click', function () {
+            $(window).scrollTop(0)
+        });
+    })();
+</script>
+</body>
+
+</html>

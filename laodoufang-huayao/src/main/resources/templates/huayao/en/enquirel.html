@@ -1,4 +1,5 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -13,14 +14,14 @@
     <div class="headBar">
         <img class="bigLogo" src="/static/huayao/images/huayao-logo-big.png"/>
         <div class="languageSwitch fr">
-            <span class="lang on" lang="">中文</span>
+            <span class="lang" lang="">中文</span>
             <span style="margin: 0 12px;">|</span>
-            <span class="lang" lang="en">English</span>
+            <span class="lang on" lang="en">English</span>
         </div>
     </div>
 </div>
 <div class="backBar contain">
-    <a href="/">
+    <a th:href="${'/?lang='+lang}">
         <div class="backBarBtn fr">HOME</div>
     </a>
 </div>
@@ -28,49 +29,49 @@
     <div class="mainInfoBar"></div>
     <div class="formList">
         <div class="formL fl">
-            <p>我们的服务团队将协助您获取更丰富的资源与服务。</p>
-            <p style="margin-top: 370px;text-align: right;">联系方式</p>
+            <p>Our service team will assist you in obtaining more resources and services.</p>
+            <p style="margin-top: 370px;text-align: right;">Contact information:</p>
         </div>
         <div class="formR fl">
             <form action="" method="post">
-                <p>采购产品*</p>
+                <p>Procurement of products</p>
                 <select id="productId">
                     <option th:each="product : ${products}" th:if="${product.id != productId}"
-                            th:value="${product.name}"
-                            th:text="${product.name}">HUAYAO-DPPD
+                            th:value="${product.enName}"
+                            th:text="${product.enName}">HUAYAO-DPPD
                     </option>
                     <option th:each="product : ${products}" th:if="${product.id == productId}"
-                            th:value="${product.name}"
-                            th:text="${product.name}" th:selected="selected">HUAYAO-DPPD
+                            th:value="${product.enName}"
+                            th:text="${product.enName}" th:selected="selected">HUAYAO-DPPD
                     </option>
                 </select>
-                <p style="margin-top: 30px;">采购数量* （单位:kg）</p>
-                <input type="text" id="demand" value="" placeholder="请输入采购数量"/>
-                <p style="margin-top: 40px;">需求描述</p>
-                <textarea id="requirementDescription" rows="" cols="" placeholder="请帮助我们了解您的需求"></textarea>
+                <p style="margin-top: 30px;">Quantity(kg)</p>
+                <input type="text" id="demand" value="" placeholder="Please enter the purchase quantity"/>
+                <p style="margin-top: 40px;">Requirements</p>
+                <textarea name="" rows="" cols="" placeholder="Please let us know your requirements"></textarea>
 
                 <div style="margin-top: 10px;" class="clearfix">
                     <div class="fl" style="margin-right: 100px;">
-                        <p style="margin-top: 30px;">公司／单位名称</p>
-                        <input type="text" id="companyName" value="" placeholder="请输入企业名称"/>
+                        <p style="margin-top: 30px;">Company</p>
+                        <input type="text" id="companyName" value="" placeholder="Please enter your company name"/>
                     </div>
                     <div class="fl">
-                        <p style="margin-top: 30px;">联系邮箱* </p>
+                        <p style="margin-top: 30px;">Contact e-mail</p>
                         <input type="text" id="receiver" value="" placeholder=""/>
                     </div>
                 </div>
 
                 <div style="margin-top: 10px;" class="clearfix">
                     <div class="fl" style="margin-right: 100px;">
-                        <p style="margin-top: 30px;">国家／地区* </p>
+                        <p style="margin-top: 30px;">Country or Region</p>
                         <select id="district" onchange="chooseArea(this.id,this.value);">
-                            <option value="">请选择国家或地区</option>
+                            <option value="">Please select country or region</option>
                             <option value="000000">中华人民共和国</option>
                             <option value="999999">外国</option>
                         </select>
                     </div>
                     <div class="fl">
-                        <p style="margin-top: 30px;">联系电话* </p>
+                        <p style="margin-top: 30px;">Contact number</p>
                         <input type="text" id="phone" value="" placeholder=""/>
                     </div>
                 </div>
@@ -78,27 +79,27 @@
                 <div style="margin-top: 10px;" class="clearfix">
                     <div id="regionSelect">
                         <div class="fl" style="margin-right: 100px;">
-                            <p style="margin-top: 30px;">省* </p>
+                            <p style="margin-top: 30px;">Province* </p>
                             <select id="province" onchange="chooseArea(this.id,this.value);">
-                                <option value="">请选择省份</option>
+                                <option value="">Please select province.</option>
                             </select>
                         </div>
                         <div class="fl">
-                            <p style="margin-top: 30px;">区域* </p>
+                            <p style="margin-top: 30px;">District* </p>
                             <select id="region">
-                                <option value="">请选择区域</option>
+                                <option value="">Please select district.</option>
                             </select>
                         </div>
                     </div>
                     <div id="addressInput" style="display: none;">
                         <div class="fl">
-                            <p style="margin-top: 30px;">联系地址* </p>
+                            <p style="margin-top: 30px;">Better Address* </p>
                             <input type="text" id="betterAddress" value="" placeholder=""/>
                         </div>
                     </div>
                 </div>
             </form>
-            <div class="enquire__btn" style="margin-top: 70px;" onclick="sendMail();">发送邮箱</div>
+            <div class="enquire__btn" style="margin-top: 70px;" onclick="sendMail();">Send mail</div>
         </div>
     </div>
 </div>
@@ -106,12 +107,12 @@
     <div class="footerUp contain">
         <img src="/static/huayao/images/huayao-logo.png" class="footerLogo fl"/>
         <div class="footerUp__info fl" style="margin-right: 154px;">
-            <p><span class="footerUp__infoT">工作时间联系方式</span>+86 0510 88767887</p>
-            <p><span class="footerUp__infoT">传真</span>+86 0510 88762603</p>
-            <p><span class="footerUp__infoT">邮箱 </span>liye@hydppd.com</p>
+            <p><span class="footerUp__infoT">Contact</span>+86-0510-88767887</p>
+            <p><span class="footerUp__infoT"> Fax</span>+86-0510-88767887</p>
+            <p><span class="footerUp__infoT">Email </span>liye@hydppd.com</p>
         </div>
         <div class="footerUp__info fl">
-            <div class="fl" style="margin-right: 14px;"><span>地址   </span></div>
+            <div class="fl" style="margin-right: 14px;"><span>Address</span></div>
             <div class="fl">
                 <p>Donggang Town, </p>
                 <p>Xishan District, Wuxi, </p>
@@ -120,9 +121,7 @@
         </div>
     </div>
     <div class="footerDown contain">
-        <span style="color: #23aae5;margin-right: 36px;">我们的服务</span>
-        <span style="color: #9B9EA0;margin-right: 12px;">我们的产品优势</span>
-        <span>  独立的生产，交货及时，质量保证，产品多样化，广为流行，独特而实用。顾客至上，诚信为本，是不可改变的创业初衷和理念</span>
+        <span>Our service team will assist you in obtaining more resources and services.</span>
     </div>
 </div>
 <div class="toTop"></div>

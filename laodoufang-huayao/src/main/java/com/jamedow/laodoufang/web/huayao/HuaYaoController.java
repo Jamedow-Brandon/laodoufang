@@ -3,6 +3,7 @@ package com.jamedow.laodoufang.web.huayao;
 import com.jamedow.laodoufang.entity.Product;
 import com.jamedow.laodoufang.entity.ProductExample;
 import com.jamedow.laodoufang.mapper.ProductMapper;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,35 +24,39 @@ import java.util.List;
 @RequestMapping("/")
 public class HuaYaoController {
     static Logger logger = LoggerFactory.getLogger(HuaYaoController.class);
-    private final String COMPANY_MAIL = "company_mail";
     @Autowired
     private ProductMapper productMapper;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String index() {
-        return "huayao/index";
+    public ModelAndView index(String lang) {
+        ModelAndView view = new ModelAndView();
+        view.setViewName("huayao" + (StringUtils.isNotBlank(lang) ? "/" + lang : "") + "/index");
+        view.addObject("lang", lang);
+        return view;
     }
 
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
-    public ModelAndView detail(Integer productId) {
+    public ModelAndView detail(Integer productId, String lang) {
         ModelAndView view = new ModelAndView();
-        view.setViewName("huayao/detail");
+        view.setViewName("huayao" + (StringUtils.isNotBlank(lang) ? "/" + lang : "") + "/detail");
 
         Product product = productMapper.selectByPrimaryKey(productId);
 
         view.addObject("product", product);
+        view.addObject("lang", lang);
         return view;
     }
 
     @RequestMapping(value = "/enquirel", method = RequestMethod.GET)
-    public ModelAndView enquirel(Integer productId) {
+    public ModelAndView enquirel(Integer productId, String lang) {
         ModelAndView view = new ModelAndView();
-        view.setViewName("huayao/enquirel");
+        view.setViewName("huayao" + (StringUtils.isNotBlank(lang) ? "/" + lang : "") + "/enquirel");
 
         List<Product> products = productMapper.selectByExample(new ProductExample());
 
         view.addObject("products", products);
         view.addObject("productId", productId);
+        view.addObject("lang", lang);
         return view;
     }
 

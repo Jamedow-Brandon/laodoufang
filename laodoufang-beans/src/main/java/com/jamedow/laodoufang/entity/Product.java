@@ -7,6 +7,8 @@ public class Product {
 
     private String seoKeywords;
 
+    private String enName;
+
     public Integer getId() {
         return id;
     }
@@ -29,5 +31,13 @@ public class Product {
 
     public void setSeoKeywords(String seoKeywords) {
         this.seoKeywords = seoKeywords;
+    }
+
+    public String getEnName() {
+        return enName;
+    }
+
+    public void setEnName(String enName) {
+        this.enName = enName;
     }
 }
