@@ -35,13 +35,9 @@
             <form action="" method="post">
                 <p>采购产品*</p>
                 <select id="productId">
-                    <option th:each="product : ${products}" th:if="${product.id != productId}"
+                    <option th:each="product : ${products}"
                             th:value="${product.name}"
-                            th:text="${product.name}">HUAYAO-DPPD
-                    </option>
-                    <option th:each="product : ${products}" th:if="${product.id == productId}"
-                            th:value="${product.name}"
-                            th:text="${product.name}" th:selected="selected">HUAYAO-DPPD
+                            th:text="${product.name}" th:selected="(${product.id} == *{productId})">HUAYAO-DPPD
                     </option>
                 </select>
                 <p style="margin-top: 30px;">采购数量* （单位:kg）</p>
@@ -108,7 +104,7 @@
         <div class="footerUp__info fl" style="margin-right: 154px;">
             <p><span class="footerUp__infoT">工作时间联系方式</span>+86 0510 88767887</p>
             <p><span class="footerUp__infoT">传真</span>+86 0510 88762603</p>
-            <p><span class="footerUp__infoT">邮箱 </span>liye@hydppd.com</p>
+            <p><span class="footerUp__infoT">邮箱 </span>liye@huayao-chem.com</p>
         </div>
         <div class="footerUp__info fl">
             <div class="fl" style="margin-right: 14px;"><span>地址   </span></div>

@@ -52,7 +52,9 @@ public class HuaYaoController {
         ModelAndView view = new ModelAndView();
         view.setViewName("huayao" + (StringUtils.isNotBlank(lang) ? "/" + lang : "") + "/enquirel");
 
-        List<Product> products = productMapper.selectByExample(new ProductExample());
+        ProductExample example = new ProductExample();
+        example.setOrderByClause("id asc");
+        List<Product> products = productMapper.selectByExample(example);
 
         view.addObject("products", products);
         view.addObject("productId", productId);
