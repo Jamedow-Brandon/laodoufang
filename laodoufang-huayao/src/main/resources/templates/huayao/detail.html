@@ -255,12 +255,6 @@
         $toTop.on('click', function () {
             $(window).scrollTop(0)
         });
-
-        $(".languageSwitch .lang").on("click", function () {
-            var lang = $(this).attr("lang");
-            var currentUrl = window.location.pathname + window.location.search;
-            window.location.href = replaceUrlParams(currentUrl, {lang: lang});
-        });
     })();
 </script>
 </body>
