@@ -30,27 +30,31 @@ public class HuaYaoController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView index(String lang) {
         ModelAndView view = new ModelAndView();
-        view.setViewName("huayao" + (StringUtils.isNotBlank(lang) ? "/" + lang : "") + "/index");
-        view.addObject("lang", lang);
+
+        //初始化语言
+        initLanguage(view, lang, "/index");
+
         return view;
     }
+
 
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public ModelAndView detail(Integer productId, String lang) {
         ModelAndView view = new ModelAndView();
-        view.setViewName("huayao" + (StringUtils.isNotBlank(lang) ? "/" + lang : "") + "/detail");
 
         Product product = productMapper.selectByPrimaryKey(productId);
 
         view.addObject("product", product);
-        view.addObject("lang", lang);
+
+        //初始化语言
+        initLanguage(view, lang, "/detail");
+
         return view;
     }
 
     @RequestMapping(value = "/enquirel", method = RequestMethod.GET)
     public ModelAndView enquirel(Integer productId, String lang) {
         ModelAndView view = new ModelAndView();
-        view.setViewName("huayao" + (StringUtils.isNotBlank(lang) ? "/" + lang : "") + "/enquirel");
 
         ProductExample example = new ProductExample();
         example.setOrderByClause("id asc");
@@ -58,8 +62,21 @@ public class HuaYaoController {
 
         view.addObject("products", products);
         view.addObject("productId", productId);
-        view.addObject("lang", lang);
+
+        //初始化语言
+        initLanguage(view, lang, "/enquirel");
+
         return view;
     }
 
+    /**
+     * 初始化语言
+     *
+     * @param lang 语言
+     * @param view 页面
+     */
+    private void initLanguage(ModelAndView view, String lang, String viewName) {
+        view.setViewName("huayao" + (StringUtils.isNotBlank(lang) ? "/" + lang : "") + viewName);
+        view.addObject("lang", lang);
+    }
 }
