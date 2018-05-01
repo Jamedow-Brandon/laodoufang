@@ -26,9 +26,9 @@
                 <div>
                     <img class="showBar__pic" src="/static/huayao/images/1.png"/>
                 </div>
-                <p>HUAYAO</p>
+                <p>Antioxidant</p>
                 <div class="split"></div>
-                <p>DPPD</p>
+                <p>HUAYAO® DPPD</p>
                 <a th:href="${'/detail?productId=1&lang='+lang}">
                     <div class="showBar__btn">more</div>
                 </a>
@@ -38,9 +38,9 @@
                 <div>
                     <img class="showBar__pic" src="/static/huayao/images/2.png"/>
                 </div>
-                <p>HUAYAO</p>
+                <p>Antioxidant</p>
                 <div class="split"></div>
-                <p>DTPD</p>
+                <p>HUAYAO® DTPD</p>
                 <a th:href="${'/detail?productId=2&lang='+lang}">
                     <div class="showBar__btn">more</div>
                 </a>
@@ -50,9 +50,9 @@
                 <div>
                     <img class="showBar__pic" src="/static/huayao/images/3.png"/>
                 </div>
-                <p>HUAYAO</p>
+                <p>Adhesive</p>
                 <div class="split"></div>
-                <p>Adhesive RA</p>
+                <p>HUAYAO® RA</p>
                 <a th:href="${'/detail?productId=3&lang='+lang}">
                     <div class="showBar__btn">more</div>
                 </a>
@@ -64,7 +64,7 @@
                 </div>
                 <p>HUAYAO</p>
                 <div class="split"></div>
-                <p>Adhesive RA65</p>
+                <p>HUA YAO® RA-65</p>
                 <a th:href="${'/detail?productId=4&lang='+lang}">
                     <div class="showBar__btn">more</div>
                 </a>
@@ -123,25 +123,27 @@
         </div>
     </div>
 </div>
-<div style="background: #515151">
-    <div class="footerUp contain">
-        <img src="/static/huayao/images/huayao-logo.png" class="footerLogo fl"/>
-        <div class="footerUp__info fl" style="margin-right: 154px;">
-            <p><span class="footerUp__infoT">Contact</span>+86-0510-88767887</p>
-            <p><span class="footerUp__infoT"> Fax</span>+86-0510-88767887</p>
-            <p><span class="footerUp__infoT">Email </span>liye@huayao-chem.com</p>
-        </div>
-        <div class="footerUp__info fl">
-            <div class="fl" style="margin-right: 14px;"><span>Address</span></div>
-            <div class="fl">
-                <p>Donggang Town, </p>
-                <p>Xishan District, Wuxi, </p>
-                <p>Jiangsu Province</p>
+<div th:replace="huayao/en/footer :: copyright">
+    <div style="background: #515151">
+        <div class="footerUp contain">
+            <img src="/static/huayao/images/huayao-logo.png" class="footerLogo fl"/>
+            <div class="footerUp__info fl" style="margin-right: 154px;">
+                <p><span class="footerUp__infoT">Contact</span>+86-0510-88767887</p>
+                <p><span class="footerUp__infoT"> Fax</span>+86-0510-88767887</p>
+                <p><span class="footerUp__infoT">Email </span>liye@huayao-chem.com</p>
+            </div>
+            <div class="footerUp__info fl">
+                <div class="fl" style="margin-right: 14px;"><span>Address</span></div>
+                <div class="fl">
+                    <p>Donggang Town, </p>
+                    <p>Xishan District, Wuxi, </p>
+                    <p>Jiangsu Province</p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="footerDown contain">
-        <span>Our service team will assist you in obtaining more resources and services.</span>
+        <div class="footerDown contain">
+            <span>Our service team will assist you in obtaining more resources and services.</span>
+        </div>
     </div>
 </div>
 </body>
