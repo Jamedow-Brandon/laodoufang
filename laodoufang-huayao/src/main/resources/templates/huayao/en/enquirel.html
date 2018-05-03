@@ -38,7 +38,7 @@
                 <select id="productId">
                     <option th:each="product : ${products}"
                             th:value="${product.enName}"
-                            th:text="${product.enName}" th:selected="(${product.id} == *{productId})">HUAYAO-DPPD
+                            th:utext="${product.enName}" th:selected="(${product.id} == *{productId})">HUAYAO-DPPD
                     </option>
                 </select>
                 <p style="margin-top: 30px;">Quantity(kg)</p>
