@@ -43,7 +43,7 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>-->
 
-        <table tableName="sys_dict" domainObjectName="SysDict"
+        <table tableName="method_config" domainObjectName="MethodConfig"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">

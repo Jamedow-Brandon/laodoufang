@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jamedow.laodoufang.mapper.MethodInfoMapper">
+    <resultMap id="BaseResultMap" type="com.jamedow.laodoufang.entity.MethodInfo">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="method_code" jdbcType="VARCHAR" property="methodCode"/>
+        <result column="method_name" jdbcType="VARCHAR" property="methodName"/>
+        <result column="class_position" jdbcType="VARCHAR" property="classPosition"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    id, method_code, method_name, class_position
+  </sql>
+    <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.MethodInfoExample"
+            resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from method_info
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from method_info
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from method_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.MethodInfoExample">
+        delete from method_info
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.jamedow.laodoufang.entity.MethodInfo">
+    insert into method_info (id, method_code, method_name, 
+      class_position)
+    values (#{id,jdbcType=BIGINT}, #{methodCode,jdbcType=VARCHAR}, #{methodName,jdbcType=VARCHAR}, 
+      #{classPosition,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.MethodInfo">
+        insert into method_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="methodCode != null">
+                method_code,
+            </if>
+            <if test="methodName != null">
+                method_name,
+            </if>
+            <if test="classPosition != null">
+                class_position,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="methodCode != null">
+                #{methodCode,jdbcType=VARCHAR},
+            </if>
+            <if test="methodName != null">
+                #{methodName,jdbcType=VARCHAR},
+            </if>
+            <if test="classPosition != null">
+                #{classPosition,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.jamedow.laodoufang.entity.MethodInfoExample"
+            resultType="java.lang.Long">
+        select count(*) from method_info
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update method_info
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=BIGINT},
+            </if>
+            <if test="record.methodCode != null">
+                method_code = #{record.methodCode,jdbcType=VARCHAR},
+            </if>
+            <if test="record.methodName != null">
+                method_name = #{record.methodName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.classPosition != null">
+                class_position = #{record.classPosition,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update method_info
+        set id = #{record.id,jdbcType=BIGINT},
+        method_code = #{record.methodCode,jdbcType=VARCHAR},
+        method_name = #{record.methodName,jdbcType=VARCHAR},
+        class_position = #{record.classPosition,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.jamedow.laodoufang.entity.MethodInfo">
+        update method_info
+        <set>
+            <if test="methodCode != null">
+                method_code = #{methodCode,jdbcType=VARCHAR},
+            </if>
+            <if test="methodName != null">
+                method_name = #{methodName,jdbcType=VARCHAR},
+            </if>
+            <if test="classPosition != null">
+                class_position = #{classPosition,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.MethodInfo">
+    update method_info
+    set method_code = #{methodCode,jdbcType=VARCHAR},
+      method_name = #{methodName,jdbcType=VARCHAR},
+      class_position = #{classPosition,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
