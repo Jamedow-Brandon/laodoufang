@@ -1,7 +1,7 @@
 logging:
   level:
     root: info
-    com.jamedow.laodoufang: debug
+    com.jamedow.laodoufang: info
 #  file: spring.log
 ##服务启动时，使用随机端口
 server:
@@ -15,13 +15,25 @@ spring:
     url: jdbc:mysql://106.14.210.31:3306/laodoufang?useUnicode=true&characterEncoding=utf-8
     username: root
     password: Zhangliang@520
-  http:
-    multipart:
-      max-file-size: 20Mb
-      max-request-size: 20Mb
-      enabled: true
-      resolve-lazily: false
-      location: upload/userfiles
+#  redis:
+#    #cluster:
+#      #nodes:
+#        #- 127.0.0.1:6379
+#    database: 0
+#    host: 106.14.210.31
+#    port: 6379
+#    timeout: 5000
+#    pool:
+#      max-idle: 10
+#      min-idle: 0
+#      max-active: 8
+#      max-wait: 1000
+  thymeleaf:
+      mode: LEGACYHTML5
+      cache: false
+      prefix: classpath:/templates/
+      suffix: .html
+      encoding: UTF-8
 
 mybatis:
     typeAliasesPackage: com.jamedow.laodoufang

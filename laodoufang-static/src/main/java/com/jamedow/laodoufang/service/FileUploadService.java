@@ -8,6 +8,7 @@ import com.aliyun.oss.model.*;
 import com.jamedow.laodoufang.entity.BaseAttachment;
 import com.jamedow.laodoufang.mapper.BaseAttachmentMapper;
 import com.jamedow.utils.UUIDHexGenerator;
+import lombok.Data;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +30,7 @@ import java.util.List;
  * <p>
  * Created by Administrator on 2018/1/24.
  */
+@Data
 @Service
 @ConfigurationProperties(prefix = "oss")
 public class FileUploadService {
@@ -188,61 +190,5 @@ public class FileUploadService {
         FileUtils.copyInputStreamToFile(uploadFile.getInputStream(), excelFile);
         return excelFile;
 
-    }
-
-    public String getEndpoint() {
-        return endpoint;
-    }
-
-    public void setEndpoint(String endpoint) {
-        this.endpoint = endpoint;
-    }
-
-    public String getAccessKeyId() {
-        return accessKeyId;
-    }
-
-    public void setAccessKeyId(String accessKeyId) {
-        this.accessKeyId = accessKeyId;
-    }
-
-    public String getAccessKeySecret() {
-        return accessKeySecret;
-    }
-
-    public void setAccessKeySecret(String accessKeySecret) {
-        this.accessKeySecret = accessKeySecret;
-    }
-
-    public String getBucketName() {
-        return bucketName;
-    }
-
-    public void setBucketName(String bucketName) {
-        this.bucketName = bucketName;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public String getLocalFilePath() {
-        return localFilePath;
-    }
-
-    public void setLocalFilePath(String localFilePath) {
-        this.localFilePath = localFilePath;
-    }
-
-    public String getImgServer() {
-        return imgServer;
-    }
-
-    public void setImgServer(String imgServer) {
-        this.imgServer = imgServer;
     }
 }

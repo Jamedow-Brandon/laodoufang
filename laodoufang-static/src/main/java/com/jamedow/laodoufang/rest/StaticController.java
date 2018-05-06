@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.util.List;
 
@@ -30,8 +29,7 @@ public class StaticController {
     private FileUploadService fileUploadService;
 
     @PostMapping(value = "upload", produces = "application/json;charset=utf-8")
-    public Object upload(MultipartHttpServletRequest request) {
-        List<MultipartFile> files = request.getFiles("file");
+    public Object upload(MultipartFile[] files) {
         JSONArray results = new JSONArray();
         for (MultipartFile file : files) {
             JSONObject result = new JSONObject();
