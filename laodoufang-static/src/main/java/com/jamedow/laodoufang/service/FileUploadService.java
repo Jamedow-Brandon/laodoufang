@@ -91,10 +91,10 @@ public class FileUploadService {
             logger.debug("Request ID:      " + oe.getRequestId());
             logger.debug("Host ID:           " + oe.getHostId());
         } catch (ClientException ce) {
-            logger.debug("Caught an ClientException, which means the client encountered "
+            logger.error("Caught an ClientException, which means the client encountered "
                     + "a serious internal problem while trying to communicate with OSS, "
                     + "such as not being able to access the network.");
-            logger.debug("Error Message: " + ce.getMessage());
+            logger.error("Error Message: " + ce.getMessage());
         } catch (Throwable e) {
             e.printStackTrace();
         } finally {

@@ -46,4 +46,4 @@ oss:
   accessKeySecret: hscS01ryn5Ykk57NmXyfEBVMif0gFr
   bucketName: laodoufang
   localFilePath: laodoufang
-  imgServer: image.laodou.site
+  imgServer: http://image.laodou.site

@@ -27,13 +27,21 @@ public class AttachmentController {
     @Autowired
     private BaseAttachmentMapper baseAttachmentMapper;
 
-    @GetMapping(value = "list")
+    @GetMapping(value = "images")
     public ModelAndView list() {
         ModelAndView view = new ModelAndView();
-        view.setViewName("attachment/list");
+        view.setViewName("attachment/images");
 
         List<BaseAttachment> attachments = baseAttachmentMapper.selectByExample(new BaseAttachmentExample());
         view.addObject("attachments", attachments);
+
+        return view;
+    }
+
+    @GetMapping(value = "upload")
+    public ModelAndView upload() {
+        ModelAndView view = new ModelAndView();
+        view.setViewName("attachment/upload");
 
         return view;
     }
