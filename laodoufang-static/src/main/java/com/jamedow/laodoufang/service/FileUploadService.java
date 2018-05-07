@@ -84,12 +84,12 @@ public class FileUploadService {
                     uploadResult.getMultipartUploadResult();
             logger.debug(multipartUploadResult.getETag());
         } catch (OSSException oe) {
-            logger.debug("Caught an OSSException, which means your request made it to OSS, "
+            logger.error("Caught an OSSException, which means your request made it to OSS, "
                     + "but was rejected with an error response for some reason.");
-            logger.debug("Error Message: " + oe.getErrorCode());
-            logger.debug("Error Code:       " + oe.getErrorCode());
-            logger.debug("Request ID:      " + oe.getRequestId());
-            logger.debug("Host ID:           " + oe.getHostId());
+            logger.error("Error Message: " + oe.getErrorCode());
+            logger.error("Error Code:       " + oe.getErrorCode());
+            logger.error("Request ID:      " + oe.getRequestId());
+            logger.error("Host ID:           " + oe.getHostId());
         } catch (ClientException ce) {
             logger.error("Caught an ClientException, which means the client encountered "
                     + "a serious internal problem while trying to communicate with OSS, "
