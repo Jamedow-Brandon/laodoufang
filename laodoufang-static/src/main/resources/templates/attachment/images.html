@@ -14,11 +14,9 @@
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-12 column">
-            <!--<div class="row">-->
-            <!--<div class="col-md-4 column" th:each="attachment : ${attachments}">-->
-            <!--<img style="width:250px;margin:15px;" th:src="${attachment.remotePath}" alt=""/>-->
-            <!--</div>-->
-            <!--</div>-->
+
+            <!-- nav -->
+            <div th:replace="attachment/common/nav :: nav"></div>
 
             <div class="col-md-3" th:each="attachment:${attachments}">
                 <div class="thumbnail">
