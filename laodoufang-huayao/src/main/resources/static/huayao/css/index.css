@@ -360,18 +360,17 @@
 
 .formR select {
     padding: 9px;
-    width: 294px;
-    height: 36px;
+    width: 313px;
+    height: 40px;
     border: none;
     border: 1px solid #cccccc;
+    font-size: 12px;
 }
 
 .formR input {
     padding: 9px;
     width: 294px;
-    height: 36px;
-    width: 276px \9;
-    height: 18px \9;
+    height: 16px;
     border: none;
     border: 1px solid #cccccc;
 }
