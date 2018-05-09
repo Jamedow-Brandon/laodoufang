@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jamedow.laodoufang.mapper.ProductMapper">
-    <resultMap id="BaseResultMap" type="com.jamedow.laodoufang.entity.Product">
+<mapper namespace="com.jamedow.laodoufang.mapper.ProductSeoKeywordsMapper">
+    <resultMap id="BaseResultMap" type="com.jamedow.laodoufang.entity.ProductSeoKeywords">
         <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="name" jdbcType="VARCHAR" property="name"/>
-        <result column="seo_keywords" jdbcType="VARCHAR" property="seoKeywords"/>
-        <result column="en_name" jdbcType="VARCHAR" property="enName"/>
-        <result column="en_seo_keywords" jdbcType="VARCHAR" property="enSeoKeywords"/>
+        <result column="keyword" jdbcType="VARCHAR" property="keyword"/>
+        <result column="product_id" jdbcType="INTEGER" property="productId"/>
+        <result column="is_deleted" jdbcType="VARCHAR" property="isDeleted"/>
     </resultMap>
     <sql id="Example_Where_Clause">
         <where>
@@ -69,16 +68,17 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, name, seo_keywords, en_name, en_seo_keywords
+    id, keyword, product_id, is_deleted
   </sql>
-    <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.ProductExample" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.ProductSeoKeywordsExample"
+            resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
         </if>
         'true' as QUERYID,
         <include refid="Base_Column_List"/>
-        from huayao_product
+        from huayao_product_seo_keywords
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
@@ -89,86 +89,77 @@
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from huayao_product
+        from huayao_product_seo_keywords
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from huayao_product
+    delete from huayao_product_seo_keywords
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.ProductExample">
-        delete from huayao_product
+    <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.ProductSeoKeywordsExample">
+        delete from huayao_product_seo_keywords
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.jamedow.laodoufang.entity.Product">
-    insert into huayao_product (id, name, seo_keywords, 
-      en_name, en_seo_keywords)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{seoKeywords,jdbcType=VARCHAR}, 
-      #{enName,jdbcType=VARCHAR}, #{enSeoKeywords,jdbcType=VARCHAR})
+    <insert id="insert" parameterType="com.jamedow.laodoufang.entity.ProductSeoKeywords">
+    insert into huayao_product_seo_keywords (id, keyword, product_id, 
+      is_deleted)
+    values (#{id,jdbcType=INTEGER}, #{keyword,jdbcType=VARCHAR}, #{productId,jdbcType=INTEGER}, 
+      #{isDeleted,jdbcType=VARCHAR})
   </insert>
-    <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.Product">
-        insert into huayao_product
+    <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.ProductSeoKeywords">
+        insert into huayao_product_seo_keywords
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
             </if>
-            <if test="name != null">
-                name,
+            <if test="keyword != null">
+                keyword,
             </if>
-            <if test="seoKeywords != null">
-                seo_keywords,
+            <if test="productId != null">
+                product_id,
             </if>
-            <if test="enName != null">
-                en_name,
-            </if>
-            <if test="enSeoKeywords != null">
-                en_seo_keywords,
+            <if test="isDeleted != null">
+                is_deleted,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 #{id,jdbcType=INTEGER},
             </if>
-            <if test="name != null">
-                #{name,jdbcType=VARCHAR},
+            <if test="keyword != null">
+                #{keyword,jdbcType=VARCHAR},
             </if>
-            <if test="seoKeywords != null">
-                #{seoKeywords,jdbcType=VARCHAR},
+            <if test="productId != null">
+                #{productId,jdbcType=INTEGER},
             </if>
-            <if test="enName != null">
-                #{enName,jdbcType=VARCHAR},
-            </if>
-            <if test="enSeoKeywords != null">
-                #{enSeoKeywords,jdbcType=VARCHAR},
+            <if test="isDeleted != null">
+                #{isDeleted,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.jamedow.laodoufang.entity.ProductExample"
+    <select id="countByExample" parameterType="com.jamedow.laodoufang.entity.ProductSeoKeywordsExample"
             resultType="java.lang.Long">
-        select count(*) from huayao_product
+        select count(*) from huayao_product_seo_keywords
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </select>
     <update id="updateByExampleSelective" parameterType="map">
-        update huayao_product
+        update huayao_product_seo_keywords
         <set>
             <if test="record.id != null">
                 id = #{record.id,jdbcType=INTEGER},
             </if>
-            <if test="record.name != null">
-                name = #{record.name,jdbcType=VARCHAR},
+            <if test="record.keyword != null">
+                keyword = #{record.keyword,jdbcType=VARCHAR},
             </if>
-            <if test="record.seoKeywords != null">
-                seo_keywords = #{record.seoKeywords,jdbcType=VARCHAR},
+            <if test="record.productId != null">
+                product_id = #{record.productId,jdbcType=INTEGER},
             </if>
-            <if test="record.enName != null">
-                en_name = #{record.enName,jdbcType=VARCHAR},
-            </if>
-            <if test="record.enSeoKeywords != null">
-                en_seo_keywords = #{record.enSeoKeywords,jdbcType=VARCHAR},
+            <if test="record.isDeleted != null">
+                is_deleted = #{record.isDeleted,jdbcType=VARCHAR},
             </if>
         </set>
         <if test="_parameter != null">
@@ -176,40 +167,35 @@
         </if>
     </update>
     <update id="updateByExample" parameterType="map">
-        update huayao_product
+        update huayao_product_seo_keywords
         set id = #{record.id,jdbcType=INTEGER},
-        name = #{record.name,jdbcType=VARCHAR},
-        seo_keywords = #{record.seoKeywords,jdbcType=VARCHAR},
-        en_name = #{record.enName,jdbcType=VARCHAR},
-        en_seo_keywords = #{record.enSeoKeywords,jdbcType=VARCHAR}
+        keyword = #{record.keyword,jdbcType=VARCHAR},
+        product_id = #{record.productId,jdbcType=INTEGER},
+        is_deleted = #{record.isDeleted,jdbcType=VARCHAR}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.jamedow.laodoufang.entity.Product">
-        update huayao_product
+    <update id="updateByPrimaryKeySelective" parameterType="com.jamedow.laodoufang.entity.ProductSeoKeywords">
+        update huayao_product_seo_keywords
         <set>
-            <if test="name != null">
-                name = #{name,jdbcType=VARCHAR},
+            <if test="keyword != null">
+                keyword = #{keyword,jdbcType=VARCHAR},
             </if>
-            <if test="seoKeywords != null">
-                seo_keywords = #{seoKeywords,jdbcType=VARCHAR},
+            <if test="productId != null">
+                product_id = #{productId,jdbcType=INTEGER},
             </if>
-            <if test="enName != null">
-                en_name = #{enName,jdbcType=VARCHAR},
-            </if>
-            <if test="enSeoKeywords != null">
-                en_seo_keywords = #{enSeoKeywords,jdbcType=VARCHAR},
+            <if test="isDeleted != null">
+                is_deleted = #{isDeleted,jdbcType=VARCHAR},
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.Product">
-    update huayao_product
-    set name = #{name,jdbcType=VARCHAR},
-      seo_keywords = #{seoKeywords,jdbcType=VARCHAR},
-      en_name = #{enName,jdbcType=VARCHAR},
-      en_seo_keywords = #{enSeoKeywords,jdbcType=VARCHAR}
+    <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.ProductSeoKeywords">
+    update huayao_product_seo_keywords
+    set keyword = #{keyword,jdbcType=VARCHAR},
+      product_id = #{productId,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -4,14 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
-    <title th:text="${product.name}"></title>
+    <title th:text="${product.seoKeywords}"></title>
     <meta name="keywords" th:content="${product.seoKeywords}">
     <link rel="shortcut icon" href="/static/huayao/images/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="/static/huayao/css/reset.css?v=05091225"/>
-    <link rel="stylesheet" type="text/css" href="/static/huayao/css/index.css?v=05091225"/>
+    <link rel="stylesheet" type="text/css" href="/static/huayao/css/reset.css?v=05091425"/>
+    <link rel="stylesheet" type="text/css" href="/static/huayao/css/index.css?v=05091425"/>
 </head>
 
 <body>
+
+<haading>
+    <div class="seoKeywords">
+        <ul>
+            <li th:each="seoKeyword : ${seoKeywords}"><h3 th:text="${seoKeyword.keyword}"></h3></li>
+        </ul>
+    </div>
+</haading>
+
 <div class="contain">
     <div class="headBar">
         <img class="bigLogo" src="/static/huayao/images/huayao-logo-big.png"/>
@@ -231,8 +240,8 @@
 
 <input type="hidden" id="productId" th:value="${product.id}"/>
 <div class="toTop"></div>
-<script src="/static/huayao/js/jquery-1.11.1.min.js?v=05091225"></script>
-<script src="/static/script/application.js?v=05091225"></script>
+<script src="/static/huayao/js/jquery-1.11.1.min.js?v=05091425"></script>
+<script src="/static/script/application.js?v=05091425"></script>
 <script type="text/javascript">
     (function () {
         var $toTop = $('.toTop');

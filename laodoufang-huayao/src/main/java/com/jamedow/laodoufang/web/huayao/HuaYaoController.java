@@ -2,7 +2,10 @@ package com.jamedow.laodoufang.web.huayao;
 
 import com.jamedow.laodoufang.entity.Product;
 import com.jamedow.laodoufang.entity.ProductExample;
+import com.jamedow.laodoufang.entity.ProductSeoKeywords;
+import com.jamedow.laodoufang.entity.ProductSeoKeywordsExample;
 import com.jamedow.laodoufang.mapper.ProductMapper;
+import com.jamedow.laodoufang.mapper.ProductSeoKeywordsMapper;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +29,8 @@ public class HuaYaoController {
     static Logger logger = LoggerFactory.getLogger(HuaYaoController.class);
     @Autowired
     private ProductMapper productMapper;
+    @Autowired
+    private ProductSeoKeywordsMapper seoKeywordsMapper;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView index(String lang) {
@@ -44,6 +49,11 @@ public class HuaYaoController {
 
         Product product = productMapper.selectByPrimaryKey(productId);
 
+        ProductSeoKeywordsExample seoKeywordsExample = new ProductSeoKeywordsExample();
+        seoKeywordsExample.createCriteria().andProductIdEqualTo(productId);
+        List<ProductSeoKeywords> seoKeywords = seoKeywordsMapper.selectByExample(seoKeywordsExample);
+
+        view.addObject("seoKeywords", seoKeywords);
         view.addObject("product", product);
 
         //初始化语言

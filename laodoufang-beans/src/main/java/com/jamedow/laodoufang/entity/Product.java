@@ -9,6 +9,8 @@ public class Product {
 
     private String enName;
 
+    private String enSeoKeywords;
+
     public Integer getId() {
         return id;
     }
@@ -39,5 +41,13 @@ public class Product {
 
     public void setEnName(String enName) {
         this.enName = enName;
+    }
+
+    public String getEnSeoKeywords() {
+        return enSeoKeywords;
+    }
+
+    public void setEnSeoKeywords(String enSeoKeywords) {
+        this.enSeoKeywords = enSeoKeywords;
     }
 }

@@ -373,6 +373,76 @@ public class ProductExample {
             addCriterion("en_name not between", value1, value2, "enName");
             return (Criteria) this;
         }
+
+        public Criteria andEnSeoKeywordsIsNull() {
+            addCriterion("en_seo_keywords is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnSeoKeywordsIsNotNull() {
+            addCriterion("en_seo_keywords is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnSeoKeywordsEqualTo(String value) {
+            addCriterion("en_seo_keywords =", value, "enSeoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnSeoKeywordsNotEqualTo(String value) {
+            addCriterion("en_seo_keywords <>", value, "enSeoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnSeoKeywordsGreaterThan(String value) {
+            addCriterion("en_seo_keywords >", value, "enSeoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnSeoKeywordsGreaterThanOrEqualTo(String value) {
+            addCriterion("en_seo_keywords >=", value, "enSeoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnSeoKeywordsLessThan(String value) {
+            addCriterion("en_seo_keywords <", value, "enSeoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnSeoKeywordsLessThanOrEqualTo(String value) {
+            addCriterion("en_seo_keywords <=", value, "enSeoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnSeoKeywordsLike(String value) {
+            addCriterion("en_seo_keywords like", value, "enSeoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnSeoKeywordsNotLike(String value) {
+            addCriterion("en_seo_keywords not like", value, "enSeoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnSeoKeywordsIn(List<String> values) {
+            addCriterion("en_seo_keywords in", values, "enSeoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnSeoKeywordsNotIn(List<String> values) {
+            addCriterion("en_seo_keywords not in", values, "enSeoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnSeoKeywordsBetween(String value1, String value2) {
+            addCriterion("en_seo_keywords between", value1, value2, "enSeoKeywords");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnSeoKeywordsNotBetween(String value1, String value2) {
+            addCriterion("en_seo_keywords not between", value1, value2, "enSeoKeywords");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

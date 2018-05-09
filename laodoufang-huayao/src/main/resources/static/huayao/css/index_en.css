@@ -21,7 +21,7 @@
 
 .bigLogo {
     margin-top: 100px;
-    margin-left: 125px;
+    margin-left: 170px;
 }
 
 .languageSwitch {
@@ -389,6 +389,11 @@
 
 .footerUp__infoT {
     margin-right: 14px;
+}
+
+.seoKeywords {
+    margin-left: -3000px;
+    height: 0px;
 }
 
 /*# sourceMappingURL=index_en.css.map */
