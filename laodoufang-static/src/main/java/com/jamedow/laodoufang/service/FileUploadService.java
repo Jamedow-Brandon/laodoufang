@@ -6,6 +6,7 @@ import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.OSSException;
 import com.aliyun.oss.model.*;
 import com.jamedow.laodoufang.entity.BaseAttachment;
+import com.jamedow.laodoufang.entity.BaseAttachmentExample;
 import com.jamedow.laodoufang.mapper.BaseAttachmentMapper;
 import com.jamedow.utils.UUIDHexGenerator;
 import lombok.Data;
@@ -131,6 +132,10 @@ public class FileUploadService {
                 client.putObject(bucketName, resourceId, instream);
                 logger.debug("Succeed to put object " + resourceId);
                 keys.add(resourceId);
+
+                BaseAttachmentExample attachmentExample = new BaseAttachmentExample();
+                attachmentExample.createCriteria().andResourceIdEqualTo(resourceId);
+                attachmentMapper.deleteByExample(attachmentExample);
             }
 
             /*
@@ -169,7 +174,7 @@ public class FileUploadService {
      * 创建OSS文件存储服务连接
      */
     private void createOSSClient() {
-          /*
+        /*
          * Constructs a client instance with your account for accessing OSS
          */
         ClientConfiguration conf = new ClientConfiguration();

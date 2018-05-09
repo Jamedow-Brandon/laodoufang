@@ -17,19 +17,22 @@
 
             <!-- nav -->
             <div th:replace="attachment/common/nav :: nav"></div>
+        </div>
+    </div>
+    <div id="my-gallery-container">
 
-            <div class="col-md-3" th:each="attachment:${attachments}">
-                <div class="thumbnail">
-                    <img alt="300x200" th:src="${attachment.remotePath}"/>
-                    <div class="caption">
-                        <h5 th:text="${attachment.name}">Thumbnail label</h5>
-                        <p>
-                            <button th:id="${attachment.id}" class="btn btn-primary"
-                                    th:data-clipboard-text="${attachment.remotePath}">复制链接
-                            </button>
-                            <a class="btn" href="#">删除</a>
-                        </p>
-                    </div>
+
+        <div class="item" th:each="attachment:${attachments}">
+            <div class="thumbnail">
+                <img alt="300x200" th:src="${attachment.remotePath}"/>
+                <div class="caption">
+                    <h5 th:text="${attachment.name}">Thumbnail label</h5>
+                    <p>
+                        <button th:id="${attachment.id}" class="btn btn-primary"
+                                th:data-clipboard-text="${attachment.remotePath}">复制链接
+                        </button>
+                        <a class="btn delete" th:resourceId="${attachment.resourceId}">删除</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -45,7 +48,22 @@
 <script src="/static/lib/clipboard/clipboard.js"></script>
 <script>
     $(function () {
-        $("#my-gallery-container").mpmansory();
+        $("#my-gallery-container").mpmansory(
+            {
+                childrenClass: '', // default is a div
+                columnClasses: '', //add classes to items
+                breakpoints: {
+                    lg: 3,
+                    md: 4,
+                    sm: 6,
+                    xs: 12
+                },
+                distributeBy: {order: false, height: false, attr: 'data-order', attrOrder: 'asc'},
+                onload: function (items) {
+                    //make somthing with items
+                }
+            }
+        );
 
         $('.btn').tooltip({
             trigger: 'click',
@@ -76,6 +94,24 @@
         clipboard.on('error', function (e) {
             setTooltip(e.trigger.id, '复制失败!');
             hideTooltip(e.trigger.id);
+        });
+
+        $(".delete").on("click", function () {
+            if (!confirm("确定删除？")) {
+                return;
+            }
+            var $image = $(this);
+            var resourceId = $image.attr("resourceId");
+            $.ajax({
+                url: "/static/delete",
+                method: "post",
+                data: {
+                    resourceIds: resourceId
+                },
+                success: function (data) {
+                    $image.parents('.imageFrame').remove();
+                }
+            });
         });
     });
 </script>

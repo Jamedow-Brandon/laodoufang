@@ -21,13 +21,13 @@ import java.util.List;
  */
 @Controller
 @EnableAutoConfiguration
-@RequestMapping("/attachment")
+@RequestMapping("/")
 public class AttachmentController {
     private Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private BaseAttachmentMapper baseAttachmentMapper;
 
-    @GetMapping(value = "images")
+    @GetMapping(value = "")
     public ModelAndView list() {
         ModelAndView view = new ModelAndView();
         view.setViewName("attachment/images");
