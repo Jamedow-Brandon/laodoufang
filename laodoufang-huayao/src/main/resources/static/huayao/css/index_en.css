@@ -21,6 +21,7 @@
 
 .bigLogo {
     margin-top: 100px;
+    margin-left: 125px;
 }
 
 .languageSwitch {
@@ -190,6 +191,7 @@
 .footerUp {
     width: 1628px;
     padding-top: 80px;
+    padding-left: 80px;
     height: 153px;
     background: #515151;
     border-bottom: 1px solid #606060;
@@ -255,7 +257,7 @@
     margin: 0 auto;
     height: 112px;
     border-bottom: 1px solid #cccccc;
-    font-size: 24px;
+    font-size: 22px;
     color: #676767;
     line-height: 130px;
 }
