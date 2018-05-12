@@ -14,6 +14,8 @@
 <body>
 
 <haading>
+    <h1 class="seoKeywords" th:text="">${product.enName}</h1>
+
     <div class="seoKeywords">
         <ul>
             <li th:each="seoKeyword : ${seoKeywords}"><h3 th:text="${seoKeyword.keyword}"></h3></li>
