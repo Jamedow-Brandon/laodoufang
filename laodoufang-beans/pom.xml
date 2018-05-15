@@ -43,6 +43,12 @@
             <version>1.16.20</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.jamedow.laodoufang</groupId>
+            <artifactId>laodoufang-utils</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 

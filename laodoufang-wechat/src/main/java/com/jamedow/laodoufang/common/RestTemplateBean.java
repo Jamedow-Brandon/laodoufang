@@ -1,6 +1,6 @@
 package com.jamedow.laodoufang.common;
 
-import com.jamedow.utils.UrlSortUtils;
+import com.jamedow.laodoufang.utils.UrlSortUtils;
 import net.sf.json.JSONObject;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.StringUtils;

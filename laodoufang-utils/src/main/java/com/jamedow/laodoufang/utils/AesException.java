@@ -1,4 +1,4 @@
-package com.jamedow.utils;
+package com.jamedow.laodoufang.utils;
 
 @SuppressWarnings("serial")
 public class AesException extends Exception {

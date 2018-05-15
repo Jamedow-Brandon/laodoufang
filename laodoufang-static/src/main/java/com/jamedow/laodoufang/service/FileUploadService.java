@@ -8,7 +8,7 @@ import com.aliyun.oss.model.*;
 import com.jamedow.laodoufang.entity.BaseAttachment;
 import com.jamedow.laodoufang.entity.BaseAttachmentExample;
 import com.jamedow.laodoufang.mapper.BaseAttachmentMapper;
-import com.jamedow.utils.UUIDHexGenerator;
+import com.jamedow.laodoufang.utils.UUIDHexGenerator;
 import lombok.Data;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;

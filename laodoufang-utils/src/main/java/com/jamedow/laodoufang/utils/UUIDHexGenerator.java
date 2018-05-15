@@ -1,4 +1,4 @@
-package com.jamedow.utils;
+package com.jamedow.laodoufang.utils;
 
 
 import java.net.InetAddress;
