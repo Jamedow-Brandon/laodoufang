@@ -1,11 +1,9 @@
 package com.jamedow.laodoufang.system.bean;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * return code and message,you can create your code and message here.
  */
-@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ReturnResult {
     /**
      * 操作成功

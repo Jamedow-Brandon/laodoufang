@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -43,14 +44,14 @@ public class HuaYaoController {
     }
 
 
-    @RequestMapping(value = "/detail", method = RequestMethod.GET)
-    public ModelAndView detail(Integer productId, String lang) {
+    @RequestMapping(value = "/detail/{productId}", method = RequestMethod.GET)
+    public ModelAndView detail(@PathVariable Integer productId, String lang) {
         ModelAndView view = new ModelAndView();
 
         Product product = productMapper.selectByPrimaryKey(productId);
 
         ProductSeoKeywordsExample seoKeywordsExample = new ProductSeoKeywordsExample();
-        seoKeywordsExample.createCriteria().andProductIdEqualTo(productId);
+        seoKeywordsExample.createCriteria().andProductIdEqualTo(productId).andIsDeletedEqualTo("0");
         List<ProductSeoKeywords> seoKeywords = seoKeywordsMapper.selectByExample(seoKeywordsExample);
 
         view.addObject("seoKeywords", seoKeywords);
