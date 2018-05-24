@@ -13,16 +13,10 @@
 
 <body>
 
-<haading>
-    <h1 class="seoKeywords" th:text="${product.enName}"></h1>
-    <h2 class="seoKeywords" th:text="${product.seoKeywords}"></h2>
-
-    <div class="seoKeywords">
-        <ul>
-            <li th:each="seoKeyword : ${seoKeywords}"><h3 th:text="${seoKeyword.keyword}"></h3></li>
-        </ul>
-    </div>
-</haading>
+<header>
+    <h1 class="seoKeywords" th:text="${product.enSeoKeywords}"></h1>
+    <span class="seoKeywords" th:text="${product.enSeoKeywords}"></span>
+</header>
 
 <div class="contain">
     <div class="headBar">
