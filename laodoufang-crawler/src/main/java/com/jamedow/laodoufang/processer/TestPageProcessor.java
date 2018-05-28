@@ -38,7 +38,7 @@ public class TestPageProcessor implements PageProcessor {
     // process是定制爬虫逻辑的核心接口，在这里编写抽取逻辑
     public void process(Page page) {
         // 部分二：定义如何抽取页面信息，并保存下来
-        if (page.getHtml().xpath("//*[@id=\"tongji_title\"]") != null) {
+        if (page.getHtml().xpath("//*[@id=\"tongji_title\"]") == null) {
             page.setSkip(true);
         }
 //            page.setSkip(true);
@@ -80,7 +80,7 @@ public class TestPageProcessor implements PageProcessor {
 
 
         // 部分三：从页面发现后续的url地址来抓取
-        page.addTargetRequests(page.getHtml().links().regex("(http://www.meishij.net/zuofa/[\\w\\-]+.html)").all());
-        page.addTargetRequests(page.getHtml().links().regex("(http://www.meishij.net/[\\w\\-]+/[\\w\\-]+/[\\w\\-]+/)").all());
+        page.addTargetRequests(page.getHtml().links().regex("(https://www.meishij.net/zuofa/[\\w\\-]+.html)").all());
+        page.addTargetRequests(page.getHtml().links().regex("(https://www.meishij.net/[\\w\\-]+/[\\w\\-]+/[\\w\\-]+/)").all());
     }
 }

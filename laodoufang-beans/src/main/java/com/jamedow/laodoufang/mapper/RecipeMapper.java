@@ -2,13 +2,11 @@ package com.jamedow.laodoufang.mapper;
 
 import com.jamedow.laodoufang.entity.Recipe;
 import com.jamedow.laodoufang.entity.RecipeExample;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Mapper
 @Repository
 public interface RecipeMapper {
     long countByExample(RecipeExample example);

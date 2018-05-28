@@ -55,6 +55,25 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!--jamedow dependencies-->
+        <dependency>
+            <groupId>com.jamedow.laodoufang</groupId>
+            <artifactId>laodoufang-beans</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jamedow.laodoufang</groupId>
+            <artifactId>laodoufang-utils</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jamedow.laodoufang</groupId>
+            <artifactId>laodoufang-plugin</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!--web magic-->
         <dependency>
             <groupId>us.codecraft</groupId>
@@ -78,6 +97,17 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>utf-8</encoding>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -31,7 +31,7 @@ public class TestPipeline implements Pipeline {
         recipe.setCreateTime(new Date());
         recipe.setImgUrl(fields.get("centerImg") == null ? "" : fields.get("centerImg").toString());
         recipe.setIsOfficial("0");
-        recipe.setTags(fields.get("ingredients").toString());
+//        recipe.setTags(fields.get("ingredients").toString());
         recipe.setIngredient(fields.get("ingredient").toString());
         recipe.setBurdening(fields.get("burdening").toString());
         recipe.setUserId(1);
