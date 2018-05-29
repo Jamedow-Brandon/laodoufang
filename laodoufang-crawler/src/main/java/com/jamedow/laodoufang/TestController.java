@@ -1,6 +1,5 @@
 package com.jamedow.laodoufang;
 
-//import com.jamedow.laodoufang.downloader.TestDownloader;
 import com.jamedow.laodoufang.pipeline.TestPipeline;
 import com.jamedow.laodoufang.processer.TestPageProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +9,6 @@ import redis.clients.jedis.JedisPool;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.scheduler.BloomFilterDuplicateRemover;
 import us.codecraft.webmagic.scheduler.RedisScheduler;
-//import us.codecraft.webmagic.scheduler.BloomFilterDuplicateRemover;
-//import us.codecraft.webmagic.scheduler.RedisScheduler;
 
 /**
  * Description
