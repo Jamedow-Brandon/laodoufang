@@ -36,6 +36,10 @@ public class HuaYaoController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView index(String lang) {
         ModelAndView view = new ModelAndView();
+        ProductSeoKeywordsExample seoKeywordsExample = new ProductSeoKeywordsExample();
+        List<ProductSeoKeywords> seoKeywords = seoKeywordsMapper.selectByExample(seoKeywordsExample);
+
+        view.addObject("seoKeywords", seoKeywords);
 
         //初始化语言
         initLanguage(view, lang, "/index");

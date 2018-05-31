@@ -1,6 +1,7 @@
 package com.jamedow.laodoufang.mapper;
 
 import com.jamedow.laodoufang.entity.Tags;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 /**
  * Created by yoyo on 2017/7/12.
  */
+@Mapper
 @Repository
 public interface TagsMapperEx {
 

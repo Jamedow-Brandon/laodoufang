@@ -50,4 +50,5 @@ public class CategoryService {
     public Category getCategoryById(Integer categoryId) {
         return categoryMapper.selectByPrimaryKey(categoryId);
     }
+
 }

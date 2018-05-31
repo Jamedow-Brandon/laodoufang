@@ -1,5 +1,6 @@
 package com.jamedow.laodoufang.service;
 
+import com.github.pagehelper.Page;
 import com.jamedow.laodoufang.entity.Recipe;
 import com.jamedow.laodoufang.entity.RecipeExample;
 import com.jamedow.laodoufang.mapper.RecipeMapper;
@@ -7,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -35,7 +35,6 @@ public class RecipeService {
         return recipeMapper.selectByPrimaryKey(recipeId);
     }
 
-    @Transactional(rollbackFor = Exception.class)
     public int saveRecipe(Recipe recipe) {
         if (null != recipe.getId()) {
             return recipeMapper.updateByPrimaryKeySelective(recipe);
@@ -47,7 +46,9 @@ public class RecipeService {
         return result;
     }
 
-    public List<Recipe> queryAll() {
-        return recipeMapper.selectByExample(new RecipeExample());
+    public Page queryPageSumRecipes() {
+        RecipeExample recipeExample = new RecipeExample();
+        Page<Recipe> page = recipeMapper.queryPageSumRecipes(recipeExample);
+        return page;
     }
 }

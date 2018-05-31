@@ -1,15 +1,11 @@
 package com.jamedow.laodoufang.entity;
 
-import com.jamedow.laodoufang.system.bean.Page;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class RecipeCommentExample {
     protected String orderByClause;
-
-    protected Page paging;
 
     protected boolean distinct;
 
@@ -25,14 +21,6 @@ public class RecipeCommentExample {
 
     public void setOrderByClause(String orderByClause) {
         this.orderByClause = orderByClause;
-    }
-
-    public Page getPaging() {
-        return paging;
-    }
-
-    public void setPaging(Page paging) {
-        this.paging = paging;
     }
 
     public boolean isDistinct() {

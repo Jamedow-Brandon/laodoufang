@@ -2,11 +2,13 @@ package com.jamedow.laodoufang.mapper;
 
 import com.jamedow.laodoufang.entity.Tags;
 import com.jamedow.laodoufang.entity.TagsExample;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Mapper
 @Repository
 public interface TagsMapper {
     long countByExample(TagsExample example);

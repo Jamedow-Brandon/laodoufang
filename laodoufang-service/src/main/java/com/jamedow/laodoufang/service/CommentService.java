@@ -4,7 +4,6 @@ import com.jamedow.laodoufang.entity.RecipeComment;
 import com.jamedow.laodoufang.entity.RecipeCommentExample;
 import com.jamedow.laodoufang.entity.VoteLog;
 import com.jamedow.laodoufang.mapper.RecipeCommentMapper;
-import com.jamedow.laodoufang.system.bean.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,17 +15,15 @@ import java.util.List;
 @Service
 public class CommentService {
 
-
     @Autowired
     private RecipeCommentMapper recipeCommentMapper;
     @Autowired
     private VoteService voteService;
 
-    public List<RecipeComment> getRecipeComments(Integer recipeId, Integer userId, Page page) {
+    public List<RecipeComment> getRecipeComments(Integer recipeId, Integer userId) {
         RecipeCommentExample example = new RecipeCommentExample();
         example.createCriteria().andRecipeIdEqualTo(recipeId);
         example.setOrderByClause("rc.is_picked desc,rc.vote_up desc,rc.create_time desc");
-        example.setPaging(page);
         List<RecipeComment> comments = recipeCommentMapper.getCommentsByRecipeId(example);
 
         for (RecipeComment comment : comments) {

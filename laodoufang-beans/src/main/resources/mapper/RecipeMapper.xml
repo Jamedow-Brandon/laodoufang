@@ -108,10 +108,18 @@
     </select>
     <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.RecipeExample" resultMap="BaseResultMap">
         select
-        <if test="distinct">
-            distinct
+        <include refid="Base_Column_List"/>
+        from recipe
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
         </if>
-        'true' as QUERYID,
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="queryPageSumRecipes" parameterType="com.jamedow.laodoufang.entity.RecipeExample"
+            resultMap="BaseResultMap">
+        select
         <include refid="Base_Column_List"/>
         from recipe
         <if test="_parameter != null">

@@ -2,11 +2,13 @@ package com.jamedow.laodoufang.mapper;
 
 import com.jamedow.laodoufang.entity.VoteLog;
 import com.jamedow.laodoufang.entity.VoteLogExample;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Mapper
 @Repository
 public interface VoteLogMapper {
     long countByExample(VoteLogExample example);

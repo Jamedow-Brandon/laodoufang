@@ -1,12 +1,15 @@
 package com.jamedow.laodoufang.mapper;
 
+import com.github.pagehelper.Page;
 import com.jamedow.laodoufang.entity.Recipe;
 import com.jamedow.laodoufang.entity.RecipeExample;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Mapper
 @Repository
 public interface RecipeMapper {
     long countByExample(RecipeExample example);
@@ -22,6 +25,8 @@ public interface RecipeMapper {
     List<Recipe> selectByExampleWithBLOBs(RecipeExample example);
 
     List<Recipe> selectByExample(RecipeExample example);
+
+    Page<Recipe> queryPageSumRecipes(RecipeExample example);
 
     Recipe selectByPrimaryKey(Integer id);
 

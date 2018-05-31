@@ -1,10 +1,6 @@
 server:
   port: 3333
 
-#eureka:
-#  client:
-#    serviceUrl:
-#      defaultZone: http://127.0.0.1:1111/eureka/
 
 spring:
   application:
@@ -38,6 +34,12 @@ mybatis:
     typeAliasesPackage: com.jamedow.laodoufang
     mapperLocations: classpath:/mapper/*.xml
     configLocation: classpath:/mybatis-config.xml
+
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
 
 
 
