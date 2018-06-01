@@ -1,6 +1,5 @@
 package com.jamedow.laodoufang.web;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.jamedow.laodoufang.entity.Recipe;
 import com.jamedow.laodoufang.service.CategoryService;
@@ -34,13 +33,13 @@ public class SnackController {
 //        Page categories = categoryService.queryPageSumCategories();
 //        view.addObject("categories", categories);
 
-        Page page = recipeService.queryPageSumRecipes();
+//        Page page = recipeService.queryPageSumRecipes();
         return view;
     }
 
     @RequestMapping(value = "snacks", produces = "application/json; charset=UTF-8")
     @ResponseBody
     public PageInfo<Recipe> snacks() {
-        return new PageInfo<Recipe>(recipeService.queryPageSumRecipes());
+        return recipeService.queryPageSumRecipes();
     }
 }

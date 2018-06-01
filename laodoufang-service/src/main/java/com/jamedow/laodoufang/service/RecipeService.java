@@ -1,6 +1,6 @@
 package com.jamedow.laodoufang.service;
 
-import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import com.jamedow.laodoufang.entity.Recipe;
 import com.jamedow.laodoufang.entity.RecipeExample;
 import com.jamedow.laodoufang.mapper.RecipeMapper;
@@ -46,9 +46,7 @@ public class RecipeService {
         return result;
     }
 
-    public Page queryPageSumRecipes() {
-        RecipeExample recipeExample = new RecipeExample();
-        Page<Recipe> page = recipeMapper.queryPageSumRecipes(recipeExample);
-        return page;
+    public PageInfo<Recipe> queryPageSumRecipes() {
+        return new PageInfo<>(recipeMapper.queryPageSumRecipes(new RecipeExample()));
     }
 }
