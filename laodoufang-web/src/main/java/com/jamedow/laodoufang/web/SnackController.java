@@ -4,13 +4,13 @@ import com.github.pagehelper.PageInfo;
 import com.jamedow.laodoufang.entity.Recipe;
 import com.jamedow.laodoufang.service.CategoryService;
 import com.jamedow.laodoufang.service.RecipeService;
+import com.jamedow.laodoufang.service.TestService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by 365 on 2016/12/9 0009.
@@ -23,18 +23,17 @@ public class SnackController {
     private CategoryService categoryService;
     @Autowired
     private RecipeService recipeService;
+    @Autowired
+    private TestService testService;
 
     @RequestMapping(value = "")
     @ResponseBody
-    public ModelAndView index() {
-        ModelAndView view = new ModelAndView();
-        view.setViewName("snack/snack");
-
+    public void index() {
 //        Page categories = categoryService.queryPageSumCategories();
 //        view.addObject("categories", categories);
 
 //        Page page = recipeService.queryPageSumRecipes();
-        return view;
+        testService.solicitation(Recipe.class);
     }
 
     @RequestMapping(value = "snacks", produces = "application/json; charset=UTF-8")
