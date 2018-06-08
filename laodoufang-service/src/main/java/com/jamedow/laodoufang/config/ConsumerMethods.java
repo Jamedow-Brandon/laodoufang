@@ -13,7 +13,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Retention(RUNTIME)
 @Target(METHOD)
-@EventListener()
+@EventListener
 public @interface ConsumerMethods {
 
     @AliasFor(annotation = EventListener.class)

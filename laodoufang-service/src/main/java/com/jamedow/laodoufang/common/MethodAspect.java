@@ -38,9 +38,9 @@ public class MethodAspect {
 //        applicationContext.publishEvent(requestMethods.value());
 //    }
 
-    @After(value = "aopAspect()&&@annotation(productorMethods)")
-    public void after(JoinPoint joinPoint, ProducerMethods productorMethods) throws IllegalAccessException, InstantiationException {
-        applicationContext.publishEvent(productorMethods.value().newInstance());
+    @After(value = "aopAspect()&&@annotation(producerMethods)")
+    public void after(JoinPoint joinPoint, ProducerMethods producerMethods) throws IllegalAccessException, InstantiationException {
+        applicationContext.publishEvent(producerMethods.value().newInstance());
     }
 
 }

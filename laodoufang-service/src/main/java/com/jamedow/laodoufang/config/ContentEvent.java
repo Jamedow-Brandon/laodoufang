@@ -6,4 +6,4 @@ public class ContentEvent extends ApplicationEvent {
     public ContentEvent() {
         super("test");
     }
-}  
+}
