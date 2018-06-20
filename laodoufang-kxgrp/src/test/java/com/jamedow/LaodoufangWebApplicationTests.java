@@ -1,6 +1,6 @@
 package com.jamedow;
 
-import com.jamedow.laodoufang.LaodoufangHuaYaoApplication;
+import com.jamedow.laodoufang.LaodoufangKXGRPApplication;
 import com.jamedow.laodoufang.entity.Product;
 import com.jamedow.laodoufang.entity.ProductExample;
 import com.jamedow.laodoufang.mapper.ProductMapper;
@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = LaodoufangHuaYaoApplication.class)
+@SpringBootTest(classes = LaodoufangKXGRPApplication.class)
 public class LaodoufangWebApplicationTests {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
