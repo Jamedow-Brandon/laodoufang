@@ -4,7 +4,7 @@ import com.jamedow.laodoufang.entity.*;
 import com.jamedow.laodoufang.mail.MailService;
 import com.jamedow.laodoufang.mapper.SysAreaMapper;
 import com.jamedow.laodoufang.mapper.SysDictMapper;
-import com.jamedow.laodoufang.web.kxgrp.HuaYaoController;
+import com.jamedow.laodoufang.web.huayao.HuaYaoController;
 import net.sf.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

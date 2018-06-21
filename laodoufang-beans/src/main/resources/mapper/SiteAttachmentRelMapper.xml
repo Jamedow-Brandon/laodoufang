@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jamedow.laodoufang.mapper.UsersMapper">
-    <resultMap id="BaseResultMap" type="com.jamedow.laodoufang.entity.Users">
+<mapper namespace="com.jamedow.laodoufang.mapper.SiteAttachmentRelMapper">
+    <resultMap id="BaseResultMap" type="com.jamedow.laodoufang.entity.SiteAttachmentRel">
         <id column="id" jdbcType="BIGINT" property="id"/>
-        <result column="username" jdbcType="VARCHAR" property="username"/>
-        <result column="password" jdbcType="VARCHAR" property="password"/>
-        <result column="email" jdbcType="VARCHAR" property="email"/>
-        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
-        <result column="photo" jdbcType="VARCHAR" property="photo"/>
-        <result column="is_deleted" jdbcType="CHAR" property="isDeleted"/>
         <result column="site_id" jdbcType="BIGINT" property="siteId"/>
+        <result column="attachment_id" jdbcType="BIGINT" property="attachmentId"/>
     </resultMap>
     <sql id="Example_Where_Clause">
         <where>
@@ -72,16 +67,17 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, username, password, email, mobile, photo, is_deleted, site_id
+    id, site_id, attachment_id
   </sql>
-    <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.UsersExample" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.SiteAttachmentRelExample"
+            resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
         </if>
         'true' as QUERYID,
         <include refid="Base_Column_List"/>
-        from users
+        from site_attachment_rel
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
@@ -92,114 +88,68 @@
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from users
+        from site_attachment_rel
         where id = #{id,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from users
+    delete from site_attachment_rel
     where id = #{id,jdbcType=BIGINT}
   </delete>
-    <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.UsersExample">
-        delete from users
+    <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.SiteAttachmentRelExample">
+        delete from site_attachment_rel
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.jamedow.laodoufang.entity.Users">
-    insert into users (id, username, password, 
-      email, mobile, photo, 
-      is_deleted, site_id)
-    values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, 
-      #{isDeleted,jdbcType=CHAR}, #{siteId,jdbcType=BIGINT})
+    <insert id="insert" parameterType="com.jamedow.laodoufang.entity.SiteAttachmentRel">
+    insert into site_attachment_rel (id, site_id, attachment_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{siteId,jdbcType=BIGINT}, #{attachmentId,jdbcType=BIGINT}
+      )
   </insert>
-    <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.Users">
-        insert into users
+    <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.SiteAttachmentRel">
+        insert into site_attachment_rel
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
             </if>
-            <if test="username != null">
-                username,
-            </if>
-            <if test="password != null">
-                password,
-            </if>
-            <if test="email != null">
-                email,
-            </if>
-            <if test="mobile != null">
-                mobile,
-            </if>
-            <if test="photo != null">
-                photo,
-            </if>
-            <if test="isDeleted != null">
-                is_deleted,
-            </if>
             <if test="siteId != null">
                 site_id,
+            </if>
+            <if test="attachmentId != null">
+                attachment_id,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 #{id,jdbcType=BIGINT},
             </if>
-            <if test="username != null">
-                #{username,jdbcType=VARCHAR},
-            </if>
-            <if test="password != null">
-                #{password,jdbcType=VARCHAR},
-            </if>
-            <if test="email != null">
-                #{email,jdbcType=VARCHAR},
-            </if>
-            <if test="mobile != null">
-                #{mobile,jdbcType=VARCHAR},
-            </if>
-            <if test="photo != null">
-                #{photo,jdbcType=VARCHAR},
-            </if>
-            <if test="isDeleted != null">
-                #{isDeleted,jdbcType=CHAR},
-            </if>
             <if test="siteId != null">
                 #{siteId,jdbcType=BIGINT},
             </if>
+            <if test="attachmentId != null">
+                #{attachmentId,jdbcType=BIGINT},
+            </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.jamedow.laodoufang.entity.UsersExample" resultType="java.lang.Long">
-        select count(*) from users
+    <select id="countByExample" parameterType="com.jamedow.laodoufang.entity.SiteAttachmentRelExample"
+            resultType="java.lang.Long">
+        select count(*) from site_attachment_rel
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </select>
     <update id="updateByExampleSelective" parameterType="map">
-        update users
+        update site_attachment_rel
         <set>
             <if test="record.id != null">
                 id = #{record.id,jdbcType=BIGINT},
             </if>
-            <if test="record.username != null">
-                username = #{record.username,jdbcType=VARCHAR},
-            </if>
-            <if test="record.password != null">
-                password = #{record.password,jdbcType=VARCHAR},
-            </if>
-            <if test="record.email != null">
-                email = #{record.email,jdbcType=VARCHAR},
-            </if>
-            <if test="record.mobile != null">
-                mobile = #{record.mobile,jdbcType=VARCHAR},
-            </if>
-            <if test="record.photo != null">
-                photo = #{record.photo,jdbcType=VARCHAR},
-            </if>
-            <if test="record.isDeleted != null">
-                is_deleted = #{record.isDeleted,jdbcType=CHAR},
-            </if>
             <if test="record.siteId != null">
                 site_id = #{record.siteId,jdbcType=BIGINT},
+            </if>
+            <if test="record.attachmentId != null">
+                attachment_id = #{record.attachmentId,jdbcType=BIGINT},
             </if>
         </set>
         <if test="_parameter != null">
@@ -207,55 +157,30 @@
         </if>
     </update>
     <update id="updateByExample" parameterType="map">
-        update users
+        update site_attachment_rel
         set id = #{record.id,jdbcType=BIGINT},
-        username = #{record.username,jdbcType=VARCHAR},
-        password = #{record.password,jdbcType=VARCHAR},
-        email = #{record.email,jdbcType=VARCHAR},
-        mobile = #{record.mobile,jdbcType=VARCHAR},
-        photo = #{record.photo,jdbcType=VARCHAR},
-        is_deleted = #{record.isDeleted,jdbcType=CHAR},
-        site_id = #{record.siteId,jdbcType=BIGINT}
+        site_id = #{record.siteId,jdbcType=BIGINT},
+        attachment_id = #{record.attachmentId,jdbcType=BIGINT}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.jamedow.laodoufang.entity.Users">
-        update users
+    <update id="updateByPrimaryKeySelective" parameterType="com.jamedow.laodoufang.entity.SiteAttachmentRel">
+        update site_attachment_rel
         <set>
-            <if test="username != null">
-                username = #{username,jdbcType=VARCHAR},
-            </if>
-            <if test="password != null">
-                password = #{password,jdbcType=VARCHAR},
-            </if>
-            <if test="email != null">
-                email = #{email,jdbcType=VARCHAR},
-            </if>
-            <if test="mobile != null">
-                mobile = #{mobile,jdbcType=VARCHAR},
-            </if>
-            <if test="photo != null">
-                photo = #{photo,jdbcType=VARCHAR},
-            </if>
-            <if test="isDeleted != null">
-                is_deleted = #{isDeleted,jdbcType=CHAR},
-            </if>
             <if test="siteId != null">
                 site_id = #{siteId,jdbcType=BIGINT},
+            </if>
+            <if test="attachmentId != null">
+                attachment_id = #{attachmentId,jdbcType=BIGINT},
             </if>
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.Users">
-    update users
-    set username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      mobile = #{mobile,jdbcType=VARCHAR},
-      photo = #{photo,jdbcType=VARCHAR},
-      is_deleted = #{isDeleted,jdbcType=CHAR},
-      site_id = #{siteId,jdbcType=BIGINT}
+    <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.SiteAttachmentRel">
+    update site_attachment_rel
+    set site_id = #{siteId,jdbcType=BIGINT},
+      attachment_id = #{attachmentId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

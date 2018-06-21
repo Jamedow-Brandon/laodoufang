@@ -1,4 +1,4 @@
-package com.jamedow.laodoufang.web.kxgrp;
+package com.jamedow.laodoufang.web.huayao;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,7 +6,11 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author Jamedow
@@ -23,6 +27,7 @@ public class IndexController {
         ModelAndView view = new ModelAndView();
         view.setViewName("index");
         return view;
+
     }
 
     @RequestMapping(value = "services", method = RequestMethod.GET)
@@ -51,5 +56,17 @@ public class IndexController {
         ModelAndView view = new ModelAndView();
         view.setViewName("contact");
         return view;
+    }
+
+    /**
+     * 联动支付回调
+     *
+     * @param request
+     * @param response
+     */
+    @RequestMapping("/umfPaySuccess")
+    @ResponseBody
+    public String getUmfPaySuccess(HttpServletRequest request, HttpServletResponse response) {
+        return "0000";
     }
 }

@@ -1,4 +1,4 @@
-package com.jamedow.laodoufang.web.kxgrp;
+package com.jamedow.laodoufang.web.huayao;
 
 import com.jamedow.laodoufang.entity.Product;
 import com.jamedow.laodoufang.entity.ProductExample;
@@ -91,7 +91,7 @@ public class HuaYaoController {
      * @param view 页面
      */
     private void initLanguage(ModelAndView view, String lang, String viewName) {
-        view.setViewName("kxgrp" + (StringUtils.isNotBlank(lang) ? "/" + lang : "") + viewName);
+        view.setViewName("huayao" + (StringUtils.isNotBlank(lang) ? "/" + lang : "") + viewName);
         view.addObject("lang", lang);
     }
 }

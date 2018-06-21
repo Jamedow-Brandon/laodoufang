@@ -2,13 +2,11 @@ package com.jamedow.laodoufang.mapper;
 
 import com.jamedow.laodoufang.entity.ProductSeoKeywords;
 import com.jamedow.laodoufang.entity.ProductSeoKeywordsExample;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Mapper
 @Repository
 public interface ProductSeoKeywordsMapper {
     long countByExample(ProductSeoKeywordsExample example);

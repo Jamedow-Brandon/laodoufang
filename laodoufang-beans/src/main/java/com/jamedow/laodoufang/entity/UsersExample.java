@@ -14,20 +14,20 @@ public class UsersExample {
         oredCriteria = new ArrayList<Criteria>();
     }
 
-    public String getOrderByClause() {
-        return orderByClause;
-    }
-
     public void setOrderByClause(String orderByClause) {
         this.orderByClause = orderByClause;
     }
 
-    public boolean isDistinct() {
-        return distinct;
+    public String getOrderByClause() {
+        return orderByClause;
     }
 
     public void setDistinct(boolean distinct) {
         this.distinct = distinct;
+    }
+
+    public boolean isDistinct() {
+        return distinct;
     }
 
     public List<Criteria> getOredCriteria() {
@@ -374,76 +374,6 @@ public class UsersExample {
             return (Criteria) this;
         }
 
-        public Criteria andDelStatusIsNull() {
-            addCriterion("del_status is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDelStatusIsNotNull() {
-            addCriterion("del_status is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDelStatusEqualTo(String value) {
-            addCriterion("del_status =", value, "delStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andDelStatusNotEqualTo(String value) {
-            addCriterion("del_status <>", value, "delStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andDelStatusGreaterThan(String value) {
-            addCriterion("del_status >", value, "delStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andDelStatusGreaterThanOrEqualTo(String value) {
-            addCriterion("del_status >=", value, "delStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andDelStatusLessThan(String value) {
-            addCriterion("del_status <", value, "delStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andDelStatusLessThanOrEqualTo(String value) {
-            addCriterion("del_status <=", value, "delStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andDelStatusLike(String value) {
-            addCriterion("del_status like", value, "delStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andDelStatusNotLike(String value) {
-            addCriterion("del_status not like", value, "delStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andDelStatusIn(List<String> values) {
-            addCriterion("del_status in", values, "delStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andDelStatusNotIn(List<String> values) {
-            addCriterion("del_status not in", values, "delStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andDelStatusBetween(String value1, String value2) {
-            addCriterion("del_status between", value1, value2, "delStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andDelStatusNotBetween(String value1, String value2) {
-            addCriterion("del_status not between", value1, value2, "delStatus");
-            return (Criteria) this;
-        }
-
         public Criteria andMobileIsNull() {
             addCriterion("mobile is null");
             return (Criteria) this;
@@ -583,6 +513,136 @@ public class UsersExample {
             addCriterion("photo not between", value1, value2, "photo");
             return (Criteria) this;
         }
+
+        public Criteria andIsDeletedIsNull() {
+            addCriterion("is_deleted is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeletedIsNotNull() {
+            addCriterion("is_deleted is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeletedEqualTo(String value) {
+            addCriterion("is_deleted =", value, "isDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeletedNotEqualTo(String value) {
+            addCriterion("is_deleted <>", value, "isDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeletedGreaterThan(String value) {
+            addCriterion("is_deleted >", value, "isDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeletedGreaterThanOrEqualTo(String value) {
+            addCriterion("is_deleted >=", value, "isDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeletedLessThan(String value) {
+            addCriterion("is_deleted <", value, "isDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeletedLessThanOrEqualTo(String value) {
+            addCriterion("is_deleted <=", value, "isDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeletedLike(String value) {
+            addCriterion("is_deleted like", value, "isDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeletedNotLike(String value) {
+            addCriterion("is_deleted not like", value, "isDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeletedIn(List<String> values) {
+            addCriterion("is_deleted in", values, "isDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeletedNotIn(List<String> values) {
+            addCriterion("is_deleted not in", values, "isDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeletedBetween(String value1, String value2) {
+            addCriterion("is_deleted between", value1, value2, "isDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeletedNotBetween(String value1, String value2) {
+            addCriterion("is_deleted not between", value1, value2, "isDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiteIdIsNull() {
+            addCriterion("site_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiteIdIsNotNull() {
+            addCriterion("site_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiteIdEqualTo(Long value) {
+            addCriterion("site_id =", value, "siteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiteIdNotEqualTo(Long value) {
+            addCriterion("site_id <>", value, "siteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiteIdGreaterThan(Long value) {
+            addCriterion("site_id >", value, "siteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiteIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("site_id >=", value, "siteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiteIdLessThan(Long value) {
+            addCriterion("site_id <", value, "siteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiteIdLessThanOrEqualTo(Long value) {
+            addCriterion("site_id <=", value, "siteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiteIdIn(List<Long> values) {
+            addCriterion("site_id in", values, "siteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiteIdNotIn(List<Long> values) {
+            addCriterion("site_id not in", values, "siteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiteIdBetween(Long value1, Long value2) {
+            addCriterion("site_id between", value1, value2, "siteId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiteIdNotBetween(Long value1, Long value2) {
+            addCriterion("site_id not between", value1, value2, "siteId");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
@@ -608,6 +668,38 @@ public class UsersExample {
         private boolean listValue;
 
         private String typeHandler;
+
+        public String getCondition() {
+            return condition;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+
+        public Object getSecondValue() {
+            return secondValue;
+        }
+
+        public boolean isNoValue() {
+            return noValue;
+        }
+
+        public boolean isSingleValue() {
+            return singleValue;
+        }
+
+        public boolean isBetweenValue() {
+            return betweenValue;
+        }
+
+        public boolean isListValue() {
+            return listValue;
+        }
+
+        public String getTypeHandler() {
+            return typeHandler;
+        }
 
         protected Criterion(String condition) {
             super();
@@ -643,38 +735,6 @@ public class UsersExample {
 
         protected Criterion(String condition, Object value, Object secondValue) {
             this(condition, value, secondValue, null);
-        }
-
-        public String getCondition() {
-            return condition;
-        }
-
-        public Object getValue() {
-            return value;
-        }
-
-        public Object getSecondValue() {
-            return secondValue;
-        }
-
-        public boolean isNoValue() {
-            return noValue;
-        }
-
-        public boolean isSingleValue() {
-            return singleValue;
-        }
-
-        public boolean isBetweenValue() {
-            return betweenValue;
-        }
-
-        public boolean isListValue() {
-            return listValue;
-        }
-
-        public String getTypeHandler() {
-            return typeHandler;
         }
     }
 }

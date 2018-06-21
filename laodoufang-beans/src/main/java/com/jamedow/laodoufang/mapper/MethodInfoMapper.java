@@ -2,13 +2,11 @@ package com.jamedow.laodoufang.mapper;
 
 import com.jamedow.laodoufang.entity.MethodInfo;
 import com.jamedow.laodoufang.entity.MethodInfoExample;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Mapper
 @Repository
 public interface MethodInfoMapper {
     long countByExample(MethodInfoExample example);

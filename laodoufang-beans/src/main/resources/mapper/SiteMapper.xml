@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jamedow.laodoufang.mapper.UsersMapper">
-    <resultMap id="BaseResultMap" type="com.jamedow.laodoufang.entity.Users">
+<mapper namespace="com.jamedow.laodoufang.mapper.SiteMapper">
+    <resultMap id="BaseResultMap" type="com.jamedow.laodoufang.entity.Site">
         <id column="id" jdbcType="BIGINT" property="id"/>
-        <result column="username" jdbcType="VARCHAR" property="username"/>
-        <result column="password" jdbcType="VARCHAR" property="password"/>
-        <result column="email" jdbcType="VARCHAR" property="email"/>
-        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
-        <result column="photo" jdbcType="VARCHAR" property="photo"/>
-        <result column="is_deleted" jdbcType="CHAR" property="isDeleted"/>
-        <result column="site_id" jdbcType="BIGINT" property="siteId"/>
+        <result column="site_name" jdbcType="VARCHAR" property="siteName"/>
+        <result column="domain" jdbcType="VARCHAR" property="domain"/>
+        <result column="public_key" jdbcType="VARCHAR" property="publicKey"/>
+        <result column="private_key" jdbcType="VARCHAR" property="privateKey"/>
     </resultMap>
     <sql id="Example_Where_Clause">
         <where>
@@ -72,16 +69,16 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, username, password, email, mobile, photo, is_deleted, site_id
+    id, site_name, domain, public_key, private_key
   </sql>
-    <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.UsersExample" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.SiteExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
         </if>
         'true' as QUERYID,
         <include refid="Base_Column_List"/>
-        from users
+        from site
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
@@ -92,114 +89,85 @@
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from users
+        from site
         where id = #{id,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from users
+    delete from site
     where id = #{id,jdbcType=BIGINT}
   </delete>
-    <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.UsersExample">
-        delete from users
+    <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.SiteExample">
+        delete from site
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.jamedow.laodoufang.entity.Users">
-    insert into users (id, username, password, 
-      email, mobile, photo, 
-      is_deleted, site_id)
-    values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, 
-      #{isDeleted,jdbcType=CHAR}, #{siteId,jdbcType=BIGINT})
+    <insert id="insert" parameterType="com.jamedow.laodoufang.entity.Site">
+    insert into site (id, site_name, domain, 
+      public_key, private_key)
+    values (#{id,jdbcType=BIGINT}, #{siteName,jdbcType=VARCHAR}, #{domain,jdbcType=VARCHAR}, 
+      #{publicKey,jdbcType=VARCHAR}, #{privateKey,jdbcType=VARCHAR})
   </insert>
-    <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.Users">
-        insert into users
+    <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.Site">
+        insert into site
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
             </if>
-            <if test="username != null">
-                username,
+            <if test="siteName != null">
+                site_name,
             </if>
-            <if test="password != null">
-                password,
+            <if test="domain != null">
+                domain,
             </if>
-            <if test="email != null">
-                email,
+            <if test="publicKey != null">
+                public_key,
             </if>
-            <if test="mobile != null">
-                mobile,
-            </if>
-            <if test="photo != null">
-                photo,
-            </if>
-            <if test="isDeleted != null">
-                is_deleted,
-            </if>
-            <if test="siteId != null">
-                site_id,
+            <if test="privateKey != null">
+                private_key,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 #{id,jdbcType=BIGINT},
             </if>
-            <if test="username != null">
-                #{username,jdbcType=VARCHAR},
+            <if test="siteName != null">
+                #{siteName,jdbcType=VARCHAR},
             </if>
-            <if test="password != null">
-                #{password,jdbcType=VARCHAR},
+            <if test="domain != null">
+                #{domain,jdbcType=VARCHAR},
             </if>
-            <if test="email != null">
-                #{email,jdbcType=VARCHAR},
+            <if test="publicKey != null">
+                #{publicKey,jdbcType=VARCHAR},
             </if>
-            <if test="mobile != null">
-                #{mobile,jdbcType=VARCHAR},
-            </if>
-            <if test="photo != null">
-                #{photo,jdbcType=VARCHAR},
-            </if>
-            <if test="isDeleted != null">
-                #{isDeleted,jdbcType=CHAR},
-            </if>
-            <if test="siteId != null">
-                #{siteId,jdbcType=BIGINT},
+            <if test="privateKey != null">
+                #{privateKey,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.jamedow.laodoufang.entity.UsersExample" resultType="java.lang.Long">
-        select count(*) from users
+    <select id="countByExample" parameterType="com.jamedow.laodoufang.entity.SiteExample" resultType="java.lang.Long">
+        select count(*) from site
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </select>
     <update id="updateByExampleSelective" parameterType="map">
-        update users
+        update site
         <set>
             <if test="record.id != null">
                 id = #{record.id,jdbcType=BIGINT},
             </if>
-            <if test="record.username != null">
-                username = #{record.username,jdbcType=VARCHAR},
+            <if test="record.siteName != null">
+                site_name = #{record.siteName,jdbcType=VARCHAR},
             </if>
-            <if test="record.password != null">
-                password = #{record.password,jdbcType=VARCHAR},
+            <if test="record.domain != null">
+                domain = #{record.domain,jdbcType=VARCHAR},
             </if>
-            <if test="record.email != null">
-                email = #{record.email,jdbcType=VARCHAR},
+            <if test="record.publicKey != null">
+                public_key = #{record.publicKey,jdbcType=VARCHAR},
             </if>
-            <if test="record.mobile != null">
-                mobile = #{record.mobile,jdbcType=VARCHAR},
-            </if>
-            <if test="record.photo != null">
-                photo = #{record.photo,jdbcType=VARCHAR},
-            </if>
-            <if test="record.isDeleted != null">
-                is_deleted = #{record.isDeleted,jdbcType=CHAR},
-            </if>
-            <if test="record.siteId != null">
-                site_id = #{record.siteId,jdbcType=BIGINT},
+            <if test="record.privateKey != null">
+                private_key = #{record.privateKey,jdbcType=VARCHAR},
             </if>
         </set>
         <if test="_parameter != null">
@@ -207,55 +175,40 @@
         </if>
     </update>
     <update id="updateByExample" parameterType="map">
-        update users
+        update site
         set id = #{record.id,jdbcType=BIGINT},
-        username = #{record.username,jdbcType=VARCHAR},
-        password = #{record.password,jdbcType=VARCHAR},
-        email = #{record.email,jdbcType=VARCHAR},
-        mobile = #{record.mobile,jdbcType=VARCHAR},
-        photo = #{record.photo,jdbcType=VARCHAR},
-        is_deleted = #{record.isDeleted,jdbcType=CHAR},
-        site_id = #{record.siteId,jdbcType=BIGINT}
+        site_name = #{record.siteName,jdbcType=VARCHAR},
+        domain = #{record.domain,jdbcType=VARCHAR},
+        public_key = #{record.publicKey,jdbcType=VARCHAR},
+        private_key = #{record.privateKey,jdbcType=VARCHAR}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.jamedow.laodoufang.entity.Users">
-        update users
+    <update id="updateByPrimaryKeySelective" parameterType="com.jamedow.laodoufang.entity.Site">
+        update site
         <set>
-            <if test="username != null">
-                username = #{username,jdbcType=VARCHAR},
+            <if test="siteName != null">
+                site_name = #{siteName,jdbcType=VARCHAR},
             </if>
-            <if test="password != null">
-                password = #{password,jdbcType=VARCHAR},
+            <if test="domain != null">
+                domain = #{domain,jdbcType=VARCHAR},
             </if>
-            <if test="email != null">
-                email = #{email,jdbcType=VARCHAR},
+            <if test="publicKey != null">
+                public_key = #{publicKey,jdbcType=VARCHAR},
             </if>
-            <if test="mobile != null">
-                mobile = #{mobile,jdbcType=VARCHAR},
-            </if>
-            <if test="photo != null">
-                photo = #{photo,jdbcType=VARCHAR},
-            </if>
-            <if test="isDeleted != null">
-                is_deleted = #{isDeleted,jdbcType=CHAR},
-            </if>
-            <if test="siteId != null">
-                site_id = #{siteId,jdbcType=BIGINT},
+            <if test="privateKey != null">
+                private_key = #{privateKey,jdbcType=VARCHAR},
             </if>
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.Users">
-    update users
-    set username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      mobile = #{mobile,jdbcType=VARCHAR},
-      photo = #{photo,jdbcType=VARCHAR},
-      is_deleted = #{isDeleted,jdbcType=CHAR},
-      site_id = #{siteId,jdbcType=BIGINT}
+    <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.Site">
+    update site
+    set site_name = #{siteName,jdbcType=VARCHAR},
+      domain = #{domain,jdbcType=VARCHAR},
+      public_key = #{publicKey,jdbcType=VARCHAR},
+      private_key = #{privateKey,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

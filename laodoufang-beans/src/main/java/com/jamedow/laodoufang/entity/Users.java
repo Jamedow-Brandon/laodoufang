@@ -1,7 +1,7 @@
 package com.jamedow.laodoufang.entity;
 
 public class Users {
-    private Integer id;
+    private Long id;
 
     private String username;
 
@@ -9,17 +9,19 @@ public class Users {
 
     private String email;
 
-    private String delStatus;
-
     private String mobile;
 
     private String photo;
 
-    public Integer getId() {
+    private String isDeleted;
+
+    private Long siteId;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -47,14 +49,6 @@ public class Users {
         this.email = email;
     }
 
-    public String getDelStatus() {
-        return delStatus;
-    }
-
-    public void setDelStatus(String delStatus) {
-        this.delStatus = delStatus;
-    }
-
     public String getMobile() {
         return mobile;
     }
@@ -69,5 +63,21 @@ public class Users {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public String getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(String isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
+    public Long getSiteId() {
+        return siteId;
+    }
+
+    public void setSiteId(Long siteId) {
+        this.siteId = siteId;
     }
 }
