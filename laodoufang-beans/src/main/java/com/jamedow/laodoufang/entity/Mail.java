@@ -23,7 +23,7 @@ public class Mail implements Serializable {
     /**
      * 收件人的邮箱
      */
-    private final String receiver;
+    private final String[] receiver;
 
     /**
      * 发件人昵称
@@ -46,6 +46,18 @@ public class Mail implements Serializable {
     private final String subject;
 
     /**
+     * 附件列表
+     */
+    private String []fileList;
+
+    /**
+     * 抄送人
+     */
+    private String []copyTo;
+
+
+
+    /**
      * 信息(支持HTML)
      */
     private final String message;
@@ -59,6 +71,8 @@ public class Mail implements Serializable {
         password = builder.password;
         subject = builder.subject;
         message = builder.message;
+        fileList=builder.fileList;
+        copyTo=builder.copyTo;
     }
 
     public static class Builder {
@@ -67,11 +81,14 @@ public class Mail implements Serializable {
         private final String password;
 
         private String sender;
-        private String receiver;
+        private String []receiver;
         private String name;
 
         private String subject;
         private String message;
+
+        private String []fileList;
+        private String []copyTo;
 
         public Builder(String host, String username, String password) {
             this.host = host;
@@ -84,7 +101,7 @@ public class Mail implements Serializable {
             return this;
         }
 
-        public Builder receiver(String val) {
+        public Builder receiver(String []val) {
             receiver = val;
             return this;
         }
@@ -103,6 +120,14 @@ public class Mail implements Serializable {
         public Builder message(String val) {
             message = val;
             return this;
+        }
+        public Builder copyTo(String []val){
+            copyTo=val;
+            return this;
+        }
+        public Builder fileList(String []val){
+            fileList=val;
+            return  this;
         }
 
         public Mail build() {
