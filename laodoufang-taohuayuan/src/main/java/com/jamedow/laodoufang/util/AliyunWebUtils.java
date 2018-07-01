@@ -176,7 +176,7 @@ public abstract class AliyunWebUtils {
         conn.setDoInput(true);
         conn.setDoOutput(true);
         conn.setRequestProperty("Accept", "text/xml,text/javascript,text/html,application/json");
-        conn.setRequestProperty("User-Agent", "aliyun-sdk-java");
+        conn.setRequestProperty("FormData-Agent", "aliyun-sdk-java");
         conn.setRequestProperty("Content-Type", ctype);
         if (headerMap != null) {
             for (Map.Entry<String, String> entry : headerMap.entrySet()) {
