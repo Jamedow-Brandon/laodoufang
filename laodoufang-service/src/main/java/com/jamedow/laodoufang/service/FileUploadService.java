@@ -51,7 +51,7 @@ public class FileUploadService {
     private BaseAttachmentMapper attachmentMapper;
 
     @Transactional(rollbackFor = Exception.class)
-    public BaseAttachment uploadFile(MultipartFile uploadFile, String site) {
+    public BaseAttachment uploadFile(MultipartFile uploadFile) {
         String fileName = uploadFile.getOriginalFilename();
         String suffix = fileName.substring(fileName.lastIndexOf("."));  // 获取文件后缀
         String contentType = uploadFile.getContentType();  // 获取文件类型
