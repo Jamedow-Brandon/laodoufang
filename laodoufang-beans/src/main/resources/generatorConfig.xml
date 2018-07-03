@@ -15,26 +15,26 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://106.14.210.31:3306/laodoufang?useUnicode=true&amp;characterEncoding=utf-8"
+                        connectionURL="jdbc:mysql://106.14.210.31:3306/taohuayuan?useUnicode=true&amp;characterEncoding=utf-8"
                         userId="root"
                         password="Zhangliang@520"/>
 
         <!-- 生成实体类地址 -->
         <javaModelGenerator targetPackage="com.jamedow.laodoufang.entity"
-                            targetProject="/Users/brandon/">
+                            targetProject="src/main/java/">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="false"/>
         </javaModelGenerator>
 
         <!-- 生成mapxml文件 -->
-        <sqlMapGenerator targetPackage="com.jamedow.laodoufang.mapper"
-                         targetProject="/Users/brandon/">
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources/">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
         <!-- 生成mapxml对应client，也就是接口dao -->
         <javaClientGenerator targetPackage="com.jamedow.laodoufang.mapper"
-                             targetProject="/Users/brandon/" type="XMLMAPPER">
+                             targetProject="src/main/java/" type="XMLMAPPER">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
@@ -43,11 +43,35 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>-->
 
+        <table tableName="device" domainObjectName="Device"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+        <table tableName="environment_data" domainObjectName="EnvironmentData"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+        <table tableName="prewarning_setting" domainObjectName="PrewarningSetting"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+        <table tableName="protege" domainObjectName="Protege"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+        <table tableName="protege_data_rel" domainObjectName="protegeDataRel"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
         <table tableName="users" domainObjectName="Users"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">
-            <!--<columnOverride column="photo" jdbcType="BLOB"/>-->
         </table>
 
     </context>

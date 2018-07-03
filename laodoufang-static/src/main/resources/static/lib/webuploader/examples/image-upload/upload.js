@@ -144,7 +144,8 @@
                 label: '点击选择图片'
             },
             formData: {
-                uid: 123
+                uid: 123,
+                site: "taohuayuan"
             },
             dnd: '#dndArea',
             paste: '#uploader',

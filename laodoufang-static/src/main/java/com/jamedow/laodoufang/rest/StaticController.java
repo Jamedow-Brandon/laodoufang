@@ -29,7 +29,8 @@ public class StaticController {
     private FileUploadService fileUploadService;
 
     @PostMapping(value = "upload", produces = "application/json;charset=utf-8")
-    public Object upload(@RequestParam("file") List<MultipartFile> files) {
+    public Object upload(@RequestParam("file") List<MultipartFile> files, String site) {
+        logger.info("site:[{}]", site);
         JSONArray results = new JSONArray();
         for (MultipartFile file : files) {
             JSONObject result = new JSONObject();
