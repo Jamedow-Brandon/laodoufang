@@ -166,10 +166,17 @@ public class MailSend {
         return this;
     }
 
+    /**
+     * 追加收件人
+     *
+     * @param receivers 收件人
+     * @return
+     * @throws Exception
+     */
     public MailSend addTO(String[] receivers) throws Exception {
         try {
             for (String receiver : receivers) {
-                message.addRecipient(MimeMessage.RecipientType.TO, new InternetAddress(receiver, "USER_DD", CHARSET));
+                message.addRecipient(MimeMessage.RecipientType.TO, new InternetAddress(receiver));
             }
         } catch (Exception e) {
             logger.error("添加收件人失败", e.getMessage(), e);
@@ -178,10 +185,17 @@ public class MailSend {
         return this;
     }
 
+    /**
+     * 追加抄送人
+     *
+     * @param receivers 抄送人
+     * @return
+     * @throws Exception
+     */
     public MailSend addCC(String[] receivers) throws Exception {
         try {
             for (String receiver : receivers) {
-                message.addRecipient(MimeMessage.RecipientType.CC, new InternetAddress(receiver, "USER_DD", CHARSET));
+                message.addRecipient(MimeMessage.RecipientType.CC, new InternetAddress(receiver));
             }
         } catch (Exception e) {
             logger.error("添加抄送人失败", e.getMessage(), e);
@@ -190,10 +204,17 @@ public class MailSend {
         return this;
     }
 
+    /**
+     * 追加密送人
+     *
+     * @param receivers 密送人
+     * @return
+     * @throws Exception
+     */
     public MailSend addBCC(String[] receivers) throws Exception {
         try {
             for (String receiver : receivers) {
-                message.addRecipient(MimeMessage.RecipientType.BCC, new InternetAddress(receiver, "USER_DD", CHARSET));
+                message.addRecipient(MimeMessage.RecipientType.BCC, new InternetAddress(receiver));
             }
         } catch (Exception e) {
             logger.error("添加密送人失败", e.getMessage(), e);
@@ -202,6 +223,13 @@ public class MailSend {
         return this;
     }
 
+    /**
+     * 追加附件
+     *
+     * @param file 附件
+     * @return
+     * @throws Exception
+     */
     public MailSend addAttachment(File file) throws Exception {
         try {
             MimeBodyPart attachment = new MimeBodyPart();
