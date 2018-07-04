@@ -1,7 +1,7 @@
 package com.jamedow.laodoufang.web;
 
 import com.jamedow.laodoufang.entity.*;
-import com.jamedow.laodoufang.mail.MailService;
+import com.jamedow.laodoufang.mail.MailSend;
 import com.jamedow.laodoufang.mapper.SysAreaMapper;
 import com.jamedow.laodoufang.mapper.SysDictMapper;
 import com.jamedow.laodoufang.web.huayao.HuaYaoController;
@@ -72,13 +72,24 @@ public class SystemController {
         messageBuilder.append("<div>").append("联系邮箱：").append(receiver).append("</div>");
         messageBuilder.append("<div>").append("联系电话：").append(phone).append("</div>");
         messageBuilder.append("<div>").append("联系地址：").append(address.toString()).append("</div>");
-        Mail mail = new Mail.Builder("smtp.qq.com", "1472541865@qq.com", "tnnfmpbgsjckbade")
-                .sender("1472541865@qq.com").receiver(companyMail).name(companyName).subject(productId + "采购需求，采购方：" + companyName).message(messageBuilder.toString()).build();
-        MailService.sendMail(mail);
 
-        Mail mail1 = new Mail.Builder("smtp.qq.com", "1472541865@qq.com", "tnnfmpbgsjckbade")
-                .sender("1472541865@qq.com").receiver("563150601@qq.com").name(companyName).subject(productId + "采购需求，采购方：" + companyName).message(messageBuilder.toString()).build();
-        MailService.sendMail(mail1);
+        String[] receivers = {"563150601@qq.com", companyMail};
+        MailHeader mailHeader = new MailHeader("1472541865@qq.com", "tnnfmpbgsjckbade", "1472541865@qq.com", companyName);
+        Mail mail = new Mail.Builder().subject(productId + "采购需求，采购方：" + companyName).receiver(receivers).message(messageBuilder.toString()).build();
+
+        MailBase mailBase = new MailBase();
+        mailBase.setHost("smtp.qq.com");
+        mailBase.setAuth("true");
+        mailBase.setPort("465");
+        mailBase.setSocketFactoryClass("javax.net.ssl.SSLSocketFactory");
+        mailBase.setSocketFactoryPort("465");
+        mailBase.setTransportProtocol("smtp");
+
+        try {
+            new MailSend(mailBase).setMailHeader(mailHeader).setMailContent(mail).sendEmail();
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
         return "success";
     }
 
@@ -90,6 +101,5 @@ public class SystemController {
         List<SysArea> children = sysAreaMapper.selectByExample(example);
         return JSONArray.fromObject(children).toString();
     }
-
 
 }

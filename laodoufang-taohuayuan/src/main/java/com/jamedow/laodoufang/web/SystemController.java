@@ -1,7 +1,7 @@
 package com.jamedow.laodoufang.web;
 
 import com.jamedow.laodoufang.entity.*;
-import com.jamedow.laodoufang.mail.MailService;
+import com.jamedow.laodoufang.mail.MailSend;
 import com.jamedow.laodoufang.mapper.SysAreaMapper;
 import com.jamedow.laodoufang.mapper.SysDictMapper;
 import net.sf.json.JSONArray;
@@ -73,11 +73,11 @@ public class SystemController {
         messageBuilder.append("<div>").append("联系地址：").append(address.toString()).append("</div>");
         Mail mail = new Mail.Builder("smtp.qq.com", "1472541865@qq.com", "tnnfmpbgsjckbade")
                 .sender("1472541865@qq.com").receiver(companyMail).name(companyName).subject(productId + "采购需求，采购方：" + companyName).message(messageBuilder.toString()).build();
-        MailService.sendMail(mail);
+        MailSend.sendMail(mail);
 
         Mail mail1 = new Mail.Builder("smtp.qq.com", "1472541865@qq.com", "tnnfmpbgsjckbade")
                 .sender("1472541865@qq.com").receiver("563150601@qq.com").name(companyName).subject(productId + "采购需求，采购方：" + companyName).message(messageBuilder.toString()).build();
-        MailService.sendMail(mail1);
+        MailSend.sendMail(mail1);
         return "success";
     }
 

@@ -11,89 +11,49 @@ import java.io.Serializable;
 @Data
 public class Mail implements Serializable {
     /**
-     * 服务器地址
-     */
-    private final String host;
-
-    /**
-     * 发件人的邮箱
-     */
-    private final String sender;
-
-    /**
-     * 收件人的邮箱
-     */
-    private final String receiver;
-
-    /**
-     * 发件人昵称
-     */
-    private final String name;
-
-    /**
-     * 账号
-     */
-    private final String username;
-
-    /**
-     * 密码
-     */
-    private final String password;
-
-    /**
      * 主题
      */
     private final String subject;
-
+    /**
+     * 收件人的邮箱
+     */
+    private final String[] receiver;
+    /**
+     * 收件人的邮箱
+     */
+    private final String[] cc;
     /**
      * 信息(支持HTML)
      */
     private final String message;
 
     private Mail(Builder builder) {
-        host = builder.host;
-        sender = builder.sender;
         receiver = builder.receiver;
-        name = builder.name;
-        username = builder.username;
-        password = builder.password;
+        cc = builder.cc;
         subject = builder.subject;
         message = builder.message;
     }
 
     public static class Builder {
-        private final String host;
-        private final String username;
-        private final String password;
-
-        private String sender;
-        private String receiver;
-        private String name;
-
         private String subject;
+
+        private String[] receiver;
+        private String[] cc;
+
         private String message;
 
-        public Builder(String host, String username, String password) {
-            this.host = host;
-            this.username = username;
-            this.password = password;
+        public Builder() {
         }
 
-        public Builder sender(String val) {
-            sender = val;
-            return this;
-        }
-
-        public Builder receiver(String val) {
+        public Builder receiver(String[] val) {
             receiver = val;
             return this;
         }
 
-        public Builder name(String val) {
-            name = val;
+        public Builder cc(String[] val) {
+            cc = val;
             return this;
         }
-
 
         public Builder subject(String val) {
             subject = val;
