@@ -17,7 +17,7 @@ public class Mail implements Serializable {
     /**
      * 收件人的邮箱
      */
-    private final String[] receiver;
+    private final String[] to;
     /**
      * 收件人的邮箱
      */
@@ -28,7 +28,7 @@ public class Mail implements Serializable {
     private final String message;
 
     private Mail(Builder builder) {
-        receiver = builder.receiver;
+        to = builder.to;
         cc = builder.cc;
         subject = builder.subject;
         message = builder.message;
@@ -37,7 +37,7 @@ public class Mail implements Serializable {
     public static class Builder {
         private String subject;
 
-        private String[] receiver;
+        private String[] to;
         private String[] cc;
 
         private String message;
@@ -46,7 +46,7 @@ public class Mail implements Serializable {
         }
 
         public Builder receiver(String[] val) {
-            receiver = val;
+            to = val;
             return this;
         }
 

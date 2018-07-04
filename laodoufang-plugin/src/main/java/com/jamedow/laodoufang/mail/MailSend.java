@@ -7,10 +7,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.ObjectUtils;
 
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
+import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import java.io.File;
 import java.util.Date;
 import java.util.Properties;
 
@@ -44,6 +50,8 @@ public class MailSend {
      */
     Transport transport;
 
+    Multipart multipart;
+
     /**
      * 账号
      */
@@ -75,11 +83,11 @@ public class MailSend {
     }
 
     public static void main(String[] args) {
-        String[] receivers = {"652972575@qq.com"};
+        String[] receivers = {"530974049@qq.com"};
 
         MailHeader mailHeader = new MailHeader("1472541865@qq.com", "tnnfmpbgsjckbade", "1472541865@qq.com", "jamedow");
 
-        Mail mail = new Mail.Builder().subject("采购需求，采购方：").receiver(receivers).message("testttttt").build();
+        Mail mail = new Mail.Builder().subject("未来可期").receiver(receivers).message("Wait for a girl like you!").build();
 
         MailBase mailBase = new MailBase();
         mailBase.setHost("smtp.qq.com");
@@ -90,7 +98,8 @@ public class MailSend {
         mailBase.setTransportProtocol("smtp");
 
         try {
-            new MailSend(mailBase).setMailHeader(mailHeader).setMailContent(mail).sendEmail();
+            new MailSend(mailBase).setMailHeader(mailHeader).setMailContent(mail)
+                    .addAttachment(new File("/Users/brandon/Documents/人工智障.png")).sendEmail();
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }
@@ -103,9 +112,12 @@ public class MailSend {
 
             // 根据参数配置，创建会话对象（为了发送邮件准备的）
             session = Session.getInstance(props);
+            //设为true，可以看到发送邮件的整个过程
+            session.setDebug(true);
             // 创建邮件对象
             message = new MimeMessage(session);
-
+            // 创建邮件内容
+            multipart = new MimeMultipart();
             /*
              * 也可以根据已有的eml邮件文件创建 MimeMessage 对象
              * MimeMessage message = new MimeMessage(session, new FileInputStream("MyEmail.eml"));
@@ -115,9 +127,6 @@ public class MailSend {
             //    其中 InternetAddress 的三个参数分别为: 邮箱, 显示的昵称(只用于显示, 没有特别的要求), 昵称的字符集编码
             //    真正要发送时, 邮箱必须是真实有效的邮箱。
             message.setFrom(new InternetAddress(mailheader.getSender(), mailheader.getName(), CHARSET));
-
-            // 7. 保存前面的设置
-            message.saveChanges();
         } catch (Exception e) {
             logger.error("邮件头信息初始化失败", e.getMessage(), e);
         }
@@ -130,7 +139,7 @@ public class MailSend {
             message.setSubject(mail.getSubject(), CHARSET);
 
             // 2. To: 收件人
-            String[] receivers = mail.getReceiver();
+            String[] receivers = mail.getTo();
             for (int i = 0, count = receivers.length; i < count; i++) {
                 if (i == 0) {
                     message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(receivers[i], "USER_CC", CHARSET));
@@ -144,22 +153,12 @@ public class MailSend {
                     message.setRecipient(MimeMessage.RecipientType.CC, new InternetAddress(cc, "USER_EE", CHARSET));
                 }
             }
-//            //    To: 增加收件人（可选）
-//            message.addRecipient(MimeMessage.RecipientType.TO, new InternetAddress("dd@receive.com", "USER_DD", CHARSET));
-//            //    Cc: 抄送（可选）
-//            message.setRecipient(MimeMessage.RecipientType.CC, new InternetAddress("ee@receive.com", "USER_EE", CHARSET));
-//            //    Bcc: 密送（可选）
-//            message.setRecipient(MimeMessage.RecipientType.BCC, new InternetAddress("ff@receive.com", "USER_FF", CHARSET));
+
+            MimeBodyPart content = new MimeBodyPart();
+            content.setText(mail.getMessage());
+            multipart.addBodyPart(content);
 
 
-            // 5. Content: 邮件正文（可以使用html标签）
-            message.setContent(mail.getMessage(), "text/html;charset=UTF-8");
-
-            // 6. 设置显示的发件时间
-            message.setSentDate(new Date());
-
-            // 7. 保存前面的设置
-            message.saveChanges();
         } catch (Exception e) {
             logger.error("邮件内容初始化失败", e.getMessage(), e);
             throw new Exception("邮件内容初始化失败");
@@ -167,7 +166,7 @@ public class MailSend {
         return this;
     }
 
-    public MailSend addReceivers(String[] receivers) throws Exception {
+    public MailSend addTO(String[] receivers) throws Exception {
         try {
             for (String receiver : receivers) {
                 message.addRecipient(MimeMessage.RecipientType.TO, new InternetAddress(receiver, "USER_DD", CHARSET));
@@ -179,8 +178,53 @@ public class MailSend {
         return this;
     }
 
+    public MailSend addCC(String[] receivers) throws Exception {
+        try {
+            for (String receiver : receivers) {
+                message.addRecipient(MimeMessage.RecipientType.CC, new InternetAddress(receiver, "USER_DD", CHARSET));
+            }
+        } catch (Exception e) {
+            logger.error("添加抄送人失败", e.getMessage(), e);
+            throw new Exception("添加抄送人失败");
+        }
+        return this;
+    }
+
+    public MailSend addBCC(String[] receivers) throws Exception {
+        try {
+            for (String receiver : receivers) {
+                message.addRecipient(MimeMessage.RecipientType.BCC, new InternetAddress(receiver, "USER_DD", CHARSET));
+            }
+        } catch (Exception e) {
+            logger.error("添加密送人失败", e.getMessage(), e);
+            throw new Exception("添加密送人失败");
+        }
+        return this;
+    }
+
+    public MailSend addAttachment(File file) throws Exception {
+        try {
+            MimeBodyPart attachment = new MimeBodyPart();
+            FileDataSource fileSource = new FileDataSource(file);
+            attachment.setDataHandler(new DataHandler(fileSource));
+            attachment.setFileName(fileSource.getName());
+            multipart.addBodyPart(attachment);
+        } catch (Exception e) {
+            logger.error("添加附件失败", e.getMessage(), e);
+            throw new Exception("添加附件失败");
+        }
+        return this;
+    }
+
     public MailSend sendEmail() throws Exception {
         try {
+            // 6. 设置显示的发件时间
+            message.setSentDate(new Date());
+            //设置正文内容
+            message.setContent(multipart);
+
+            // 7. 保存前面的设置
+            message.saveChanges();
             // 4. 根据 Session 获取邮件传输对象
             transport = session.getTransport();
             transport.connect(username, password);
@@ -194,4 +238,5 @@ public class MailSend {
         }
         return this;
     }
+
 }
