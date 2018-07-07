@@ -67,8 +67,8 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, name, is_leaf
-  </sql>
+        id, name, is_leaf
+    </sql>
     <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.TagsExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
@@ -91,9 +91,9 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from tags
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+        delete from tags
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
     <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.TagsExample">
         delete from tags
         <if test="_parameter != null">
@@ -101,11 +101,11 @@
         </if>
     </delete>
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.jamedow.laodoufang.entity.Tags">
-    insert into tags (id, name, is_leaf
-    )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{isLeaf,jdbcType=CHAR}
-    )
-  </insert>
+        insert into tags (id, name, is_leaf
+        )
+        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{isLeaf,jdbcType=CHAR}
+        )
+    </insert>
     <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.Tags">
         insert into tags
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -176,9 +176,9 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.Tags">
-    update tags
-    set name = #{name,jdbcType=VARCHAR},
-    is_leaf = #{isLeaf,jdbcType=CHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        update tags
+        set name = #{name,jdbcType=VARCHAR},
+        is_leaf = #{isLeaf,jdbcType=CHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

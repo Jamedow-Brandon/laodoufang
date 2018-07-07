@@ -1,4 +1,4 @@
-package com.jamedow.laodoufang.web.huayao;
+package com.jamedow.laodoufang.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

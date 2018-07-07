@@ -68,8 +68,8 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, keyword, product_id, is_deleted
-  </sql>
+        id, keyword, product_id, is_deleted
+    </sql>
     <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.ProductSeoKeywordsExample"
             resultMap="BaseResultMap">
         select
@@ -93,9 +93,9 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from huayao_product_seo_keywords
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+        delete from huayao_product_seo_keywords
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
     <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.ProductSeoKeywordsExample">
         delete from huayao_product_seo_keywords
         <if test="_parameter != null">
@@ -103,11 +103,11 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.jamedow.laodoufang.entity.ProductSeoKeywords">
-    insert into huayao_product_seo_keywords (id, keyword, product_id, 
-      is_deleted)
-    values (#{id,jdbcType=INTEGER}, #{keyword,jdbcType=VARCHAR}, #{productId,jdbcType=INTEGER}, 
-      #{isDeleted,jdbcType=VARCHAR})
-  </insert>
+        insert into huayao_product_seo_keywords (id, keyword, product_id,
+        is_deleted)
+        values (#{id,jdbcType=INTEGER}, #{keyword,jdbcType=VARCHAR}, #{productId,jdbcType=INTEGER},
+        #{isDeleted,jdbcType=VARCHAR})
+    </insert>
     <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.ProductSeoKeywords">
         insert into huayao_product_seo_keywords
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -192,10 +192,10 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.ProductSeoKeywords">
-    update huayao_product_seo_keywords
-    set keyword = #{keyword,jdbcType=VARCHAR},
-      product_id = #{productId,jdbcType=INTEGER},
-      is_deleted = #{isDeleted,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        update huayao_product_seo_keywords
+        set keyword = #{keyword,jdbcType=VARCHAR},
+        product_id = #{productId,jdbcType=INTEGER},
+        is_deleted = #{isDeleted,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

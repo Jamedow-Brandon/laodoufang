@@ -68,8 +68,8 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, device_id, value, gmt_create
-  </sql>
+        id, device_id, value, gmt_create
+    </sql>
     <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.EnvironmentDataExample"
             resultMap="BaseResultMap">
         select
@@ -93,9 +93,9 @@
         where id = #{id,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from environment_data
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
+        delete from environment_data
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
     <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.EnvironmentDataExample">
         delete from environment_data
         <if test="_parameter != null">
@@ -103,11 +103,11 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.jamedow.laodoufang.entity.EnvironmentData">
-    insert into environment_data (id, device_id, value, 
-      gmt_create)
-    values (#{id,jdbcType=BIGINT}, #{deviceId,jdbcType=BIGINT}, #{value,jdbcType=INTEGER}, 
-      #{gmtCreate,jdbcType=TIMESTAMP})
-  </insert>
+        insert into environment_data (id, device_id, value,
+        gmt_create)
+        values (#{id,jdbcType=BIGINT}, #{deviceId,jdbcType=BIGINT}, #{value,jdbcType=INTEGER},
+        #{gmtCreate,jdbcType=TIMESTAMP})
+    </insert>
     <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.EnvironmentData">
         insert into environment_data
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -192,10 +192,10 @@
         where id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.EnvironmentData">
-    update environment_data
-    set device_id = #{deviceId,jdbcType=BIGINT},
-      value = #{value,jdbcType=INTEGER},
-      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+        update environment_data
+        set device_id = #{deviceId,jdbcType=BIGINT},
+        value = #{value,jdbcType=INTEGER},
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>

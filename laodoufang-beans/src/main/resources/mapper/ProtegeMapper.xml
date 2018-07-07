@@ -68,8 +68,8 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, name, type, gmt_create
-  </sql>
+        id, name, type, gmt_create
+    </sql>
     <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.ProtegeExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
@@ -92,9 +92,9 @@
         where id = #{id,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from protege
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
+        delete from protege
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
     <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.ProtegeExample">
         delete from protege
         <if test="_parameter != null">
@@ -102,11 +102,11 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.jamedow.laodoufang.entity.Protege">
-    insert into protege (id, name, type, gmt_create
-      )
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=BIT}, #{gmtCreate,jdbcType=TIMESTAMP}
-      )
-  </insert>
+        insert into protege (id, name, type, gmt_create
+        )
+        values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=BIT}, #{gmtCreate,jdbcType=TIMESTAMP}
+        )
+    </insert>
     <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.Protege">
         insert into protege
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -191,10 +191,10 @@
         where id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.Protege">
-    update protege
-    set name = #{name,jdbcType=VARCHAR},
-      type = #{type,jdbcType=BIT},
-      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+        update protege
+        set name = #{name,jdbcType=VARCHAR},
+        type = #{type,jdbcType=BIT},
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>

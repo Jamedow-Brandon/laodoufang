@@ -69,8 +69,8 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, site_name, domain, public_key, private_key
-  </sql>
+        id, site_name, domain, public_key, private_key
+    </sql>
     <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.SiteExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
@@ -93,9 +93,9 @@
         where id = #{id,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from site
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
+        delete from site
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
     <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.SiteExample">
         delete from site
         <if test="_parameter != null">
@@ -103,11 +103,11 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.jamedow.laodoufang.entity.Site">
-    insert into site (id, site_name, domain, 
-      public_key, private_key)
-    values (#{id,jdbcType=BIGINT}, #{siteName,jdbcType=VARCHAR}, #{domain,jdbcType=VARCHAR}, 
-      #{publicKey,jdbcType=VARCHAR}, #{privateKey,jdbcType=VARCHAR})
-  </insert>
+        insert into site (id, site_name, domain,
+        public_key, private_key)
+        values (#{id,jdbcType=BIGINT}, #{siteName,jdbcType=VARCHAR}, #{domain,jdbcType=VARCHAR},
+        #{publicKey,jdbcType=VARCHAR}, #{privateKey,jdbcType=VARCHAR})
+    </insert>
     <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.Site">
         insert into site
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -204,11 +204,11 @@
         where id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.Site">
-    update site
-    set site_name = #{siteName,jdbcType=VARCHAR},
-      domain = #{domain,jdbcType=VARCHAR},
-      public_key = #{publicKey,jdbcType=VARCHAR},
-      private_key = #{privateKey,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+        update site
+        set site_name = #{siteName,jdbcType=VARCHAR},
+        domain = #{domain,jdbcType=VARCHAR},
+        public_key = #{publicKey,jdbcType=VARCHAR},
+        private_key = #{privateKey,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>

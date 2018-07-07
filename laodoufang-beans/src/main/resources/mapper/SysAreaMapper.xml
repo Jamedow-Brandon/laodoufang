@@ -78,9 +78,9 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, parent_id, parent_ids, name, sort, code, type, create_by, create_date, update_by, 
-    update_date, remarks, del_flag, en_name
-  </sql>
+        id, parent_id, parent_ids, name, sort, code, type, create_by, create_date, update_by,
+        update_date, remarks, del_flag, en_name
+    </sql>
     <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.SysAreaExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
@@ -103,9 +103,9 @@
         where id = #{id,jdbcType=VARCHAR}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from sys_area
-    where id = #{id,jdbcType=VARCHAR}
-  </delete>
+        delete from sys_area
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
     <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.SysAreaExample">
         delete from sys_area
         <if test="_parameter != null">
@@ -113,17 +113,17 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.jamedow.laodoufang.entity.SysArea">
-    insert into sys_area (id, parent_id, parent_ids, 
-      name, sort, code, type, 
-      create_by, create_date, update_by, 
-      update_date, remarks, del_flag, 
-      en_name)
-    values (#{id,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{parentIds,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{sort,jdbcType=DECIMAL}, #{code,jdbcType=VARCHAR}, #{type,jdbcType=CHAR}, 
-      #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
-      #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{delFlag,jdbcType=CHAR}, 
-      #{enName,jdbcType=VARCHAR})
-  </insert>
+        insert into sys_area (id, parent_id, parent_ids,
+        name, sort, code, type,
+        create_by, create_date, update_by,
+        update_date, remarks, del_flag,
+        en_name)
+        values (#{id,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{parentIds,jdbcType=VARCHAR},
+        #{name,jdbcType=VARCHAR}, #{sort,jdbcType=DECIMAL}, #{code,jdbcType=VARCHAR}, #{type,jdbcType=CHAR},
+        #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR},
+        #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{delFlag,jdbcType=CHAR},
+        #{enName,jdbcType=VARCHAR})
+    </insert>
     <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.SysArea">
         insert into sys_area
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -338,20 +338,20 @@
         where id = #{id,jdbcType=VARCHAR}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.SysArea">
-    update sys_area
-    set parent_id = #{parentId,jdbcType=VARCHAR},
-      parent_ids = #{parentIds,jdbcType=VARCHAR},
-      name = #{name,jdbcType=VARCHAR},
-      sort = #{sort,jdbcType=DECIMAL},
-      code = #{code,jdbcType=VARCHAR},
-      type = #{type,jdbcType=CHAR},
-      create_by = #{createBy,jdbcType=VARCHAR},
-      create_date = #{createDate,jdbcType=TIMESTAMP},
-      update_by = #{updateBy,jdbcType=VARCHAR},
-      update_date = #{updateDate,jdbcType=TIMESTAMP},
-      remarks = #{remarks,jdbcType=VARCHAR},
-      del_flag = #{delFlag,jdbcType=CHAR},
-      en_name = #{enName,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
+        update sys_area
+        set parent_id = #{parentId,jdbcType=VARCHAR},
+        parent_ids = #{parentIds,jdbcType=VARCHAR},
+        name = #{name,jdbcType=VARCHAR},
+        sort = #{sort,jdbcType=DECIMAL},
+        code = #{code,jdbcType=VARCHAR},
+        type = #{type,jdbcType=CHAR},
+        create_by = #{createBy,jdbcType=VARCHAR},
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+        update_by = #{updateBy,jdbcType=VARCHAR},
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+        remarks = #{remarks,jdbcType=VARCHAR},
+        del_flag = #{delFlag,jdbcType=CHAR},
+        en_name = #{enName,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
 </mapper>

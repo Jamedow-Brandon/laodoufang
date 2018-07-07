@@ -72,8 +72,8 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, name, parent_id, hierarchy, full_path, img_url, intro, code
-  </sql>
+        id, name, parent_id, hierarchy, full_path, img_url, intro, code
+    </sql>
     <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.CategoryExample"
             resultMap="BaseResultMap">
         select
@@ -97,9 +97,9 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from category
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+        delete from category
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
     <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.CategoryExample">
         delete from category
         <if test="_parameter != null">
@@ -107,13 +107,13 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.jamedow.laodoufang.entity.Category">
-    insert into category (id, name, parent_id, 
-      hierarchy, full_path, img_url,
-    intro, code)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, 
-      #{hierarchy,jdbcType=INTEGER}, #{fullPath,jdbcType=VARCHAR}, #{imgUrl,jdbcType=VARCHAR},
-    #{intro,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR})
-  </insert>
+        insert into category (id, name, parent_id,
+        hierarchy, full_path, img_url,
+        intro, code)
+        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER},
+        #{hierarchy,jdbcType=INTEGER}, #{fullPath,jdbcType=VARCHAR}, #{imgUrl,jdbcType=VARCHAR},
+        #{intro,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR})
+    </insert>
     <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.Category">
         insert into category
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -250,14 +250,14 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.Category">
-    update category
-    set name = #{name,jdbcType=VARCHAR},
-      parent_id = #{parentId,jdbcType=INTEGER},
-      hierarchy = #{hierarchy,jdbcType=INTEGER},
-      full_path = #{fullPath,jdbcType=VARCHAR},
-      img_url = #{imgUrl,jdbcType=VARCHAR},
-      intro = #{intro,jdbcType=VARCHAR},
-    code = #{code,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        update category
+        set name = #{name,jdbcType=VARCHAR},
+        parent_id = #{parentId,jdbcType=INTEGER},
+        hierarchy = #{hierarchy,jdbcType=INTEGER},
+        full_path = #{fullPath,jdbcType=VARCHAR},
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+        intro = #{intro,jdbcType=VARCHAR},
+        code = #{code,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

@@ -67,8 +67,8 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, tag_id, parent_id
-  </sql>
+        id, tag_id, parent_id
+    </sql>
     <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.TagsRelExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
@@ -91,9 +91,9 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from tags_rel
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+        delete from tags_rel
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
     <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.TagsRelExample">
         delete from tags_rel
         <if test="_parameter != null">
@@ -101,11 +101,11 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.jamedow.laodoufang.entity.TagsRel">
-    insert into tags_rel (id, tag_id, parent_id
-      )
-    values (#{id,jdbcType=INTEGER}, #{tagId,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}
-      )
-  </insert>
+        insert into tags_rel (id, tag_id, parent_id
+        )
+        values (#{id,jdbcType=INTEGER}, #{tagId,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}
+        )
+    </insert>
     <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.TagsRel">
         insert into tags_rel
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -177,9 +177,9 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.TagsRel">
-    update tags_rel
-    set tag_id = #{tagId,jdbcType=INTEGER},
-      parent_id = #{parentId,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        update tags_rel
+        set tag_id = #{tagId,jdbcType=INTEGER},
+        parent_id = #{parentId,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

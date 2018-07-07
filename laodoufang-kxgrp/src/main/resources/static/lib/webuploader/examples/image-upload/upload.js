@@ -151,7 +151,7 @@
             swf: '../../dist/Uploader.swf',
             chunked: false,
             chunkSize: 512 * 1024,
-            server: '/static/upload',
+            server: 'http://static/laodou.site/static/upload',
             // runtimeOrder: 'flash',
 
             // accept: {

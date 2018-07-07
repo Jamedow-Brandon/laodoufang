@@ -68,8 +68,8 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, code, value, compare_way
-  </sql>
+        id, code, value, compare_way
+    </sql>
     <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.PrewarningSettingExample"
             resultMap="BaseResultMap">
         select
@@ -93,9 +93,9 @@
         where id = #{id,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from prewarning_setting
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
+        delete from prewarning_setting
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
     <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.PrewarningSettingExample">
         delete from prewarning_setting
         <if test="_parameter != null">
@@ -103,11 +103,11 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.jamedow.laodoufang.entity.PrewarningSetting">
-    insert into prewarning_setting (id, code, value, 
-      compare_way)
-    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{value,jdbcType=DECIMAL}, 
-      #{compareWay,jdbcType=BIT})
-  </insert>
+        insert into prewarning_setting (id, code, value,
+        compare_way)
+        values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{value,jdbcType=DECIMAL},
+        #{compareWay,jdbcType=BIT})
+    </insert>
     <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.PrewarningSetting">
         insert into prewarning_setting
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -192,10 +192,10 @@
         where id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.PrewarningSetting">
-    update prewarning_setting
-    set code = #{code,jdbcType=VARCHAR},
-      value = #{value,jdbcType=DECIMAL},
-      compare_way = #{compareWay,jdbcType=BIT}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+        update prewarning_setting
+        set code = #{code,jdbcType=VARCHAR},
+        value = #{value,jdbcType=DECIMAL},
+        compare_way = #{compareWay,jdbcType=BIT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>

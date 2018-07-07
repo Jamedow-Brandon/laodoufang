@@ -1,6 +1,6 @@
 ##服务启动时，使用随机端口
 server:
-  port: 9999
+  port: 1213
 eureka:
   client:
     register-with-eureka: false

@@ -38,41 +38,47 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <!--<table tableName="T_FEE_AGTBILL" domainObjectName="FeeAgentBill"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>-->
+        <table tableName="cms_category" domainObjectName="cmsCategory"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+        <table tableName="cms_article" domainObjectName="cmsArticle"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
 
-        <table tableName="device" domainObjectName="Device"
-               enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true">
-        </table>
-        <table tableName="environment_data" domainObjectName="EnvironmentData"
-               enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true">
-        </table>
-        <table tableName="prewarning_setting" domainObjectName="PrewarningSetting"
-               enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true">
-        </table>
-        <table tableName="protege" domainObjectName="Protege"
-               enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true">
-        </table>
-        <table tableName="protege_data_rel" domainObjectName="protegeDataRel"
-               enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true">
-        </table>
-        <table tableName="users" domainObjectName="Users"
-               enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true">
-        </table>
+        <!--<table tableName="device" domainObjectName="Device"-->
+        <!--enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--selectByExampleQueryId="true">-->
+        <!--</table>-->
+        <!--<table tableName="environment_data" domainObjectName="EnvironmentData"-->
+        <!--enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--selectByExampleQueryId="true">-->
+        <!--</table>-->
+        <!--<table tableName="prewarning_setting" domainObjectName="PrewarningSetting"-->
+        <!--enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--selectByExampleQueryId="true">-->
+        <!--</table>-->
+        <!--<table tableName="protege" domainObjectName="Protege"-->
+        <!--enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--selectByExampleQueryId="true">-->
+        <!--</table>-->
+        <!--<table tableName="protege_data_rel" domainObjectName="protegeDataRel"-->
+        <!--enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--selectByExampleQueryId="true">-->
+        <!--</table>-->
+        <!--<table tableName="users" domainObjectName="Users"-->
+        <!--enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--selectByExampleQueryId="true">-->
+        <!--</table>-->
 
     </context>
 </generatorConfiguration>

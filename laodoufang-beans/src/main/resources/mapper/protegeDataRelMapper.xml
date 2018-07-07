@@ -67,8 +67,8 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, protege_id, data_type_code
-  </sql>
+        id, protege_id, data_type_code
+    </sql>
     <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.protegeDataRelExample"
             resultMap="BaseResultMap">
         select
@@ -92,9 +92,9 @@
         where id = #{id,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from protege_data_rel
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
+        delete from protege_data_rel
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
     <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.protegeDataRelExample">
         delete from protege_data_rel
         <if test="_parameter != null">
@@ -102,11 +102,11 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.jamedow.laodoufang.entity.protegeDataRel">
-    insert into protege_data_rel (id, protege_id, data_type_code
-      )
-    values (#{id,jdbcType=BIGINT}, #{protegeId,jdbcType=BIGINT}, #{dataTypeCode,jdbcType=BIGINT}
-      )
-  </insert>
+        insert into protege_data_rel (id, protege_id, data_type_code
+        )
+        values (#{id,jdbcType=BIGINT}, #{protegeId,jdbcType=BIGINT}, #{dataTypeCode,jdbcType=BIGINT}
+        )
+    </insert>
     <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.protegeDataRel">
         insert into protege_data_rel
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -178,9 +178,9 @@
         where id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.protegeDataRel">
-    update protege_data_rel
-    set protege_id = #{protegeId,jdbcType=BIGINT},
-      data_type_code = #{dataTypeCode,jdbcType=BIGINT}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+        update protege_data_rel
+        set protege_id = #{protegeId,jdbcType=BIGINT},
+        data_type_code = #{dataTypeCode,jdbcType=BIGINT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>

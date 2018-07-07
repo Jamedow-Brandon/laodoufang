@@ -32,8 +32,8 @@ module.exports = function generateRawFilesJs(grunt, banner) {
   }
   var dirs = ['js', 'less', 'fonts'];
   var files = banner + dirs.map(getFiles).reduce(function (combined, file) {
-      return combined + file;
-    }, '');
+    return combined + file;
+  }, '');
   var rawFilesJs = 'docs/assets/js/raw-files.min.js';
   try {
     fs.writeFileSync(rawFilesJs, files);

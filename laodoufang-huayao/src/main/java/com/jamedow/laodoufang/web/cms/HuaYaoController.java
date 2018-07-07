@@ -1,4 +1,4 @@
-package com.jamedow.laodoufang.web.huayao;
+package com.jamedow.laodoufang.web.cms;
 
 import com.jamedow.laodoufang.entity.Product;
 import com.jamedow.laodoufang.entity.ProductExample;

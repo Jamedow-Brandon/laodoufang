@@ -73,9 +73,9 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, resource_id, resource_type, biz_type, name, suffix, size,
-    remote_path, remark
-  </sql>
+        id, resource_id, resource_type, biz_type, name, suffix, size,
+        remote_path, remark
+    </sql>
     <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.BaseAttachmentExample"
             resultMap="BaseResultMap">
         select
@@ -99,9 +99,9 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from base_attachment
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+        delete from base_attachment
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
     <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.BaseAttachmentExample">
         delete from base_attachment
         <if test="_parameter != null">
@@ -109,15 +109,15 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.jamedow.laodoufang.entity.BaseAttachment">
-    insert into base_attachment (id, resource_id, resource_type,
-    biz_type, name,
-    suffix, size, remote_path,
-    remark)
-    values (#{id,jdbcType=INTEGER}, #{resourceId,jdbcType=INTEGER}, #{resourceType,jdbcType=VARCHAR},
-    #{bizType,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
-    #{suffix,jdbcType=VARCHAR}, #{size,jdbcType=INTEGER}, #{remotePath,jdbcType=VARCHAR},
-    #{remark,jdbcType=VARCHAR})
-  </insert>
+        insert into base_attachment (id, resource_id, resource_type,
+        biz_type, name,
+        suffix, size, remote_path,
+        remark)
+        values (#{id,jdbcType=INTEGER}, #{resourceId,jdbcType=INTEGER}, #{resourceType,jdbcType=VARCHAR},
+        #{bizType,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+        #{suffix,jdbcType=VARCHAR}, #{size,jdbcType=INTEGER}, #{remotePath,jdbcType=VARCHAR},
+        #{remark,jdbcType=VARCHAR})
+    </insert>
     <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.BaseAttachment">
         insert into base_attachment
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -267,15 +267,15 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.BaseAttachment">
-    update base_attachment
-    set resource_id = #{resourceId,jdbcType=INTEGER},
-    resource_type = #{resourceType,jdbcType=VARCHAR},
-    biz_type = #{bizType,jdbcType=INTEGER},
-      name = #{name,jdbcType=VARCHAR},
-      suffix = #{suffix,jdbcType=VARCHAR},
-      size = #{size,jdbcType=INTEGER},
-    remote_path = #{remotePath,jdbcType=VARCHAR},
-      remark = #{remark,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        update base_attachment
+        set resource_id = #{resourceId,jdbcType=INTEGER},
+        resource_type = #{resourceType,jdbcType=VARCHAR},
+        biz_type = #{bizType,jdbcType=INTEGER},
+        name = #{name,jdbcType=VARCHAR},
+        suffix = #{suffix,jdbcType=VARCHAR},
+        size = #{size,jdbcType=INTEGER},
+        remote_path = #{remotePath,jdbcType=VARCHAR},
+        remark = #{remark,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

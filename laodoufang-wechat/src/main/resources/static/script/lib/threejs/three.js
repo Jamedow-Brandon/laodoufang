@@ -34,7 +34,7 @@
 
         Math.sign = function (x) {
 
-            return ( x < 0 ) ? -1 : ( x > 0 ) ? 1 : +x;
+            return (x < 0) ? -1 : (x > 0) ? 1 : +x;
 
         };
 
@@ -331,7 +331,7 @@
 
             for (var i = 0; i < 256; i++) {
 
-                lut[i] = ( i < 16 ? '0' : '' ) + ( i ).toString(16).toUpperCase();
+                lut[i] = (i < 16 ? '0' : '') + (i).toString(16).toUpperCase();
 
             }
 
@@ -361,7 +361,7 @@
 
         euclideanModulo: function (n, m) {
 
-            return ( ( n % m ) + m ) % m;
+            return ((n % m) + m) % m;
 
         },
 
@@ -369,7 +369,7 @@
 
         mapLinear: function (x, a1, a2, b1, b2) {
 
-            return b1 + ( x - a1 ) * ( b2 - b1 ) / ( a2 - a1 );
+            return b1 + (x - a1) * (b2 - b1) / (a2 - a1);
 
         },
 
@@ -377,7 +377,7 @@
 
         lerp: function (x, y, t) {
 
-            return ( 1 - t ) * x + t * y;
+            return (1 - t) * x + t * y;
 
         },
 
@@ -388,9 +388,9 @@
             if (x <= min) return 0;
             if (x >= max) return 1;
 
-            x = ( x - min ) / ( max - min );
+            x = (x - min) / (max - min);
 
-            return x * x * ( 3 - 2 * x );
+            return x * x * (3 - 2 * x);
 
         },
 
@@ -399,9 +399,9 @@
             if (x <= min) return 0;
             if (x >= max) return 1;
 
-            x = ( x - min ) / ( max - min );
+            x = (x - min) / (max - min);
 
-            return x * x * x * ( x * ( x * 6 - 15 ) + 10 );
+            return x * x * x * (x * (x * 6 - 15) + 10);
 
         },
 
@@ -409,7 +409,7 @@
 
         randInt: function (low, high) {
 
-            return low + Math.floor(Math.random() * ( high - low + 1 ));
+            return low + Math.floor(Math.random() * (high - low + 1));
 
         },
 
@@ -417,7 +417,7 @@
 
         randFloat: function (low, high) {
 
-            return low + Math.random() * ( high - low );
+            return low + Math.random() * (high - low);
 
         },
 
@@ -425,7 +425,7 @@
 
         randFloatSpread: function (range) {
 
-            return range * ( 0.5 - Math.random() );
+            return range * (0.5 - Math.random());
 
         },
 
@@ -443,7 +443,7 @@
 
         isPowerOfTwo: function (value) {
 
-            return ( value & ( value - 1 ) ) === 0 && value !== 0;
+            return (value & (value - 1)) === 0 && value !== 0;
 
         },
 
@@ -802,8 +802,8 @@
 
         roundToZero: function () {
 
-            this.x = ( this.x < 0 ) ? Math.ceil(this.x) : Math.floor(this.x);
-            this.y = ( this.y < 0 ) ? Math.ceil(this.y) : Math.floor(this.y);
+            this.x = (this.x < 0) ? Math.ceil(this.x) : Math.floor(this.x);
+            this.y = (this.y < 0) ? Math.ceil(this.y) : Math.floor(this.y);
 
             return this;
 
@@ -887,8 +887,8 @@
 
         lerp: function (v, alpha) {
 
-            this.x += ( v.x - this.x ) * alpha;
-            this.y += ( v.y - this.y ) * alpha;
+            this.x += (v.x - this.x) * alpha;
+            this.y += (v.y - this.y) * alpha;
 
             return this;
 
@@ -902,7 +902,7 @@
 
         equals: function (v) {
 
-            return ( ( v.x === this.x ) && ( v.y === this.y ) );
+            return ((v.x === this.x) && (v.y === this.y));
 
         },
 
@@ -1134,7 +1134,7 @@
 
         makeRotationFromEuler: function (euler) {
 
-            if (!( euler && euler.isEuler )) {
+            if (!(euler && euler.isEuler)) {
 
                 console.error('THREE.Matrix4: .makeRotationFromEuler() now expects a Euler rotation rather than a Vector3 and order.');
 
@@ -1270,17 +1270,17 @@
             var yy = y * y2, yz = y * z2, zz = z * z2;
             var wx = w * x2, wy = w * y2, wz = w * z2;
 
-            te[0] = 1 - ( yy + zz );
+            te[0] = 1 - (yy + zz);
             te[4] = xy - wz;
             te[8] = xz + wy;
 
             te[1] = xy + wz;
-            te[5] = 1 - ( xx + zz );
+            te[5] = 1 - (xx + zz);
             te[9] = yz - wx;
 
             te[2] = xz - wy;
             te[6] = yz + wx;
-            te[10] = 1 - ( xx + yy );
+            te[10] = 1 - (xx + yy);
 
             // last column
             te[3] = 0;
@@ -1596,24 +1596,24 @@
             var detInv = 1 / det;
 
             te[0] = t11 * detInv;
-            te[1] = ( n24 * n33 * n41 - n23 * n34 * n41 - n24 * n31 * n43 + n21 * n34 * n43 + n23 * n31 * n44 - n21 * n33 * n44 ) * detInv;
-            te[2] = ( n22 * n34 * n41 - n24 * n32 * n41 + n24 * n31 * n42 - n21 * n34 * n42 - n22 * n31 * n44 + n21 * n32 * n44 ) * detInv;
-            te[3] = ( n23 * n32 * n41 - n22 * n33 * n41 - n23 * n31 * n42 + n21 * n33 * n42 + n22 * n31 * n43 - n21 * n32 * n43 ) * detInv;
+            te[1] = (n24 * n33 * n41 - n23 * n34 * n41 - n24 * n31 * n43 + n21 * n34 * n43 + n23 * n31 * n44 - n21 * n33 * n44) * detInv;
+            te[2] = (n22 * n34 * n41 - n24 * n32 * n41 + n24 * n31 * n42 - n21 * n34 * n42 - n22 * n31 * n44 + n21 * n32 * n44) * detInv;
+            te[3] = (n23 * n32 * n41 - n22 * n33 * n41 - n23 * n31 * n42 + n21 * n33 * n42 + n22 * n31 * n43 - n21 * n32 * n43) * detInv;
 
             te[4] = t12 * detInv;
-            te[5] = ( n13 * n34 * n41 - n14 * n33 * n41 + n14 * n31 * n43 - n11 * n34 * n43 - n13 * n31 * n44 + n11 * n33 * n44 ) * detInv;
-            te[6] = ( n14 * n32 * n41 - n12 * n34 * n41 - n14 * n31 * n42 + n11 * n34 * n42 + n12 * n31 * n44 - n11 * n32 * n44 ) * detInv;
-            te[7] = ( n12 * n33 * n41 - n13 * n32 * n41 + n13 * n31 * n42 - n11 * n33 * n42 - n12 * n31 * n43 + n11 * n32 * n43 ) * detInv;
+            te[5] = (n13 * n34 * n41 - n14 * n33 * n41 + n14 * n31 * n43 - n11 * n34 * n43 - n13 * n31 * n44 + n11 * n33 * n44) * detInv;
+            te[6] = (n14 * n32 * n41 - n12 * n34 * n41 - n14 * n31 * n42 + n11 * n34 * n42 + n12 * n31 * n44 - n11 * n32 * n44) * detInv;
+            te[7] = (n12 * n33 * n41 - n13 * n32 * n41 + n13 * n31 * n42 - n11 * n33 * n42 - n12 * n31 * n43 + n11 * n32 * n43) * detInv;
 
             te[8] = t13 * detInv;
-            te[9] = ( n14 * n23 * n41 - n13 * n24 * n41 - n14 * n21 * n43 + n11 * n24 * n43 + n13 * n21 * n44 - n11 * n23 * n44 ) * detInv;
-            te[10] = ( n12 * n24 * n41 - n14 * n22 * n41 + n14 * n21 * n42 - n11 * n24 * n42 - n12 * n21 * n44 + n11 * n22 * n44 ) * detInv;
-            te[11] = ( n13 * n22 * n41 - n12 * n23 * n41 - n13 * n21 * n42 + n11 * n23 * n42 + n12 * n21 * n43 - n11 * n22 * n43 ) * detInv;
+            te[9] = (n14 * n23 * n41 - n13 * n24 * n41 - n14 * n21 * n43 + n11 * n24 * n43 + n13 * n21 * n44 - n11 * n23 * n44) * detInv;
+            te[10] = (n12 * n24 * n41 - n14 * n22 * n41 + n14 * n21 * n42 - n11 * n24 * n42 - n12 * n21 * n44 + n11 * n22 * n44) * detInv;
+            te[11] = (n13 * n22 * n41 - n12 * n23 * n41 - n13 * n21 * n42 + n11 * n23 * n42 + n12 * n21 * n43 - n11 * n22 * n43) * detInv;
 
             te[12] = t14 * detInv;
-            te[13] = ( n13 * n24 * n31 - n14 * n23 * n31 + n14 * n21 * n33 - n11 * n24 * n33 - n13 * n21 * n34 + n11 * n23 * n34 ) * detInv;
-            te[14] = ( n14 * n22 * n31 - n12 * n24 * n31 - n14 * n21 * n32 + n11 * n24 * n32 + n12 * n21 * n34 - n11 * n22 * n34 ) * detInv;
-            te[15] = ( n12 * n23 * n31 - n13 * n22 * n31 + n13 * n21 * n32 - n11 * n23 * n32 - n12 * n21 * n33 + n11 * n22 * n33 ) * detInv;
+            te[13] = (n13 * n24 * n31 - n14 * n23 * n31 + n14 * n21 * n33 - n11 * n24 * n33 - n13 * n21 * n34 + n11 * n23 * n34) * detInv;
+            te[14] = (n14 * n22 * n31 - n12 * n24 * n31 - n14 * n21 * n32 + n11 * n24 * n32 + n12 * n21 * n34 - n11 * n22 * n34) * detInv;
+            te[15] = (n12 * n23 * n31 - n13 * n22 * n31 + n13 * n21 * n32 - n11 * n23 * n32 - n12 * n21 * n33 + n11 * n22 * n33) * detInv;
 
             return this;
 
@@ -1829,13 +1829,13 @@
             }
 
             var te = this.elements;
-            var x = 2 * near / ( right - left );
-            var y = 2 * near / ( top - bottom );
+            var x = 2 * near / (right - left);
+            var y = 2 * near / (top - bottom);
 
-            var a = ( right + left ) / ( right - left );
-            var b = ( top + bottom ) / ( top - bottom );
-            var c = -( far + near ) / ( far - near );
-            var d = -2 * far * near / ( far - near );
+            var a = (right + left) / (right - left);
+            var b = (top + bottom) / (top - bottom);
+            var c = -(far + near) / (far - near);
+            var d = -2 * far * near / (far - near);
 
             te[0] = x;
             te[4] = 0;
@@ -1861,13 +1861,13 @@
         makeOrthographic: function (left, right, top, bottom, near, far) {
 
             var te = this.elements;
-            var w = 1.0 / ( right - left );
-            var h = 1.0 / ( top - bottom );
-            var p = 1.0 / ( far - near );
+            var w = 1.0 / (right - left);
+            var h = 1.0 / (top - bottom);
+            var p = 1.0 / (far - near);
 
-            var x = ( right + left ) * w;
-            var y = ( top + bottom ) * h;
-            var z = ( far + near ) * p;
+            var x = (right + left) * w;
+            var y = (top + bottom) * h;
+            var z = (far + near) * p;
 
             te[0] = 2 * w;
             te[4] = 0;
@@ -1964,7 +1964,7 @@
         this._x = x || 0;
         this._y = y || 0;
         this._z = z || 0;
-        this._w = ( w !== undefined ) ? w : 1;
+        this._w = (w !== undefined) ? w : 1;
 
     }
 
@@ -1996,7 +1996,7 @@
 
                     cos = x0 * x1 + y0 * y1 + z0 * z1 + w0 * w1,
 
-                    dir = ( cos >= 0 ? 1 : -1 ),
+                    dir = (cos >= 0 ? 1 : -1),
                     sqrSin = 1 - cos * cos;
 
                 // Skip the Slerp for tiny steps to avoid numeric problems:
@@ -2148,7 +2148,7 @@
 
         setFromEuler: function (euler, update) {
 
-            if (!( euler && euler.isEuler )) {
+            if (!(euler && euler.isEuler)) {
 
                 throw new Error('THREE.Quaternion: .setFromEuler() now expects an Euler rotation rather than a Vector3 and order.');
 
@@ -2260,35 +2260,35 @@
                 s = 0.5 / Math.sqrt(trace + 1.0);
 
                 this._w = 0.25 / s;
-                this._x = ( m32 - m23 ) * s;
-                this._y = ( m13 - m31 ) * s;
-                this._z = ( m21 - m12 ) * s;
+                this._x = (m32 - m23) * s;
+                this._y = (m13 - m31) * s;
+                this._z = (m21 - m12) * s;
 
             } else if (m11 > m22 && m11 > m33) {
 
                 s = 2.0 * Math.sqrt(1.0 + m11 - m22 - m33);
 
-                this._w = ( m32 - m23 ) / s;
+                this._w = (m32 - m23) / s;
                 this._x = 0.25 * s;
-                this._y = ( m12 + m21 ) / s;
-                this._z = ( m13 + m31 ) / s;
+                this._y = (m12 + m21) / s;
+                this._z = (m13 + m31) / s;
 
             } else if (m22 > m33) {
 
                 s = 2.0 * Math.sqrt(1.0 + m22 - m11 - m33);
 
-                this._w = ( m13 - m31 ) / s;
-                this._x = ( m12 + m21 ) / s;
+                this._w = (m13 - m31) / s;
+                this._x = (m12 + m21) / s;
                 this._y = 0.25 * s;
-                this._z = ( m23 + m32 ) / s;
+                this._z = (m23 + m32) / s;
 
             } else {
 
                 s = 2.0 * Math.sqrt(1.0 + m33 - m11 - m22);
 
-                this._w = ( m21 - m12 ) / s;
-                this._x = ( m13 + m31 ) / s;
-                this._y = ( m23 + m32 ) / s;
+                this._w = (m21 - m12) / s;
+                this._x = (m13 + m31) / s;
+                this._y = (m23 + m32) / s;
                 this._z = 0.25 * s;
 
             }
@@ -2487,23 +2487,23 @@
 
             if (Math.abs(sinHalfTheta) < 0.001) {
 
-                this._w = 0.5 * ( w + this._w );
-                this._x = 0.5 * ( x + this._x );
-                this._y = 0.5 * ( y + this._y );
-                this._z = 0.5 * ( z + this._z );
+                this._w = 0.5 * (w + this._w);
+                this._x = 0.5 * (x + this._x);
+                this._y = 0.5 * (y + this._y);
+                this._z = 0.5 * (z + this._z);
 
                 return this;
 
             }
 
             var halfTheta = Math.atan2(sinHalfTheta, cosHalfTheta);
-            var ratioA = Math.sin(( 1 - t ) * halfTheta) / sinHalfTheta,
+            var ratioA = Math.sin((1 - t) * halfTheta) / sinHalfTheta,
                 ratioB = Math.sin(t * halfTheta) / sinHalfTheta;
 
-            this._w = ( w * ratioA + this._w * ratioB );
-            this._x = ( x * ratioA + this._x * ratioB );
-            this._y = ( y * ratioA + this._y * ratioB );
-            this._z = ( z * ratioA + this._z * ratioB );
+            this._w = (w * ratioA + this._w * ratioB);
+            this._x = (x * ratioA + this._x * ratioB);
+            this._y = (y * ratioA + this._y * ratioB);
+            this._z = (z * ratioA + this._z * ratioB);
 
             this.onChangeCallback();
 
@@ -2513,7 +2513,7 @@
 
         equals: function (quaternion) {
 
-            return ( quaternion._x === this._x ) && ( quaternion._y === this._y ) && ( quaternion._z === this._z ) && ( quaternion._w === this._w );
+            return (quaternion._x === this._x) && (quaternion._y === this._y) && (quaternion._z === this._z) && (quaternion._w === this._w);
 
         },
 
@@ -2806,7 +2806,7 @@
 
             return function applyEuler(euler) {
 
-                if (!( euler && euler.isEuler )) {
+                if (!(euler && euler.isEuler)) {
 
                     console.error('THREE.Vector3: .applyEuler() now expects an Euler rotation rather than a Vector3 and order.');
 
@@ -2848,11 +2848,11 @@
             var x = this.x, y = this.y, z = this.z;
             var e = m.elements;
 
-            var w = 1 / ( e[3] * x + e[7] * y + e[11] * z + e[15] );
+            var w = 1 / (e[3] * x + e[7] * y + e[11] * z + e[15]);
 
-            this.x = ( e[0] * x + e[4] * y + e[8] * z + e[12] ) * w;
-            this.y = ( e[1] * x + e[5] * y + e[9] * z + e[13] ) * w;
-            this.z = ( e[2] * x + e[6] * y + e[10] * z + e[14] ) * w;
+            this.x = (e[0] * x + e[4] * y + e[8] * z + e[12]) * w;
+            this.y = (e[1] * x + e[5] * y + e[9] * z + e[13]) * w;
+            this.z = (e[2] * x + e[6] * y + e[10] * z + e[14]) * w;
 
             return this;
 
@@ -3026,9 +3026,9 @@
 
         roundToZero: function () {
 
-            this.x = ( this.x < 0 ) ? Math.ceil(this.x) : Math.floor(this.x);
-            this.y = ( this.y < 0 ) ? Math.ceil(this.y) : Math.floor(this.y);
-            this.z = ( this.z < 0 ) ? Math.ceil(this.z) : Math.floor(this.z);
+            this.x = (this.x < 0) ? Math.ceil(this.x) : Math.floor(this.x);
+            this.y = (this.y < 0) ? Math.ceil(this.y) : Math.floor(this.y);
+            this.z = (this.z < 0) ? Math.ceil(this.z) : Math.floor(this.z);
 
             return this;
 
@@ -3084,9 +3084,9 @@
 
         lerp: function (v, alpha) {
 
-            this.x += ( v.x - this.x ) * alpha;
-            this.y += ( v.y - this.y ) * alpha;
-            this.z += ( v.z - this.z ) * alpha;
+            this.x += (v.x - this.x) * alpha;
+            this.y += (v.y - this.y) * alpha;
+            this.z += (v.z - this.z) * alpha;
 
             return this;
 
@@ -3163,7 +3163,7 @@
 
         angleTo: function (v) {
 
-            var theta = this.dot(v) / ( Math.sqrt(this.lengthSq() * v.lengthSq()) );
+            var theta = this.dot(v) / (Math.sqrt(this.lengthSq() * v.lengthSq()));
 
             // clamp, to handle numerical problems
 
@@ -3247,7 +3247,7 @@
 
         equals: function (v) {
 
-            return ( ( v.x === this.x ) && ( v.y === this.y ) && ( v.z === this.z ) );
+            return ((v.x === this.x) && (v.y === this.y) && (v.z === this.z));
 
         },
 
@@ -3530,16 +3530,16 @@
             var detInv = 1 / det;
 
             te[0] = t11 * detInv;
-            te[1] = ( n31 * n23 - n33 * n21 ) * detInv;
-            te[2] = ( n32 * n21 - n31 * n22 ) * detInv;
+            te[1] = (n31 * n23 - n33 * n21) * detInv;
+            te[2] = (n32 * n21 - n31 * n22) * detInv;
 
             te[3] = t12 * detInv;
-            te[4] = ( n33 * n11 - n31 * n13 ) * detInv;
-            te[5] = ( n31 * n12 - n32 * n11 ) * detInv;
+            te[4] = (n33 * n11 - n31 * n13) * detInv;
+            te[5] = (n31 * n12 - n32 * n11) * detInv;
 
             te[6] = t13 * detInv;
-            te[7] = ( n21 * n13 - n23 * n11 ) * detInv;
-            te[8] = ( n22 * n11 - n21 * n12 ) * detInv;
+            te[7] = (n21 * n13 - n23 * n11) * detInv;
+            te[8] = (n22 * n11 - n21 * n12) * detInv;
 
             return this;
 
@@ -3593,8 +3593,8 @@
             var s = Math.sin(rotation);
 
             this.set(
-                sx * c, sx * s, -sx * ( c * cx + s * cy ) + cx + tx,
-                -sy * s, sy * c, -sy * ( -s * cx + c * cy ) + cy + ty,
+                sx * c, sx * s, -sx * (c * cx + s * cy) + cx + tx,
+                -sy * s, sy * c, -sy * (-s * cx + c * cy) + cy + ty,
                 0, 0, 1
             );
 
@@ -3817,7 +3817,7 @@
 
         toJSON: function (meta) {
 
-            var isRootObject = ( meta === undefined || typeof meta === 'string' );
+            var isRootObject = (meta === undefined || typeof meta === 'string');
 
             if (!isRootObject && meta.textures[this.uuid] !== undefined) {
 
@@ -4033,7 +4033,7 @@
         this.x = x || 0;
         this.y = y || 0;
         this.z = z || 0;
-        this.w = ( w !== undefined ) ? w : 1;
+        this.w = (w !== undefined) ? w : 1;
 
     }
 
@@ -4150,7 +4150,7 @@
             this.x = v.x;
             this.y = v.y;
             this.z = v.z;
-            this.w = ( v.w !== undefined ) ? v.w : 1;
+            this.w = (v.w !== undefined) ? v.w : 1;
 
             return this;
 
@@ -4322,18 +4322,18 @@
                 m21 = te[1], m22 = te[5], m23 = te[9],
                 m31 = te[2], m32 = te[6], m33 = te[10];
 
-            if (( Math.abs(m12 - m21) < epsilon ) &&
-                ( Math.abs(m13 - m31) < epsilon ) &&
-                ( Math.abs(m23 - m32) < epsilon )) {
+            if ((Math.abs(m12 - m21) < epsilon) &&
+                (Math.abs(m13 - m31) < epsilon) &&
+                (Math.abs(m23 - m32) < epsilon)) {
 
                 // singularity found
                 // first check for identity matrix which must have +1 for all terms
                 // in leading diagonal and zero in other terms
 
-                if (( Math.abs(m12 + m21) < epsilon2 ) &&
-                    ( Math.abs(m13 + m31) < epsilon2 ) &&
-                    ( Math.abs(m23 + m32) < epsilon2 ) &&
-                    ( Math.abs(m11 + m22 + m33 - 3) < epsilon2 )) {
+                if ((Math.abs(m12 + m21) < epsilon2) &&
+                    (Math.abs(m13 + m31) < epsilon2) &&
+                    (Math.abs(m23 + m32) < epsilon2) &&
+                    (Math.abs(m11 + m22 + m33 - 3) < epsilon2)) {
 
                     // this singularity is identity matrix so angle = 0
 
@@ -4347,14 +4347,14 @@
 
                 angle = Math.PI;
 
-                var xx = ( m11 + 1 ) / 2;
-                var yy = ( m22 + 1 ) / 2;
-                var zz = ( m33 + 1 ) / 2;
-                var xy = ( m12 + m21 ) / 4;
-                var xz = ( m13 + m31 ) / 4;
-                var yz = ( m23 + m32 ) / 4;
+                var xx = (m11 + 1) / 2;
+                var yy = (m22 + 1) / 2;
+                var zz = (m33 + 1) / 2;
+                var xy = (m12 + m21) / 4;
+                var xz = (m13 + m31) / 4;
+                var yz = (m23 + m32) / 4;
 
-                if (( xx > yy ) && ( xx > zz )) {
+                if ((xx > yy) && (xx > zz)) {
 
                     // m11 is the largest diagonal term
 
@@ -4418,19 +4418,19 @@
 
             // as we have reached here there are no singularities so we can handle normally
 
-            var s = Math.sqrt(( m32 - m23 ) * ( m32 - m23 ) +
-                ( m13 - m31 ) * ( m13 - m31 ) +
-                ( m21 - m12 ) * ( m21 - m12 )); // used to normalize
+            var s = Math.sqrt((m32 - m23) * (m32 - m23) +
+                (m13 - m31) * (m13 - m31) +
+                (m21 - m12) * (m21 - m12)); // used to normalize
 
             if (Math.abs(s) < 0.001) s = 1;
 
             // prevent divide by zero, should not happen if matrix is orthogonal and should be
             // caught by singularity test above, but I've left it in just in case
 
-            this.x = ( m32 - m23 ) / s;
-            this.y = ( m13 - m31 ) / s;
-            this.z = ( m21 - m12 ) / s;
-            this.w = Math.acos(( m11 + m22 + m33 - 1 ) / 2);
+            this.x = (m32 - m23) / s;
+            this.y = (m13 - m31) / s;
+            this.z = (m21 - m12) / s;
+            this.w = Math.acos((m11 + m22 + m33 - 1) / 2);
 
             return this;
 
@@ -4536,10 +4536,10 @@
 
         roundToZero: function () {
 
-            this.x = ( this.x < 0 ) ? Math.ceil(this.x) : Math.floor(this.x);
-            this.y = ( this.y < 0 ) ? Math.ceil(this.y) : Math.floor(this.y);
-            this.z = ( this.z < 0 ) ? Math.ceil(this.z) : Math.floor(this.z);
-            this.w = ( this.w < 0 ) ? Math.ceil(this.w) : Math.floor(this.w);
+            this.x = (this.x < 0) ? Math.ceil(this.x) : Math.floor(this.x);
+            this.y = (this.y < 0) ? Math.ceil(this.y) : Math.floor(this.y);
+            this.z = (this.z < 0) ? Math.ceil(this.z) : Math.floor(this.z);
+            this.w = (this.w < 0) ? Math.ceil(this.w) : Math.floor(this.w);
 
             return this;
 
@@ -4594,10 +4594,10 @@
 
         lerp: function (v, alpha) {
 
-            this.x += ( v.x - this.x ) * alpha;
-            this.y += ( v.y - this.y ) * alpha;
-            this.z += ( v.z - this.z ) * alpha;
-            this.w += ( v.w - this.w ) * alpha;
+            this.x += (v.x - this.x) * alpha;
+            this.y += (v.y - this.y) * alpha;
+            this.z += (v.z - this.z) * alpha;
+            this.w += (v.w - this.w) * alpha;
 
             return this;
 
@@ -4611,7 +4611,7 @@
 
         equals: function (v) {
 
-            return ( ( v.x === this.x ) && ( v.y === this.y ) && ( v.z === this.z ) && ( v.w === this.w ) );
+            return ((v.x === this.x) && (v.y === this.y) && (v.z === this.z) && (v.w === this.w));
 
         },
 
@@ -5676,9 +5676,9 @@
 
             hex = Math.floor(hex);
 
-            this.r = ( hex >> 16 & 255 ) / 255;
-            this.g = ( hex >> 8 & 255 ) / 255;
-            this.b = ( hex & 255 ) / 255;
+            this.r = (hex >> 16 & 255) / 255;
+            this.g = (hex >> 8 & 255) / 255;
+            this.b = (hex & 255) / 255;
 
             return this;
 
@@ -5700,9 +5700,9 @@
 
                 if (t < 0) t += 1;
                 if (t > 1) t -= 1;
-                if (t < 1 / 6) return p + ( q - p ) * 6 * t;
+                if (t < 1 / 6) return p + (q - p) * 6 * t;
                 if (t < 1 / 2) return q;
-                if (t < 2 / 3) return p + ( q - p ) * 6 * ( 2 / 3 - t );
+                if (t < 2 / 3) return p + (q - p) * 6 * (2 / 3 - t);
                 return p;
 
             }
@@ -5720,8 +5720,8 @@
 
                 } else {
 
-                    var p = l <= 0.5 ? l * ( 1 + s ) : l + s - ( l * s );
-                    var q = ( 2 * l ) - p;
+                    var p = l <= 0.5 ? l * (1 + s) : l + s - (l * s);
+                    var q = (2 * l) - p;
 
                     this.r = hue2rgb(q, p, h + 1 / 3);
                     this.g = hue2rgb(q, p, h);
@@ -5897,7 +5897,7 @@
 
             if (gammaFactor === undefined) gammaFactor = 2.0;
 
-            var safeInverse = ( gammaFactor > 0 ) ? ( 1.0 / gammaFactor ) : 1.0;
+            var safeInverse = (gammaFactor > 0) ? (1.0 / gammaFactor) : 1.0;
 
             this.r = Math.pow(color.r, safeInverse);
             this.g = Math.pow(color.g, safeInverse);
@@ -5931,13 +5931,13 @@
 
         getHex: function () {
 
-            return ( this.r * 255 ) << 16 ^ ( this.g * 255 ) << 8 ^ ( this.b * 255 ) << 0;
+            return (this.r * 255) << 16 ^ (this.g * 255) << 8 ^ (this.b * 255) << 0;
 
         },
 
         getHexString: function () {
 
-            return ( '000000' + this.getHex().toString(16) ).slice(-6);
+            return ('000000' + this.getHex().toString(16)).slice(-6);
 
         },
 
@@ -5953,7 +5953,7 @@
             var min = Math.min(r, g, b);
 
             var hue, saturation;
-            var lightness = ( min + max ) / 2.0;
+            var lightness = (min + max) / 2.0;
 
             if (min === max) {
 
@@ -5964,18 +5964,18 @@
 
                 var delta = max - min;
 
-                saturation = lightness <= 0.5 ? delta / ( max + min ) : delta / ( 2 - max - min );
+                saturation = lightness <= 0.5 ? delta / (max + min) : delta / (2 - max - min);
 
                 switch (max) {
 
                     case r:
-                        hue = ( g - b ) / delta + ( g < b ? 6 : 0 );
+                        hue = (g - b) / delta + (g < b ? 6 : 0);
                         break;
                     case g:
-                        hue = ( b - r ) / delta + 2;
+                        hue = (b - r) / delta + 2;
                         break;
                     case b:
-                        hue = ( r - g ) / delta + 4;
+                        hue = (r - g) / delta + 4;
                         break;
 
                 }
@@ -5994,7 +5994,7 @@
 
         getStyle: function () {
 
-            return 'rgb(' + ( ( this.r * 255 ) | 0 ) + ',' + ( ( this.g * 255 ) | 0 ) + ',' + ( ( this.b * 255 ) | 0 ) + ')';
+            return 'rgb(' + ((this.r * 255) | 0) + ',' + ((this.g * 255) | 0) + ',' + ((this.b * 255) | 0) + ')';
 
         },
 
@@ -6074,9 +6074,9 @@
 
         lerp: function (color, alpha) {
 
-            this.r += ( color.r - this.r ) * alpha;
-            this.g += ( color.g - this.g ) * alpha;
-            this.b += ( color.b - this.b ) * alpha;
+            this.r += (color.r - this.r) * alpha;
+            this.g += (color.g - this.g) * alpha;
+            this.b += (color.b - this.b) * alpha;
 
             return this;
 
@@ -6084,7 +6084,7 @@
 
         equals: function (c) {
 
-            return ( c.r === this.r ) && ( c.g === this.g ) && ( c.b === this.b );
+            return (c.r === this.r) && (c.g === this.g) && (c.b === this.b);
 
         },
 
@@ -6352,10 +6352,10 @@
 
                     var parameter_src = uniforms_src[u][p];
 
-                    if (parameter_src && ( parameter_src.isColor ||
+                    if (parameter_src && (parameter_src.isColor ||
                         parameter_src.isMatrix3 || parameter_src.isMatrix4 ||
                         parameter_src.isVector2 || parameter_src.isVector3 || parameter_src.isVector4 ||
-                        parameter_src.isTexture )) {
+                        parameter_src.isTexture)) {
 
                         uniforms_dst[u][p] = parameter_src.clone();
 
@@ -6952,8 +6952,8 @@
 
     function Box2(min, max) {
 
-        this.min = ( min !== undefined ) ? min : new Vector2(+Infinity, +Infinity);
-        this.max = ( max !== undefined ) ? max : new Vector2(-Infinity, -Infinity);
+        this.min = (min !== undefined) ? min : new Vector2(+Infinity, +Infinity);
+        this.max = (max !== undefined) ? max : new Vector2(-Infinity, -Infinity);
 
     }
 
@@ -7026,7 +7026,7 @@
 
             // this is a more robust check for empty than ( volume <= 0 ) because volume can get positive with two negative axes
 
-            return ( this.max.x < this.min.x ) || ( this.max.y < this.min.y );
+            return (this.max.x < this.min.x) || (this.max.y < this.min.y);
 
         },
 
@@ -7093,8 +7093,8 @@
             var result = optionalTarget || new Vector2();
 
             return result.set(
-                ( point.x - this.min.x ) / ( this.max.x - this.min.x ),
-                ( point.y - this.min.y ) / ( this.max.y - this.min.y )
+                (point.x - this.min.x) / (this.max.x - this.min.x),
+                (point.y - this.min.y) / (this.max.y - this.min.y)
             );
 
         },
@@ -7358,7 +7358,7 @@
             var validArea = new Box2();
 
             validArea.min.set(viewport.x, viewport.y);
-            validArea.max.set(viewport.x + ( viewport.z - 16 ), viewport.y + ( viewport.w - 16 ));
+            validArea.max.set(viewport.x + (viewport.z - 16), viewport.y + (viewport.w - 16));
 
             if (program === undefined) {
 
@@ -7408,8 +7408,8 @@
 
                 // horizontal and vertical coordinate of the lower left corner of the pixels to copy
 
-                screenPositionPixels.x = viewport.x + ( screenPosition.x * halfViewportWidth ) + halfViewportWidth - 8;
-                screenPositionPixels.y = viewport.y + ( screenPosition.y * halfViewportHeight ) + halfViewportHeight - 8;
+                screenPositionPixels.x = viewport.x + (screenPosition.x * halfViewportWidth) + halfViewportWidth - 8;
+                screenPositionPixels.y = viewport.y + (screenPosition.y * halfViewportHeight) + halfViewportHeight - 8;
 
                 // screen cull
 
@@ -8026,7 +8026,7 @@
                 if (key === 'shading') {
 
                     console.warn('THREE.' + this.type + ': .shading has been removed. Use the boolean .flatShading instead.');
-                    this.flatShading = ( newValue === FlatShading ) ? true : false;
+                    this.flatShading = (newValue === FlatShading) ? true : false;
                     continue;
 
                 }
@@ -8044,7 +8044,7 @@
 
                     currentValue.set(newValue);
 
-                } else if (( currentValue && currentValue.isVector3 ) && ( newValue && newValue.isVector3 )) {
+                } else if ((currentValue && currentValue.isVector3) && (newValue && newValue.isVector3)) {
 
                     currentValue.copy(newValue);
 
@@ -8065,7 +8065,7 @@
 
         toJSON: function (meta) {
 
-            var isRoot = ( meta === undefined || typeof meta === 'string' );
+            var isRoot = (meta === undefined || typeof meta === 'string');
 
             if (isRoot) {
 
@@ -8462,8 +8462,8 @@
 
     function Box3(min, max) {
 
-        this.min = ( min !== undefined ) ? min : new Vector3(+Infinity, +Infinity, +Infinity);
-        this.max = ( max !== undefined ) ? max : new Vector3(-Infinity, -Infinity, -Infinity);
+        this.min = (min !== undefined) ? min : new Vector3(+Infinity, +Infinity, +Infinity);
+        this.max = (max !== undefined) ? max : new Vector3(-Infinity, -Infinity, -Infinity);
 
     }
 
@@ -8613,7 +8613,7 @@
 
             // this is a more robust check for empty than ( volume <= 0 ) because volume can get positive with two negative axes
 
-            return ( this.max.x < this.min.x ) || ( this.max.y < this.min.y ) || ( this.max.z < this.min.z );
+            return (this.max.x < this.min.x) || (this.max.y < this.min.y) || (this.max.z < this.min.z);
 
         },
 
@@ -8746,9 +8746,9 @@
             var result = optionalTarget || new Vector3();
 
             return result.set(
-                ( point.x - this.min.x ) / ( this.max.x - this.min.x ),
-                ( point.y - this.min.y ) / ( this.max.y - this.min.y ),
-                ( point.z - this.min.z ) / ( this.max.z - this.min.z )
+                (point.x - this.min.x) / (this.max.x - this.min.x),
+                (point.y - this.min.y) / (this.max.y - this.min.y),
+                (point.z - this.min.z) / (this.max.z - this.min.z)
             );
 
         },
@@ -8772,7 +8772,7 @@
                 this.clampPoint(sphere.center, closestPoint);
 
                 // If that point is inside the sphere, the AABB and sphere intersect.
-                return closestPoint.distanceToSquared(sphere.center) <= ( sphere.radius * sphere.radius );
+                return closestPoint.distanceToSquared(sphere.center) <= (sphere.radius * sphere.radius);
 
             };
 
@@ -8821,7 +8821,7 @@
 
             }
 
-            return ( min <= plane.constant && max >= plane.constant );
+            return (min <= plane.constant && max >= plane.constant);
 
         },
 
@@ -8944,8 +8944,8 @@
 
     function Sphere(center, radius) {
 
-        this.center = ( center !== undefined ) ? center : new Vector3();
-        this.radius = ( radius !== undefined ) ? radius : 0;
+        this.center = (center !== undefined) ? center : new Vector3();
+        this.radius = (radius !== undefined) ? radius : 0;
 
     }
 
@@ -9011,19 +9011,19 @@
 
         empty: function () {
 
-            return ( this.radius <= 0 );
+            return (this.radius <= 0);
 
         },
 
         containsPoint: function (point) {
 
-            return ( point.distanceToSquared(this.center) <= ( this.radius * this.radius ) );
+            return (point.distanceToSquared(this.center) <= (this.radius * this.radius));
 
         },
 
         distanceToPoint: function (point) {
 
-            return ( point.distanceTo(this.center) - this.radius );
+            return (point.distanceTo(this.center) - this.radius);
 
         },
 
@@ -9031,7 +9031,7 @@
 
             var radiusSum = this.radius + sphere.radius;
 
-            return sphere.center.distanceToSquared(this.center) <= ( radiusSum * radiusSum );
+            return sphere.center.distanceToSquared(this.center) <= (radiusSum * radiusSum);
 
         },
 
@@ -9055,7 +9055,7 @@
 
             result.copy(point);
 
-            if (deltaLengthSq > ( this.radius * this.radius )) {
+            if (deltaLengthSq > (this.radius * this.radius)) {
 
                 result.sub(this.center).normalize();
                 result.multiplyScalar(this.radius).add(this.center);
@@ -9096,7 +9096,7 @@
 
         equals: function (sphere) {
 
-            return sphere.center.equals(this.center) && ( sphere.radius === this.radius );
+            return sphere.center.equals(this.center) && (sphere.radius === this.radius);
 
         }
 
@@ -9110,8 +9110,8 @@
 
         // normal is assumed to be normalized
 
-        this.normal = ( normal !== undefined ) ? normal : new Vector3(1, 0, 0);
-        this.constant = ( constant !== undefined ) ? constant : 0;
+        this.normal = (normal !== undefined) ? normal : new Vector3(1, 0, 0);
+        this.constant = (constant !== undefined) ? constant : 0;
 
     }
 
@@ -9245,7 +9245,7 @@
 
                 }
 
-                var t = -( line.start.dot(this.normal) + this.constant ) / denominator;
+                var t = -(line.start.dot(this.normal) + this.constant) / denominator;
 
                 if (t < 0 || t > 1) {
 
@@ -9266,7 +9266,7 @@
             var startSign = this.distanceToPoint(line.start);
             var endSign = this.distanceToPoint(line.end);
 
-            return ( startSign < 0 && endSign > 0 ) || ( endSign < 0 && startSign > 0 );
+            return (startSign < 0 && endSign > 0) || (endSign < 0 && startSign > 0);
 
         },
 
@@ -9321,7 +9321,7 @@
 
         equals: function (plane) {
 
-            return plane.normal.equals(this.normal) && ( plane.constant === this.constant );
+            return plane.normal.equals(this.normal) && (plane.constant === this.constant);
 
         }
 
@@ -9337,12 +9337,12 @@
 
         this.planes = [
 
-            ( p0 !== undefined ) ? p0 : new Plane(),
-            ( p1 !== undefined ) ? p1 : new Plane(),
-            ( p2 !== undefined ) ? p2 : new Plane(),
-            ( p3 !== undefined ) ? p3 : new Plane(),
-            ( p4 !== undefined ) ? p4 : new Plane(),
-            ( p5 !== undefined ) ? p5 : new Plane()
+            (p0 !== undefined) ? p0 : new Plane(),
+            (p1 !== undefined) ? p1 : new Plane(),
+            (p2 !== undefined) ? p2 : new Plane(),
+            (p3 !== undefined) ? p3 : new Plane(),
+            (p4 !== undefined) ? p4 : new Plane(),
+            (p5 !== undefined) ? p5 : new Plane()
 
         ];
 
@@ -9541,7 +9541,7 @@
             _MorphingFlag = 1,
             _SkinningFlag = 2,
 
-            _NumberOfMaterialVariants = ( _MorphingFlag | _SkinningFlag ) + 1,
+            _NumberOfMaterialVariants = (_MorphingFlag | _SkinningFlag) + 1,
 
             _depthMaterials = new Array(_NumberOfMaterialVariants),
             _distanceMaterials = new Array(_NumberOfMaterialVariants),
@@ -9567,8 +9567,8 @@
 
         for (var i = 0; i !== _NumberOfMaterialVariants; ++i) {
 
-            var useMorphing = ( i & _MorphingFlag ) !== 0;
-            var useSkinning = ( i & _SkinningFlag ) !== 0;
+            var useMorphing = (i & _MorphingFlag) !== 0;
+            var useSkinning = (i & _SkinningFlag) !== 0;
 
             var depthMaterial = new MeshDepthMaterial({
 
@@ -9906,9 +9906,9 @@
 
             var visible = object.layers.test(camera.layers);
 
-            if (visible && ( object.isMesh || object.isLine || object.isPoints )) {
+            if (visible && (object.isMesh || object.isLine || object.isPoints)) {
 
-                if (object.castShadow && ( !object.frustumCulled || _frustum.intersectsObject(object) )) {
+                if (object.castShadow && (!object.frustumCulled || _frustum.intersectsObject(object))) {
 
                     object.modelViewMatrix.multiplyMatrices(shadowCamera.matrixWorldInverse, object.matrixWorld);
 
@@ -10397,7 +10397,7 @@
 
         equals: function (euler) {
 
-            return ( euler._x === this._x ) && ( euler._y === this._y ) && ( euler._z === this._z ) && ( euler._order === this._order );
+            return (euler._x === this._x) && (euler._y === this._y) && (euler._z === this._z) && (euler._order === this._order);
 
         },
 
@@ -10487,13 +10487,13 @@
 
         disable: function (channel) {
 
-            this.mask &= ~( 1 << channel | 0 );
+            this.mask &= ~(1 << channel | 0);
 
         },
 
         test: function (layers) {
 
-            return ( this.mask & layers.mask ) !== 0;
+            return (this.mask & layers.mask) !== 0;
 
         }
 
@@ -10851,7 +10851,7 @@
 
             }
 
-            if (( object && object.isObject3D )) {
+            if ((object && object.isObject3D)) {
 
                 if (object.parent !== null) {
 
@@ -11109,7 +11109,7 @@
         toJSON: function (meta) {
 
             // meta is a string when called from JSON.stringify
-            var isRootObject = ( meta === undefined || typeof meta === 'string' );
+            var isRootObject = (meta === undefined || typeof meta === 'string');
 
             var output = {};
 
@@ -11406,8 +11406,8 @@
         this.top = top;
         this.bottom = bottom;
 
-        this.near = ( near !== undefined ) ? near : 0.1;
-        this.far = ( far !== undefined ) ? far : 2000;
+        this.near = (near !== undefined) ? near : 0.1;
+        this.far = (far !== undefined) ? far : 2000;
 
         this.updateProjectionMatrix();
 
@@ -11479,10 +11479,10 @@
 
         updateProjectionMatrix: function () {
 
-            var dx = ( this.right - this.left ) / ( 2 * this.zoom );
-            var dy = ( this.top - this.bottom ) / ( 2 * this.zoom );
-            var cx = ( this.right + this.left ) / 2;
-            var cy = ( this.top + this.bottom ) / 2;
+            var dx = (this.right - this.left) / (2 * this.zoom);
+            var dy = (this.top - this.bottom) / (2 * this.zoom);
+            var cx = (this.right + this.left) / 2;
+            var cy = (this.top + this.bottom) / 2;
 
             var left = cx - dx;
             var right = cx + dx;
@@ -11491,15 +11491,15 @@
 
             if (this.view !== null && this.view.enabled) {
 
-                var zoomW = this.zoom / ( this.view.width / this.view.fullWidth );
-                var zoomH = this.zoom / ( this.view.height / this.view.fullHeight );
-                var scaleW = ( this.right - this.left ) / this.view.width;
-                var scaleH = ( this.top - this.bottom ) / this.view.height;
+                var zoomW = this.zoom / (this.view.width / this.view.fullWidth);
+                var zoomH = this.zoom / (this.view.height / this.view.fullHeight);
+                var scaleW = (this.right - this.left) / this.view.width;
+                var scaleH = (this.top - this.bottom) / this.view.height;
 
-                left += scaleW * ( this.view.offsetX / zoomW );
-                right = left + scaleW * ( this.view.width / zoomW );
-                top -= scaleH * ( this.view.offsetY / zoomH );
-                bottom = top - scaleH * ( this.view.height / zoomH );
+                left += scaleW * (this.view.offsetX / zoomW);
+                right = left + scaleW * (this.view.width / zoomW);
+                top -= scaleH * (this.view.offsetY / zoomH);
+                bottom = top - scaleH * (this.view.height / zoomH);
 
             }
 
@@ -11538,10 +11538,10 @@
         this.b = b;
         this.c = c;
 
-        this.normal = ( normal && normal.isVector3 ) ? normal : new Vector3();
+        this.normal = (normal && normal.isVector3) ? normal : new Vector3();
         this.vertexNormals = Array.isArray(normal) ? normal : [];
 
-        this.color = ( color && color.isColor ) ? color : new Color();
+        this.color = (color && color.isColor) ? color : new Color();
         this.vertexColors = Array.isArray(color) ? color : [];
 
         this.materialIndex = materialIndex !== undefined ? materialIndex : 0;
@@ -12276,7 +12276,7 @@
 
         merge: function (geometry, matrix, materialIndexOffset) {
 
-            if (!( geometry && geometry.isGeometry )) {
+            if (!(geometry && geometry.isGeometry)) {
 
                 console.error('THREE.Geometry.merge(): geometry not an instance of THREE.Geometry.', geometry);
                 return;
@@ -12396,7 +12396,7 @@
 
         mergeMesh: function (mesh) {
 
-            if (!( mesh && mesh.isMesh )) {
+            if (!(mesh && mesh.isMesh)) {
 
                 console.error('THREE.Geometry.mergeMesh(): mesh not an instance of THREE.Mesh.', mesh);
                 return;
@@ -12465,7 +12465,7 @@
                 // we have to remove the face as nothing can be saved
                 for (var n = 0; n < 3; n++) {
 
-                    if (indices[n] === indices[( n + 1 ) % 3]) {
+                    if (indices[n] === indices[(n + 1) % 3]) {
 
                         faceIndicesToRemove.push(i);
                         break;
@@ -12686,7 +12686,7 @@
 
             function setBit(value, position, enabled) {
 
-                return enabled ? value | ( 1 << position ) : value & ( ~( 1 << position ) );
+                return enabled ? value | (1 << position) : value & (~(1 << position));
 
             }
 
@@ -13510,7 +13510,7 @@
 
                     if (group !== undefined) {
 
-                        group.count = ( i * 3 ) - group.start;
+                        group.count = (i * 3) - group.start;
                         groups.push(group);
 
                     }
@@ -13526,7 +13526,7 @@
 
             if (group !== undefined) {
 
-                group.count = ( i * 3 ) - group.start;
+                group.count = (i * 3) - group.start;
                 groups.push(group);
 
             }
@@ -13778,7 +13778,7 @@
 
             if (Array.isArray(index)) {
 
-                this.index = new ( arrayMax(index) > 65535 ? Uint32BufferAttribute : Uint16BufferAttribute )(index, 1);
+                this.index = new (arrayMax(index) > 65535 ? Uint32BufferAttribute : Uint16BufferAttribute)(index, 1);
 
             } else {
 
@@ -13790,7 +13790,7 @@
 
         addAttribute: function (name, attribute) {
 
-            if (!( attribute && attribute.isBufferAttribute ) && !( attribute && attribute.isInterleavedBufferAttribute )) {
+            if (!(attribute && attribute.isBufferAttribute) && !(attribute && attribute.isInterleavedBufferAttribute)) {
 
                 console.warn('THREE.BufferGeometry: .addAttribute() now expects ( name, attribute ).');
 
@@ -14517,7 +14517,7 @@
 
         merge: function (geometry, offset) {
 
-            if (!( geometry && geometry.isBufferGeometry )) {
+            if (!(geometry && geometry.isBufferGeometry)) {
 
                 console.error('THREE.BufferGeometry.merge(): geometry not an instance of THREE.BufferGeometry.', geometry);
                 return;
@@ -14980,7 +14980,7 @@
                     // uvs
 
                     uvs.push(ix / gridX);
-                    uvs.push(1 - ( iy / gridY ));
+                    uvs.push(1 - (iy / gridY));
 
                     // counters
 
@@ -15001,9 +15001,9 @@
                 for (ix = 0; ix < gridX; ix++) {
 
                     var a = numberOfVertices + ix + gridX1 * iy;
-                    var b = numberOfVertices + ix + gridX1 * ( iy + 1 );
-                    var c = numberOfVertices + ( ix + 1 ) + gridX1 * ( iy + 1 );
-                    var d = numberOfVertices + ( ix + 1 ) + gridX1 * iy;
+                    var b = numberOfVertices + ix + gridX1 * (iy + 1);
+                    var c = numberOfVertices + (ix + 1) + gridX1 * (iy + 1);
+                    var d = numberOfVertices + (ix + 1) + gridX1 * iy;
 
                     // faces
 
@@ -15119,7 +15119,7 @@
                 normals.push(0, 0, 1);
 
                 uvs.push(ix / gridX);
-                uvs.push(1 - ( iy / gridY ));
+                uvs.push(1 - (iy / gridY));
 
             }
 
@@ -15132,9 +15132,9 @@
             for (ix = 0; ix < gridX; ix++) {
 
                 var a = ix + gridX1 * iy;
-                var b = ix + gridX1 * ( iy + 1 );
-                var c = ( ix + 1 ) + gridX1 * ( iy + 1 );
-                var d = ( ix + 1 ) + gridX1 * iy;
+                var b = ix + gridX1 * (iy + 1);
+                var c = (ix + 1) + gridX1 * (iy + 1);
+                var d = (ix + 1) + gridX1 * iy;
 
                 // faces
 
@@ -15399,8 +15399,8 @@
 
     function Ray(origin, direction) {
 
-        this.origin = ( origin !== undefined ) ? origin : new Vector3();
-        this.direction = ( direction !== undefined ) ? direction : new Vector3();
+        this.origin = (origin !== undefined) ? origin : new Vector3();
+        this.direction = (direction !== undefined) ? direction : new Vector3();
 
     }
 
@@ -15553,15 +15553,15 @@
                                 var invDet = 1 / det;
                                 s0 *= invDet;
                                 s1 *= invDet;
-                                sqrDist = s0 * ( s0 + a01 * s1 + 2 * b0 ) + s1 * ( a01 * s0 + s1 + 2 * b1 ) + c;
+                                sqrDist = s0 * (s0 + a01 * s1 + 2 * b0) + s1 * (a01 * s0 + s1 + 2 * b1) + c;
 
                             } else {
 
                                 // region 1
 
                                 s1 = segExtent;
-                                s0 = Math.max(0, -( a01 * s1 + b0 ));
-                                sqrDist = -s0 * s0 + s1 * ( s1 + 2 * b1 ) + c;
+                                s0 = Math.max(0, -(a01 * s1 + b0));
+                                sqrDist = -s0 * s0 + s1 * (s1 + 2 * b1) + c;
 
                             }
 
@@ -15570,8 +15570,8 @@
                             // region 5
 
                             s1 = -segExtent;
-                            s0 = Math.max(0, -( a01 * s1 + b0 ));
-                            sqrDist = -s0 * s0 + s1 * ( s1 + 2 * b1 ) + c;
+                            s0 = Math.max(0, -(a01 * s1 + b0));
+                            sqrDist = -s0 * s0 + s1 * (s1 + 2 * b1) + c;
 
                         }
 
@@ -15581,9 +15581,9 @@
 
                             // region 4
 
-                            s0 = Math.max(0, -( -a01 * segExtent + b0 ));
-                            s1 = ( s0 > 0 ) ? -segExtent : Math.min(Math.max(-segExtent, -b1), segExtent);
-                            sqrDist = -s0 * s0 + s1 * ( s1 + 2 * b1 ) + c;
+                            s0 = Math.max(0, -(-a01 * segExtent + b0));
+                            s1 = (s0 > 0) ? -segExtent : Math.min(Math.max(-segExtent, -b1), segExtent);
+                            sqrDist = -s0 * s0 + s1 * (s1 + 2 * b1) + c;
 
                         } else if (s1 <= extDet) {
 
@@ -15591,15 +15591,15 @@
 
                             s0 = 0;
                             s1 = Math.min(Math.max(-segExtent, -b1), segExtent);
-                            sqrDist = s1 * ( s1 + 2 * b1 ) + c;
+                            sqrDist = s1 * (s1 + 2 * b1) + c;
 
                         } else {
 
                             // region 2
 
-                            s0 = Math.max(0, -( a01 * segExtent + b0 ));
-                            s1 = ( s0 > 0 ) ? segExtent : Math.min(Math.max(-segExtent, -b1), segExtent);
-                            sqrDist = -s0 * s0 + s1 * ( s1 + 2 * b1 ) + c;
+                            s0 = Math.max(0, -(a01 * segExtent + b0));
+                            s1 = (s0 > 0) ? segExtent : Math.min(Math.max(-segExtent, -b1), segExtent);
+                            sqrDist = -s0 * s0 + s1 * (s1 + 2 * b1) + c;
 
                         }
 
@@ -15609,9 +15609,9 @@
 
                     // Ray and segment are parallel.
 
-                    s1 = ( a01 > 0 ) ? -segExtent : segExtent;
-                    s0 = Math.max(0, -( a01 * s1 + b0 ));
-                    sqrDist = -s0 * s0 + s1 * ( s1 + 2 * b1 ) + c;
+                    s1 = (a01 > 0) ? -segExtent : segExtent;
+                    s0 = Math.max(0, -(a01 * s1 + b0));
+                    sqrDist = -s0 * s0 + s1 * (s1 + 2 * b1) + c;
 
                 }
 
@@ -15694,7 +15694,7 @@
 
             }
 
-            var t = -( this.origin.dot(plane.normal) + plane.constant ) / denominator;
+            var t = -(this.origin.dot(plane.normal) + plane.constant) / denominator;
 
             // Return if the ray never intersects the plane
 
@@ -15754,29 +15754,29 @@
 
             if (invdirx >= 0) {
 
-                tmin = ( box.min.x - origin.x ) * invdirx;
-                tmax = ( box.max.x - origin.x ) * invdirx;
+                tmin = (box.min.x - origin.x) * invdirx;
+                tmax = (box.max.x - origin.x) * invdirx;
 
             } else {
 
-                tmin = ( box.max.x - origin.x ) * invdirx;
-                tmax = ( box.min.x - origin.x ) * invdirx;
+                tmin = (box.max.x - origin.x) * invdirx;
+                tmax = (box.min.x - origin.x) * invdirx;
 
             }
 
             if (invdiry >= 0) {
 
-                tymin = ( box.min.y - origin.y ) * invdiry;
-                tymax = ( box.max.y - origin.y ) * invdiry;
+                tymin = (box.min.y - origin.y) * invdiry;
+                tymax = (box.max.y - origin.y) * invdiry;
 
             } else {
 
-                tymin = ( box.max.y - origin.y ) * invdiry;
-                tymax = ( box.min.y - origin.y ) * invdiry;
+                tymin = (box.max.y - origin.y) * invdiry;
+                tymax = (box.min.y - origin.y) * invdiry;
 
             }
 
-            if (( tmin > tymax ) || ( tymin > tmax )) return null;
+            if ((tmin > tymax) || (tymin > tmax)) return null;
 
             // These lines also handle the case where tmin or tmax is NaN
             // (result of 0 * Infinity). x !== x returns true if x is NaN
@@ -15787,17 +15787,17 @@
 
             if (invdirz >= 0) {
 
-                tzmin = ( box.min.z - origin.z ) * invdirz;
-                tzmax = ( box.max.z - origin.z ) * invdirz;
+                tzmin = (box.min.z - origin.z) * invdirz;
+                tzmax = (box.max.z - origin.z) * invdirz;
 
             } else {
 
-                tzmin = ( box.max.z - origin.z ) * invdirz;
-                tzmax = ( box.min.z - origin.z ) * invdirz;
+                tzmin = (box.max.z - origin.z) * invdirz;
+                tzmax = (box.min.z - origin.z) * invdirz;
 
             }
 
-            if (( tmin > tzmax ) || ( tzmin > tmax )) return null;
+            if ((tmin > tzmax) || (tzmin > tmax)) return null;
 
             if (tzmin > tmin || tmin !== tmin) tmin = tzmin;
 
@@ -15929,8 +15929,8 @@
 
     function Line3(start, end) {
 
-        this.start = ( start !== undefined ) ? start : new Vector3();
-        this.end = ( end !== undefined ) ? end : new Vector3();
+        this.start = (start !== undefined) ? start : new Vector3();
+        this.end = (end !== undefined) ? end : new Vector3();
 
     }
 
@@ -16055,9 +16055,9 @@
 
     function Triangle(a, b, c) {
 
-        this.a = ( a !== undefined ) ? a : new Vector3();
-        this.b = ( b !== undefined ) ? b : new Vector3();
-        this.c = ( c !== undefined ) ? c : new Vector3();
+        this.a = (a !== undefined) ? a : new Vector3();
+        this.b = (b !== undefined) ? b : new Vector3();
+        this.c = (c !== undefined) ? c : new Vector3();
 
     }
 
@@ -16108,7 +16108,7 @@
                 var dot11 = v1.dot(v1);
                 var dot12 = v1.dot(v2);
 
-                var denom = ( dot00 * dot11 - dot01 * dot01 );
+                var denom = (dot00 * dot11 - dot01 * dot01);
 
                 var result = optionalTarget || new Vector3();
 
@@ -16122,8 +16122,8 @@
                 }
 
                 var invDenom = 1 / denom;
-                var u = ( dot11 * dot02 - dot01 * dot12 ) * invDenom;
-                var v = ( dot00 * dot12 - dot01 * dot02 ) * invDenom;
+                var u = (dot11 * dot02 - dot01 * dot12) * invDenom;
+                var v = (dot00 * dot12 - dot01 * dot02) * invDenom;
 
                 // barycentric coordinates must always sum to 1
                 return result.set(1 - u - v, v, u);
@@ -16140,7 +16140,7 @@
 
                 var result = Triangle.barycoordFromPoint(point, a, b, c, v1);
 
-                return ( result.x >= 0 ) && ( result.y >= 0 ) && ( ( result.x + result.y ) <= 1 );
+                return (result.x >= 0) && (result.y >= 0) && ((result.x + result.y) <= 1);
 
             };
 
@@ -16412,7 +16412,7 @@
 
         },
 
-        raycast: ( function () {
+        raycast: (function () {
 
             var inverseMatrix = new Matrix4();
             var ray = new Ray();
@@ -16676,7 +16676,7 @@
 
             };
 
-        }() ),
+        }()),
 
         clone: function () {
 
@@ -16913,7 +16913,7 @@
 
             }
 
-            ( material.transparent === true ? transparent : opaque ).push(renderItem);
+            (material.transparent === true ? transparent : opaque).push(renderItem);
 
             renderItemsIndex++;
 
@@ -17368,7 +17368,7 @@
 
                 var array = geometryAttributes.position.array;
 
-                for (var i = 0, l = ( array.length / 3 ) - 1; i < l; i += 3) {
+                for (var i = 0, l = (array.length / 3) - 1; i < l; i += 3) {
 
                     var a = i + 0;
                     var b = i + 1;
@@ -17382,7 +17382,7 @@
 
             // console.timeEnd( 'wireframe' );
 
-            attribute = new ( arrayMax(indices) > 65535 ? Uint32BufferAttribute : Uint16BufferAttribute )(indices, 1);
+            attribute = new (arrayMax(indices) > 65535 ? Uint32BufferAttribute : Uint16BufferAttribute)(indices, 1);
 
             attributes.update(attribute, gl.ELEMENT_ARRAY_BUFFER);
 
@@ -17547,7 +17547,7 @@
                 var intensity = light.intensity;
                 var distance = light.distance;
 
-                var shadowMap = ( light.shadow && light.shadow.map ) ? light.shadow.map.texture : null;
+                var shadowMap = (light.shadow && light.shadow.map) ? light.shadow.map.texture : null;
 
                 if (light.isAmbientLight) {
 
@@ -17599,8 +17599,8 @@
                     uniforms.direction.transformDirection(viewMatrix);
 
                     uniforms.coneCos = Math.cos(light.angle);
-                    uniforms.penumbraCos = Math.cos(light.angle * ( 1 - light.penumbra ));
-                    uniforms.decay = ( light.distance === 0 ) ? 0.0 : light.decay;
+                    uniforms.penumbraCos = Math.cos(light.angle * (1 - light.penumbra));
+                    uniforms.decay = (light.distance === 0) ? 0.0 : light.decay;
 
                     uniforms.shadow = light.castShadow;
 
@@ -17627,7 +17627,7 @@
                     // (a) intensity controls irradiance of entire light
                     uniforms.color
                         .copy(color)
-                        .multiplyScalar(intensity / ( light.width * light.height ));
+                        .multiplyScalar(intensity / (light.width * light.height));
 
                     // (b) intensity controls the radiance per light area
                     // uniforms.color.copy( color ).multiplyScalar( intensity );
@@ -17663,7 +17663,7 @@
 
                     uniforms.color.copy(light.color).multiplyScalar(light.intensity);
                     uniforms.distance = light.distance;
-                    uniforms.decay = ( light.distance === 0 ) ? 0.0 : light.decay;
+                    uniforms.decay = (light.distance === 0) ? 0.0 : light.decay;
 
                     uniforms.shadow = light.castShadow;
 
@@ -17786,7 +17786,7 @@
 
         for (var i = 0; i < lines.length; i++) {
 
-            lines[i] = ( i + 1 ) + ': ' + lines[i];
+            lines[i] = (i + 1) + ': ' + lines[i];
 
         }
 
@@ -17901,10 +17901,10 @@
         extensions = extensions || {};
 
         var chunks = [
-            ( extensions.derivatives || parameters.envMapCubeUV || parameters.bumpMap || parameters.normalMap || parameters.flatShading ) ? '#extension GL_OES_standard_derivatives : enable' : '',
-            ( extensions.fragDepth || parameters.logarithmicDepthBuffer ) && rendererExtensions.get('EXT_frag_depth') ? '#extension GL_EXT_frag_depth : enable' : '',
-            ( extensions.drawBuffers ) && rendererExtensions.get('WEBGL_draw_buffers') ? '#extension GL_EXT_draw_buffers : require' : '',
-            ( extensions.shaderTextureLOD || parameters.envMap ) && rendererExtensions.get('EXT_shader_texture_lod') ? '#extension GL_EXT_shader_texture_lod : enable' : ''
+            (extensions.derivatives || parameters.envMapCubeUV || parameters.bumpMap || parameters.normalMap || parameters.flatShading) ? '#extension GL_OES_standard_derivatives : enable' : '',
+            (extensions.fragDepth || parameters.logarithmicDepthBuffer) && rendererExtensions.get('EXT_frag_depth') ? '#extension GL_EXT_frag_depth : enable' : '',
+            (extensions.drawBuffers) && rendererExtensions.get('WEBGL_draw_buffers') ? '#extension GL_EXT_draw_buffers : require' : '',
+            (extensions.shaderTextureLOD || parameters.envMap) && rendererExtensions.get('EXT_shader_texture_lod') ? '#extension GL_EXT_shader_texture_lod : enable' : ''
         ];
 
         return chunks.filter(filterEmptyLine).join('\n');
@@ -18088,7 +18088,7 @@
 
         }
 
-        var gammaFactorDefine = ( renderer.gammaFactor > 0 ) ? renderer.gammaFactor : 1.0;
+        var gammaFactorDefine = (renderer.gammaFactor > 0) ? renderer.gammaFactor : 1.0;
 
         // console.log( 'building new program ' );
 
@@ -18147,8 +18147,8 @@
                 '#define GAMMA_FACTOR ' + gammaFactorDefine,
 
                 '#define MAX_BONES ' + parameters.maxBones,
-                ( parameters.useFog && parameters.fog ) ? '#define USE_FOG' : '',
-                ( parameters.useFog && parameters.fogExp ) ? '#define FOG_EXP2' : '',
+                (parameters.useFog && parameters.fog) ? '#define USE_FOG' : '',
+                (parameters.useFog && parameters.fogExp) ? '#define FOG_EXP2' : '',
 
                 parameters.map ? '#define USE_MAP' : '',
                 parameters.envMap ? '#define USE_ENVMAP' : '',
@@ -18253,8 +18253,8 @@
 
                 '#define GAMMA_FACTOR ' + gammaFactorDefine,
 
-                ( parameters.useFog && parameters.fog ) ? '#define USE_FOG' : '',
-                ( parameters.useFog && parameters.fogExp ) ? '#define FOG_EXP2' : '',
+                (parameters.useFog && parameters.fog) ? '#define USE_FOG' : '',
+                (parameters.useFog && parameters.fogExp) ? '#define FOG_EXP2' : '',
 
                 parameters.map ? '#define USE_MAP' : '',
                 parameters.envMap ? '#define USE_ENVMAP' : '',
@@ -18280,7 +18280,7 @@
                 parameters.flipSided ? '#define FLIP_SIDED' : '',
 
                 '#define NUM_CLIPPING_PLANES ' + parameters.numClippingPlanes,
-                '#define UNION_CLIPPING_PLANES ' + ( parameters.numClippingPlanes - parameters.numClipIntersection ),
+                '#define UNION_CLIPPING_PLANES ' + (parameters.numClippingPlanes - parameters.numClipIntersection),
 
                 parameters.shadowMapEnabled ? '#define USE_SHADOWMAP' : '',
                 parameters.shadowMapEnabled ? '#define ' + shadowMapTypeDefine : '',
@@ -18297,13 +18297,13 @@
                 'uniform mat4 viewMatrix;',
                 'uniform vec3 cameraPosition;',
 
-                ( parameters.toneMapping !== NoToneMapping ) ? '#define TONE_MAPPING' : '',
-                ( parameters.toneMapping !== NoToneMapping ) ? ShaderChunk['tonemapping_pars_fragment'] : '', // this code is required here because it is used by the toneMapping() function defined below
-                ( parameters.toneMapping !== NoToneMapping ) ? getToneMappingFunction('toneMapping', parameters.toneMapping) : '',
+                (parameters.toneMapping !== NoToneMapping) ? '#define TONE_MAPPING' : '',
+                (parameters.toneMapping !== NoToneMapping) ? ShaderChunk['tonemapping_pars_fragment'] : '', // this code is required here because it is used by the toneMapping() function defined below
+                (parameters.toneMapping !== NoToneMapping) ? getToneMappingFunction('toneMapping', parameters.toneMapping) : '',
 
                 parameters.dithering ? '#define DITHERING' : '',
 
-                ( parameters.outputEncoding || parameters.mapEncoding || parameters.envMapEncoding || parameters.emissiveMapEncoding ) ? ShaderChunk['encodings_pars_fragment'] : '', // this code is required here because it is used by the various encoding/decoding function defined below
+                (parameters.outputEncoding || parameters.mapEncoding || parameters.envMapEncoding || parameters.emissiveMapEncoding) ? ShaderChunk['encodings_pars_fragment'] : '', // this code is required here because it is used by the various encoding/decoding function defined below
                 parameters.mapEncoding ? getTexelDecodingFunction('mapTexelToLinear', parameters.mapEncoding) : '',
                 parameters.envMapEncoding ? getTexelDecodingFunction('envMapTexelToLinear', parameters.envMapEncoding) : '',
                 parameters.emissiveMapEncoding ? getTexelDecodingFunction('emissiveMapTexelToLinear', parameters.emissiveMapEncoding) : '',
@@ -18551,7 +18551,7 @@
                 //    (up to 54 should be safe)
 
                 var nVertexUniforms = capabilities.maxVertexUniforms;
-                var nVertexMatrices = Math.floor(( nVertexUniforms - 20 ) / 4);
+                var nVertexMatrices = Math.floor((nVertexUniforms - 20) / 4);
 
                 var maxBones = Math.min(nVertexMatrices, bones.length);
 
@@ -18628,13 +18628,13 @@
 
                 precision: precision,
                 supportsVertexTextures: capabilities.vertexTextures,
-                outputEncoding: getTextureEncodingFromMap(( !currentRenderTarget ) ? null : currentRenderTarget.texture, renderer.gammaOutput),
+                outputEncoding: getTextureEncodingFromMap((!currentRenderTarget) ? null : currentRenderTarget.texture, renderer.gammaOutput),
                 map: !!material.map,
                 mapEncoding: getTextureEncodingFromMap(material.map, renderer.gammaInput),
                 envMap: !!material.envMap,
                 envMapMode: material.envMap && material.envMap.mapping,
                 envMapEncoding: getTextureEncodingFromMap(material.envMap, renderer.gammaInput),
-                envMapCubeUV: ( !!material.envMap ) && ( ( material.envMap.mapping === CubeUVReflectionMapping ) || ( material.envMap.mapping === CubeUVRefractionMapping ) ),
+                envMapCubeUV: (!!material.envMap) && ((material.envMap.mapping === CubeUVReflectionMapping) || (material.envMap.mapping === CubeUVRefractionMapping)),
                 lightMap: !!material.lightMap,
                 aoMap: !!material.aoMap,
                 emissiveMap: !!material.emissiveMap,
@@ -18655,7 +18655,7 @@
 
                 fog: !!fog,
                 useFog: material.fog,
-                fogExp: ( fog && fog.isFogExp2 ),
+                fogExp: (fog && fog.isFogExp2),
 
                 flatShading: material.flatShading,
 
@@ -18694,7 +18694,7 @@
                 doubleSided: material.side === DoubleSide,
                 flipSided: material.side === BackSide,
 
-                depthPacking: ( material.depthPacking !== undefined ) ? material.depthPacking : false
+                depthPacking: (material.depthPacking !== undefined) ? material.depthPacking : false
 
             };
 
@@ -18800,7 +18800,7 @@
 
     function WebGLTextures(_gl, extensions, state, properties, capabilities, utils, infoMemory) {
 
-        var _isWebGL2 = ( typeof WebGL2RenderingContext !== 'undefined' && _gl instanceof window.WebGL2RenderingContext );
+        var _isWebGL2 = (typeof WebGL2RenderingContext !== 'undefined' && _gl instanceof window.WebGL2RenderingContext);
         var _videoTextures = {};
 
         //
@@ -18860,8 +18860,8 @@
 
         function textureNeedsPowerOfTwo(texture) {
 
-            return ( texture.wrapS !== ClampToEdgeWrapping || texture.wrapT !== ClampToEdgeWrapping ) ||
-                ( texture.minFilter !== NearestFilter && texture.minFilter !== LinearFilter );
+            return (texture.wrapS !== ClampToEdgeWrapping || texture.wrapT !== ClampToEdgeWrapping) ||
+                (texture.minFilter !== NearestFilter && texture.minFilter !== LinearFilter);
 
         }
 
@@ -19041,8 +19041,8 @@
 
                     _gl.pixelStorei(_gl.UNPACK_FLIP_Y_WEBGL, texture.flipY);
 
-                    var isCompressed = ( texture && texture.isCompressedTexture );
-                    var isDataTexture = ( texture.image[0] && texture.image[0].isDataTexture );
+                    var isCompressed = (texture && texture.isCompressedTexture);
+                    var isDataTexture = (texture.image[0] && texture.image[0].isDataTexture);
 
                     var cubeImage = [];
 
@@ -19419,12 +19419,12 @@
         // Setup resources for a Depth Texture for a FBO (needs an extension)
         function setupDepthTexture(framebuffer, renderTarget) {
 
-            var isCube = ( renderTarget && renderTarget.isWebGLRenderTargetCube );
+            var isCube = (renderTarget && renderTarget.isWebGLRenderTargetCube);
             if (isCube) throw new Error('Depth Texture with cube render targets is not supported');
 
             _gl.bindFramebuffer(_gl.FRAMEBUFFER, framebuffer);
 
-            if (!( renderTarget.depthTexture && renderTarget.depthTexture.isDepthTexture )) {
+            if (!(renderTarget.depthTexture && renderTarget.depthTexture.isDepthTexture)) {
 
                 throw new Error('renderTarget.depthTexture must be an instance of THREE.DepthTexture');
 
@@ -19466,7 +19466,7 @@
 
             var renderTargetProperties = properties.get(renderTarget);
 
-            var isCube = ( renderTarget.isWebGLRenderTargetCube === true );
+            var isCube = (renderTarget.isWebGLRenderTargetCube === true);
 
             if (renderTarget.depthTexture) {
 
@@ -19514,7 +19514,7 @@
 
             infoMemory.textures++;
 
-            var isCube = ( renderTarget.isWebGLRenderTargetCube === true );
+            var isCube = (renderTarget.isWebGLRenderTargetCube === true);
             var isTargetPowerOfTwo = isPowerOfTwo(renderTarget);
 
             // Setup framebuffer
@@ -20306,7 +20306,7 @@
                 ? disable(gl.CULL_FACE)
                 : enable(gl.CULL_FACE);
 
-            var flipSided = ( material.side === BackSide );
+            var flipSided = (material.side === BackSide);
             if (frontFaceCW) flipSided = !flipSided;
 
             setFlipSided(flipSided);
@@ -20801,7 +20801,7 @@
         getEffectiveFOV: function () {
 
             return _Math.RAD2DEG * 2 * Math.atan(
-                    Math.tan(_Math.DEG2RAD * 0.5 * this.fov) / this.zoom);
+                Math.tan(_Math.DEG2RAD * 0.5 * this.fov) / this.zoom);
 
         },
 
@@ -20900,7 +20900,7 @@
 
             var near = this.near,
                 top = near * Math.tan(
-                        _Math.DEG2RAD * 0.5 * this.fov) / this.zoom,
+                    _Math.DEG2RAD * 0.5 * this.fov) / this.zoom,
                 height = 2 * top,
                 width = this.aspect * height,
                 left = -0.5 * width,
@@ -22118,9 +22118,9 @@
 
                         var array = object.normalArray;
 
-                        var nx = ( array[i + 0] + array[i + 3] + array[i + 6] ) / 3;
-                        var ny = ( array[i + 1] + array[i + 4] + array[i + 7] ) / 3;
-                        var nz = ( array[i + 2] + array[i + 5] + array[i + 8] ) / 3;
+                        var nx = (array[i + 0] + array[i + 3] + array[i + 6]) / 3;
+                        var ny = (array[i + 1] + array[i + 4] + array[i + 7]) / 3;
+                        var nz = (array[i + 2] + array[i + 5] + array[i + 8]) / 3;
 
                         array[i + 0] = nx;
                         array[i + 1] = ny;
@@ -22178,12 +22178,12 @@
 
         this.renderBufferDirect = function (camera, fog, geometry, material, object, group) {
 
-            var frontFaceCW = ( object.isMesh && object.matrixWorld.determinant() < 0 );
+            var frontFaceCW = (object.isMesh && object.matrixWorld.determinant() < 0);
 
             state.setMaterial(material, frontFaceCW);
 
             var program = setProgram(camera, fog, material, object);
-            var geometryProgram = geometry.id + '_' + program.id + '_' + ( material.wireframe === true );
+            var geometryProgram = geometry.id + '_' + program.id + '_' + (material.wireframe === true);
 
             var updateBuffers = false;
 
@@ -22409,7 +22409,7 @@
                             }
 
                             _gl.bindBuffer(_gl.ARRAY_BUFFER, buffer);
-                            _gl.vertexAttribPointer(programAttribute, size, type, normalized, stride * bytesPerElement, ( startIndex * stride + offset ) * bytesPerElement);
+                            _gl.vertexAttribPointer(programAttribute, size, type, normalized, stride * bytesPerElement, (startIndex * stride + offset) * bytesPerElement);
 
                         } else {
 
@@ -22574,7 +22574,7 @@
 
         this.render = function (scene, camera, renderTarget, forceClear) {
 
-            if (!( camera && camera.isCamera )) {
+            if (!(camera && camera.isCamera)) {
 
                 console.error('THREE.WebGLRenderer.render: camera is not an instance of THREE.Camera.');
                 return;
@@ -22929,7 +22929,7 @@
 
             if (object.isImmediateRenderObject) {
 
-                var frontFaceCW = ( object.isMesh && object.matrixWorld.determinant() < 0 );
+                var frontFaceCW = (object.isMesh && object.matrixWorld.determinant() < 0);
 
                 state.setMaterial(material, frontFaceCW);
 
@@ -23137,8 +23137,8 @@
                     material.needsUpdate = true;
 
                 } else if (materialProperties.numClippingPlanes !== undefined &&
-                    ( materialProperties.numClippingPlanes !== _clipping.numPlanes ||
-                    materialProperties.numIntersection !== _clipping.numIntersection )) {
+                    (materialProperties.numClippingPlanes !== _clipping.numPlanes ||
+                        materialProperties.numIntersection !== _clipping.numIntersection)) {
 
                     material.needsUpdate = true;
 
@@ -23184,15 +23184,15 @@
                 if (capabilities.logarithmicDepthBuffer) {
 
                     p_uniforms.setValue(_gl, 'logDepthBufFC',
-                        2.0 / ( Math.log(camera.far + 1.0) / Math.LN2 ));
+                        2.0 / (Math.log(camera.far + 1.0) / Math.LN2));
 
                 }
 
                 // Avoid unneeded uniform updates per ArrayCamera's sub-camera
 
-                if (_currentCamera !== ( _currentArrayCamera || camera )) {
+                if (_currentCamera !== (_currentArrayCamera || camera)) {
 
-                    _currentCamera = ( _currentArrayCamera || camera );
+                    _currentCamera = (_currentArrayCamera || camera);
 
                     // lighting uniforms depend on the camera so enforce an update
                     // now, in case this material supports lights - or later, when
@@ -23457,7 +23457,7 @@
                 //  WebGLRenderTargetCube will be flipped for backwards compatibility
                 //  WebGLRenderTargetCube.texture will be flipped because it's a Texture and NOT a CubeTexture
                 // this check must be handled differently, or removed entirely, if WebGLRenderTargetCube uses a CubeTexture in the future
-                uniforms.flipEnvMap.value = ( !( material.envMap && material.envMap.isCubeTexture ) ) ? 1 : -1;
+                uniforms.flipEnvMap.value = (!(material.envMap && material.envMap.isCubeTexture)) ? 1 : -1;
 
                 uniforms.reflectivity.value = material.reflectivity;
                 uniforms.refractionRatio.value = material.refractionRatio;
@@ -23830,7 +23830,7 @@
         this.allocTextureUnit = allocTextureUnit;
 
         // this.setTexture2D = setTexture2D;
-        this.setTexture2D = ( function () {
+        this.setTexture2D = (function () {
 
             var warned = false;
 
@@ -23854,9 +23854,9 @@
 
             };
 
-        }() );
+        }());
 
-        this.setTexture = ( function () {
+        this.setTexture = (function () {
 
             var warned = false;
 
@@ -23873,9 +23873,9 @@
 
             };
 
-        }() );
+        }());
 
-        this.setTextureCube = ( function () {
+        this.setTextureCube = (function () {
 
             var warned = false;
 
@@ -23897,8 +23897,8 @@
 
                 // currently relying on the fact that WebGLRenderTargetCube.texture is a Texture and NOT a CubeTexture
                 // TODO: unify these code paths
-                if (( texture && texture.isCubeTexture ) ||
-                    ( Array.isArray(texture.image) && texture.image.length === 6 )) {
+                if ((texture && texture.isCubeTexture) ||
+                    (Array.isArray(texture.image) && texture.image.length === 6)) {
 
                     // CompressedTexture can have Array in image :/
 
@@ -23915,7 +23915,7 @@
 
             };
 
-        }() );
+        }());
 
         this.getRenderTarget = function () {
 
@@ -23985,7 +23985,7 @@
 
         this.readRenderTargetPixels = function (renderTarget, x, y, width, height, buffer) {
 
-            if (!( renderTarget && renderTarget.isWebGLRenderTarget )) {
+            if (!(renderTarget && renderTarget.isWebGLRenderTarget)) {
 
                 console.error('THREE.WebGLRenderer.readRenderTargetPixels: renderTarget is not THREE.WebGLRenderTarget.');
                 return;
@@ -24020,8 +24020,8 @@
                     }
 
                     if (textureType !== UnsignedByteType && utils.convert(textureType) !== _gl.getParameter(_gl.IMPLEMENTATION_COLOR_READ_TYPE) && // IE11, Edge and Chrome Mac < 52 (#9513)
-                        !( textureType === FloatType && ( extensions.get('OES_texture_float') || extensions.get('WEBGL_color_buffer_float') ) ) && // Chrome Mac >= 52 and Firefox
-                        !( textureType === HalfFloatType && extensions.get('EXT_color_buffer_half_float') )) {
+                        !(textureType === FloatType && (extensions.get('OES_texture_float') || extensions.get('WEBGL_color_buffer_float'))) && // Chrome Mac >= 52 and Firefox
+                        !(textureType === HalfFloatType && extensions.get('EXT_color_buffer_half_float'))) {
 
                         console.error('THREE.WebGLRenderer.readRenderTargetPixels: renderTarget is not in UnsignedByteType or implementation defined type.');
                         return;
@@ -24032,7 +24032,7 @@
 
                         // the following if statement ensures valid read requests (no out-of-bounds pixels, see #8604)
 
-                        if (( x >= 0 && x <= ( renderTarget.width - width ) ) && ( y >= 0 && y <= ( renderTarget.height - height ) )) {
+                        if ((x >= 0 && x <= (renderTarget.width - width)) && (y >= 0 && y <= (renderTarget.height - height))) {
 
                             _gl.readPixels(x, y, width, height, utils.convert(textureFormat), utils.convert(textureType), buffer);
 
@@ -24070,7 +24070,7 @@
         this.name = '';
 
         this.color = new Color(color);
-        this.density = ( density !== undefined ) ? density : 0.00025;
+        this.density = (density !== undefined) ? density : 0.00025;
 
     }
 
@@ -24103,8 +24103,8 @@
 
         this.color = new Color(color);
 
-        this.near = ( near !== undefined ) ? near : 1;
-        this.far = ( far !== undefined ) ? far : 1000;
+        this.near = (near !== undefined) ? near : 1;
+        this.far = (far !== undefined) ? far : 1000;
 
     }
 
@@ -24266,7 +24266,7 @@
                 flare.y = this.positionScreen.y + vecY * flare.distance;
 
                 flare.wantedRotation = flare.x * Math.PI * 0.25;
-                flare.rotation += ( flare.wantedRotation - flare.rotation ) * 0.25;
+                flare.rotation += (flare.wantedRotation - flare.rotation) * 0.25;
 
             }
 
@@ -24333,7 +24333,7 @@
 
         this.type = 'Sprite';
 
-        this.material = ( material !== undefined ) ? material : new SpriteMaterial();
+        this.material = (material !== undefined) ? material : new SpriteMaterial();
 
     }
 
@@ -24343,7 +24343,7 @@
 
         isSprite: true,
 
-        raycast: ( function () {
+        raycast: (function () {
 
             var intersectPoint = new Vector3();
             var worldPosition = new Vector3();
@@ -24374,7 +24374,7 @@
 
             };
 
-        }() ),
+        }()),
 
         clone: function () {
 
@@ -24469,7 +24469,7 @@
 
         },
 
-        raycast: ( function () {
+        raycast: (function () {
 
             var matrixPosition = new Vector3();
 
@@ -24483,7 +24483,7 @@
 
             };
 
-        }() ),
+        }()),
 
         update: function () {
 
@@ -24797,7 +24797,7 @@
 
                     gbone = this.geometry.bones[i];
 
-                    if (( gbone.parent !== -1 ) && ( gbone.parent !== null ) && ( bones[gbone.parent] !== undefined )) {
+                    if ((gbone.parent !== -1) && (gbone.parent !== null) && (bones[gbone.parent] !== undefined)) {
 
                         // subsequent bones in the hierarchy
 
@@ -25013,7 +25013,7 @@
 
         isLine: true,
 
-        raycast: ( function () {
+        raycast: (function () {
 
             var inverseMatrix = new Matrix4();
             var ray = new Ray();
@@ -25045,7 +25045,7 @@
                 var vEnd = new Vector3();
                 var interSegment = new Vector3();
                 var interRay = new Vector3();
-                var step = ( this && this.isLineSegments ) ? 2 : 1;
+                var step = (this && this.isLineSegments) ? 2 : 1;
 
                 if (geometry.isBufferGeometry) {
 
@@ -25160,7 +25160,7 @@
 
             };
 
-        }() ),
+        }()),
 
         clone: function () {
 
@@ -25284,7 +25284,7 @@
 
         isPoints: true,
 
-        raycast: ( function () {
+        raycast: (function () {
 
             var inverseMatrix = new Matrix4();
             var ray = new Ray();
@@ -25312,7 +25312,7 @@
                 inverseMatrix.getInverse(matrixWorld);
                 ray.copy(raycaster.ray).applyMatrix4(inverseMatrix);
 
-                var localThreshold = threshold / ( ( this.scale.x + this.scale.y + this.scale.z ) / 3 );
+                var localThreshold = threshold / ((this.scale.x + this.scale.y + this.scale.z) / 3);
                 var localThresholdSq = localThreshold * localThreshold;
                 var position = new Vector3();
 
@@ -25390,7 +25390,7 @@
 
             };
 
-        }() ),
+        }()),
 
         clone: function () {
 
@@ -25564,7 +25564,7 @@
                 for (j = 0; j < 3; j++) {
 
                     edge1 = face[keys[j]];
-                    edge2 = face[keys[( j + 1 ) % 3]];
+                    edge2 = face[keys[(j + 1) % 3]];
                     edge[0] = Math.min(edge1, edge2); // sorting prevents duplicates
                     edge[1] = Math.max(edge1, edge2);
 
@@ -25625,12 +25625,12 @@
                     start = group.start;
                     count = group.count;
 
-                    for (i = start, l = ( start + count ); i < l; i += 3) {
+                    for (i = start, l = (start + count); i < l; i += 3) {
 
                         for (j = 0; j < 3; j++) {
 
                             edge1 = indices.getX(i + j);
-                            edge2 = indices.getX(i + ( j + 1 ) % 3);
+                            edge2 = indices.getX(i + (j + 1) % 3);
                             edge[0] = Math.min(edge1, edge2); // sorting prevents duplicates
                             edge[1] = Math.max(edge1, edge2);
 
@@ -25668,7 +25668,7 @@
 
                 position = geometry.attributes.position;
 
-                for (i = 0, l = ( position.count / 3 ); i < l; i++) {
+                for (i = 0, l = (position.count / 3); i < l; i++) {
 
                     for (j = 0; j < 3; j++) {
 
@@ -25679,7 +25679,7 @@
                         vertex.fromBufferAttribute(position, index1);
                         vertices.push(vertex.x, vertex.y, vertex.z);
 
-                        index2 = 3 * i + ( ( j + 1 ) % 3 );
+                        index2 = 3 * i + ((j + 1) % 3);
                         vertex.fromBufferAttribute(position, index2);
                         vertices.push(vertex.x, vertex.y, vertex.z);
 
@@ -25826,8 +25826,8 @@
 
                 var a = i * sliceCount + j;
                 var b = i * sliceCount + j + 1;
-                var c = ( i + 1 ) * sliceCount + j + 1;
-                var d = ( i + 1 ) * sliceCount + j;
+                var c = (i + 1) * sliceCount + j + 1;
+                var d = (i + 1) * sliceCount + j;
 
                 // faces one and two
 
@@ -25998,7 +25998,7 @@
 
             for (i = 0; i < cols; i++) {
 
-                for (j = 0; j < 2 * ( cols - i ) - 1; j++) {
+                for (j = 0; j < 2 * (cols - i) - 1; j++) {
 
                     var k = Math.floor(j / 2);
 
@@ -26147,13 +26147,13 @@
 
         function correctUV(uv, stride, vector, azimuth) {
 
-            if (( azimuth < 0 ) && ( uv.x === 1 )) {
+            if ((azimuth < 0) && (uv.x === 1)) {
 
                 uvBuffer[stride] = uv.x - 1;
 
             }
 
-            if (( vector.x === 0 ) && ( vector.z === 0 )) {
+            if ((vector.x === 0) && (vector.z === 0)) {
 
                 uvBuffer[stride] = azimuth / 2 / Math.PI + 0.5;
 
@@ -26174,7 +26174,7 @@
 
         function inclination(vector) {
 
-            return Math.atan2(-vector.y, Math.sqrt(( vector.x * vector.x ) + ( vector.z * vector.z )));
+            return Math.atan2(-vector.y, Math.sqrt((vector.x * vector.x) + (vector.z * vector.z)));
 
         }
 
@@ -26320,7 +26320,7 @@
 
     function IcosahedronBufferGeometry(radius, detail) {
 
-        var t = ( 1 + Math.sqrt(5) ) / 2;
+        var t = (1 + Math.sqrt(5)) / 2;
 
         var vertices = [
             -1, t, 0, 1, t, 0, -1, -t, 0, 1, -t, 0,
@@ -26379,7 +26379,7 @@
 
     function DodecahedronBufferGeometry(radius, detail) {
 
-        var t = ( 1 + Math.sqrt(5) ) / 2;
+        var t = (1 + Math.sqrt(5)) / 2;
         var r = 1 / t;
 
         var vertices = [
@@ -26549,7 +26549,7 @@
             //
             // if the geometry is closed, duplicate the first row of vertices and normals (uvs will differ)
 
-            generateSegment(( closed === false ) ? tubularSegments : 0);
+            generateSegment((closed === false) ? tubularSegments : 0);
 
             // uvs are generated in a separate function.
             // this makes it easy compute correct values for closed geometries
@@ -26584,9 +26584,9 @@
 
                 // normal
 
-                normal.x = ( cos * N.x + sin * B.x );
-                normal.y = ( cos * N.y + sin * B.y );
-                normal.z = ( cos * N.z + sin * B.z );
+                normal.x = (cos * N.x + sin * B.x);
+                normal.y = (cos * N.y + sin * B.y);
+                normal.z = (cos * N.z + sin * B.z);
                 normal.normalize();
 
                 normals.push(normal.x, normal.y, normal.z);
@@ -26609,10 +26609,10 @@
 
                 for (i = 1; i <= radialSegments; i++) {
 
-                    var a = ( radialSegments + 1 ) * ( j - 1 ) + ( i - 1 );
-                    var b = ( radialSegments + 1 ) * j + ( i - 1 );
-                    var c = ( radialSegments + 1 ) * j + i;
-                    var d = ( radialSegments + 1 ) * ( j - 1 ) + i;
+                    var a = (radialSegments + 1) * (j - 1) + (i - 1);
+                    var b = (radialSegments + 1) * j + (i - 1);
+                    var c = (radialSegments + 1) * j + i;
+                    var d = (radialSegments + 1) * (j - 1) + i;
 
                     // faces
 
@@ -26764,9 +26764,9 @@
                 // now calculate the final vertex position.
                 // first we orient the extrusion with our basis vectos, then we add it to the current position on the curve
 
-                vertex.x = P1.x + ( cx * N.x + cy * B.x );
-                vertex.y = P1.y + ( cx * N.y + cy * B.y );
-                vertex.z = P1.z + ( cx * N.z + cy * B.z );
+                vertex.x = P1.x + (cx * N.x + cy * B.x);
+                vertex.y = P1.y + (cx * N.y + cy * B.y);
+                vertex.z = P1.z + (cx * N.z + cy * B.z);
 
                 vertices.push(vertex.x, vertex.y, vertex.z);
 
@@ -26793,10 +26793,10 @@
 
                 // indices
 
-                var a = ( radialSegments + 1 ) * ( j - 1 ) + ( i - 1 );
-                var b = ( radialSegments + 1 ) * j + ( i - 1 );
-                var c = ( radialSegments + 1 ) * j + i;
-                var d = ( radialSegments + 1 ) * ( j - 1 ) + i;
+                var a = (radialSegments + 1) * (j - 1) + (i - 1);
+                var b = (radialSegments + 1) * j + (i - 1);
+                var c = (radialSegments + 1) * j + i;
+                var d = (radialSegments + 1) * (j - 1) + i;
 
                 // faces
 
@@ -26823,8 +26823,8 @@
             var quOverP = q / p * u;
             var cs = Math.cos(quOverP);
 
-            position.x = radius * ( 2 + cs ) * 0.5 * cu;
-            position.y = radius * ( 2 + cs ) * su * 0.5;
+            position.x = radius * (2 + cs) * 0.5 * cu;
+            position.y = radius * (2 + cs) * su * 0.5;
             position.z = radius * Math.sin(quOverP) * 0.5;
 
         }
@@ -26912,8 +26912,8 @@
 
                 // vertex
 
-                vertex.x = ( radius + tube * Math.cos(v) ) * Math.cos(u);
-                vertex.y = ( radius + tube * Math.cos(v) ) * Math.sin(u);
+                vertex.x = (radius + tube * Math.cos(v)) * Math.cos(u);
+                vertex.y = (radius + tube * Math.cos(v)) * Math.sin(u);
                 vertex.z = tube * Math.sin(v);
 
                 vertices.push(vertex.x, vertex.y, vertex.z);
@@ -26943,10 +26943,10 @@
 
                 // indices
 
-                var a = ( tubularSegments + 1 ) * j + i - 1;
-                var b = ( tubularSegments + 1 ) * ( j - 1 ) + i - 1;
-                var c = ( tubularSegments + 1 ) * ( j - 1 ) + i;
-                var d = ( tubularSegments + 1 ) * j + i;
+                var a = (tubularSegments + 1) * j + i - 1;
+                var b = (tubularSegments + 1) * (j - 1) + i - 1;
+                var c = (tubularSegments + 1) * (j - 1) + i;
+                var d = (tubularSegments + 1) * j + i;
 
                 // faces
 
@@ -27030,7 +27030,7 @@
 
         var i, last;
 
-        if (clockwise === ( signedArea(data, start, end, dim) > 0 )) {
+        if (clockwise === (signedArea(data, start, end, dim) > 0)) {
 
             for (i = start; i < end; i += dim) last = insertNode(i, data[i], data[i + 1], last);
 
@@ -27064,7 +27064,7 @@
 
             again = false;
 
-            if (!p.steiner && ( equals(p, p.next) || area(p.prev, p, p.next) === 0 )) {
+            if (!p.steiner && (equals(p, p.next) || area(p.prev, p, p.next) === 0)) {
 
                 removeNode(p);
                 p = end = p.prev;
@@ -27193,10 +27193,10 @@
 
         // triangle bbox; min & max are calculated like this for speed
 
-        var minTX = a.x < b.x ? ( a.x < c.x ? a.x : c.x ) : ( b.x < c.x ? b.x : c.x ),
-            minTY = a.y < b.y ? ( a.y < c.y ? a.y : c.y ) : ( b.y < c.y ? b.y : c.y ),
-            maxTX = a.x > b.x ? ( a.x > c.x ? a.x : c.x ) : ( b.x > c.x ? b.x : c.x ),
-            maxTY = a.y > b.y ? ( a.y > c.y ? a.y : c.y ) : ( b.y > c.y ? b.y : c.y );
+        var minTX = a.x < b.x ? (a.x < c.x ? a.x : c.x) : (b.x < c.x ? b.x : c.x),
+            minTY = a.y < b.y ? (a.y < c.y ? a.y : c.y) : (b.y < c.y ? b.y : c.y),
+            maxTX = a.x > b.x ? (a.x > c.x ? a.x : c.x) : (b.x > c.x ? b.x : c.x),
+            maxTY = a.y > b.y ? (a.y > c.y ? a.y : c.y) : (b.y > c.y ? b.y : c.y);
 
         // z-order range for the current triangle bbox;
 
@@ -27380,7 +27380,7 @@
 
             if (hy <= p.y && hy >= p.next.y && p.next.y !== p.y) {
 
-                var x = p.x + ( hy - p.y ) * ( p.next.x - p.x ) / ( p.next.y - p.y );
+                var x = p.x + (hy - p.y) * (p.next.x - p.x) / (p.next.y - p.y);
 
                 if (x <= hx && x > qx) {
 
@@ -27424,9 +27424,9 @@
             if (hx >= p.x && p.x >= mx && hx !== p.x &&
                 pointInTriangle(hy < my ? hx : qx, hy, mx, my, hy < my ? qx : hx, hy, p.x, p.y)) {
 
-                tan = Math.abs(hy - p.y) / ( hx - p.x ); // tangential
+                tan = Math.abs(hy - p.y) / (hx - p.x); // tangential
 
-                if (( tan < tanMin || ( tan === tanMin && p.x > m.x ) ) && locallyInside(p, hole)) {
+                if ((tan < tanMin || (tan === tanMin && p.x > m.x)) && locallyInside(p, hole)) {
 
                     m = p;
                     tanMin = tan;
@@ -27495,9 +27495,9 @@
 
                 qSize = inSize;
 
-                while (pSize > 0 || ( qSize > 0 && q )) {
+                while (pSize > 0 || (qSize > 0 && q)) {
 
-                    if (pSize !== 0 && ( qSize === 0 || !q || p.z <= q.z )) {
+                    if (pSize !== 0 && (qSize === 0 || !q || p.z <= q.z)) {
 
                         e = p;
                         p = p.nextZ;
@@ -27538,20 +27538,20 @@
 
         // coords are transformed into non-negative 15-bit integer range
 
-        x = 32767 * ( x - minX ) * invSize;
-        y = 32767 * ( y - minY ) * invSize;
+        x = 32767 * (x - minX) * invSize;
+        y = 32767 * (y - minY) * invSize;
 
-        x = ( x | ( x << 8 ) ) & 0x00FF00FF;
-        x = ( x | ( x << 4 ) ) & 0x0F0F0F0F;
-        x = ( x | ( x << 2 ) ) & 0x33333333;
-        x = ( x | ( x << 1 ) ) & 0x55555555;
+        x = (x | (x << 8)) & 0x00FF00FF;
+        x = (x | (x << 4)) & 0x0F0F0F0F;
+        x = (x | (x << 2)) & 0x33333333;
+        x = (x | (x << 1)) & 0x55555555;
 
-        y = ( y | ( y << 8 ) ) & 0x00FF00FF;
-        y = ( y | ( y << 4 ) ) & 0x0F0F0F0F;
-        y = ( y | ( y << 2 ) ) & 0x33333333;
-        y = ( y | ( y << 1 ) ) & 0x55555555;
+        y = (y | (y << 8)) & 0x00FF00FF;
+        y = (y | (y << 4)) & 0x0F0F0F0F;
+        y = (y | (y << 2)) & 0x33333333;
+        y = (y | (y << 1)) & 0x55555555;
 
-        return x | ( y << 1 );
+        return x | (y << 1);
 
     }
 
@@ -27576,9 +27576,9 @@
 
     function pointInTriangle(ax, ay, bx, by, cx, cy, px, py) {
 
-        return ( cx - px ) * ( ay - py ) - ( ax - px ) * ( cy - py ) >= 0 &&
-            ( ax - px ) * ( by - py ) - ( bx - px ) * ( ay - py ) >= 0 &&
-            ( bx - px ) * ( cy - py ) - ( cx - px ) * ( by - py ) >= 0;
+        return (cx - px) * (ay - py) - (ax - px) * (cy - py) >= 0 &&
+            (ax - px) * (by - py) - (bx - px) * (ay - py) >= 0 &&
+            (bx - px) * (cy - py) - (cx - px) * (by - py) >= 0;
 
     }
 
@@ -27595,7 +27595,7 @@
 
     function area(p, q, r) {
 
-        return ( q.y - p.y ) * ( r.x - q.x ) - ( q.x - p.x ) * ( r.y - q.y );
+        return (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
 
     }
 
@@ -27611,8 +27611,8 @@
 
     function intersects(p1, q1, p2, q2) {
 
-        if (( equals(p1, q1) && equals(p2, q2) ) ||
-            ( equals(p1, q2) && equals(p2, q1) )) return true;
+        if ((equals(p1, q1) && equals(p2, q2)) ||
+            (equals(p1, q2) && equals(p2, q1))) return true;
 
         return area(p1, q1, p2) > 0 !== area(p1, q1, q2) > 0 &&
             area(p2, q2, p1) > 0 !== area(p2, q2, q1) > 0;
@@ -27658,13 +27658,13 @@
 
         var p = a,
             inside = false,
-            px = ( a.x + b.x ) / 2,
-            py = ( a.y + b.y ) / 2;
+            px = (a.x + b.x) / 2,
+            py = (a.y + b.y) / 2;
 
         do {
 
-            if (( ( p.y > py ) !== ( p.next.y > py ) ) && p.next.y !== p.y &&
-                ( px < ( p.next.x - p.x ) * ( py - p.y ) / ( p.next.y - p.y ) + p.x )) {
+            if (((p.y > py) !== (p.next.y > py)) && p.next.y !== p.y &&
+                (px < (p.next.x - p.x) * (py - p.y) / (p.next.y - p.y) + p.x)) {
 
                 inside = !inside;
 
@@ -27769,7 +27769,7 @@
 
         for (var i = start, j = end - dim; i < end; i += dim) {
 
-            sum += ( data[j] - data[i] ) * ( data[i + 1] + data[j + 1] );
+            sum += (data[j] - data[i]) * (data[i + 1] + data[j + 1]);
             j = i;
 
         }
@@ -27919,7 +27919,7 @@
 
     function ExtrudeBufferGeometry(shapes, options) {
 
-        if (typeof ( shapes ) === "undefined") {
+        if (typeof (shapes) === "undefined") {
 
             return;
 
@@ -28128,10 +28128,10 @@
             var v_next_x = inNext.x - inPt.x,
                 v_next_y = inNext.y - inPt.y;
 
-            var v_prev_lensq = ( v_prev_x * v_prev_x + v_prev_y * v_prev_y );
+            var v_prev_lensq = (v_prev_x * v_prev_x + v_prev_y * v_prev_y);
 
             // check for collinear edges
-            var collinear0 = ( v_prev_x * v_next_y - v_prev_y * v_next_x );
+            var collinear0 = (v_prev_x * v_next_y - v_prev_y * v_next_x);
 
             if (Math.abs(collinear0) > Number.EPSILON) {
 
@@ -28144,26 +28144,26 @@
 
                 // shift adjacent points by unit vectors to the left
 
-                var ptPrevShift_x = ( inPrev.x - v_prev_y / v_prev_len );
-                var ptPrevShift_y = ( inPrev.y + v_prev_x / v_prev_len );
+                var ptPrevShift_x = (inPrev.x - v_prev_y / v_prev_len);
+                var ptPrevShift_y = (inPrev.y + v_prev_x / v_prev_len);
 
-                var ptNextShift_x = ( inNext.x - v_next_y / v_next_len );
-                var ptNextShift_y = ( inNext.y + v_next_x / v_next_len );
+                var ptNextShift_x = (inNext.x - v_next_y / v_next_len);
+                var ptNextShift_y = (inNext.y + v_next_x / v_next_len);
 
                 // scaling factor for v_prev to intersection point
 
-                var sf = ( ( ptNextShift_x - ptPrevShift_x ) * v_next_y -
-                    ( ptNextShift_y - ptPrevShift_y ) * v_next_x ) /
-                    ( v_prev_x * v_next_y - v_prev_y * v_next_x );
+                var sf = ((ptNextShift_x - ptPrevShift_x) * v_next_y -
+                    (ptNextShift_y - ptPrevShift_y) * v_next_x) /
+                    (v_prev_x * v_next_y - v_prev_y * v_next_x);
 
                 // vector from inPt to intersection point
 
-                v_trans_x = ( ptPrevShift_x + v_prev_x * sf - inPt.x );
-                v_trans_y = ( ptPrevShift_y + v_prev_y * sf - inPt.y );
+                v_trans_x = (ptPrevShift_x + v_prev_x * sf - inPt.x);
+                v_trans_y = (ptPrevShift_y + v_prev_y * sf - inPt.y);
 
                 // Don't normalize!, otherwise sharp corners become ugly
                 //  but prevent crazy spikes
-                var v_trans_lensq = ( v_trans_x * v_trans_x + v_trans_y * v_trans_y );
+                var v_trans_lensq = (v_trans_x * v_trans_x + v_trans_y * v_trans_y);
                 if (v_trans_lensq <= 2) {
 
                     return new Vector2(v_trans_x, v_trans_y);
@@ -28528,7 +28528,7 @@
                 for (s = 0; s < sl; s++) {
 
                     var slen1 = vlen * s;
-                    var slen2 = vlen * ( s + 1 );
+                    var slen2 = vlen * (s + 1);
 
                     var a = layeroffset + j + slen1,
                         b = layeroffset + k + slen1,
@@ -28723,7 +28723,7 @@
 
         var font = parameters.font;
 
-        if (!( font && font.isFont )) {
+        if (!(font && font.isFont)) {
 
             console.error('THREE.TextGeometry: font parameter is not an instance of THREE.Font.');
             return new Geometry();
@@ -28963,7 +28963,7 @@
 
         var segment;
         var radius = innerRadius;
-        var radiusStep = ( ( outerRadius - innerRadius ) / phiSegments );
+        var radiusStep = ((outerRadius - innerRadius) / phiSegments);
         var vertex = new Vector3();
         var uv = new Vector2();
         var j, i;
@@ -28991,8 +28991,8 @@
 
                 // uv
 
-                uv.x = ( vertex.x / outerRadius + 1 ) / 2;
-                uv.y = ( vertex.y / outerRadius + 1 ) / 2;
+                uv.x = (vertex.x / outerRadius + 1) / 2;
+                uv.y = (vertex.y / outerRadius + 1) / 2;
 
                 uvs.push(uv.x, uv.y);
 
@@ -29008,7 +29008,7 @@
 
         for (j = 0; j < phiSegments; j++) {
 
-            var thetaSegmentLevel = j * ( thetaSegments + 1 );
+            var thetaSegmentLevel = j * (thetaSegments + 1);
 
             for (i = 0; i < thetaSegments; i++) {
 
@@ -29117,7 +29117,7 @@
             var sin = Math.sin(phi);
             var cos = Math.cos(phi);
 
-            for (j = 0; j <= ( points.length - 1 ); j++) {
+            for (j = 0; j <= (points.length - 1); j++) {
 
                 // vertex
 
@@ -29130,7 +29130,7 @@
                 // uv
 
                 uv.x = i / segments;
-                uv.y = j / ( points.length - 1 );
+                uv.y = j / (points.length - 1);
 
                 uvs.push(uv.x, uv.y);
 
@@ -29143,7 +29143,7 @@
 
         for (i = 0; i < segments; i++) {
 
-            for (j = 0; j < ( points.length - 1 ); j++) {
+            for (j = 0; j < (points.length - 1); j++) {
 
                 base = j + i * points.length;
 
@@ -29448,7 +29448,7 @@
             thresholdAngle: thresholdAngle
         };
 
-        thresholdAngle = ( thresholdAngle !== undefined ) ? thresholdAngle : 1;
+        thresholdAngle = (thresholdAngle !== undefined) ? thresholdAngle : 1;
 
         // buffer
 
@@ -29490,7 +29490,7 @@
             for (var j = 0; j < 3; j++) {
 
                 edge1 = face[keys[j]];
-                edge2 = face[keys[( j + 1 ) % 3]];
+                edge2 = face[keys[(j + 1) % 3]];
                 edge[0] = Math.min(edge1, edge2);
                 edge[1] = Math.max(edge1, edge2);
 
@@ -29644,7 +29644,7 @@
             var groupCount = 0;
 
             // this will be used to calculate the normal
-            var slope = ( radiusBottom - radiusTop ) / height;
+            var slope = (radiusBottom - radiusTop) / height;
 
             // generate vertices, normals and uvs
 
@@ -29656,7 +29656,7 @@
 
                 // calculate the radius of the current row
 
-                var radius = v * ( radiusBottom - radiusTop ) + radiusTop;
+                var radius = v * (radiusBottom - radiusTop) + radiusTop;
 
                 for (x = 0; x <= radialSegments; x++) {
 
@@ -29740,8 +29740,8 @@
 
             var groupCount = 0;
 
-            var radius = ( top === true ) ? radiusTop : radiusBottom;
-            var sign = ( top === true ) ? 1 : -1;
+            var radius = (top === true) ? radiusTop : radiusBottom;
+            var sign = (top === true) ? 1 : -1;
 
             // save the index of the first center vertex
             centerIndexStart = index;
@@ -29797,8 +29797,8 @@
 
                 // uv
 
-                uv.x = ( cosTheta * 0.5 ) + 0.5;
-                uv.y = ( sinTheta * 0.5 * sign ) + 0.5;
+                uv.x = (cosTheta * 0.5) + 0.5;
+                uv.y = (sinTheta * 0.5 * sign) + 0.5;
                 uvs.push(uv.x, uv.y);
 
                 // increase index
@@ -29983,8 +29983,8 @@
 
             // uvs
 
-            uv.x = ( vertices[i] / radius + 1 ) / 2;
-            uv.y = ( vertices[i + 1] / radius + 1 ) / 2;
+            uv.x = (vertices[i] / radius + 1) / 2;
+            uv.y = (vertices[i + 1] / radius + 1) / 2;
 
             uvs.push(uv.x, uv.y);
 
@@ -30939,7 +30939,7 @@
 
     function FileLoader(manager) {
 
-        this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
+        this.manager = (manager !== undefined) ? manager : DefaultLoadingManager;
 
     }
 
@@ -31007,7 +31007,7 @@
                 try {
 
                     var response;
-                    var responseType = ( this.responseType || '' ).toLowerCase();
+                    var responseType = (this.responseType || '').toLowerCase();
 
                     switch (responseType) {
 
@@ -31246,7 +31246,7 @@
 
     function CompressedTextureLoader(manager) {
 
-        this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
+        this.manager = (manager !== undefined) ? manager : DefaultLoadingManager;
 
         // override in sub classes
         this._parser = null;
@@ -31380,7 +31380,7 @@
 
     function DataTextureLoader(manager) {
 
-        this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
+        this.manager = (manager !== undefined) ? manager : DefaultLoadingManager;
 
         // override in sub classes
         this._parser = null;
@@ -31466,7 +31466,7 @@
 
     function ImageLoader(manager) {
 
-        this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
+        this.manager = (manager !== undefined) ? manager : DefaultLoadingManager;
 
     }
 
@@ -31567,7 +31567,7 @@
 
     function CubeTextureLoader(manager) {
 
-        this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
+        this.manager = (manager !== undefined) ? manager : DefaultLoadingManager;
 
     }
 
@@ -31637,7 +31637,7 @@
 
     function TextureLoader(manager) {
 
-        this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
+        this.manager = (manager !== undefined) ? manager : DefaultLoadingManager;
 
     }
 
@@ -31808,7 +31808,7 @@
             if (divisions === undefined) divisions = this.arcLengthDivisions;
 
             if (this.cacheArcLengths &&
-                ( this.cacheArcLengths.length === divisions + 1 ) &&
+                (this.cacheArcLengths.length === divisions + 1) &&
                 !this.needsUpdate) {
 
                 return this.cacheArcLengths;
@@ -31871,7 +31871,7 @@
 
             while (low <= high) {
 
-                i = Math.floor(low + ( high - low ) / 2); // less likely to overflow, though probably not issue here, JS doesn't really have integers, all numbers are floats
+                i = Math.floor(low + (high - low) / 2); // less likely to overflow, though probably not issue here, JS doesn't really have integers, all numbers are floats
 
                 comparison = arcLengths[i] - targetArcLength;
 
@@ -31898,7 +31898,7 @@
 
             if (arcLengths[i] === targetArcLength) {
 
-                return i / ( il - 1 );
+                return i / (il - 1);
 
             }
 
@@ -31911,11 +31911,11 @@
 
             // determine where we are between the 'before' and 'after' points
 
-            var segmentFraction = ( targetArcLength - lengthBefore ) / segmentLength;
+            var segmentFraction = (targetArcLength - lengthBefore) / segmentLength;
 
             // add that fractional amount to t
 
-            var t = ( i + segmentFraction ) / ( il - 1 );
+            var t = (i + segmentFraction) / (il - 1);
 
             return t;
 
@@ -32322,15 +32322,15 @@
 
             initCatmullRom: function (x0, x1, x2, x3, tension) {
 
-                init(x1, x2, tension * ( x2 - x0 ), tension * ( x3 - x1 ));
+                init(x1, x2, tension * (x2 - x0), tension * (x3 - x1));
 
             },
 
             initNonuniformCatmullRom: function (x0, x1, x2, x3, dt0, dt1, dt2) {
 
                 // compute tangents when parameterized in [t1,t2]
-                var t1 = ( x1 - x0 ) / dt0 - ( x2 - x0 ) / ( dt0 + dt1 ) + ( x2 - x1 ) / dt1;
-                var t2 = ( x2 - x1 ) / dt1 - ( x3 - x1 ) / ( dt1 + dt2 ) + ( x3 - x2 ) / dt2;
+                var t1 = (x1 - x0) / dt0 - (x2 - x0) / (dt0 + dt1) + (x2 - x1) / dt1;
+                var t2 = (x2 - x1) / dt1 - (x3 - x1) / (dt1 + dt2) + (x3 - x2) / dt2;
 
                 // rescale tangents for parametrization in [0,1]
                 t1 *= dt1;
@@ -32384,13 +32384,13 @@
         var points = this.points;
         var l = points.length;
 
-        var p = ( l - ( this.closed ? 0 : 1 ) ) * t;
+        var p = (l - (this.closed ? 0 : 1)) * t;
         var intPoint = Math.floor(p);
         var weight = p - intPoint;
 
         if (this.closed) {
 
-            intPoint += intPoint > 0 ? 0 : ( Math.floor(Math.abs(intPoint) / points.length) + 1 ) * points.length;
+            intPoint += intPoint > 0 ? 0 : (Math.floor(Math.abs(intPoint) / points.length) + 1) * points.length;
 
         } else if (weight === 0 && intPoint === l - 1) {
 
@@ -32403,7 +32403,7 @@
 
         if (this.closed || intPoint > 0) {
 
-            p0 = points[( intPoint - 1 ) % l];
+            p0 = points[(intPoint - 1) % l];
 
         } else {
 
@@ -32414,11 +32414,11 @@
         }
 
         p1 = points[intPoint % l];
-        p2 = points[( intPoint + 1 ) % l];
+        p2 = points[(intPoint + 1) % l];
 
         if (this.closed || intPoint + 2 < l) {
 
-            p3 = points[( intPoint + 2 ) % l];
+            p3 = points[(intPoint + 2) % l];
 
         } else {
 
@@ -32536,11 +32536,11 @@
 
     function CatmullRom(t, p0, p1, p2, p3) {
 
-        var v0 = ( p2 - p0 ) * 0.5;
-        var v1 = ( p3 - p1 ) * 0.5;
+        var v0 = (p2 - p0) * 0.5;
+        var v1 = (p3 - p1) * 0.5;
         var t2 = t * t;
         var t3 = t * t2;
-        return ( 2 * p1 - 2 * p2 + v0 + v1 ) * t3 + ( -3 * p1 + 3 * p2 - 2 * v0 - v1 ) * t2 + v0 * t + p1;
+        return (2 * p1 - 2 * p2 + v0 + v1) * t3 + (-3 * p1 + 3 * p2 - 2 * v0 - v1) * t2 + v0 * t + p1;
 
     }
 
@@ -32555,7 +32555,7 @@
 
     function QuadraticBezierP1(t, p) {
 
-        return 2 * ( 1 - t ) * t * p;
+        return 2 * (1 - t) * t * p;
 
     }
 
@@ -32590,7 +32590,7 @@
 
     function CubicBezierP2(t, p) {
 
-        return 3 * ( 1 - t ) * t * t * p;
+        return 3 * (1 - t) * t * t * p;
 
     }
 
@@ -33069,7 +33069,7 @@
         var point = optionalTarget || new Vector2();
 
         var points = this.points;
-        var p = ( points.length - 1 ) * t;
+        var p = (points.length - 1) * t;
 
         var intPoint = Math.floor(p);
         var weight = p - intPoint;
@@ -33322,9 +33322,9 @@
             for (var i = 0, curves = this.curves; i < curves.length; i++) {
 
                 var curve = curves[i];
-                var resolution = ( curve && curve.isEllipseCurve ) ? divisions * 2
-                    : ( curve && curve.isLineCurve ) ? 1
-                        : ( curve && curve.isSplineCurve ) ? divisions * curve.points.length
+                var resolution = (curve && curve.isEllipseCurve) ? divisions * 2
+                    : (curve && curve.isLineCurve) ? 1
+                        : (curve && curve.isSplineCurve) ? divisions * curve.points.length
                             : divisions;
 
                 var pts = curve.getPoints(resolution);
@@ -33912,10 +33912,10 @@
             }
         });
 
-        this.distance = ( distance !== undefined ) ? distance : 0;
-        this.angle = ( angle !== undefined ) ? angle : Math.PI / 3;
-        this.penumbra = ( penumbra !== undefined ) ? penumbra : 0;
-        this.decay = ( decay !== undefined ) ? decay : 1;	// for physically correct lights, should be 2.
+        this.distance = (distance !== undefined) ? distance : 0;
+        this.angle = (angle !== undefined) ? angle : Math.PI / 3;
+        this.penumbra = (penumbra !== undefined) ? penumbra : 0;
+        this.decay = (decay !== undefined) ? decay : 1;	// for physically correct lights, should be 2.
 
         this.shadow = new SpotLightShadow();
 
@@ -33969,13 +33969,13 @@
 
                 // intensity = power per solid angle.
                 // ref: equation (15) from http://www.frostbite.com/wp-content/uploads/2014/11/course_notes_moving_frostbite_to_pbr.pdf
-                this.intensity = power / ( 4 * Math.PI );
+                this.intensity = power / (4 * Math.PI);
 
             }
         });
 
-        this.distance = ( distance !== undefined ) ? distance : 0;
-        this.decay = ( decay !== undefined ) ? decay : 1;	// for physically correct lights, should be 2.
+        this.distance = (distance !== undefined) ? distance : 0;
+        this.decay = (decay !== undefined) ? decay : 1;	// for physically correct lights, should be 2.
 
         this.shadow = new LightShadow(new PerspectiveCamera(90, 1, 0.5, 500));
 
@@ -34093,8 +34093,8 @@
         this.position.set(0, 1, 0);
         this.updateMatrix();
 
-        this.width = ( width !== undefined ) ? width : 10;
-        this.height = ( height !== undefined ) ? height : 10;
+        this.width = (width !== undefined) ? width : 10;
+        this.height = (height !== undefined) ? height : 10;
 
         // TODO (abelnation): distance/decay
 
@@ -34256,7 +34256,7 @@
                         //- slower code:
                         //-
                         //- 				if ( t >= t1 || t1 === undefined ) {
-                        forward_scan: if (!( t < t1 )) {
+                        forward_scan: if (!(t < t1)) {
 
                             for (var giveUpAt = i1 + 2; ;) {
 
@@ -34294,7 +34294,7 @@
 
                         //- slower code:
                         //-					if ( t < t0 || t0 === undefined ) {
-                        if (!( t >= t0 )) {
+                        if (!(t >= t0)) {
 
                             // looping?
 
@@ -34351,7 +34351,7 @@
 
                     while (i1 < right) {
 
-                        var mid = ( i1 + right ) >>> 1;
+                        var mid = (i1 + right) >>> 1;
 
                         if (t < pp[mid]) {
 
@@ -34481,7 +34481,7 @@
 
                 offset = i1 * stride,
 
-                alpha = ( t - t0 ) / ( t1 - t0 );
+                alpha = (t - t0) / (t1 - t0);
 
             for (var end = offset + stride; offset !== end; offset += 4) {
 
@@ -34689,11 +34689,11 @@
 
             }
 
-            var halfDt = ( t1 - t0 ) * 0.5,
+            var halfDt = (t1 - t0) * 0.5,
                 stride = this.valueSize;
 
-            this._weightPrev = halfDt / ( t0 - tPrev );
-            this._weightNext = halfDt / ( tNext - t1 );
+            this._weightPrev = halfDt / (t0 - tPrev);
+            this._weightNext = halfDt / (tNext - t1);
             this._offsetPrev = iPrev * stride;
             this._offsetNext = iNext * stride;
 
@@ -34709,15 +34709,15 @@
                 oP = this._offsetPrev, oN = this._offsetNext,
                 wP = this._weightPrev, wN = this._weightNext,
 
-                p = ( t - t0 ) / ( t1 - t0 ),
+                p = (t - t0) / (t1 - t0),
                 pp = p * p,
                 ppp = pp * p;
 
             // evaluate polynomials
 
             var sP = -wP * ppp + 2 * wP * pp - wP * p;
-            var s0 = ( 1 + wP ) * ppp + ( -1.5 - 2 * wP ) * pp + ( -0.5 + wP ) * p + 1;
-            var s1 = ( -1 - wN ) * ppp + ( 1.5 + wN ) * pp + 0.5 * p;
+            var s0 = (1 + wP) * ppp + (-1.5 - 2 * wP) * pp + (-0.5 + wP) * p + 1;
+            var s1 = (-1 - wN) * ppp + (1.5 + wN) * pp + 0.5 * p;
             var sN = wN * ppp - wN * pp;
 
             // combine data linearly
@@ -34761,7 +34761,7 @@
                 offset1 = i1 * stride,
                 offset0 = offset1 - stride,
 
-                weight1 = ( t - t0 ) / ( t1 - t0 ),
+                weight1 = (t - t0) / (t1 - t0),
                 weight0 = 1 - weight1;
 
             for (var i = 0; i !== stride; ++i) {
@@ -34846,7 +34846,7 @@
         isTypedArray: function (object) {
 
             return ArrayBuffer.isView(object) &&
-                !( object instanceof DataView );
+                !(object instanceof DataView);
 
         },
 
@@ -35403,7 +35403,7 @@
 
                 // remove adjacent keyframes scheduled at the same time
 
-                if (time !== timeNext && ( i !== 1 || time !== time[0] )) {
+                if (time !== timeNext && (i !== 1 || time !== time[0])) {
 
                     if (!smoothInterpolation) {
 
@@ -35529,7 +35529,7 @@
 
         this.name = name;
         this.tracks = tracks;
-        this.duration = ( duration !== undefined ) ? duration : -1;
+        this.duration = (duration !== undefined) ? duration : -1;
 
         this.uuid = _Math.generateUUID();
 
@@ -35550,7 +35550,7 @@
 
             var tracks = [],
                 jsonTracks = json.tracks,
-                frameTime = 1.0 / ( json.fps || 1.0 );
+                frameTime = 1.0 / (json.fps || 1.0);
 
             for (var i = 0, n = jsonTracks.length; i !== n; ++i) {
 
@@ -35596,9 +35596,9 @@
                 var values = [];
 
                 times.push(
-                    ( i + numMorphTargets - 1 ) % numMorphTargets,
+                    (i + numMorphTargets - 1) % numMorphTargets,
                     i,
-                    ( i + 1 ) % numMorphTargets);
+                    (i + 1) % numMorphTargets);
 
                 values.push(0, 1, 0);
 
@@ -35776,7 +35776,7 @@
                             var animationKey = animationKeys[k];
 
                             times.push(animationKey.time);
-                            values.push(( animationKey.morphTarget === morphTargetName ) ? 1 : 0);
+                            values.push((animationKey.morphTarget === morphTargetName) ? 1 : 0);
 
                         }
 
@@ -35784,7 +35784,7 @@
 
                     }
 
-                    duration = morphTargetNames.length * ( fps || 1.0 );
+                    duration = morphTargetNames.length * (fps || 1.0);
 
                 } else {
 
@@ -35872,7 +35872,7 @@
 
     function MaterialLoader(manager) {
 
-        this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
+        this.manager = (manager !== undefined) ? manager : DefaultLoadingManager;
         this.textures = {};
 
     }
@@ -36035,7 +36035,7 @@
 
     function BufferGeometryLoader(manager) {
 
-        this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
+        this.manager = (manager !== undefined) ? manager : DefaultLoadingManager;
 
     }
 
@@ -36507,7 +36507,7 @@
 
         }
 
-        this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
+        this.manager = (manager !== undefined) ? manager : DefaultLoadingManager;
 
         this.withCredentials = false;
 
@@ -36519,7 +36519,7 @@
 
             var scope = this;
 
-            var texturePath = this.texturePath && ( typeof this.texturePath === 'string' ) ? this.texturePath : LoaderUtils.extractUrlBase(url);
+            var texturePath = this.texturePath && (typeof this.texturePath === 'string') ? this.texturePath : LoaderUtils.extractUrlBase(url);
 
             var loader = new FileLoader(this.manager);
             loader.setWithCredentials(this.withCredentials);
@@ -36571,7 +36571,7 @@
 
                 function isBitSet(value, position) {
 
-                    return value & ( 1 << position );
+                    return value & (1 << position);
 
                 }
 
@@ -36871,16 +36871,16 @@
 
             function parseSkin(json, geometry) {
 
-                var influencesPerVertex = ( json.influencesPerVertex !== undefined ) ? json.influencesPerVertex : 2;
+                var influencesPerVertex = (json.influencesPerVertex !== undefined) ? json.influencesPerVertex : 2;
 
                 if (json.skinWeights) {
 
                     for (var i = 0, l = json.skinWeights.length; i < l; i += influencesPerVertex) {
 
                         var x = json.skinWeights[i];
-                        var y = ( influencesPerVertex > 1 ) ? json.skinWeights[i + 1] : 0;
-                        var z = ( influencesPerVertex > 2 ) ? json.skinWeights[i + 2] : 0;
-                        var w = ( influencesPerVertex > 3 ) ? json.skinWeights[i + 3] : 0;
+                        var y = (influencesPerVertex > 1) ? json.skinWeights[i + 1] : 0;
+                        var z = (influencesPerVertex > 2) ? json.skinWeights[i + 2] : 0;
+                        var w = (influencesPerVertex > 3) ? json.skinWeights[i + 3] : 0;
 
                         geometry.skinWeights.push(new Vector4(x, y, z, w));
 
@@ -36893,9 +36893,9 @@
                     for (var i = 0, l = json.skinIndices.length; i < l; i += influencesPerVertex) {
 
                         var a = json.skinIndices[i];
-                        var b = ( influencesPerVertex > 1 ) ? json.skinIndices[i + 1] : 0;
-                        var c = ( influencesPerVertex > 2 ) ? json.skinIndices[i + 2] : 0;
-                        var d = ( influencesPerVertex > 3 ) ? json.skinIndices[i + 3] : 0;
+                        var b = (influencesPerVertex > 1) ? json.skinIndices[i + 1] : 0;
+                        var c = (influencesPerVertex > 2) ? json.skinIndices[i + 2] : 0;
+                        var d = (influencesPerVertex > 3) ? json.skinIndices[i + 3] : 0;
 
                         geometry.skinIndices.push(new Vector4(a, b, c, d));
 
@@ -36905,7 +36905,7 @@
 
                 geometry.bones = json.bones;
 
-                if (geometry.bones && geometry.bones.length > 0 && ( geometry.skinWeights.length !== geometry.skinIndices.length || geometry.skinIndices.length !== geometry.vertices.length )) {
+                if (geometry.bones && geometry.bones.length > 0 && (geometry.skinWeights.length !== geometry.skinIndices.length || geometry.skinIndices.length !== geometry.vertices.length)) {
 
                     console.warn('When skinning, number of vertices (' + geometry.vertices.length + '), skinIndices (' +
                         geometry.skinIndices.length + '), and skinWeights (' + geometry.skinWeights.length + ') should match.');
@@ -37061,7 +37061,7 @@
 
     function ObjectLoader(manager) {
 
-        this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
+        this.manager = (manager !== undefined) ? manager : DefaultLoadingManager;
         this.texturePath = '';
 
     }
@@ -38091,18 +38091,18 @@
                             edgeDy = -edgeDy;
 
                         }
-                        if (( inPt.y < edgeLowPt.y ) || ( inPt.y > edgeHighPt.y ))        continue;
+                        if ((inPt.y < edgeLowPt.y) || (inPt.y > edgeHighPt.y)) continue;
 
                         if (inPt.y === edgeLowPt.y) {
 
-                            if (inPt.x === edgeLowPt.x)        return true;		// inPt is on contour ?
+                            if (inPt.x === edgeLowPt.x) return true;		// inPt is on contour ?
                             // continue;				// no intersection or edgeLowPt => doesn't count !!!
 
                         } else {
 
-                            var perpEdge = edgeDy * ( inPt.x - edgeLowPt.x ) - edgeDx * ( inPt.y - edgeLowPt.y );
-                            if (perpEdge === 0)                return true;		// inPt is on contour ?
-                            if (perpEdge < 0)                continue;
+                            var perpEdge = edgeDy * (inPt.x - edgeLowPt.x) - edgeDx * (inPt.y - edgeLowPt.y);
+                            if (perpEdge === 0) return true;		// inPt is on contour ?
+                            if (perpEdge < 0) continue;
                             inside = !inside;		// true intersection left of inPt
 
                         }
@@ -38110,10 +38110,10 @@
                     } else {
 
                         // parallel or collinear
-                        if (inPt.y !== edgeLowPt.y)        continue;			// parallel
+                        if (inPt.y !== edgeLowPt.y) continue;			// parallel
                         // edge lies on the same horizontal line as inPt
-                        if (( ( edgeHighPt.x <= inPt.x ) && ( inPt.x <= edgeLowPt.x ) ) ||
-                            ( ( edgeLowPt.x <= inPt.x ) && ( inPt.x <= edgeHighPt.x ) ))        return true;	// inPt: Point on contour !
+                        if (((edgeHighPt.x <= inPt.x) && (inPt.x <= edgeLowPt.x)) ||
+                            ((edgeLowPt.x <= inPt.x) && (inPt.x <= edgeHighPt.x))) return true;	// inPt: Point on contour !
                         // continue;
 
                     }
@@ -38129,7 +38129,7 @@
             var subPaths = this.subPaths;
             if (subPaths.length === 0) return [];
 
-            if (noHoles === true)    return toShapesNoHoles(subPaths);
+            if (noHoles === true) return toShapesNoHoles(subPaths);
 
 
             var solid, tmpPath, tmpShape, shapes = [];
@@ -38167,7 +38167,7 @@
 
                 if (solid) {
 
-                    if (( !holesFirst ) && ( newShapes[mainIdx] )) mainIdx++;
+                    if ((!holesFirst) && (newShapes[mainIdx])) mainIdx++;
 
                     newShapes[mainIdx] = {s: new Shape(), p: tmpPoints};
                     newShapes[mainIdx].s.curves = tmpPath.curves;
@@ -38188,7 +38188,7 @@
             }
 
             // only Holes? -> probably all Shapes with wrong orientation
-            if (!newShapes[0])    return toShapesNoHoles(subPaths);
+            if (!newShapes[0]) return toShapesNoHoles(subPaths);
 
 
             if (newShapes.length > 1) {
@@ -38296,7 +38296,7 @@
 
                 var chars = String(text).split('');
                 var scale = size / data.resolution;
-                var line_height = ( data.boundingBox.yMax - data.boundingBox.yMin + data.underlineThickness ) * scale;
+                var line_height = (data.boundingBox.yMax - data.boundingBox.yMin + data.underlineThickness) * scale;
 
                 var offsetX = 0, offsetY = 0;
 
@@ -38338,7 +38338,7 @@
 
                 if (glyph.o) {
 
-                    var outline = glyph._cachedOutline || ( glyph._cachedOutline = glyph.o.split(' ') );
+                    var outline = glyph._cachedOutline || (glyph._cachedOutline = glyph.o.split(' '));
 
                     for (var i = 0, l = outline.length; i < l;) {
 
@@ -38446,7 +38446,7 @@
 
     function FontLoader(manager) {
 
-        this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
+        this.manager = (manager !== undefined) ? manager : DefaultLoadingManager;
 
     }
 
@@ -38508,7 +38508,7 @@
 
             if (context === undefined) {
 
-                context = new ( window.AudioContext || window.webkitAudioContext )();
+                context = new (window.AudioContext || window.webkitAudioContext)();
 
             }
 
@@ -38530,7 +38530,7 @@
 
     function AudioLoader(manager) {
 
-        this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
+        this.manager = (manager !== undefined) ? manager : DefaultLoadingManager;
 
     }
 
@@ -38609,7 +38609,7 @@
                     var projectionMatrix = camera.projectionMatrix.clone();
                     eyeSep = this.eyeSep / 2;
                     var eyeSepOnProjection = eyeSep * near / focus;
-                    var ymax = ( near * Math.tan(_Math.DEG2RAD * fov * 0.5) ) / zoom;
+                    var ymax = (near * Math.tan(_Math.DEG2RAD * fov * 0.5)) / zoom;
                     var xmin, xmax;
 
                     // translate xOffset
@@ -38622,8 +38622,8 @@
                     xmin = -ymax * aspect + eyeSepOnProjection;
                     xmax = ymax * aspect + eyeSepOnProjection;
 
-                    projectionMatrix.elements[0] = 2 * near / ( xmax - xmin );
-                    projectionMatrix.elements[8] = ( xmax + xmin ) / ( xmax - xmin );
+                    projectionMatrix.elements[0] = 2 * near / (xmax - xmin);
+                    projectionMatrix.elements[8] = (xmax + xmin) / (xmax - xmin);
 
                     this.cameraL.projectionMatrix.copy(projectionMatrix);
 
@@ -38632,8 +38632,8 @@
                     xmin = -ymax * aspect - eyeSepOnProjection;
                     xmax = ymax * aspect - eyeSepOnProjection;
 
-                    projectionMatrix.elements[0] = 2 * near / ( xmax - xmin );
-                    projectionMatrix.elements[8] = ( xmax + xmin ) / ( xmax - xmin );
+                    projectionMatrix.elements[0] = 2 * near / (xmax - xmin);
+                    projectionMatrix.elements[8] = (xmax + xmin) / (xmax - xmin);
 
                     this.cameraR.projectionMatrix.copy(projectionMatrix);
 
@@ -38984,7 +38984,7 @@
             if (this.isPlaying === true) {
 
                 this.source.stop();
-                this.offset += ( this.context.currentTime - this.startTime ) * this.playbackRate;
+                this.offset += (this.context.currentTime - this.startTime) * this.playbackRate;
                 this.isPlaying = false;
 
             }
@@ -39460,7 +39460,7 @@
             // accu[0..1] := orig -- initially detect changes against the original
             for (var i = stride, e = originalValueOffset; i !== e; ++i) {
 
-                buffer[i] = buffer[originalValueOffset + ( i % stride )];
+                buffer[i] = buffer[originalValueOffset + (i % stride)];
 
             }
 
@@ -39607,7 +39607,7 @@
 
         create: function (root, path, parsedPath) {
 
-            if (!( root && root.isAnimationObjectGroup )) {
+            if (!(root && root.isAnimationObjectGroup)) {
 
                 return new PropertyBinding(root, path, parsedPath);
 
@@ -40966,7 +40966,7 @@
 
                 // check for scheduled start of action
 
-                var timeRunning = ( time - startTime ) * timeDirection;
+                var timeRunning = (time - startTime) * timeDirection;
                 if (timeRunning < 0 || timeDirection === 0) {
 
                     return; // yet to come / don't decide when delta = 0
@@ -41132,7 +41132,7 @@
 
             } else { // repetitive Repeat or PingPong
 
-                var pingPong = ( loop === LoopPingPong );
+                var pingPong = (loop === LoopPingPong);
 
                 if (loopCount === -1) {
 
@@ -41208,7 +41208,7 @@
 
                 }
 
-                if (pingPong && ( loopCount & 1 ) === 1) {
+                if (pingPong && (loopCount & 1) === 1) {
 
                     // invert time for the "pong round"
 
@@ -41388,7 +41388,7 @@
                     // this action has been forgotten by the cache, but the user
                     // appears to be still using it -> rebind
 
-                    var rootUuid = ( action._localRoot || this._root ).uuid,
+                    var rootUuid = (action._localRoot || this._root).uuid,
                         clipUuid = action._clip.uuid,
                         actionsForClip = this._actionsByClip[clipUuid];
 
@@ -41591,7 +41591,7 @@
 
 
             var actionByRoot = actionsForClip.actionByRoot,
-                rootUuid = ( action._localRoot || this._root ).uuid;
+                rootUuid = (action._localRoot || this._root).uuid;
 
             delete actionByRoot[rootUuid];
 
@@ -42480,14 +42480,14 @@
 
         setFromCamera: function (coords, camera) {
 
-            if (( camera && camera.isPerspectiveCamera )) {
+            if ((camera && camera.isPerspectiveCamera)) {
 
                 this.ray.origin.setFromMatrixPosition(camera.matrixWorld);
                 this.ray.direction.set(coords.x, coords.y, 0.5).unproject(camera).sub(this.ray.origin).normalize();
 
-            } else if (( camera && camera.isOrthographicCamera )) {
+            } else if ((camera && camera.isOrthographicCamera)) {
 
-                this.ray.origin.set(coords.x, coords.y, ( camera.near + camera.far ) / ( camera.near - camera.far )).unproject(camera); // set origin in plane of camera
+                this.ray.origin.set(coords.x, coords.y, (camera.near + camera.far) / (camera.near - camera.far)).unproject(camera); // set origin in plane of camera
                 this.ray.direction.set(0, 0, -1).transformDirection(camera.matrixWorld);
 
             } else {
@@ -42541,7 +42541,7 @@
 
     function Clock(autoStart) {
 
-        this.autoStart = ( autoStart !== undefined ) ? autoStart : true;
+        this.autoStart = (autoStart !== undefined) ? autoStart : true;
 
         this.startTime = 0;
         this.oldTime = 0;
@@ -42555,7 +42555,7 @@
 
         start: function () {
 
-            this.startTime = ( typeof performance === 'undefined' ? Date : performance ).now(); // see #10732
+            this.startTime = (typeof performance === 'undefined' ? Date : performance).now(); // see #10732
 
             this.oldTime = this.startTime;
             this.elapsedTime = 0;
@@ -42591,9 +42591,9 @@
 
             if (this.running) {
 
-                var newTime = ( typeof performance === 'undefined' ? Date : performance ).now();
+                var newTime = (typeof performance === 'undefined' ? Date : performance).now();
 
-                diff = ( newTime - this.oldTime ) / 1000;
+                diff = (newTime - this.oldTime) / 1000;
                 this.oldTime = newTime;
 
                 this.elapsedTime += diff;
@@ -42618,9 +42618,9 @@
 
     function Spherical(radius, phi, theta) {
 
-        this.radius = ( radius !== undefined ) ? radius : 1.0;
-        this.phi = ( phi !== undefined ) ? phi : 0; // up / down towards top and bottom pole
-        this.theta = ( theta !== undefined ) ? theta : 0; // around the equator of the sphere
+        this.radius = (radius !== undefined) ? radius : 1.0;
+        this.phi = (phi !== undefined) ? phi : 0; // up / down towards top and bottom pole
+        this.theta = (theta !== undefined) ? theta : 0; // around the equator of the sphere
 
         return this;
 
@@ -42695,9 +42695,9 @@
 
     function Cylindrical(radius, theta, y) {
 
-        this.radius = ( radius !== undefined ) ? radius : 1.0; // distance from the origin to a point in the x-z plane
-        this.theta = ( theta !== undefined ) ? theta : 0; // counterclockwise angle in the x-z plane measured in radians from the positive z-axis
-        this.y = ( y !== undefined ) ? y : 0; // height above the x-z plane
+        this.radius = (radius !== undefined) ? radius : 1.0; // distance from the origin to a point in the x-z plane
+        this.theta = (theta !== undefined) ? theta : 0; // counterclockwise angle in the x-z plane measured in radians from the positive z-axis
+        this.y = (y !== undefined) ? y : 0; // height above the x-z plane
 
         return this;
 
@@ -42771,11 +42771,11 @@
 
         this.object = object;
 
-        this.size = ( size !== undefined ) ? size : 1;
+        this.size = (size !== undefined) ? size : 1;
 
-        var color = ( hex !== undefined ) ? hex : 0xff0000;
+        var color = (hex !== undefined) ? hex : 0xff0000;
 
-        var width = ( linewidth !== undefined ) ? linewidth : 1;
+        var width = (linewidth !== undefined) ? linewidth : 1;
 
         //
 
@@ -42814,7 +42814,7 @@
     VertexNormalsHelper.prototype = Object.create(LineSegments.prototype);
     VertexNormalsHelper.prototype.constructor = VertexNormalsHelper;
 
-    VertexNormalsHelper.prototype.update = ( function () {
+    VertexNormalsHelper.prototype.update = (function () {
 
         var v1 = new Vector3();
         var v2 = new Vector3();
@@ -42904,7 +42904,7 @@
 
         };
 
-    }() );
+    }());
 
     /**
      * @author alteredq / http://alteredqualia.com/
@@ -42936,8 +42936,8 @@
 
         for (var i = 0, j = 1, l = 32; i < l; i++, j++) {
 
-            var p1 = ( i / l ) * Math.PI * 2;
-            var p2 = ( j / l ) * Math.PI * 2;
+            var p1 = (i / l) * Math.PI * 2;
+            var p2 = (j / l) * Math.PI * 2;
 
             positions.push(
                 Math.cos(p1), Math.sin(p1), 1,
@@ -43361,7 +43361,7 @@
 
                 for (var i = 0, l = colors.count; i < l; i++) {
 
-                    var color = ( i < ( l / 2 ) ) ? color1 : color2;
+                    var color = (i < (l / 2)) ? color1 : color2;
 
                     colors.setXYZ(i, color.r, color.g, color.b);
 
@@ -43450,7 +43450,7 @@
 
         for (i = 0; i <= radials; i++) {
 
-            v = ( i / radials ) * ( Math.PI * 2 );
+            v = (i / radials) * (Math.PI * 2);
 
             x = Math.sin(v) * radius;
             z = Math.cos(v) * radius;
@@ -43458,7 +43458,7 @@
             vertices.push(0, 0, 0);
             vertices.push(x, 0, z);
 
-            color = ( i & 1 ) ? color1 : color2;
+            color = (i & 1) ? color1 : color2;
 
             colors.push(color.r, color.g, color.b);
             colors.push(color.r, color.g, color.b);
@@ -43469,15 +43469,15 @@
 
         for (i = 0; i <= circles; i++) {
 
-            color = ( i & 1 ) ? color1 : color2;
+            color = (i & 1) ? color1 : color2;
 
-            r = radius - ( radius / circles * i );
+            r = radius - (radius / circles * i);
 
             for (j = 0; j < divisions; j++) {
 
                 // first vertex
 
-                v = ( j / divisions ) * ( Math.PI * 2 );
+                v = (j / divisions) * (Math.PI * 2);
 
                 x = Math.sin(v) * r;
                 z = Math.cos(v) * r;
@@ -43487,7 +43487,7 @@
 
                 // second vertex
 
-                v = ( ( j + 1 ) / divisions ) * ( Math.PI * 2 );
+                v = ((j + 1) / divisions) * (Math.PI * 2);
 
                 x = Math.sin(v) * r;
                 z = Math.cos(v) * r;
@@ -43523,11 +43523,11 @@
 
         this.object = object;
 
-        this.size = ( size !== undefined ) ? size : 1;
+        this.size = (size !== undefined) ? size : 1;
 
-        var color = ( hex !== undefined ) ? hex : 0xffff00;
+        var color = (hex !== undefined) ? hex : 0xffff00;
 
-        var width = ( linewidth !== undefined ) ? linewidth : 1;
+        var width = (linewidth !== undefined) ? linewidth : 1;
 
         //
 
@@ -43565,7 +43565,7 @@
     FaceNormalsHelper.prototype = Object.create(LineSegments.prototype);
     FaceNormalsHelper.prototype.constructor = FaceNormalsHelper;
 
-    FaceNormalsHelper.prototype.update = ( function () {
+    FaceNormalsHelper.prototype.update = (function () {
 
         var v1 = new Vector3();
         var v2 = new Vector3();
@@ -43619,7 +43619,7 @@
 
         };
 
-    }() );
+    }());
 
     /**
      * @author alteredq / http://alteredqualia.com/
@@ -43803,7 +43803,7 @@
 
             }
 
-            pointMap[id].push(( vertices.length / 3 ) - 1);
+            pointMap[id].push((vertices.length / 3) - 1);
 
         }
 
@@ -44032,7 +44032,7 @@
 
         this.box = box;
 
-        var color = ( hex !== undefined ) ? hex : 0xffff00;
+        var color = (hex !== undefined) ? hex : 0xffff00;
 
         var indices = new Uint16Array([0, 1, 1, 2, 2, 3, 3, 0, 4, 5, 5, 6, 6, 7, 7, 4, 0, 4, 1, 5, 2, 6, 3, 7]);
 
@@ -44079,9 +44079,9 @@
 
         this.plane = plane;
 
-        this.size = ( size === undefined ) ? 1 : size;
+        this.size = (size === undefined) ? 1 : size;
 
-        var color = ( hex !== undefined ) ? hex : 0xffff00;
+        var color = (hex !== undefined) ? hex : 0xffff00;
 
         var positions = [1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, -1, 1, 1, -1, -1, 1, 1, -1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0];
 
@@ -44183,7 +44183,7 @@
     ArrowHelper.prototype = Object.create(Object3D.prototype);
     ArrowHelper.prototype.constructor = ArrowHelper;
 
-    ArrowHelper.prototype.setDirection = ( function () {
+    ArrowHelper.prototype.setDirection = (function () {
 
         var axis = new Vector3();
         var radians;
@@ -44212,7 +44212,7 @@
 
         };
 
-    }() );
+    }());
 
     ArrowHelper.prototype.setLength = function (length, headLength, headWidth) {
 
@@ -45420,7 +45420,7 @@
             set: function (value) {
 
                 console.warn('THREE.' + this.type + ': .shading has been removed. Use the boolean .flatShading instead.');
-                this.flatShading = ( value === FlatShading );
+                this.flatShading = (value === FlatShading);
 
             }
         }
@@ -45626,7 +45626,7 @@
             },
             set: function (cullFace) {
 
-                var value = ( cullFace !== CullFaceBack );
+                var value = (cullFace !== CullFaceBack);
                 console.warn("WebGLRenderer: .shadowMap.cullFace is deprecated. Set .shadowMap.renderReverseSided to " + value + ".");
                 this.renderReverseSided = value;
 

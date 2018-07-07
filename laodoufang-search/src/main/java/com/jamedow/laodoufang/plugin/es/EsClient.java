@@ -156,7 +156,7 @@ public class EsClient {
      * @param indexName  索引
      * @param type       类型
      * @param documentId
-     * @param source    文档对象
+     * @param source     文档对象
      */
     public static String createDocument(String indexName, String type, String documentId, String source) {
         if (StringUtils.isBlank(documentId)) {
@@ -191,7 +191,7 @@ public class EsClient {
      *
      * @param indexName 索引
      * @param type      类型
-     * @param source   文档对象
+     * @param source    文档对象
      */
     public static void updateDocument(String indexName, String type, String id, String source) {
         UpdateRequest updateRequest = new UpdateRequest(indexName, type, id);

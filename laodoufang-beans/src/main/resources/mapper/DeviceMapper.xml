@@ -72,8 +72,8 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, name, code, status, creater, gmt_create, type, link_status
-  </sql>
+        id, name, code, status, creater, gmt_create, type, link_status
+    </sql>
     <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.DeviceExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
@@ -96,9 +96,9 @@
         where id = #{id,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from device
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
+        delete from device
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
     <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.DeviceExample">
         delete from device
         <if test="_parameter != null">
@@ -106,13 +106,13 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.jamedow.laodoufang.entity.Device">
-    insert into device (id, name, code, 
-      status, creater, gmt_create, 
-      type, link_status)
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
-      #{status,jdbcType=BIT}, #{creater,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
-      #{type,jdbcType=TINYINT}, #{linkStatus,jdbcType=BIT})
-  </insert>
+        insert into device (id, name, code,
+        status, creater, gmt_create,
+        type, link_status)
+        values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR},
+        #{status,jdbcType=BIT}, #{creater,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP},
+        #{type,jdbcType=TINYINT}, #{linkStatus,jdbcType=BIT})
+    </insert>
     <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.Device">
         insert into device
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -248,14 +248,14 @@
         where id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.Device">
-    update device
-    set name = #{name,jdbcType=VARCHAR},
-      code = #{code,jdbcType=VARCHAR},
-      status = #{status,jdbcType=BIT},
-      creater = #{creater,jdbcType=VARCHAR},
-      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      type = #{type,jdbcType=TINYINT},
-      link_status = #{linkStatus,jdbcType=BIT}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+        update device
+        set name = #{name,jdbcType=VARCHAR},
+        code = #{code,jdbcType=VARCHAR},
+        status = #{status,jdbcType=BIT},
+        creater = #{creater,jdbcType=VARCHAR},
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+        type = #{type,jdbcType=TINYINT},
+        link_status = #{linkStatus,jdbcType=BIT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>

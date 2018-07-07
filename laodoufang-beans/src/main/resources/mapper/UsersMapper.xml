@@ -72,8 +72,8 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, username, password, email, mobile, photo, is_deleted, site_id
-  </sql>
+        id, username, password, email, mobile, photo, is_deleted, site_id
+    </sql>
     <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.UsersExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
@@ -96,9 +96,9 @@
         where id = #{id,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from users
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
+        delete from users
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
     <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.UsersExample">
         delete from users
         <if test="_parameter != null">
@@ -106,13 +106,13 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.jamedow.laodoufang.entity.Users">
-    insert into users (id, username, password, 
-      email, mobile, photo, 
-      is_deleted, site_id)
-    values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, 
-      #{isDeleted,jdbcType=CHAR}, #{siteId,jdbcType=BIGINT})
-  </insert>
+        insert into users (id, username, password,
+        email, mobile, photo,
+        is_deleted, site_id)
+        values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+        #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR},
+        #{isDeleted,jdbcType=CHAR}, #{siteId,jdbcType=BIGINT})
+    </insert>
     <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.Users">
         insert into users
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -248,14 +248,14 @@
         where id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.Users">
-    update users
-    set username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      mobile = #{mobile,jdbcType=VARCHAR},
-      photo = #{photo,jdbcType=VARCHAR},
-      is_deleted = #{isDeleted,jdbcType=CHAR},
-      site_id = #{siteId,jdbcType=BIGINT}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+        update users
+        set username = #{username,jdbcType=VARCHAR},
+        password = #{password,jdbcType=VARCHAR},
+        email = #{email,jdbcType=VARCHAR},
+        mobile = #{mobile,jdbcType=VARCHAR},
+        photo = #{photo,jdbcType=VARCHAR},
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+        site_id = #{siteId,jdbcType=BIGINT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>

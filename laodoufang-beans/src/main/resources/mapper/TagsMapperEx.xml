@@ -9,16 +9,16 @@
     <select id="queryClassify" resultMap="BaseResultMap">
         SELECT
         t.id,t.name
-    from
+        from
         tags t
-    inner join tags_rel tr
-    on t.id = tr.tag_id
-    and tr.parent_id ='0'
-    order by id
+        inner join tags_rel tr
+        on t.id = tr.tag_id
+        and tr.parent_id ='0'
+        order by id
     </select>
 
     <select id="queryTagByClassify" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select  t.id,t.name
+        select t.id,t.name
         from tags t inner join tags_rel tr
         on t.id = tr.tag_id
         and tr.parent_id = #{classifyId}
@@ -26,8 +26,8 @@
 
     <select id="queryParentByTags" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         SELECT t.id,t.name from tags t INNER JOIN tags_rel tr
-	    on tr.parent_id = t.id
-	    and tr.tag_id = #{tagsId}
+        on tr.parent_id = t.id
+        and tr.tag_id = #{tagsId}
     </select>
 
 </mapper>

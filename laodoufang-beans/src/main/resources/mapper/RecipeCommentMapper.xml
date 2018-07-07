@@ -72,8 +72,8 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, recipe_id, user_id, create_time, content, vote_up, reply_id, topic_id
-  </sql>
+        id, recipe_id, user_id, create_time, content, vote_up, reply_id, topic_id
+    </sql>
     <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.RecipeCommentExample"
             resultMap="BaseResultMap">
         select
@@ -97,9 +97,9 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from recipe_comment
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+        delete from recipe_comment
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
     <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.RecipeCommentExample">
         delete from recipe_comment
         <if test="_parameter != null">
@@ -107,13 +107,13 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.jamedow.laodoufang.entity.RecipeComment">
-    insert into recipe_comment (id, recipe_id, user_id, 
-      create_time, content, vote_up, 
-      reply_id, topic_id)
-    values (#{id,jdbcType=INTEGER}, #{recipeId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{content,jdbcType=VARCHAR}, #{voteUp,jdbcType=INTEGER}, 
-      #{replyId,jdbcType=INTEGER}, #{topicId,jdbcType=INTEGER})
-  </insert>
+        insert into recipe_comment (id, recipe_id, user_id,
+        create_time, content, vote_up,
+        reply_id, topic_id)
+        values (#{id,jdbcType=INTEGER}, #{recipeId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
+        #{createTime,jdbcType=TIMESTAMP}, #{content,jdbcType=VARCHAR}, #{voteUp,jdbcType=INTEGER},
+        #{replyId,jdbcType=INTEGER}, #{topicId,jdbcType=INTEGER})
+    </insert>
     <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.RecipeComment">
         insert into recipe_comment
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -250,14 +250,14 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.RecipeComment">
-    update recipe_comment
-    set recipe_id = #{recipeId,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      content = #{content,jdbcType=VARCHAR},
-      vote_up = #{voteUp,jdbcType=INTEGER},
-      reply_id = #{replyId,jdbcType=INTEGER},
-      topic_id = #{topicId,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        update recipe_comment
+        set recipe_id = #{recipeId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=INTEGER},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        content = #{content,jdbcType=VARCHAR},
+        vote_up = #{voteUp,jdbcType=INTEGER},
+        reply_id = #{replyId,jdbcType=INTEGER},
+        topic_id = #{topicId,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

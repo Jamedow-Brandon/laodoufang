@@ -15,8 +15,8 @@
 
   var Date = global.Date;
   var now = Date.now || function () {
-      return new Date().getTime();
-    };
+    return new Date().getTime();
+  };
 
   var setTimeout = global.setTimeout;
   var clearTimeout = global.clearTimeout;
@@ -36,10 +36,10 @@
       } catch (e) {
         return false;
       }
-    }() )
+    }())
   };
 
-  var fileName = ( sourceFromStacktrace(0) || "" ).replace(/(:\d+)+\)?/, "").replace(/.+\//, "");
+  var fileName = (sourceFromStacktrace(0) || "").replace(/(:\d+)+\)?/, "").replace(/.+\//, "");
   var globalStartCalled = false;
   var runStarted = false;
 
@@ -107,7 +107,7 @@
         if (prop !== "constructor" || a !== global) {
           if (b[prop] === undefined) {
             delete a[prop];
-          } else if (!( undefOnly && typeof a[prop] !== "undefined" )) {
+          } else if (!(undefOnly && typeof a[prop] !== "undefined")) {
             a[prop] = b[prop];
           }
         }
@@ -445,7 +445,7 @@
   QUnit.urlParams = urlParams;
 
 // Figure out if we're running the tests from a server or not
-  QUnit.isLocal = !( defined.document && window.location.protocol !== "file:" );
+  QUnit.isLocal = !(defined.document && window.location.protocol !== "file:");
 
 // Expose the current QUnit version
   QUnit.version = "1.22.0";
@@ -631,7 +631,7 @@
     },
 
     stack: function (offset) {
-      offset = ( offset || 0 ) + 2;
+      offset = (offset || 0) + 2;
       return sourceFromStacktrace(offset);
     }
   });
@@ -680,11 +680,11 @@
     }
 
     var start = now();
-    config.depth = ( config.depth || 0 ) + 1;
+    config.depth = (config.depth || 0) + 1;
 
     while (config.queue.length && !config.blocking) {
       if (!defined.setTimeout || config.updateRate <= 0 ||
-        ( ( now() - start ) < config.updateRate )) {
+        ((now() - start) < config.updateRate)) {
         if (config.current) {
 
           // Reset async tracking for each phase of the Test lifecycle
@@ -826,13 +826,13 @@
       if (
 
         // Emit moduleStart when we're switching from one module to another
-      this.module !== config.previousModule ||
+        this.module !== config.previousModule ||
 
-      // They could be equal (both undefined) but if the previousModule property doesn't
-      // yet exist it means this is the first test in a suite that isn't wrapped in a
-      // module, in which case we'll just emit a moduleStart event for 'undefined'.
-      // Without this, reporters can get testStart before moduleStart  which is a problem.
-      !hasOwn.call(config, "previousModule")
+        // They could be equal (both undefined) but if the previousModule property doesn't
+        // yet exist it means this is the first test in a suite that isn't wrapped in a
+        // module, in which case we'll just emit a moduleStart event for 'undefined'.
+        // Without this, reporters can get testStart before moduleStart  which is a problem.
+        !hasOwn.call(config, "previousModule")
       ) {
         if (hasOwn.call(config, "previousModule")) {
           runLoggingCallbacks("moduleDone", {
@@ -891,8 +891,8 @@
       try {
         runTest(this);
       } catch (e) {
-        this.pushFailure("Died on test #" + ( this.assertions.length + 1 ) + " " +
-          this.stack + ": " + ( e.message || e ), extractStacktrace(e, 0));
+        this.pushFailure("Died on test #" + (this.assertions.length + 1) + " " +
+          this.stack + ": " + (e.message || e), extractStacktrace(e, 0));
 
         // else next test will carry the responsibility
         saveGlobal();
@@ -926,7 +926,7 @@
           callHook();
         } catch (error) {
           test.pushFailure(hookName + " failed on " + test.testName + ": " +
-            ( error.message || error ), extractStacktrace(error, 0));
+            (error.message || error), extractStacktrace(error, 0));
         }
 
         function callHook() {
@@ -1085,7 +1085,7 @@
     },
 
     pushFailure: function (message, source, actual) {
-      if (!( this instanceof Test )) {
+      if (!(this instanceof Test)) {
         throw new Error("pushFailure() assertion outside test context, was " +
           sourceFromStacktrace(2));
       }
@@ -1126,8 +1126,8 @@
             },
             function (error) {
               message = "Promise rejected " +
-                ( !phase ? "during" : phase.replace(/Each$/, "") ) +
-                " " + test.testName + ": " + ( error.message || error );
+                (!phase ? "during" : phase.replace(/Each$/, "")) +
+                " " + test.testName + ": " + (error.message || error);
               test.pushFailure(message, extractStacktrace(error, 0));
 
               // else next test will carry the responsibility
@@ -1145,7 +1145,7 @@
       var filter = config.filter,
         regexFilter = /^(!?)\/([\w\W]*)\/(i?$)/.exec(filter),
         module = QUnit.urlParams.module && QUnit.urlParams.module.toLowerCase(),
-        fullName = ( this.module.name + ": " + this.testName );
+        fullName = (this.module.name + ": " + this.testName);
 
       function testInModuleChain(testModule) {
         var testModuleName = testModule.name ? testModule.name.toLowerCase() : null;
@@ -1250,13 +1250,13 @@
       len = str.length;
 
     for (; i < len; i++) {
-      hash = ( ( hash << 5 ) - hash ) + str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + str.charCodeAt(i);
       hash |= 0;
     }
 
     // Convert the possibly negative integer hash code into an 8 character hex string, which isn't
     // strictly necessary but increases user understanding that the id is a SHA-like hash
-    hex = ( 0x100000000 + hash ).toString(16);
+    hex = (0x100000000 + hash).toString(16);
     if (hex.length < 8) {
       hex = "0000000" + hex;
     }
@@ -1460,7 +1460,7 @@
 
       // resultInfo = { result, actual, expected, message, negative }
       var assert = this,
-        currentTest = ( assert instanceof Assert && assert.test ) || QUnit.config.current;
+        currentTest = (assert instanceof Assert && assert.test) || QUnit.config.current;
 
       // Backwards compatibility fix.
       // Allows the direct use of global exported assertions and QUnit.assert.*
@@ -1478,7 +1478,7 @@
         // Allow this assertion to continue running anyway...
       }
 
-      if (!( assert instanceof Assert )) {
+      if (!(assert instanceof Assert)) {
         assert = currentTest.assert;
       }
 
@@ -1486,8 +1486,8 @@
     },
 
     ok: function (result, message) {
-      message = message || ( result ? "okay" : "failed, expected argument to be truthy, was: " +
-          QUnit.dump.parse(result) );
+      message = message || (result ? "okay" : "failed, expected argument to be truthy, was: " +
+        QUnit.dump.parse(result));
       this.pushResult({
         result: !!result,
         actual: result,
@@ -1497,8 +1497,8 @@
     },
 
     notOk: function (result, message) {
-      message = message || ( !result ? "okay" : "failed, expected argument to be falsy, was: " +
-          QUnit.dump.parse(result) );
+      message = message || (!result ? "okay" : "failed, expected argument to be falsy, was: " +
+        QUnit.dump.parse(result));
       this.pushResult({
         result: !result,
         actual: result,
@@ -1593,7 +1593,7 @@
       var actual, expectedType,
         expectedOutput = expected,
         ok = false,
-        currentTest = ( this instanceof Assert && this.test ) || QUnit.config.current;
+        currentTest = (this instanceof Assert && this.test) || QUnit.config.current;
 
       // 'expected' is optional unless doing string comparison
       if (message == null && typeof expected === "string") {
@@ -1691,9 +1691,9 @@
 
     var getProto = Object.getPrototypeOf || function (obj) {
 
-        /*jshint proto: true */
-        return obj.__proto__;
-      };
+      /*jshint proto: true */
+      return obj.__proto__;
+    };
 
     function useStrictEquality(b, a) {
 
@@ -1731,8 +1731,8 @@
 
       // Allow objects with no prototype to be equivalent to
       // objects with Object as their constructor.
-      if (( protoA === null && protoB === Object.prototype ) ||
-        ( protoB === null && protoA === Object.prototype )) {
+      if ((protoA === null && protoB === Object.prototype) ||
+        (protoB === null && protoA === Object.prototype)) {
         return true;
       }
 
@@ -1911,10 +1911,10 @@
       }
 
       // Require type-specific equality
-      return ( a === b || typeEquiv(a, b) ) &&
+      return (a === b || typeEquiv(a, b)) &&
 
         // ...across all consecutive argument pairs
-        ( arguments.length === 2 || innerEquiv.apply(this, [].slice.call(arguments, 1)) );
+        (arguments.length === 2 || innerEquiv.apply(this, [].slice.call(arguments, 1)));
     }
 
     return innerEquiv;
@@ -1970,7 +1970,7 @@
             inStack = inArray(obj, stack);
 
           if (inStack !== -1) {
-            return "recursion(" + ( inStack - stack.length ) + ")";
+            return "recursion(" + (inStack - stack.length) + ")";
           }
 
           objType = objType || this.typeOf(obj);
@@ -1983,7 +1983,7 @@
             stack.pop();
             return res;
           }
-          return ( parserType === "string" ) ? parser : this.parsers.error;
+          return (parserType === "string") ? parser : this.parsers.error;
         },
         typeOf: function (obj) {
           var type;
@@ -2008,12 +2008,12 @@
           } else if (
 
             // native arrays
-          toString.call(obj) === "[object Array]" ||
+            toString.call(obj) === "[object Array]" ||
 
-          // NodeList objects
-          ( typeof obj.length === "number" && obj.item !== undefined &&
-          ( obj.length ? obj.item(0) === obj[0] : ( obj.item(0) === null &&
-          obj[0] === undefined ) ) )
+            // NodeList objects
+            (typeof obj.length === "number" && obj.item !== undefined &&
+              (obj.length ? obj.item(0) === obj[0] : (obj.item(0) === null &&
+                obj[0] === undefined)))
           ) {
             type = "array";
           } else if (obj.constructor === Error.prototype.constructor) {
@@ -2035,7 +2035,7 @@
           if (this.HTML) {
             chr = chr.replace(/\t/g, "   ").replace(/ /g, "&#160;");
           }
-          return new Array(this.depth + ( extra || 0 )).join(chr);
+          return new Array(this.depth + (extra || 0)).join(chr);
         },
         up: function (a) {
           this.depth += a || 1;
@@ -2068,7 +2068,7 @@
             var ret = "function",
 
               // functions never have name in IE
-              name = "name" in fn ? fn.name : ( reName.exec(fn) || [] )[1];
+              name = "name" in fn ? fn.name : (reName.exec(fn) || [])[1];
 
             if (name) {
               ret += " " + name;
@@ -2287,7 +2287,7 @@
    * Usage: QUnit.diff(expected, actual)
    *
    */
-  QUnit.diff = ( function () {
+  QUnit.diff = (function () {
     function DiffMatchPatch() {
     }
 
@@ -2317,7 +2317,7 @@
         commonprefix, commonsuffix, diffs;
 
       // The diff must be complete in up to 1 second.
-      deadline = ( new Date() ).getTime() + 1000;
+      deadline = (new Date()).getTime() + 1000;
 
       // Check for null inputs.
       if (text1 === null || text2 === null) {
@@ -2392,7 +2392,7 @@
 
         // Equality found.
         if (diffs[pointer][0] === DIFF_EQUAL) {
-          if (diffs[pointer][1].length < 4 && ( postIns || postDel )) {
+          if (diffs[pointer][1].length < 4 && (postIns || postDel)) {
 
             // Candidate found.
             equalities[equalitiesLength++] = pointer;
@@ -2424,9 +2424,9 @@
            * <ins>A</del>X<ins>C</ins><del>D</del>
            * <ins>A</ins><del>B</del>X<del>C</del>
            */
-          if (lastequality && ( ( preIns && preDel && postIns && postDel ) ||
-            ( ( lastequality.length < 2 ) &&
-            ( preIns + preDel + postIns + postDel ) === 3 ) )) {
+          if (lastequality && ((preIns && preDel && postIns && postDel) ||
+            ((lastequality.length < 2) &&
+              (preIns + preDel + postIns + postDel) === 3))) {
 
             // Duplicate record.
             diffs.splice(
@@ -2513,7 +2513,7 @@
         } else {
           pointermax = pointermid;
         }
-        pointermid = Math.floor(( pointermax - pointermin ) / 2 + pointermin);
+        pointermid = Math.floor((pointermax - pointermin) / 2 + pointermin);
       }
       return pointermid;
     };
@@ -2546,7 +2546,7 @@
         } else {
           pointermax = pointermid;
         }
-        pointermid = Math.floor(( pointermax - pointermin ) / 2 + pointermin);
+        pointermid = Math.floor((pointermax - pointermin) / 2 + pointermin);
       }
       return pointermid;
     };
@@ -2675,7 +2675,7 @@
         seed = longtext.substring(i, i + Math.floor(longtext.length / 4));
         j = -1;
         bestCommon = "";
-        while (( j = shorttext.indexOf(seed, j + 1) ) !== -1) {
+        while ((j = shorttext.indexOf(seed, j + 1)) !== -1) {
           prefixLength = dmp.diffCommonPrefix(longtext.substring(i),
             shorttext.substring(j));
           suffixLength = dmp.diffCommonSuffix(longtext.substring(0, i),
@@ -2819,7 +2819,7 @@
       // Cache the text lengths to prevent multiple calls.
       text1Length = text1.length;
       text2Length = text2.length;
-      maxD = Math.ceil(( text1Length + text2Length ) / 2);
+      maxD = Math.ceil((text1Length + text2Length) / 2);
       vOffset = maxD;
       vLength = 2 * maxD;
       v1 = new Array(vLength);
@@ -2835,7 +2835,7 @@
       delta = text1Length - text2Length;
       // If the total number of characters is odd, then the front path will collide
       // with the reverse path.
-      front = ( delta % 2 !== 0 );
+      front = (delta % 2 !== 0);
       // Offsets for start and end of k loop.
       // Prevents mapping of space beyond the grid.
       k1start = 0;
@@ -2844,14 +2844,14 @@
       k2end = 0;
       for (d = 0; d < maxD; d++) {
         // Bail out if deadline is reached.
-        if (( new Date() ).getTime() > deadline) {
+        if ((new Date()).getTime() > deadline) {
           break;
         }
 
         // Walk the front path one step.
         for (k1 = -d + k1start; k1 <= d - k1end; k1 += 2) {
           k1Offset = vOffset + k1;
-          if (k1 === -d || ( k1 !== d && v1[k1Offset - 1] < v1[k1Offset + 1] )) {
+          if (k1 === -d || (k1 !== d && v1[k1Offset - 1] < v1[k1Offset + 1])) {
             x1 = v1[k1Offset + 1];
           } else {
             x1 = v1[k1Offset - 1] + 1;
@@ -2885,7 +2885,7 @@
         // Walk the reverse path one step.
         for (k2 = -d + k2start; k2 <= d - k2end; k2 += 2) {
           k2Offset = vOffset + k2;
-          if (k2 === -d || ( k2 !== d && v2[k2Offset - 1] < v2[k2Offset + 1] )) {
+          if (k2 === -d || (k2 !== d && v2[k2Offset - 1] < v2[k2Offset + 1])) {
             x2 = v2[k2Offset + 1];
           } else {
             x2 = v2[k2Offset - 1] + 1;
@@ -2989,10 +2989,10 @@
           }
           // Eliminate an equality that is smaller or equal to the edits on both
           // sides of it.
-          if (lastequality && ( lastequality.length <=
-            Math.max(lengthInsertions1, lengthDeletions1) ) &&
-            ( lastequality.length <= Math.max(lengthInsertions2,
-              lengthDeletions2) )) {
+          if (lastequality && (lastequality.length <=
+            Math.max(lengthInsertions1, lengthDeletions1)) &&
+            (lastequality.length <= Math.max(lengthInsertions2,
+              lengthDeletions2))) {
 
             // Duplicate record.
             diffs.splice(
@@ -3180,7 +3180,7 @@
           lineStart = lineEnd + 1;
 
           if (lineHash.hasOwnProperty ? lineHash.hasOwnProperty(line) :
-              ( lineHash[line] !== undefined )) {
+            (lineHash[line] !== undefined)) {
             chars += String.fromCharCode(lineHash[line]);
           } else {
             chars += String.fromCharCode(lineArrayLength);
@@ -3253,7 +3253,7 @@
                 // Factor out any common prefixes.
                 commonlength = this.diffCommonPrefix(textInsert, textDelete);
                 if (commonlength !== 0) {
-                  if (( pointer - countDelete - countInsert ) > 0 &&
+                  if ((pointer - countDelete - countInsert) > 0 &&
                     diffs[pointer - countDelete - countInsert - 1][0] ===
                     DIFF_EQUAL) {
                     diffs[pointer - countDelete - countInsert - 1][1] +=
@@ -3271,7 +3271,7 @@
                 commonlength = this.diffCommonSuffix(textInsert, textDelete);
                 if (commonlength !== 0) {
                   diffs[pointer][1] = textInsert.substring(textInsert.length -
-                      commonlength) + diffs[pointer][1];
+                    commonlength) + diffs[pointer][1];
                   textInsert = textInsert.substring(0, textInsert.length -
                     commonlength);
                   textDelete = textDelete.substring(0, textDelete.length -
@@ -3293,7 +3293,7 @@
                 );
               }
               pointer = pointer - countDelete - countInsert +
-                ( countDelete ? 1 : 0 ) + ( countInsert ? 1 : 0 ) + 1;
+                (countDelete ? 1 : 0) + (countInsert ? 1 : 0) + 1;
             } else if (pointer !== 0 && diffs[pointer - 1][0] === DIFF_EQUAL) {
 
               // Merge this equality with the previous one.
@@ -3369,7 +3369,7 @@
 
       return text;
     };
-  }() );
+  }());
 
 // Get a reference to the global object, like window in browsers
 }((function () {
@@ -3521,12 +3521,12 @@
   }
 
   function hasClass(elem, name) {
-    return ( " " + elem.className + " " ).indexOf(" " + name + " ") >= 0;
+    return (" " + elem.className + " ").indexOf(" " + name + " ") >= 0;
   }
 
   function addClass(elem, name) {
     if (!hasClass(elem, name)) {
-      elem.className += ( elem.className ? " " : "" ) + name;
+      elem.className += (elem.className ? " " : "") + name;
     }
   }
 
@@ -3580,8 +3580,8 @@
       if (!val.value || typeof val.value === "string") {
         urlConfigHtml += "<input id='qunit-urlconfig-" + escaped +
           "' name='" + escaped + "' type='checkbox'" +
-          ( val.value ? " value='" + escapeText(val.value) + "'" : "" ) +
-          ( config[val.id] ? " checked='checked'" : "" ) +
+          (val.value ? " value='" + escapeText(val.value) + "'" : "") +
+          (config[val.id] ? " checked='checked'" : "") +
           " title='" + escapedTooltip + "' /><label for='qunit-urlconfig-" + escaped +
           "' title='" + escapedTooltip + "'>" + val.label + "</label>";
       } else {
@@ -3594,16 +3594,16 @@
           for (j = 0; j < val.value.length; j++) {
             escaped = escapeText(val.value[j]);
             urlConfigHtml += "<option value='" + escaped + "'" +
-              ( config[val.id] === val.value[j] ?
-                ( selection = true ) && " selected='selected'" : "" ) +
+              (config[val.id] === val.value[j] ?
+                (selection = true) && " selected='selected'" : "") +
               ">" + escaped + "</option>";
           }
         } else {
           for (j in val.value) {
             if (hasOwn.call(val.value, j)) {
               urlConfigHtml += "<option value='" + escapeText(j) + "'" +
-                ( config[val.id] === j ?
-                  ( selection = true ) && " selected='selected'" : "" ) +
+                (config[val.id] === j ?
+                  (selection = true) && " selected='selected'" : "") +
                 ">" + escapeText(val.value[j]) + "</option>";
             }
           }
@@ -3631,7 +3631,7 @@
     if ("selectedIndex" in field) {
       value = field.options[field.selectedIndex].value || undefined;
     } else {
-      value = field.checked ? ( field.defaultValue || true ) : undefined;
+      value = field.checked ? (field.defaultValue || true) : undefined;
     }
 
     params[field.name] = value;
@@ -3684,8 +3684,8 @@
       undefined;
 
     window.location = setUrl({
-      module: ( selectedModule === "" ) ? undefined : selectedModule,
-      filter: ( filter === "" ) ? undefined : filter,
+      module: (selectedModule === "") ? undefined : selectedModule,
+      filter: (filter === "") ? undefined : filter,
 
       // Remove testId filter
       testId: undefined
@@ -3755,13 +3755,13 @@
 
     moduleFilterHtml += "<label for='qunit-modulefilter'>Module: </label>" +
       "<select id='qunit-modulefilter' name='modulefilter'><option value='' " +
-      ( QUnit.urlParams.module === undefined ? "selected='selected'" : "" ) +
+      (QUnit.urlParams.module === undefined ? "selected='selected'" : "") +
       ">< All Modules ></option>";
 
     for (i = 0; i < modulesList.length; i++) {
       moduleFilterHtml += "<option value='" +
         escapeText(encodeURIComponent(modulesList[i])) + "' " +
-        ( QUnit.urlParams.module === modulesList[i] ? "selected='selected'" : "" ) +
+        (QUnit.urlParams.module === modulesList[i] ? "selected='selected'" : "") +
         ">" + escapeText(modulesList[i]) + "</option>";
     }
     moduleFilterHtml += "</select>";
@@ -3969,7 +3969,7 @@
       // show ✖ for good, ✔ for bad suite result in title
       // use escape sequences in case file gets loaded with non-utf-8-charset
       document.title = [
-        ( details.failed ? "\u2716" : "\u2714" ),
+        (details.failed ? "\u2716" : "\u2714"),
         document.title.replace(/^[\u2714\u2716] /i, "")
       ].join(" ");
     }
@@ -4019,9 +4019,9 @@
       bad = QUnit.config.reorder && defined.sessionStorage &&
         +sessionStorage.getItem("qunit-test-" + details.module + "-" + details.name);
 
-      running.innerHTML = ( bad ?
-          "Rerunning previously failed test: <br />" :
-          "Running: <br />" ) +
+      running.innerHTML = (bad ?
+        "Rerunning previously failed test: <br />" :
+        "Running: <br />") +
         getNameHtml(details.name, details.module);
     }
 
@@ -4042,7 +4042,7 @@
       return;
     }
 
-    message = escapeText(details.message) || ( details.result ? "okay" : "failed" );
+    message = escapeText(details.message) || (details.result ? "okay" : "failed");
     message = "<span class='test-message'>" + message + "</span>";
     message += "<span class='runtime'>@ " + details.runtime + " ms</span>";
 
@@ -4067,8 +4067,8 @@
           actual + "</pre></td></tr>";
 
         // Don't show diff if actual or expected are booleans
-        if (!( /^(true|false)$/.test(actual) ) &&
-          !( /^(true|false)$/.test(expected) )) {
+        if (!(/^(true|false)$/.test(actual)) &&
+          !(/^(true|false)$/.test(expected))) {
           diff = QUnit.diff(expected, actual);
           showDiff = stripHtml(diff).length !==
             stripHtml(expected).length +
@@ -4201,7 +4201,7 @@
     // Avoid readyState issue with phantomjs
     // Ref: #818
     var notPhantom = (function (p) {
-      return !( p && p.version && p.version.major > 0 );
+      return !(p && p.version && p.version.major > 0);
     })(window.phantom);
 
     if (notPhantom && document.readyState === "complete") {

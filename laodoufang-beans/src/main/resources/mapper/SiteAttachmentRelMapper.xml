@@ -67,8 +67,8 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, site_id, attachment_id
-  </sql>
+        id, site_id, attachment_id
+    </sql>
     <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.SiteAttachmentRelExample"
             resultMap="BaseResultMap">
         select
@@ -92,9 +92,9 @@
         where id = #{id,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from site_attachment_rel
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
+        delete from site_attachment_rel
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
     <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.SiteAttachmentRelExample">
         delete from site_attachment_rel
         <if test="_parameter != null">
@@ -102,11 +102,11 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.jamedow.laodoufang.entity.SiteAttachmentRel">
-    insert into site_attachment_rel (id, site_id, attachment_id
-      )
-    values (#{id,jdbcType=BIGINT}, #{siteId,jdbcType=BIGINT}, #{attachmentId,jdbcType=BIGINT}
-      )
-  </insert>
+        insert into site_attachment_rel (id, site_id, attachment_id
+        )
+        values (#{id,jdbcType=BIGINT}, #{siteId,jdbcType=BIGINT}, #{attachmentId,jdbcType=BIGINT}
+        )
+    </insert>
     <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.SiteAttachmentRel">
         insert into site_attachment_rel
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -178,9 +178,9 @@
         where id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.SiteAttachmentRel">
-    update site_attachment_rel
-    set site_id = #{siteId,jdbcType=BIGINT},
-      attachment_id = #{attachmentId,jdbcType=BIGINT}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+        update site_attachment_rel
+        set site_id = #{siteId,jdbcType=BIGINT},
+        attachment_id = #{attachmentId,jdbcType=BIGINT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>
