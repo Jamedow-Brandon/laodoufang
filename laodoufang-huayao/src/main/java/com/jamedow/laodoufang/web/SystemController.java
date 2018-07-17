@@ -4,7 +4,6 @@ import com.jamedow.laodoufang.entity.*;
 import com.jamedow.laodoufang.mail.MailSend;
 import com.jamedow.laodoufang.mapper.SysAreaMapper;
 import com.jamedow.laodoufang.mapper.SysDictMapper;
-import com.jamedow.laodoufang.web.cms.HuaYaoController;
 import net.sf.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +20,7 @@ import java.util.List;
 @EnableAutoConfiguration
 @RequestMapping("/sys")
 public class SystemController {
-    static Logger logger = LoggerFactory.getLogger(HuaYaoController.class);
+    static Logger logger = LoggerFactory.getLogger(SystemController.class);
     private final String COMPANY_MAIL = "company_mail";
     @Autowired
     private SysAreaMapper sysAreaMapper;

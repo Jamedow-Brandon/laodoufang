@@ -1,47 +1,41 @@
-logging:
-  level:
-    root: warn
-    com.jamedow.laodoufang: debug
-#  file: spring.log
-##服务启动时，使用随机端口
 server:
-  port: 80
+  port: 1111
 
 spring:
   application:
-    name: laodoufang-wechat
+    name: laodoufang-taohuayuan
   datasource:
     # 数据库连接地址
-    url: jdbc:mysql://106.14.210.31:3306/laodoufang?useUnicode=true&characterEncoding=utf-8
-    username: root
-    password: Zhangliang@520
-  redis:
-    #cluster:
-      #nodes:
-        #- 127.0.0.1:6379
-    database: 0
-    host: 106.14.210.31
-    port: 6379
-    timeout: 5000
-    pool:
-      max-idle: 10
-      min-idle: 0
-      max-active: 8
-      max-wait: 1000
+    url: jdbc:mysql://106.14.210.31:3306/taohuayuan?useUnicode=true&characterEncoding=utf-8
+    username: taohuayuan
+    password: Taohuayuan@520
+#  redis:
+#    #cluster:
+#      #nodes:
+#        #- 127.0.0.1:6379
+#    database: 0
+#    host: 106.14.210.31
+#    port: 6379
+#    timeout: 5000
+#    pool:
+#      max-idle: 10
+#      min-idle: 0
+#      max-active: 8
+#      max-wait: 1000
+  data:
+    mongodb:
+      uri: mongodb://test:Zhangliang520@106.14.210.31:27017/test
+  thymeleaf:
+      mode: LEGACYHTML5
+      cache: false
+      prefix: classpath:/templates/
+      suffix: .html
+      encoding: UTF-8
 
 mybatis:
     typeAliasesPackage: com.jamedow.laodoufang
     mapperLocations: classpath:/mapper/*.xml
     configLocation: classpath:/mybatis-config.xml
 
-hgs:
-  hgsUrl: "http://172.17.1.79:8195/house365-hgs-web/rest/interface?"
-  domain: "hgstest.house365.com"
-  prefix: "http://hgstest.house365.com"
-  urlPrefix: "http://202.102.83.171:8195"
 
-wechat:
-  token: a6hlNFP5f5WLoODr6t72dq9HVUUS
-  encodingAESKey: SOeTWEvV690A9WV9cilMsMFvGBbymBfitN77sRjHn40
-  appId: wxa6dea5a26144b2b1
-  secret: IQc9t7_uzEkC4qcXufUYjPtbVXAcqaEAO1iapZg_JGPsvbtHnzHxsqBV073iz0y0
+
