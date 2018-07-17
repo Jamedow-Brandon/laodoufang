@@ -328,6 +328,8 @@
     text-align: center;
     line-height: 58px;
     font-size: 24px;
+    float: left;
+    margin-right: 10px;
 }
 
 .toTop {
@@ -395,4 +397,18 @@
     height: 0px;
 }
 
+.art_title {
+    width: 100%;
+    line-height: 50px;
+    font-size: 30px;
+    height: 50px;
+    padding-left: 30px;
+}
+.art_title a {
+    color: #000;
+}
+.news_content {
+    padding-left: 30px;
+    line-height: 30px;
+}
 /*# sourceMappingURL=index.css.map */
