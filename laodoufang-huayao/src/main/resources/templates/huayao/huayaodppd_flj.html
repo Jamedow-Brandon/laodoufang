@@ -1,0 +1,120 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <link rel="shortcut icon" href="/static/huayao/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/static/huayao/css/reset.css?v=05091425"/>
+    <link rel="stylesheet" type="text/css" href="/static/huayao/css/index.css?v=05091425"/>
+</head>
+
+<body>
+<header>
+</header>
+<div class="contain">
+    <div class="headBar">
+        <img class="bigLogo" src="/static/huayao/images/huayao-logo-big.png"/>
+        <div class="languageSwitch fr">
+            <span class="lang on" lang="">中文</span>
+            <span style="margin: 0 12px;">|</span>
+            <span class="lang" lang="en">English</span>
+        </div>
+    </div>
+</div>
+<div class="backBar contain">
+    <a href="/">
+        <div class="backBarBtn fr">主页</div>
+    </a>
+</div>
+<div class="mainInfo">
+    <div class="mainInfoBar"></div>
+    <div class="mainInfoBar__list" id="productSelect">
+        <div class="mainInfoBar__item on onStart" id="product_1">文章列表</div>
+    </div>
+    <div>
+        <div class="mainInfo__content clearfix">
+            <div class="fl">
+                <div class="art_title">
+                    <a href="/huayaodppd/flj/1">防老剂H</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="huayao/footer :: copyright">
+    <div style="background: #515151">
+        <div class="footerUp contain">
+            <img src="/static/huayao/images/huayao-logo.png" class="footerLogo fl"/>
+            <div class="footerUp__info fl" style="margin-right: 154px;">
+                <p><span class="footerUp__infoT">工作时间联系方式</span>+86 0510 88767887</p>
+                <p><span class="footerUp__infoT"> 传真</span>+86 0510 88762603</p>
+                <p><span class="footerUp__infoT">邮箱 </span>liye@huayao-chem.com</p>
+            </div>
+            <div class="footerUp__info fl">
+                <div class="fl" style="margin-right: 14px;"><span>地址   </span></div>
+                <div class="fl">
+                    <p>江苏省</p>
+                    <p>无锡市锡山区</p>
+                    <p>东港镇</p>
+                </div>
+            </div>
+        </div>
+        <div class="footerDown contain">
+            <span style="color: #23aae5;margin-right: 36px;">我们的服务</span>
+            <span style="color: #9B9EA0;margin-right: 12px;">我们的产品优势</span>
+            <span>  独立的生产，交货及时，质量保证，产品多样化，广为流行，独特而实用。顾客至上，诚信为本，是不可改变的创业初衷和理念</span>
+        </div>
+    </div>
+</div>
+
+<div class="toTop"></div>
+<script src="/static/huayao/js/jquery-1.11.1.min.js?v=05091425"></script>
+<script src="/static/script/application.js?v=05091425"></script>
+<script type="text/javascript">
+    (function () {
+        var $toTop = $('.toTop');
+        var $mainInfoBar__item = $('.mainInfoBar__item');
+        var $mainInfo__content = $('.mainInfo__content');
+        $mainInfoBar__item.on('click', function () {
+            if ($(this).hasClass('on')) return
+            else {
+                var index = $(this).index()
+                $mainInfo__content.eq(index).show().siblings().hide()
+                switch (index) {
+                    case 0:
+                        $(this).addClass('onStart').siblings().removeClass('on onEnd onStart onMid');
+                        break;
+                    case 3:
+                        $(this).addClass('onEnd').siblings().removeClass('on onEnd onStart onMid');
+                        break;
+                    default:
+                        $(this).addClass('onMid').siblings().removeClass('on onEnd onStart onMid');
+                        break;
+                }
+            }
+        });
+
+        var productId = $("#productId").val();
+
+        if (productId != "") {
+            $("#product_" + productId).trigger("click");
+        }
+
+
+        $(window).on("scroll", function () {
+            if ($(this).scrollTop() >= 500) {
+                $toTop.fadeIn();
+            } else {
+                $toTop.fadeOut();
+            }
+        });
+
+        $toTop.on('click', function () {
+            $(window).scrollTop(0)
+        });
+    })();
+</script>
+</body>
+
+</html>

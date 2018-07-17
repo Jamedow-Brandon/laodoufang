@@ -1,0 +1,144 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <title>华耀化学-防老剂DPPD –防老剂H-1</title>
+    <meta name="keywords" content="防老剂DPPD, 防老剂H,N,N′-二苯基对苯二胺,N,N′-diphenyl-p-phenylenediamine">
+    <meta name="description" content="华耀化学-专业生产防老剂DPPD、防老剂 DTPD、粘合剂RA、粘合剂RA-65，橡胶粘合剂RA，橡胶粘合剂RA-65，防老剂H，间甲白橡胶助剂，间甲白体系粘合助剂，1992年8月8日开始生产防老剂H（DPPD）。" />
+    <link rel="shortcut icon" href="/static/huayao/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/static/huayao/css/reset.css?v=05091425"/>
+    <link rel="stylesheet" type="text/css" href="/static/huayao/css/index.css?v=05091425"/>
+</head>
+
+<body>
+<header>
+</header>
+<div class="contain">
+    <div class="headBar">
+        <img class="bigLogo" src="/static/huayao/images/huayao-logo-big.png"/>
+        <div class="languageSwitch fr">
+            <span class="lang on" lang="">中文</span>
+            <span style="margin: 0 12px;">|</span>
+            <span class="lang" lang="en">English</span>
+        </div>
+    </div>
+</div>
+<div class="backBar contain">
+    <a href="/">
+        <div class="backBarBtn fr">主页</div>
+    </a>
+</div>
+<div class="mainInfo">
+    <div class="mainInfoBar"></div>
+    <div class="mainInfoBar__list" id="productSelect">
+        <div class="mainInfoBar__item on onStart" id="product_1">防老剂H</div>
+    </div>
+    <div>
+        <div class="mainInfo__content clearfix">
+            <div class="fl news_content">
+                <p>
+                    华耀化学-1992年8月8日名为无锡县飞达橡胶助剂厂，并开始生产防老剂H（DPPD），防老剂H中文别名“防老剂H,N,N′-二苯基对苯二胺”，英文又叫“N′-diphenyl-p-phenylenediamine”，目前执行的标准：Q/YTY001-2011。
+                </p>
+                <p>
+                    防老剂H主要用途：
+                </p>
+                <p>
+                    1、作为防老剂应用于复合固体推进剂可延长固体推进剂的储存期；
+                </p>
+                <p>
+                    2、用于天然、丁苯、丁腈、顺丁、丁基、丁羟、聚异戊二烯等橡胶及胶乳中，可使其具有良好的耐多次挠曲性和防龟裂性能；
+                </p>
+                <p>
+                    3、提高定伸强力，增强对热氧、臭氧以及铜、锰等有害金属的防护作用，对硫化无影响；
+                </p>
+                <p>
+                    4、与防老剂D并用可解决深色橡胶制品的多种老化问题；
+                </p>
+                <p>
+                    5、最后防老剂H也可用作聚乙烯、聚丙烯、聚酰胺、聚甲醛类工程塑料的热氧稳定剂，以改善制品的耐候性，参考用量：0.2%~0.3%。
+                </p>
+                <p>
+                    华耀化学为满足客户需求，可根据客户特殊需求开发、研制各类防老剂H产品。
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="huayao/footer :: copyright">
+    <div style="background: #515151">
+        <div class="footerUp contain">
+            <img src="/static/huayao/images/huayao-logo.png" class="footerLogo fl"/>
+            <div class="footerUp__info fl" style="margin-right: 154px;">
+                <p><span class="footerUp__infoT">工作时间联系方式</span>+86 0510 88767887</p>
+                <p><span class="footerUp__infoT"> 传真</span>+86 0510 88762603</p>
+                <p><span class="footerUp__infoT">邮箱 </span>liye@huayao-chem.com</p>
+            </div>
+            <div class="footerUp__info fl">
+                <div class="fl" style="margin-right: 14px;"><span>地址   </span></div>
+                <div class="fl">
+                    <p>江苏省</p>
+                    <p>无锡市锡山区</p>
+                    <p>东港镇</p>
+                </div>
+            </div>
+        </div>
+        <div class="footerDown contain">
+            <span style="color: #23aae5;margin-right: 36px;">我们的服务</span>
+            <span style="color: #9B9EA0;margin-right: 12px;">我们的产品优势</span>
+            <span>  独立的生产，交货及时，质量保证，产品多样化，广为流行，独特而实用。顾客至上，诚信为本，是不可改变的创业初衷和理念</span>
+        </div>
+    </div>
+</div>
+
+<div class="toTop"></div>
+<script src="/static/huayao/js/jquery-1.11.1.min.js?v=05091425"></script>
+<script src="/static/script/application.js?v=05091425"></script>
+<script type="text/javascript">
+    (function () {
+        var $toTop = $('.toTop');
+        var $mainInfoBar__item = $('.mainInfoBar__item');
+        var $mainInfo__content = $('.mainInfo__content');
+        $mainInfoBar__item.on('click', function () {
+            if ($(this).hasClass('on')) return
+            else {
+                var index = $(this).index()
+                $mainInfo__content.eq(index).show().siblings().hide()
+                switch (index) {
+                    case 0:
+                        $(this).addClass('onStart').siblings().removeClass('on onEnd onStart onMid');
+                        break;
+                    case 3:
+                        $(this).addClass('onEnd').siblings().removeClass('on onEnd onStart onMid');
+                        break;
+                    default:
+                        $(this).addClass('onMid').siblings().removeClass('on onEnd onStart onMid');
+                        break;
+                }
+            }
+        });
+
+        var productId = $("#productId").val();
+
+        if (productId != "") {
+            $("#product_" + productId).trigger("click");
+        }
+
+
+        $(window).on("scroll", function () {
+            if ($(this).scrollTop() >= 500) {
+                $toTop.fadeIn();
+            } else {
+                $toTop.fadeOut();
+            }
+        });
+
+        $toTop.on('click', function () {
+            $(window).scrollTop(0)
+        });
+    })();
+</script>
+</body>
+
+</html>

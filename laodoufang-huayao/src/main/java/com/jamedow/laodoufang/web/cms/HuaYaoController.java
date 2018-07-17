@@ -1,4 +1,4 @@
-package com.jamedow.laodoufang.web.cms;
+package com.jamedow.laodoufang.web.huayao;
 
 import com.jamedow.laodoufang.entity.Product;
 import com.jamedow.laodoufang.entity.ProductExample;
@@ -66,6 +66,25 @@ public class HuaYaoController {
 
         return view;
     }
+    
+    @RequestMapping(value = "/huayaodppd/flj", method = RequestMethod.GET)
+    public ModelAndView huayaodppdFlj(String lang) {
+        ModelAndView view = new ModelAndView();
+        //初始化语言
+        initLanguage(view, lang, "/huayaodppd_flj");
+
+        return view;
+    }
+    
+    @RequestMapping(value = "/huayaodppd/flj/{newsId}", method = RequestMethod.GET)
+    public ModelAndView huayaodppdFljNews(@PathVariable Integer newsId, String lang) {
+        ModelAndView view = new ModelAndView();
+        //初始化语言
+        initLanguage(view, lang, "/huayaodppd_flj_news_" + newsId);
+
+        return view;
+    }
+
 
     @RequestMapping(value = "/enquirel", method = RequestMethod.GET)
     public ModelAndView enquirel(Integer productId, String lang) {
