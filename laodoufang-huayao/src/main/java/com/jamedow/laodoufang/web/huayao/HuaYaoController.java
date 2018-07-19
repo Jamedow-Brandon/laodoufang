@@ -49,7 +49,7 @@ public class HuaYaoController {
     }
 
 
-    @RequestMapping(value = "/detail/{code}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{code}", method = RequestMethod.GET)
     public ModelAndView detail(@PathVariable String code, String lang) {
         ModelAndView view = new ModelAndView();
 
