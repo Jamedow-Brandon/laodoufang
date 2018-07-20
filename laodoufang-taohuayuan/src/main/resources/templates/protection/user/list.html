@@ -14,6 +14,31 @@
         <div th:replace="common/nav :: nav"></div>
     </div>
 </div>
+<div class="container" id="product-container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <h3>工作人员</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>名称</th>
+                    <th>编号</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user:${users}">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.code}"></td>
+                    <td><a th:href="'/user/form/'+${user.id}">编辑</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 <script src="/static/lib/jquery/jquery-3.3.1.js"></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->

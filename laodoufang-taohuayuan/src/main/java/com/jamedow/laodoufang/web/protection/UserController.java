@@ -1,8 +1,8 @@
 package com.jamedow.laodoufang.web.protection;
 
-import com.jamedow.laodoufang.entity.ProtectionZone;
-import com.jamedow.laodoufang.entity.ProtectionZoneExample;
-import com.jamedow.laodoufang.mapper.ProtectionZoneMapper;
+import com.jamedow.laodoufang.entity.User;
+import com.jamedow.laodoufang.entity.UserExample;
+import com.jamedow.laodoufang.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
@@ -15,20 +15,20 @@ import java.util.List;
 
 @Controller
 @EnableAutoConfiguration
-@RequestMapping("/protectionZone")
-public class ProtectionZoneController {
+@RequestMapping("/user")
+public class UserController {
     private final String FOLDER_PATH = "protection/";
-    private final String DOMAIN_PATH = "protectionZone/";
+    private final String DOMAIN_PATH = "user/";
     @Autowired
-    private ProtectionZoneMapper protectionZoneMapper;
+    private UserMapper userMapper;
 
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public ModelAndView list(String lang) {
         ModelAndView view = new ModelAndView();
         view.setViewName(FOLDER_PATH + DOMAIN_PATH + "list");
-        List<ProtectionZone> protectionZones = protectionZoneMapper.selectByExample(new ProtectionZoneExample());
+        List<User> users = userMapper.selectByExample(new UserExample());
 
-        view.addObject("protectionZones", protectionZones);
+        view.addObject("users", users);
 
         return view;
     }
@@ -37,18 +37,18 @@ public class ProtectionZoneController {
     public ModelAndView form(@PathVariable Integer id) {
         ModelAndView view = new ModelAndView();
         view.setViewName(FOLDER_PATH + DOMAIN_PATH + "form");
-        ProtectionZone protectionZone = protectionZoneMapper.selectByPrimaryKey(id);
+        User user = userMapper.selectByPrimaryKey(id);
 
-        view.addObject("protectionZone", protectionZone);
+        view.addObject("user", user);
 
         return view;
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public ModelAndView edit(ProtectionZone protectionZone) {
+    public ModelAndView edit(User user) {
         ModelAndView view = new ModelAndView();
         view.setViewName("redirect:/" + DOMAIN_PATH + "list");
-        protectionZoneMapper.updateByPrimaryKeySelective(protectionZone);
+        userMapper.updateByPrimaryKeySelective(user);
         return view;
     }
 }

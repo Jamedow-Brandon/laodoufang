@@ -1,8 +1,8 @@
 package com.jamedow.laodoufang.web.protection;
 
-import com.jamedow.laodoufang.entity.ProtectionZone;
-import com.jamedow.laodoufang.entity.ProtectionZoneExample;
-import com.jamedow.laodoufang.mapper.ProtectionZoneMapper;
+import com.jamedow.laodoufang.entity.Shelter;
+import com.jamedow.laodoufang.entity.ShelterExample;
+import com.jamedow.laodoufang.mapper.ShelterMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
@@ -15,20 +15,20 @@ import java.util.List;
 
 @Controller
 @EnableAutoConfiguration
-@RequestMapping("/protectionZone")
-public class ProtectionZoneController {
+@RequestMapping("/shelter")
+public class ShelterController {
     private final String FOLDER_PATH = "protection/";
-    private final String DOMAIN_PATH = "protectionZone/";
+    private final String DOMAIN_PATH = "shelter/";
     @Autowired
-    private ProtectionZoneMapper protectionZoneMapper;
+    private ShelterMapper shelterMapper;
 
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public ModelAndView list(String lang) {
         ModelAndView view = new ModelAndView();
         view.setViewName(FOLDER_PATH + DOMAIN_PATH + "list");
-        List<ProtectionZone> protectionZones = protectionZoneMapper.selectByExample(new ProtectionZoneExample());
+        List<Shelter> shelters = shelterMapper.selectByExample(new ShelterExample());
 
-        view.addObject("protectionZones", protectionZones);
+        view.addObject("shelters", shelters);
 
         return view;
     }
@@ -37,18 +37,18 @@ public class ProtectionZoneController {
     public ModelAndView form(@PathVariable Integer id) {
         ModelAndView view = new ModelAndView();
         view.setViewName(FOLDER_PATH + DOMAIN_PATH + "form");
-        ProtectionZone protectionZone = protectionZoneMapper.selectByPrimaryKey(id);
+        Shelter shelter = shelterMapper.selectByPrimaryKey(id);
 
-        view.addObject("protectionZone", protectionZone);
+        view.addObject("shelter", shelter);
 
         return view;
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public ModelAndView edit(ProtectionZone protectionZone) {
+    public ModelAndView edit(Shelter shelter) {
         ModelAndView view = new ModelAndView();
         view.setViewName("redirect:/" + DOMAIN_PATH + "list");
-        protectionZoneMapper.updateByPrimaryKeySelective(protectionZone);
+        shelterMapper.updateByPrimaryKeySelective(shelter);
         return view;
     }
 }

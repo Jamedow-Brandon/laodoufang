@@ -7,28 +7,29 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
+<div class="row clearfix">
+    <div class="col-md-12 column">
+
+        <!-- nav -->
+        <div th:replace="common/nav :: nav"></div>
+    </div>
+</div>
 <div class="container" id="product-container">
     <div class="row clearfix">
         <div class="col-md-12 column">
-            <h3>保护区</h3>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>编号</th>
-                    <th>名称</th>
-                    <th>编号</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="zone:${protectionZones}">
-                    <td th:text="${zone.id}"></td>
-                    <td th:text="${zone.name}"></td>
-                    <td th:text="${zone.code}"></td>
-                    <td><a th:href="'/protectionzone/form/'+${zone.id}">编辑</a></td>
-                </tr>
-                </tbody>
-            </table>
+            <form role="form" method="post" action="/collectionPoint/edit">
+                <input type="hidden" name="id" th:value="${collectionPoint.id}">
+                <div class="form-group">
+                    <label for="name">name</label>
+                    <input type="text" class="form-control" id="name" name="name" th:value="${collectionPoint.name}"
+                           disabled/>
+                </div>
+                <div class="form-group">
+                    <label for="code">title</label>
+                    <input type="text" class="form-control" id="code" name="code" th:value="${collectionPoint.code}"/>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
         </div>
     </div>
 </div>

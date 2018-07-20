@@ -1,8 +1,8 @@
 package com.jamedow.laodoufang.web.protection;
 
-import com.jamedow.laodoufang.entity.ProtectionZone;
-import com.jamedow.laodoufang.entity.ProtectionZoneExample;
-import com.jamedow.laodoufang.mapper.ProtectionZoneMapper;
+import com.jamedow.laodoufang.entity.Device;
+import com.jamedow.laodoufang.entity.DeviceExample;
+import com.jamedow.laodoufang.mapper.DeviceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
@@ -15,20 +15,20 @@ import java.util.List;
 
 @Controller
 @EnableAutoConfiguration
-@RequestMapping("/protectionZone")
-public class ProtectionZoneController {
+@RequestMapping("/device")
+public class DeviceController {
     private final String FOLDER_PATH = "protection/";
-    private final String DOMAIN_PATH = "protectionZone/";
+    private final String DOMAIN_PATH = "device/";
     @Autowired
-    private ProtectionZoneMapper protectionZoneMapper;
+    private DeviceMapper deviceMapper;
 
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public ModelAndView list(String lang) {
         ModelAndView view = new ModelAndView();
         view.setViewName(FOLDER_PATH + DOMAIN_PATH + "list");
-        List<ProtectionZone> protectionZones = protectionZoneMapper.selectByExample(new ProtectionZoneExample());
+        List<Device> devices = deviceMapper.selectByExample(new DeviceExample());
 
-        view.addObject("protectionZones", protectionZones);
+        view.addObject("devices", devices);
 
         return view;
     }
@@ -37,18 +37,18 @@ public class ProtectionZoneController {
     public ModelAndView form(@PathVariable Integer id) {
         ModelAndView view = new ModelAndView();
         view.setViewName(FOLDER_PATH + DOMAIN_PATH + "form");
-        ProtectionZone protectionZone = protectionZoneMapper.selectByPrimaryKey(id);
+        Device device = deviceMapper.selectByPrimaryKey(id);
 
-        view.addObject("protectionZone", protectionZone);
+        view.addObject("device", device);
 
         return view;
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public ModelAndView edit(ProtectionZone protectionZone) {
+    public ModelAndView edit(Device device) {
         ModelAndView view = new ModelAndView();
         view.setViewName("redirect:/" + DOMAIN_PATH + "list");
-        protectionZoneMapper.updateByPrimaryKeySelective(protectionZone);
+        deviceMapper.updateByPrimaryKeySelective(device);
         return view;
     }
 }

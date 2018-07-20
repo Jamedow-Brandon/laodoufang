@@ -11,9 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Description
@@ -31,15 +29,15 @@ public class IndexController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String play() {
-        Map<String, Object> data = new HashMap<>();
-        data.put("t", 20);
-        data.put("s", 30);
-        data.put("a", 44);
-
-        FormData test1 = new FormData();
-        test1.setId(1L);
-        test1.setData(data);
-        testMongoService.insert(test1);
+//        Map<String, Object> data = new HashMap<>();
+//        data.put("t", 20);
+//        data.put("s", 30);
+//        data.put("a", 44);
+//
+//        FormData test1 = new FormData();
+//        test1.setId(1L);
+//        test1.setData(data);
+//        testMongoService.insert(test1);
 
         List<FormData> formDataList = testMongoService.findAll();
 

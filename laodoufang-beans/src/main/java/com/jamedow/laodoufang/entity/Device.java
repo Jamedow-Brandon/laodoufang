@@ -3,7 +3,7 @@ package com.jamedow.laodoufang.entity;
 import java.util.Date;
 
 public class Device {
-    private Long id;
+    private Integer id;
 
     private String name;
 
@@ -19,11 +19,11 @@ public class Device {
 
     private Boolean linkStatus;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

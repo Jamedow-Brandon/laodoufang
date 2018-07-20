@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jamedow.laodoufang.mapper.DeviceMapper">
-    <resultMap id="BaseResultMap" type="com.jamedow.laodoufang.entity.Device">
+<mapper namespace="com.jamedow.laodoufang.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.jamedow.laodoufang.entity.User">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="code" jdbcType="VARCHAR" property="code"/>
-        <result column="status" jdbcType="BIT" property="status"/>
-        <result column="creater" jdbcType="VARCHAR" property="creater"/>
-        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
-        <result column="type" jdbcType="TINYINT" property="type"/>
-        <result column="link_status" jdbcType="BIT" property="linkStatus"/>
     </resultMap>
     <sql id="Example_Where_Clause">
         <where>
@@ -72,16 +67,16 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-        id, name, code, status, creater, gmt_create, type, link_status
-    </sql>
-    <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.DeviceExample" resultMap="BaseResultMap">
+    id, name, code
+  </sql>
+    <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.UserExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
         </if>
         'true' as QUERYID,
         <include refid="Base_Column_List"/>
-        from device
+        from user
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
@@ -89,32 +84,30 @@
             order by ${orderByClause}
         </if>
     </select>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from device
+        from user
         where id = #{id,jdbcType=INTEGER}
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-        delete from device
-        where id = #{id,jdbcType=INTEGER}
-    </delete>
-    <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.DeviceExample">
-        delete from device
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByExample" parameterType="com.jamedow.laodoufang.entity.UserExample">
+        delete from user
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.jamedow.laodoufang.entity.Device">
-        insert into device (id, name, code,
-        status, creater, gmt_create,
-        type, link_status)
-        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR},
-        #{status,jdbcType=BIT}, #{creater,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP},
-        #{type,jdbcType=TINYINT}, #{linkStatus,jdbcType=BIT})
-    </insert>
-    <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.Device">
-        insert into device
+    <insert id="insert" parameterType="com.jamedow.laodoufang.entity.User">
+    insert into user (id, name, code
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.User">
+        insert into user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
@@ -124,21 +117,6 @@
             </if>
             <if test="code != null">
                 code,
-            </if>
-            <if test="status != null">
-                status,
-            </if>
-            <if test="creater != null">
-                creater,
-            </if>
-            <if test="gmtCreate != null">
-                gmt_create,
-            </if>
-            <if test="type != null">
-                type,
-            </if>
-            <if test="linkStatus != null">
-                link_status,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -151,31 +129,16 @@
             <if test="code != null">
                 #{code,jdbcType=VARCHAR},
             </if>
-            <if test="status != null">
-                #{status,jdbcType=BIT},
-            </if>
-            <if test="creater != null">
-                #{creater,jdbcType=VARCHAR},
-            </if>
-            <if test="gmtCreate != null">
-                #{gmtCreate,jdbcType=TIMESTAMP},
-            </if>
-            <if test="type != null">
-                #{type,jdbcType=TINYINT},
-            </if>
-            <if test="linkStatus != null">
-                #{linkStatus,jdbcType=BIT},
-            </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.jamedow.laodoufang.entity.DeviceExample" resultType="java.lang.Long">
-        select count(*) from device
+    <select id="countByExample" parameterType="com.jamedow.laodoufang.entity.UserExample" resultType="java.lang.Long">
+        select count(*) from user
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </select>
     <update id="updateByExampleSelective" parameterType="map">
-        update device
+        update user
         <set>
             <if test="record.id != null">
                 id = #{record.id,jdbcType=INTEGER},
@@ -186,42 +149,22 @@
             <if test="record.code != null">
                 code = #{record.code,jdbcType=VARCHAR},
             </if>
-            <if test="record.status != null">
-                status = #{record.status,jdbcType=BIT},
-            </if>
-            <if test="record.creater != null">
-                creater = #{record.creater,jdbcType=VARCHAR},
-            </if>
-            <if test="record.gmtCreate != null">
-                gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-            </if>
-            <if test="record.type != null">
-                type = #{record.type,jdbcType=TINYINT},
-            </if>
-            <if test="record.linkStatus != null">
-                link_status = #{record.linkStatus,jdbcType=BIT},
-            </if>
         </set>
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
     <update id="updateByExample" parameterType="map">
-        update device
+        update user
         set id = #{record.id,jdbcType=INTEGER},
         name = #{record.name,jdbcType=VARCHAR},
-        code = #{record.code,jdbcType=VARCHAR},
-        status = #{record.status,jdbcType=BIT},
-        creater = #{record.creater,jdbcType=VARCHAR},
-        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-        type = #{record.type,jdbcType=TINYINT},
-        link_status = #{record.linkStatus,jdbcType=BIT}
+        code = #{record.code,jdbcType=VARCHAR}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.jamedow.laodoufang.entity.Device">
-        update device
+    <update id="updateByPrimaryKeySelective" parameterType="com.jamedow.laodoufang.entity.User">
+        update user
         <set>
             <if test="name != null">
                 name = #{name,jdbcType=VARCHAR},
@@ -229,33 +172,13 @@
             <if test="code != null">
                 code = #{code,jdbcType=VARCHAR},
             </if>
-            <if test="status != null">
-                status = #{status,jdbcType=BIT},
-            </if>
-            <if test="creater != null">
-                creater = #{creater,jdbcType=VARCHAR},
-            </if>
-            <if test="gmtCreate != null">
-                gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-            </if>
-            <if test="type != null">
-                type = #{type,jdbcType=TINYINT},
-            </if>
-            <if test="linkStatus != null">
-                link_status = #{linkStatus,jdbcType=BIT},
-            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.Device">
-        update device
-        set name = #{name,jdbcType=VARCHAR},
-        code = #{code,jdbcType=VARCHAR},
-        status = #{status,jdbcType=BIT},
-        creater = #{creater,jdbcType=VARCHAR},
-        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-        type = #{type,jdbcType=TINYINT},
-        link_status = #{linkStatus,jdbcType=BIT}
-        where id = #{id,jdbcType=INTEGER}
-    </update>
+    <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.User">
+    update user
+    set name = #{name,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>
