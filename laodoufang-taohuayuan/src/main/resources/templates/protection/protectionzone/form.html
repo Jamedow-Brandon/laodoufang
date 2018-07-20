@@ -10,28 +10,19 @@
 <div class="container" id="product-container">
     <div class="row clearfix">
         <div class="col-md-12 column">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>编号</th>
-                    <th>产品</th>
-                    <th>title</th>
-                    <th>keywords</th>
-                    <th>description</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="product:${products}">
-                    <td th:text="${product.id}"></td>
-                    <td th:text="${product.name}"></td>
-                    <td th:text="${product.title}"></td>
-                    <td th:text="${product.seoKeywords}"></td>
-                    <td th:text="${product.description}"></td>
-                    <td><a th:href="'/product/form/'+${product.id}">编辑</a></td>
-                </tr>
-                </tbody>
-            </table>
+            <form role="form" method="post" action="/protectionzone/edit">
+                <input type="hidden" name="id" th:value="${protectionZone.id}">
+                <div class="form-group">
+                    <label for="name">name</label>
+                    <input type="text" class="form-control" id="name" name="name" th:value="${protectionZone.name}"
+                           disabled/>
+                </div>
+                <div class="form-group">
+                    <label for="code">title</label>
+                    <input type="text" class="form-control" id="code" name="code" th:value="${protectionZone.code}"/>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
         </div>
     </div>
 </div>

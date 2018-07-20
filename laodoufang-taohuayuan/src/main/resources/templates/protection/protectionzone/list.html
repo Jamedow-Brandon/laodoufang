@@ -10,25 +10,22 @@
 <div class="container" id="product-container">
     <div class="row clearfix">
         <div class="col-md-12 column">
+            <h3>保护区</h3>
             <table class="table">
                 <thead>
                 <tr>
                     <th>编号</th>
-                    <th>产品</th>
-                    <th>title</th>
-                    <th>keywords</th>
-                    <th>description</th>
+                    <th>名称</th>
+                    <th>编号</th>
                     <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="product:${products}">
-                    <td th:text="${product.id}"></td>
-                    <td th:text="${product.name}"></td>
-                    <td th:text="${product.title}"></td>
-                    <td th:text="${product.seoKeywords}"></td>
-                    <td th:text="${product.description}"></td>
-                    <td><a th:href="'/product/form/'+${product.id}">编辑</a></td>
+                <tr th:each="zone:${protectionZones}">
+                    <td th:text="${zone.id}"></td>
+                    <td th:text="${zone.name}"></td>
+                    <td th:text="${zone.code}"></td>
+                    <td><a th:href="'/protectionzone/form/'+${zone.id}">编辑</a></td>
                 </tr>
                 </tbody>
             </table>
