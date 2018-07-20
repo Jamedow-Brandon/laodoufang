@@ -4,19 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
-    <title data-vue-meta="true" th:text="${product.title}"></title>
-    <meta data-vue-meta="true" itemprop="keywords" name="keywords" th:content="${product.seoKeywords}">
-    <meta data-vue-meta="true" itemprop="name" name="title" th:content="${product.seoKeywords}">
+    <title th:text="${product.title}"></title>
+    <meta name="keywords" th:content="${product.seoKeywords}">
+    <meta name="description" th:content="${product.description}">
     <link rel="shortcut icon" href="/static/huayao/images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="/static/huayao/css/reset.css?v=05091425"/>
     <link rel="stylesheet" type="text/css" href="/static/huayao/css/index.css?v=05091425"/>
 </head>
 
 <body>
-<header>
-    <h1 class="seoKeywords" th:text="${product.title}"></h1>
-    <span class="seoKeywords" th:text="${product.description}"></span>
-</header>
 <div class="contain">
     <div class="headBar">
         <img class="bigLogo" src="/static/huayao/images/huayao-logo-big.png"/>
