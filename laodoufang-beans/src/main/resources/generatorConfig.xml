@@ -38,16 +38,11 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <table tableName="cms_category" domainObjectName="cmsCategory"
-               enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true">
-        </table>
-        <table tableName="cms_article" domainObjectName="cmsArticle"
-               enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true">
-        </table>
+        <!--<table tableName="huayao_product" domainObjectName="Product"-->
+        <!--enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--selectByExampleQueryId="true">-->
+        <!--</table>-->
 
         <!--<table tableName="device" domainObjectName="Device"-->
         <!--enableCountByExample="true" enableUpdateByExample="true"-->
@@ -79,6 +74,33 @@
         <!--enableDeleteByExample="true" enableSelectByExample="true"-->
         <!--selectByExampleQueryId="true">-->
         <!--</table>-->
+
+
+        <table tableName="protection_zone" domainObjectName="ProtectionZone"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+        <table tableName="shelter" domainObjectName="Shelter"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+        <table tableName="patrol_route" domainObjectName="PatrolRoute"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+        <table tableName="collection_point" domainObjectName="CollectionPoint"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+        <table tableName="device" domainObjectName="Device"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
 
     </context>
 </generatorConfiguration>

@@ -3,9 +3,11 @@ package com.jamedow.laodoufang.mapper;
 import com.jamedow.laodoufang.entity.Device;
 import com.jamedow.laodoufang.entity.DeviceExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface DeviceMapper {
     long countByExample(DeviceExample example);
 
