@@ -7,10 +7,9 @@
     <result column="seo_keywords" jdbcType="VARCHAR" property="seoKeywords"/>
     <result column="en_name" jdbcType="VARCHAR" property="enName"/>
     <result column="en_seo_keywords" jdbcType="VARCHAR" property="enSeoKeywords"/>
+    <result column="description" jdbcType="VARCHAR" property="description"/>
     <result column="code" jdbcType="VARCHAR" property="code"/>
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jamedow.laodoufang.entity.Product">
-    <result column="description" jdbcType="LONGVARCHAR" property="description"/>
+    <result column="title" jdbcType="VARCHAR" property="title"/>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -71,29 +70,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, seo_keywords, en_name, en_seo_keywords, code
+    id, name, seo_keywords, en_name, en_seo_keywords, description, code, title
   </sql>
-  <sql id="Blob_Column_List">
-    description
-  </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.jamedow.laodoufang.entity.ProductExample"
-          resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    'true' as QUERYID,
-    <include refid="Base_Column_List"/>
-    ,
-    <include refid="Blob_Column_List"/>
-    from huayao_product
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause"/>
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" parameterType="com.jamedow.laodoufang.entity.ProductExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -109,11 +87,9 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
-    ,
-    <include refid="Blob_Column_List"/>
     from huayao_product
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -129,11 +105,11 @@
   </delete>
   <insert id="insert" parameterType="com.jamedow.laodoufang.entity.Product">
     insert into huayao_product (id, name, seo_keywords, 
-      en_name, en_seo_keywords, code, 
-      description)
+      en_name, en_seo_keywords, description, 
+      code, title)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{seoKeywords,jdbcType=VARCHAR}, 
-      #{enName,jdbcType=VARCHAR}, #{enSeoKeywords,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
-      #{description,jdbcType=LONGVARCHAR})
+      #{enName,jdbcType=VARCHAR}, #{enSeoKeywords,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.jamedow.laodoufang.entity.Product">
     insert into huayao_product
@@ -153,11 +129,14 @@
       <if test="enSeoKeywords != null">
         en_seo_keywords,
       </if>
+      <if test="description != null">
+        description,
+      </if>
       <if test="code != null">
         code,
       </if>
-      <if test="description != null">
-        description,
+      <if test="title != null">
+        title,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -176,11 +155,14 @@
       <if test="enSeoKeywords != null">
         #{enSeoKeywords,jdbcType=VARCHAR},
       </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
       <if test="code != null">
         #{code,jdbcType=VARCHAR},
       </if>
-      <if test="description != null">
-        #{description,jdbcType=LONGVARCHAR},
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -208,26 +190,16 @@
       <if test="record.enSeoKeywords != null">
         en_seo_keywords = #{record.enSeoKeywords,jdbcType=VARCHAR},
       </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
       <if test="record.code != null">
         code = #{record.code,jdbcType=VARCHAR},
       </if>
-      <if test="record.description != null">
-        description = #{record.description,jdbcType=LONGVARCHAR},
+      <if test="record.title != null">
+        title = #{record.title,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause"/>
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
-    update huayao_product
-    set id = #{record.id,jdbcType=INTEGER},
-    name = #{record.name,jdbcType=VARCHAR},
-    seo_keywords = #{record.seoKeywords,jdbcType=VARCHAR},
-    en_name = #{record.enName,jdbcType=VARCHAR},
-    en_seo_keywords = #{record.enSeoKeywords,jdbcType=VARCHAR},
-    code = #{record.code,jdbcType=VARCHAR},
-    description = #{record.description,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause"/>
     </if>
@@ -239,7 +211,9 @@
     seo_keywords = #{record.seoKeywords,jdbcType=VARCHAR},
     en_name = #{record.enName,jdbcType=VARCHAR},
     en_seo_keywords = #{record.enSeoKeywords,jdbcType=VARCHAR},
-    code = #{record.code,jdbcType=VARCHAR}
+    description = #{record.description,jdbcType=VARCHAR},
+    code = #{record.code,jdbcType=VARCHAR},
+    title = #{record.title,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause"/>
     </if>
@@ -259,23 +233,16 @@
       <if test="enSeoKeywords != null">
         en_seo_keywords = #{enSeoKeywords,jdbcType=VARCHAR},
       </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
       <if test="code != null">
         code = #{code,jdbcType=VARCHAR},
       </if>
-      <if test="description != null">
-        description = #{description,jdbcType=LONGVARCHAR},
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jamedow.laodoufang.entity.Product">
-    update huayao_product
-    set name = #{name,jdbcType=VARCHAR},
-      seo_keywords = #{seoKeywords,jdbcType=VARCHAR},
-      en_name = #{enName,jdbcType=VARCHAR},
-      en_seo_keywords = #{enSeoKeywords,jdbcType=VARCHAR},
-      code = #{code,jdbcType=VARCHAR},
-      description = #{description,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jamedow.laodoufang.entity.Product">
@@ -284,7 +251,9 @@
       seo_keywords = #{seoKeywords,jdbcType=VARCHAR},
       en_name = #{enName,jdbcType=VARCHAR},
       en_seo_keywords = #{enSeoKeywords,jdbcType=VARCHAR},
-      code = #{code,jdbcType=VARCHAR}
+      description = #{description,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -1,0 +1,70 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="container" id="product-container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>产品</th>
+                    <th>title</th>
+                    <th>keywords</th>
+                    <th>description</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="product:${products}">
+                    <td th:text="${product.id}"></td>
+                    <td th:text="${product.name}"></td>
+                    <td th:text="${product.title}"></td>
+                    <td th:text="${product.seoKeywords}"></td>
+                    <td th:text="${product.description}"></td>
+                    <td><a th:href="'/product/form/'+${product.id}">编辑</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/static/lib/jquery/jquery-3.3.1.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/lib/mansory/src/mp.mansory.js"></script>
+<script>
+    $(function () {
+        $("#product-container").mpmansory(
+            {
+                childrenClass: '', // default is a div
+                columnClasses: '', //add classes to items
+                breakpoints: {
+                    lg: 3,
+                    md: 4,
+                    sm: 6,
+                    xs: 12
+                },
+                distributeBy: {order: false, height: false, attr: 'data-order', attrOrder: 'asc'},
+                onload: function (items) {
+                    //make somthing with items
+                }
+            }
+        );
+
+        $('.btn').tooltip({
+            trigger: 'click',
+            placement: 'bottom'
+        });
+    });
+</script>
+</html>
