@@ -3,9 +3,11 @@ package com.jamedow.laodoufang.mapper;
 import com.jamedow.laodoufang.entity.PrewarningSetting;
 import com.jamedow.laodoufang.entity.PrewarningSettingExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface PrewarningSettingMapper {
     long countByExample(PrewarningSettingExample example);
 

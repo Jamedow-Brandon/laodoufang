@@ -1,0 +1,73 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="container" id="product-container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <form role="form" method="post" action="/product/edit">
+                <input type="hidden" name="id" th:value="${product.id}">
+                <div class="form-group">
+                    <label for="name">name</label>
+                    <input type="text" class="form-control" id="name" name="name" th:value="${product.name}" disabled/>
+                </div>
+                <div class="form-group">
+                    <label for="title">title</label>
+                    <input type="text" class="form-control" id="title" name="title" th:value="${product.title}"/>
+                </div>
+                <div class="form-group">
+                    <label for="seoKeywords">seoKeywords</label>
+                    <input type="text" class="form-control" id="seoKeywords" name="seoKeywords"
+                           th:value="${product.seoKeywords}"/>
+                </div>
+                <div class="form-group">
+                    <label for="description">description</label>
+                    <input type="text" class="form-control" id="description" name="description"
+                           th:value="${product.description}"/>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox"/>Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/static/lib/jquery/jquery-3.3.1.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/lib/mansory/src/mp.mansory.js"></script>
+<script>
+    $(function () {
+        $("#product-container").mpmansory(
+            {
+                childrenClass: '', // default is a div
+                columnClasses: '', //add classes to items
+                breakpoints: {
+                    lg: 3,
+                    md: 4,
+                    sm: 6,
+                    xs: 12
+                },
+                distributeBy: {order: false, height: false, attr: 'data-order', attrOrder: 'asc'},
+                onload: function (items) {
+                    //make somthing with items
+                }
+            }
+        );
+
+        $('.btn').tooltip({
+            trigger: 'click',
+            placement: 'bottom'
+        });
+    });
+</script>
+</html>

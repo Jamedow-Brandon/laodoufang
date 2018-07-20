@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,24 +49,48 @@ public class HuaYaoController {
     }
 
 
-    @RequestMapping(value = "/detail/{productId}", method = RequestMethod.GET)
-    public ModelAndView detail(@PathVariable Integer productId, String lang) {
+    @RequestMapping(value = "/{code}", method = RequestMethod.GET)
+    public ModelAndView detail(@PathVariable String code, String lang) {
         ModelAndView view = new ModelAndView();
 
-        Product product = productMapper.selectByPrimaryKey(productId);
+        ProductExample example = new ProductExample();
+        example.createCriteria().andCodeEqualTo(code);
+        List<Product> products = productMapper.selectByExample(example);
+        if (ObjectUtils.isEmpty(products)) {
+            return view;
+        }
 
         ProductSeoKeywordsExample seoKeywordsExample = new ProductSeoKeywordsExample();
-        seoKeywordsExample.createCriteria().andProductIdEqualTo(productId).andIsDeletedEqualTo("0");
+        seoKeywordsExample.createCriteria().andProductIdEqualTo(products.get(0).getId()).andIsDeletedEqualTo("0");
         List<ProductSeoKeywords> seoKeywords = seoKeywordsMapper.selectByExample(seoKeywordsExample);
 
         view.addObject("seoKeywords", seoKeywords);
-        view.addObject("product", product);
+        view.addObject("product", products.get(0));
 
         //初始化语言
         initLanguage(view, lang, "/detail");
 
         return view;
     }
+    
+    @RequestMapping(value = "/huayaodppd/flj", method = RequestMethod.GET)
+    public ModelAndView huayaodppdFlj(String lang) {
+        ModelAndView view = new ModelAndView();
+        //初始化语言
+        initLanguage(view, lang, "/huayaodppd_flj");
+
+        return view;
+    }
+    
+    @RequestMapping(value = "/huayaodppd/flj/{newsId}", method = RequestMethod.GET)
+    public ModelAndView huayaodppdFljNews(@PathVariable Integer newsId, String lang) {
+        ModelAndView view = new ModelAndView();
+        //初始化语言
+        initLanguage(view, lang, "/huayaodppd_flj_news_" + newsId);
+
+        return view;
+    }
+
 
     @RequestMapping(value = "/enquirel", method = RequestMethod.GET)
     public ModelAndView enquirel(Integer productId, String lang) {

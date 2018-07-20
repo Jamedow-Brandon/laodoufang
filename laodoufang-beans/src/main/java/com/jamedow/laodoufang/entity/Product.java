@@ -11,6 +11,12 @@ public class Product {
 
     private String enSeoKeywords;
 
+    private String description;
+
+    private String code;
+
+    private String title;
+
     public Integer getId() {
         return id;
     }
@@ -49,5 +55,29 @@ public class Product {
 
     public void setEnSeoKeywords(String enSeoKeywords) {
         this.enSeoKeywords = enSeoKeywords;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
