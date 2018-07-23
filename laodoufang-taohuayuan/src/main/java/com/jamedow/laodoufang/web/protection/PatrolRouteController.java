@@ -2,6 +2,7 @@ package com.jamedow.laodoufang.web.protection;
 
 import com.jamedow.laodoufang.entity.PatrolRoute;
 import com.jamedow.laodoufang.entity.PatrolRouteExample;
+import com.jamedow.laodoufang.mail.SnCalUtil;
 import com.jamedow.laodoufang.mapper.PatrolRouteMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -39,6 +40,7 @@ public class PatrolRouteController {
         view.setViewName(FOLDER_PATH + DOMAIN_PATH + "form");
         PatrolRoute patrolRoute = patrolRouteMapper.selectByPrimaryKey(id);
 
+        view.addObject("sn", SnCalUtil.calSn());
         view.addObject("patrolRoute", patrolRoute);
 
         return view;
