@@ -18,7 +18,7 @@
     <div class="row clearfix">
         <div class="col-md-12 column">
             <form role="form" method="post" action="/patrolRoute/edit">
-                <input type="hidden" name="id" th:value="${patrolRoute.id}">
+                <input type="hidden" id="id" name="id" th:value="${patrolRoute.id}">
                 <div class="form-group">
                     <label for="name">name</label>
                     <input type="text" class="form-control" id="name" name="name" th:value="${patrolRoute.name}"
@@ -32,6 +32,9 @@
             </form>
         </div>
     </div>
+
+    <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="main" style="width: 600px;height:400px;"></div>
 </div>
 </body>
 <script src="/static/lib/jquery/jquery-3.3.1.js"></script>
@@ -39,4 +42,147 @@
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+<!--引入百度地图的jssdk，这里需要使用你在百度地图开发者平台申请的 ak-->
+<script th:src="${'http://api.map.baidu.com/api?v=2.0&ak=XYrdEDso2sBrvEs2Zl2cQPOqtwnwHLji&sn='+sn}"></script>
+<!--<script src="/static/lib/echarts/echarts.js"></script>-->
+<!--<script src="/static/lib/echarts/map/china.js"></script>-->
+<!--&lt;!&ndash; 引入百度地图扩展 &ndash;&gt;-->
+<!--<script src="/static/lib/echarts/map/bmap.min.js"></script>-->
+<!--<script type="text/javascript">-->
+<!--// 基于准备好的dom，初始化echarts实例-->
+<!--var myChart = echarts.init(document.getElementById('main'));-->
+
+<!--$.get('/patrolRoutePoint/getPointsByPatrolRouteId/' + $("#id").val(), function (data) {-->
+<!--console.log(data)-->
+<!--var lines = data.map(function (track) {-->
+<!--console.log(track)-->
+
+<!--return {-->
+<!--coords: track.map(function (seg, idx) {-->
+<!--return seg.coord;-->
+<!--})-->
+<!--};-->
+<!--});-->
+
+<!--myChart.setOption(option = {-->
+<!--bmap: {-->
+<!--center: [120.13066322374, 30.240018034923],-->
+<!--zoom: 14,-->
+<!--roam: true,-->
+<!--mapStyle: {-->
+<!--styleJson: [{-->
+<!--'featureType': 'water',-->
+<!--'elementType': 'all',-->
+<!--'stylers': {-->
+<!--'color': '#d1d1d1'-->
+<!--}-->
+<!--}, {-->
+<!--'featureType': 'land',-->
+<!--'elementType': 'all',-->
+<!--'stylers': {-->
+<!--'color': '#f3f3f3'-->
+<!--}-->
+<!--}, {-->
+<!--'featureType': 'railway',-->
+<!--'elementType': 'all',-->
+<!--'stylers': {-->
+<!--'visibility': 'off'-->
+<!--}-->
+<!--}, {-->
+<!--'featureType': 'highway',-->
+<!--'elementType': 'all',-->
+<!--'stylers': {-->
+<!--'color': '#fdfdfd'-->
+<!--}-->
+<!--}, {-->
+<!--'featureType': 'highway',-->
+<!--'elementType': 'labels',-->
+<!--'stylers': {-->
+<!--'visibility': 'off'-->
+<!--}-->
+<!--}, {-->
+<!--'featureType': 'arterial',-->
+<!--'elementType': 'geometry',-->
+<!--'stylers': {-->
+<!--'color': '#fefefe'-->
+<!--}-->
+<!--}, {-->
+<!--'featureType': 'arterial',-->
+<!--'elementType': 'geometry.fill',-->
+<!--'stylers': {-->
+<!--'color': '#fefefe'-->
+<!--}-->
+<!--}, {-->
+<!--'featureType': 'poi',-->
+<!--'elementType': 'all',-->
+<!--'stylers': {-->
+<!--'visibility': 'off'-->
+<!--}-->
+<!--}, {-->
+<!--'featureType': 'green',-->
+<!--'elementType': 'all',-->
+<!--'stylers': {-->
+<!--'visibility': 'off'-->
+<!--}-->
+<!--}, {-->
+<!--'featureType': 'subway',-->
+<!--'elementType': 'all',-->
+<!--'stylers': {-->
+<!--'visibility': 'off'-->
+<!--}-->
+<!--}, {-->
+<!--'featureType': 'manmade',-->
+<!--'elementType': 'all',-->
+<!--'stylers': {-->
+<!--'color': '#d1d1d1'-->
+<!--}-->
+<!--}, {-->
+<!--'featureType': 'local',-->
+<!--'elementType': 'all',-->
+<!--'stylers': {-->
+<!--'color': '#d1d1d1'-->
+<!--}-->
+<!--}, {-->
+<!--'featureType': 'arterial',-->
+<!--'elementType': 'labels',-->
+<!--'stylers': {-->
+<!--'visibility': 'off'-->
+<!--}-->
+<!--}, {-->
+<!--'featureType': 'boundary',-->
+<!--'elementType': 'all',-->
+<!--'stylers': {-->
+<!--'color': '#fefefe'-->
+<!--}-->
+<!--}, {-->
+<!--'featureType': 'building',-->
+<!--'elementType': 'all',-->
+<!--'stylers': {-->
+<!--'color': '#d1d1d1'-->
+<!--}-->
+<!--}, {-->
+<!--'featureType': 'label',-->
+<!--'elementType': 'labels.text.fill',-->
+<!--'stylers': {-->
+<!--'color': '#999999'-->
+<!--}-->
+<!--}]-->
+<!--}-->
+<!--},-->
+<!--series: [{-->
+<!--type: 'lines',-->
+<!--coordinateSystem: 'bmap',-->
+<!--data: lines,-->
+<!--polyline: true,-->
+<!--lineStyle: {-->
+<!--normal: {-->
+<!--color: 'purple',-->
+<!--opacity: 0.6,-->
+<!--width: 1-->
+<!--}-->
+<!--}-->
+<!--}]-->
+<!--});-->
+<!--});-->
+<!--</script>-->
 </html>
