@@ -142,7 +142,7 @@ under the License.
     <mirrors>
         <mirror>
             <id>nexus</id>
-            <name>Nexus Mirror</name>
+            <name>maven-central</name>
             <url>http://106.14.210.31:8081/repository/maven-public/</url>
             <mirrorOf>central</mirrorOf>
         </mirror>
@@ -182,17 +182,26 @@ under the License.
                     </snapshots>
                 </repository>
 
-                <repository>
-                    <id>alimaven</id>
-                    <name>aliyun maven</name>
-                    <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </repository>
+                <!--<repository>-->
+                <!--<id>alimaven</id>-->
+                <!--<name>aliyun maven</name>-->
+                <!--<url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
+                <!--<releases>-->
+                <!--<enabled>true</enabled>-->
+                <!--</releases>-->
+                <!--<snapshots>-->
+                <!--<enabled>false</enabled>-->
+                <!--</snapshots>-->
+                <!--</repository>-->
+
+                <!--<repository>-->
+                <!--<id>spring-milestones</id>-->
+                <!--<name>Spring Milestones</name>-->
+                <!--<url>https://repo.spring.io/milestone</url>-->
+                <!--<snapshots>-->
+                <!--<enabled>false</enabled>-->
+                <!--</snapshots>-->
+                <!--</repository>-->
             </repositories>
             <!--指定插件仓库-->
             <pluginRepositories>
