@@ -92,7 +92,7 @@ public class HuaYaoController {
     }
 
     @RequestMapping(value = "/huayaodppd/ra", method = RequestMethod.GET)
-    public ModelAndView huayaodppdFlj(String lang) {
+    public ModelAndView huayaodppdRa(String lang) {
         ModelAndView view = new ModelAndView();
         //初始化语言
         initLanguage(view, lang, "/huayaodppd_ra");

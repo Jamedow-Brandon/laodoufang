@@ -193,15 +193,6 @@ under the License.
                         <enabled>false</enabled>
                     </snapshots>
                 </repository>
-
-                <repository>
-                    <id>spring-milestones</id>
-                    <name>Spring Milestones</name>
-                    <url>https://repo.spring.io/milestone</url>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </repository>
             </repositories>
             <!--指定插件仓库-->
             <pluginRepositories>
