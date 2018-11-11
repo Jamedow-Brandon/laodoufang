@@ -7,13 +7,13 @@ import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -25,7 +25,7 @@ import java.util.List;
 @RequestMapping("/static")
 public class StaticController {
     private Logger logger = LoggerFactory.getLogger(getClass());
-    @Autowired
+    @Resource
     private FileUploadService fileUploadService;
 
     @PostMapping(value = "upload", produces = "application/json;charset=utf-8")
