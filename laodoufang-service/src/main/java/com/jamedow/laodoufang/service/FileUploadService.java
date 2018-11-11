@@ -57,7 +57,7 @@ public class FileUploadService {
         String contentType = uploadFile.getContentType();  // 获取文件类型
         long size = uploadFile.getSize();  // 获取文件大小
         String resourceId = UUIDHexGenerator.getUUIDHex();  //生成阿里云资源ID
-        String remotePath = imgServer + File.separator + resourceId;
+        String remotePath = File.separator + resourceId;
         //设置阿里云文件资源key
         setKey(String.valueOf(resourceId));
 
