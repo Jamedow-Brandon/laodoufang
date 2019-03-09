@@ -41,7 +41,6 @@ public class HuaYaoController {
         List<ProductSeoKeywords> seoKeywords = seoKeywordsMapper.selectByExample(seoKeywordsExample);
 
         view.addObject("seoKeywords", seoKeywords);
-
         //初始化语言
         initLanguage(view, lang, "/index");
 
@@ -118,6 +117,26 @@ public class HuaYaoController {
         return view;
     }
 
+    @RequestMapping(value = "/intro", method = RequestMethod.GET)
+    public ModelAndView intro(String lang) {
+        ModelAndView view = new ModelAndView();
+
+        //初始化语言
+        initLanguage(view, lang, "/intro");
+
+        return view;
+    }
+
+    @RequestMapping(value = "/contact", method = RequestMethod.GET)
+    public ModelAndView contact(String lang) {
+        ModelAndView view = new ModelAndView();
+
+        //初始化语言
+        initLanguage(view, lang, "/contact");
+
+        return view;
+    }
+
     /**
      * 初始化语言
      *
@@ -127,5 +146,6 @@ public class HuaYaoController {
     private void initLanguage(ModelAndView view, String lang, String viewName) {
         view.setViewName("huayao" + (StringUtils.isNotBlank(lang) ? "/" + lang : "") + viewName);
         view.addObject("lang", lang);
+        view.addObject("view", viewName);
     }
 }
