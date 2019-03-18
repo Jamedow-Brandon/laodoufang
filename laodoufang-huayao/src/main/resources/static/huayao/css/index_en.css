@@ -31,6 +31,11 @@
     color: #000000;
 }
 
+.languageSwitch a {
+    text-decoration: none;
+    color: #000000;
+}
+
 .languageSwitch .on {
     color: #23aae5;
 }

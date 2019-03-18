@@ -21,13 +21,18 @@
 
 .bigLogo {
     margin-top: 100px;
-    margin-left: 170px;
+    margin-left: 250px;
 }
 
 .languageSwitch {
     cursor: pointer;
     margin-top: 110px;
     font-size: 22px;
+    color: #000000;
+}
+
+.languageSwitch a {
+    text-decoration: none;
     color: #000000;
 }
 

@@ -22,6 +22,8 @@
     <div class="headBar" style="height: 270px;">
         <img class="bigLogo" src="/static/huayao/images/huayao-logo-big.png"/>
         <div class="languageSwitch fr">
+            <a th:if="${view == '/index'}" href=""><span style="margin-right: 16px;">Company Intro</span></a>
+            <a th:if="${view == '/index'}" href=""><span style="margin-right: 36px;">Contact Us</span></a>
             <span class="lang" lang="">中文</span>
             <span style="margin: 0 12px;">|</span>
             <span class="lang on" lang="en">English</span>
