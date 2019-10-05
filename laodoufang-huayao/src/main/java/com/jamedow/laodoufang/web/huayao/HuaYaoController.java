@@ -72,34 +72,6 @@ public class HuaYaoController {
         return view;
     }
     
-    @RequestMapping(value = "/huayaodppd/flj", method = RequestMethod.GET)
-    public ModelAndView huayaodppdFlj(String lang) {
-        ModelAndView view = new ModelAndView();
-        //初始化语言
-        initLanguage(view, lang, "/huayaodppd_flj");
-
-        return view;
-    }
-    
-    @RequestMapping(value = "/huayaodppd/flj/{newsId}", method = RequestMethod.GET)
-    public ModelAndView huayaodppdFljNews(@PathVariable Integer newsId, String lang) {
-        ModelAndView view = new ModelAndView();
-        //初始化语言
-        initLanguage(view, lang, "/huayaodppd_flj_news_" + newsId);
-
-        return view;
-    }
-
-    @RequestMapping(value = "/huayaodppd/ra", method = RequestMethod.GET)
-    public ModelAndView huayaodppdRa(String lang) {
-        ModelAndView view = new ModelAndView();
-        //初始化语言
-        initLanguage(view, lang, "/huayaodppd_ra");
-
-        return view;
-    }
-
-
     @RequestMapping(value = "/enquirel", method = RequestMethod.GET)
     public ModelAndView enquirel(Integer productId, String lang) {
         ModelAndView view = new ModelAndView();
