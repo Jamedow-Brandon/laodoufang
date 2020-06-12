@@ -47,7 +47,7 @@ mybatis:
 oss:
   endpoint: oss-cn-shanghai.aliyuncs.com
   accessKeyId: LTAIuJEQSWXcQgOZ
-  accessKeySecret: hscS01ryn5Ykk57NmXyfEBVMif0gFr
+  accessKeySecret: hscS01ryn5Ykk5=============7NmXyfEBVMif0gFr
   bucketName: laodoufang
   localFilePath: laodoufang
   imgServer: http://image.kxgrp.com
