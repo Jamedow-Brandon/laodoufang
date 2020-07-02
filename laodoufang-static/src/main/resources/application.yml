@@ -46,7 +46,7 @@ mybatis:
 
 oss:
   endpoint: oss-cn-shanghai.aliyuncs.com
-  accessKeyId: LTAIuJEQSWXcQgOZ
+  accessKeyId: LTAIuJEQ======SWXcQgOZ
   accessKeySecret: hscS01ryn5Ykk5=============7NmXyfEBVMif0gFr
   bucketName: laodoufang
   localFilePath: laodoufang
