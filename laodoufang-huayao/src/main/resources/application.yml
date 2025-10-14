@@ -8,12 +8,12 @@ server:
 
 spring:
   application:
-    name: laodoufang-kxgrp
+    name: laodoufang-huayao
   datasource:
     # 数据库连接地址
-    url: jdbc:mysql://106.14.210.31:3306/huayao?useUnicode=true&characterEncoding=utf-8
-    username: huayao
-    password: Huayao@520
+    url: jdbc:mysql://127.0.0.1:3000/huayao?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 88888888
 #  redis:
 #    #cluster:
 #      #nodes:
